@@ -3,9 +3,9 @@
 class Array
   def qsort
     return [] if self.empty?
-    pivot, *rest = self
-    (rest.select {|el| el < pivot }).qsort + [pivot] +
-      (rest.select {|el| el >= pivot }).qsort
+    pivot, *tail = self
+    (tail.select {|el| el < pivot }).qsort + [pivot] +
+      (tail.select {|el| el >= pivot }).qsort
   end  
 end
 
