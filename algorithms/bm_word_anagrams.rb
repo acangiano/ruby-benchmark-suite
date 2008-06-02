@@ -1,5 +1,5 @@
-# Word anagrams (with duplicates)
-# Giovanni Intini <intinig@gmail.com>
+# Word anagrams (with duplicates).
+# Submitted by Giovanni Intini <intinig@gmail.com>
 
 class String
   def swap(i)
