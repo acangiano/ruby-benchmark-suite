@@ -1,6 +1,6 @@
-def fib n
-  if n < 3
-    1
+def fib(n)
+  if n < 2
+    n
   else
     fib(n-1) + fib(n-2)
   end
