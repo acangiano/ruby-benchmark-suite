@@ -1,6 +1,6 @@
 require 'complex'
 
-def mandelbrot? z
+def mandelbrot?(z)
   i = 0
   while i<100
     i+=1
@@ -20,4 +20,6 @@ ary = []
     ary << c if mandelbrot?(c)
   }
 }
+
+p ary
 

@@ -6,5 +6,5 @@ def fib(n)
   end
 end
 
-fib(34)
+35.times {|n| puts fib(n) }
 

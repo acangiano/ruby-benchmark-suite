@@ -6,9 +6,8 @@ def fact(n)
   end
 end
 
-fact(5000)
-fact(5000)
-fact(5000)
-fact(5000)
-fact(5000)
+5.times do 
+  puts fact(5000)
+end
+
 
