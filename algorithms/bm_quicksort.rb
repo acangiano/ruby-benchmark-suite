@@ -1,5 +1,3 @@
-# Quicksort for an array of 2500 fixnums.
-
 class Array
   def qsort
     return [] if self.empty?
@@ -9,5 +7,5 @@ class Array
   end  
 end
 
-array = [*(1..2_500)].reverse
+array = File.read("../shootout/random.input").split(/\n/).map!{|n| n.to_i }
 puts "Quicksort verified." if array.qsort == array.sort
