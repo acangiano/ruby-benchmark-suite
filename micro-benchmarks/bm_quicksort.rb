@@ -7,5 +7,5 @@ class Array
   end  
 end
 
-array = File.read("../shootout/random.input").split(/\n/).map!{|n| n.to_i }
+array = File.read("random.input").split(/\n/).map!{|n| n.to_i }
 puts "Quicksort verified." if array.qsort == array.sort

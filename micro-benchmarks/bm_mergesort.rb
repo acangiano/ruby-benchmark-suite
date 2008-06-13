@@ -36,5 +36,5 @@ class Array
 end
 
 
-array = File.read("../shootout/random.input").split(/\n/).map!{|n| n.to_i }
+array = File.read("random.input").split(/\n/).map!{|n| n.to_i }
 puts "Mergesort verified." if array.merge_sort == array.sort
