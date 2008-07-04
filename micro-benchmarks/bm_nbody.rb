@@ -124,8 +124,7 @@ BODIES = [
 ]
 
 
-n = (ARGV[0] || 1
-_000_000).to_i
+n = (ARGV[0] || 1_000_000).to_i
 
 offset_momentum(BODIES)
 
