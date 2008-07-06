@@ -6,7 +6,7 @@
 
 500.times do
 
-  input = open(File.join(File.dirname($0), 'wc.input'), 'rb')
+  input = open(File.dirname(__FILE__) + '/wc.input', 'rb')
 
   nl = nw = nc = 0
   while true
@@ -18,7 +18,6 @@
   end
 
   input.close
-
 end
-# STDERR.puts "#{nl} #{nw} #{nc}"
+#STDERR.puts "#{nl} #{nw} #{nc}"
 
