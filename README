@@ -33,9 +33,11 @@ The report generated in the main folder will be a .csv file whose name has been 
 
    rake REPORT="myreport.csv"
    
-Of course, you are free to combine several parameters amongst FILE, RUBY_VM, ITERATIONS, TIMEOUT and REPORT, as needed. Please note however that FILE will only work with the run_one task.
+Of course, you are free to combine several parameters amongst FILE, RUBY_VM, ITERATIONS, TIMEOUT and REPORT, as needed.
+Please note however that FILE will only work with the run_one task.
 
 The suite is cross-platform, but avoid paths with spaces if you are running it under Windows.
+
 
 MANAGING ERRORS
 ===============
