@@ -1,9 +1,13 @@
 # Lists directories and files using
 # recursion and the Pathname class.
 # Submitted by Lukas Domagala
+require File.dirname(__FILE__) + '/../lib/benchutils'
+require 'pathname'
 
-@dirs = []
-@files = []
+label = File.expand_path(__FILE__).sub(File.expand_path("..") + "/", "")
+iterations = ARGV[-3].to_i
+timeout = ARGV[-2].to_i
+report = ARGV.last
 
 def recursive_dir(path)
   current_path = Pathname.new(path)
@@ -27,7 +31,15 @@ def recursive_dir(path)
   end
 end
 
-recursive_dir("../")
-
-puts "Directories", "---", @dirs
-puts "Files", "---", @files
+benchmark = BenchmarkRunner.new(label, iterations, timeout)
+benchmark.run do
+  100.times do
+    @dirs = []
+    @files = []
+    recursive_dir("../")
+    puts "Directories", "---", @dirs
+    puts "Files", "---", @files
+  end
+end
+  
+File.open(report, "a") {|f| f.puts "#{benchmark.to_s},n/a" }

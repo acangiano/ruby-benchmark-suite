@@ -1,16 +1,15 @@
-#!/usr/local/bin/ruby
 # This program is contributed by Shin Nishiyama
-
-
 # modified by K.Sasada
+require File.dirname(__FILE__) + '/../lib/benchutils'
+
+label = File.expand_path(__FILE__).sub(File.expand_path("..") + "/", "")
+iterations = ARGV[-3].to_i
+timeout = 1200 # ARGV[-2].to_i
+report = ARGV.last
 
 NP = 5
 ROW = 8 + NP
 COL = 8
-
-$p = []
-$b = []
-$no = 0
 
 def piece(n, a, nb)
   nb.each{|x|
@@ -89,7 +88,6 @@ def pboard
   print "\n"
 end
 
-$pnum=[]
 def setpiece(a,pos)
   if a.length == $p.length then
     $no += 1
@@ -123,8 +121,17 @@ def setpiece(a,pos)
   end
 end
 
-mkpieces
-mkboard
-$p[4] = [$p[4][0]]
-$pnum = (0...$p.length).to_a
-setpiece([],0)
+benchmark = BenchmarkRunner.new(label, iterations, timeout)
+benchmark.run do
+  $pnum=[]
+  $p = []
+  $b = []
+  $no = 0
+  mkpieces
+  mkboard
+  $p[4] = [$p[4][0]]
+  $pnum = (0...$p.length).to_a
+  setpiece([],0)
+end
+  
+File.open(report, "a") {|f| f.puts "#{benchmark.to_s},n/a" }

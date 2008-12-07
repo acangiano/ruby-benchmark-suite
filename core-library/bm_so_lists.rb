@@ -1,11 +1,14 @@
 #from http://www.bagley.org/~doug/shootout/bench/lists/lists.ruby
+require File.dirname(__FILE__) + '/../lib/benchutils'
 
-NUM = 1000
-SIZE = 10000
+label = File.expand_path(__FILE__).sub(File.expand_path("..") + "/", "")
+iterations = ARGV[-3].to_i
+timeout = ARGV[-2].to_i
+report = ARGV.last
 
-def test_lists()
+def test_lists(size)
   # create a list of integers (Li1) from 1 to SIZE
-  li1 = (1..SIZE).to_a
+  li1 = (1..size).to_a
   # copy the list to li2 (not by individual items)
   li2 = li1.dup
   # remove each individual item from left side of li2 and
@@ -24,8 +27,8 @@ def test_lists()
   # reverse li1 in place
   li1.reverse!
   # check that first item is now SIZE
-  if li1[0] != SIZE then
-    p "not SIZE"
+  if li1[0] != size then
+    p "not size"
     0
   else
     # compare li1 and li2 for equality
@@ -38,10 +41,12 @@ def test_lists()
   end
 end
 
-i = 0
-while i<NUM
-  i+=1
-  result = test_lists()
-end
+n = 1000
+size = 10_000
 
-result
+benchmark = BenchmarkRunner.new(label, iterations, timeout)
+benchmark.run do
+  n.times { test_lists(size) }
+end
+  
+File.open(report, "a") {|f| f.puts "#{benchmark.to_s},n/a" }

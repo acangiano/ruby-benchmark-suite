@@ -3,6 +3,12 @@
 #
 # contributed by Glenn Parker, March 2005
 # modified by Evan Phoenix, Sept 2006
+require File.dirname(__FILE__) + '/../lib/benchutils'
+
+label = File.expand_path(__FILE__).sub(File.expand_path("..") + "/", "")
+iterations = ARGV[-3].to_i
+timeout = ARGV[-2].to_i
+report = ARGV.last
 
 def sieve(m)
   flags = Flags.dup[0,m]
@@ -23,14 +29,18 @@ def sieve(m)
   count
 end
 
-n = (ARGV[0] || 9).to_i
-
+n = 9
 Flags = "\x1" * ( 2 ** n * 10_000)
 
-n.downto(n-2) do |exponent|
-  break if exponent < 0
-  m = (1 << exponent) * 10_000
-  # m = (2 ** exponent) * 10_000
-  count = sieve(m)
-  printf "Primes up to %8d %8d\n", m, count
+benchmark = BenchmarkRunner.new(label, iterations, timeout)
+benchmark.run do
+  n.downto(n-2) do |exponent|
+    break if exponent < 0
+    m = (1 << exponent) * 10_000
+    # m = (2 ** exponent) * 10_000
+    count = sieve(m)
+    printf "Primes up to %8d %8d\n", m, count
+  end
 end
+  
+File.open(report, "a") {|f| f.puts "#{benchmark.to_s},n/a" }

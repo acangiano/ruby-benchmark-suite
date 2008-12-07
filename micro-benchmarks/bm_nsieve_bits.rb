@@ -3,6 +3,12 @@
 #
 # nsieve-bits in Ruby
 # Contributed by Glenn Parker, March 2005
+require File.dirname(__FILE__) + '/../lib/benchutils'
+
+label = File.expand_path(__FILE__).sub(File.expand_path("..") + "/", "")
+iterations = ARGV[-3].to_i
+timeout = ARGV[-2].to_i
+report = ARGV.last
 
 CharExponent = 3
 BitsPerChar = 1 << CharExponent
@@ -30,10 +36,16 @@ def sieve(m)
   count
 end
 
-n = (ARGV[0] || 9).to_i
-n.step(n - 2, -1) do |exponent|
-  break if exponent < 0
-  m = 2 ** exponent * 10_000
-  count = sieve(m)
-  printf "Primes up to %8d %8d\n", m, count
+n = 8
+
+benchmark = BenchmarkRunner.new(label, iterations, timeout)
+benchmark.run do
+  n.step(n - 2, -1) do |exponent|
+    break if exponent < 0
+    m = 2 ** exponent * 10_000
+    count = sieve(m)
+    printf "Primes up to %8d %8d\n", m, count
+  end
 end
+  
+File.open(report, "a") {|f| f.puts "#{benchmark.to_s},n/a" }

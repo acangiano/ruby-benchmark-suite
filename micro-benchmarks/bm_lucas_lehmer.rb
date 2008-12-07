@@ -1,4 +1,10 @@
 # Lucas–Lehmer primality test for Mersenne numbers (2**p - 1)
+require File.dirname(__FILE__) + '/../lib/benchutils'
+
+label = File.expand_path(__FILE__).sub(File.expand_path("..") + "/", "")
+iterations = ARGV[-3].to_i
+timeout = ARGV[-2].to_i
+report = ARGV.last
 
 def is_prime?(p)
   s = 4
@@ -9,13 +15,15 @@ def is_prime?(p)
   s == 0 ? true : false
 end
 
-# Exponents for the first 25 Mersenne Primes
-exponents = [2, 3, 5, 7, 13, 17, 19, 31, 61, 89, 107, 127, 521, 607, 1279,
-             2203, 2281, 3217, 4253, 4423, 9689, 9941, 11213, 19937, 21701]
-             
-n = (ARGV[0] || 21).to_i
+input_sizes = [9689, 9941, 11213, 19937] # 4 Mersenne's exponents
 
-# Exponent of the nth Mersenne Prime
-p = exponents[n-1]
+input_sizes.each do |n|
+  benchmark = BenchmarkRunner.new(label, iterations, timeout)
+  benchmark.run do
+    puts "2**#{p} - 1 is prime" if is_prime?(n)
+  end
+  
+  File.open(report, "a") {|f| f.puts "#{benchmark.to_s},#{n}" }
+end
 
-puts "2**#{p} - 1 is prime" if is_prime?(p) 
+

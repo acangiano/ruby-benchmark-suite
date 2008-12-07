@@ -4,9 +4,12 @@
 # contributed by jose fco. gonzalez
 # modified by Sokolov Yura
 # Adapted for the Ruby Benchmark Suite.
+require File.dirname(__FILE__) + '/../lib/benchutils'
 
-
-seq = String.new
+label = File.expand_path(__FILE__).sub(File.expand_path("..") + "/", "")
+iterations = ARGV[-3].to_i
+timeout = ARGV[-2].to_i
+report = ARGV.last
 
 def frecuency(seq, length)
   n, table = seq.length - length + 1, Hash.new(0)
@@ -33,10 +36,14 @@ def find_seq(seq, s)
   puts "#{table[s].to_s}\t#{s.upcase}"
 end
 
-File.open("fasta.input", "r").each_line do |line|
-  seq << line.chomp
+benchmark = BenchmarkRunner.new(label, iterations, timeout)
+benchmark.run do
+  seq = String.new
+  File.open("fasta.input", "r").each_line do |line|
+    seq << line.chomp
+  end
+  [1,2].each {|i| sort_by_freq(seq, i) }
+  %w(ggt ggta ggtatt ggtattttaatt ggtattttaatttatagt).each{|s| find_seq(seq, s) }
 end
-
-[1,2].each {|i| sort_by_freq(seq, i) }
-
-%w(ggt ggta ggtatt ggtattttaatt ggtattttaatttatagt).each{|s| find_seq(seq, s) }
+  
+File.open(report, "a") {|f| f.puts "#{benchmark.to_s},n/a" }

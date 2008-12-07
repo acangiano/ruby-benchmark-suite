@@ -2,6 +2,12 @@
 # http://shootout.alioth.debian.org/
 # Contributed by Sokolov Yura
 # Modified by Ryan Williams
+require File.dirname(__FILE__) + '/../lib/benchutils'
+
+label = File.expand_path(__FILE__).sub(File.expand_path("..") + "/", "")
+iterations = ARGV[-3].to_i
+timeout = 600 # ARGV[-2].to_i
+report = ARGV.last
 
 def fannkuch(n)
    maxFlips, m, r, check = 0, n-1, n, 0
@@ -14,7 +20,7 @@ def fannkuch(n)
          check += 1
       end
 
-      while r != 1:
+      while r != 1
          count[r-1] = r
          r -= 1
       end
@@ -29,7 +35,7 @@ def fannkuch(n)
          maxFlips = flips if flips > maxFlips
       end
       while true
-         if r==n : return maxFlips end
+         return maxFlips if r == n
          perm.insert r,perm.shift
          break if (count[r] -= 1) > 0
          r += 1
@@ -37,5 +43,13 @@ def fannkuch(n)
    end
 end
 
-N = (ARGV[0] || 10).to_i
-puts "Pfannkuchen(#{N}) = #{fannkuch(N)}"
+input_sizes = [6, 8, 10]
+
+input_sizes.each do |n|
+  benchmark = BenchmarkRunner.new(label, iterations, timeout)
+  benchmark.run do
+    puts "Pfannkuchen(#{n}) = #{fannkuch(n)}"
+  end
+  
+  File.open(report, "a") {|f| f.puts "#{benchmark.to_s},#{n}" }
+end

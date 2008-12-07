@@ -1,12 +1,17 @@
-require File.dirname(__FILE__) + '/timeout.rb'
+if RUBY_VERSION[0,3] == "1.9"
+  require 'timeout'
+else
+  require File.dirname(__FILE__) + '/timeout.rb'
+end
 
 class BenchmarkRunner
   include Enumerable
-  include Timeout
   
   attr_reader :label, :times, :error
     
-  def initialize(label)
+  def initialize(label, iterations, timeout)
+    @iterations = iterations
+    @timeout = timeout
     @label = label
     @times = []
   end
@@ -19,24 +24,24 @@ class BenchmarkRunner
     self.label <=> other.label
   end
   
-  def run(iterations, time_limit)
+  def run
     begin
-      timeout(time_limit) do
-        iterations.times do
+      Timeout.timeout(@timeout) do
+        @iterations.times do
           t0 = Time.now.to_f
           yield
           t1 = Time.now.to_f
           @times << t1 - t0
         end
       end
-    rescue Error
-      @error = "Timeout: %.2f seconds" % (time_limit / iterations.to_f)
+    rescue Timeout::Error
+      @error = "Timeout: %.2f seconds" % (@timeout / @iterations.to_f)
     rescue Exception => e
       @error = "Error: #{e.message}"
     end          
   end
   
-  def best_time
+  def best
     @times.min
   end
 
@@ -50,9 +55,9 @@ class BenchmarkRunner
   
   def to_s
     if @error
-      "#{@label}:\t#{@error}"
+      "#{@label},#{@error}#{"," * (@iterations + 1)}"
     else
-      "#{@label}:\t%.8f\t%.8f" % [best_time, standard_deviation]
+      "#{@label},#{@times.join(',')},%.15f,%.15f" % [mean, standard_deviation]
     end
   end
   

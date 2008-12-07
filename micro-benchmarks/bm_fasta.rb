@@ -1,6 +1,12 @@
 # The Computer Language Shootout
 # http://shootout.alioth.debian.org/
 # Contributed by Sokolov Yura
+require File.dirname(__FILE__) + '/../lib/benchutils'
+
+label = File.expand_path(__FILE__).sub(File.expand_path("..") + "/", "")
+iterations = ARGV[-3].to_i
+timeout = 600 # ARGV[-2].to_i
+report = ARGV.last
 
 $last = 42.0
 def gen_random (max,im=139968,ia=3877,ic=29573)
@@ -72,9 +78,13 @@ def make_random_fasta(id, desc, table, n)
     end
 end
 
+n = 1_000_000
 
-n = (ARGV[0] || 1_000_000).to_i
-
-make_repeat_fasta('ONE', 'Homo sapiens alu', alu, n*2)
-make_random_fasta('TWO', 'IUB ambiguity codes', iub, n*3)
-make_random_fasta('THREE', 'Homo sapiens frequency', homosapiens, n*5)
+benchmark = BenchmarkRunner.new(label, iterations, timeout)
+  benchmark.run do
+  make_repeat_fasta('ONE', 'Homo sapiens alu', alu, n*2)
+  make_random_fasta('TWO', 'IUB ambiguity codes', iub, n*3)
+  make_random_fasta('THREE', 'Homo sapiens frequency', homosapiens, n*5)
+end
+  
+File.open(report, "a") {|f| f.puts "#{benchmark.to_s},n/a" }

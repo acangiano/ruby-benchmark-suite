@@ -1,3 +1,10 @@
+require File.dirname(__FILE__) + '/../lib/benchutils'
+
+label = File.expand_path(__FILE__).sub(File.expand_path("..") + "/", "")
+iterations = ARGV[-3].to_i
+timeout = ARGV[-2].to_i
+report = ARGV.last
+
 # The Computer Language Shootout
 #   http://shootout.alioth.debian.org
 #   contributed by Kevin Barnes (Ruby novice)
@@ -508,12 +515,12 @@ end
 def add_board
   board_string = "99999999999999999999999999999999999999999999999999"
   @all_pieces.each {  | piece | piece.fill_string( board_string ) }
-  save( board_string)
-  save( board_string.reverse)
+  save(board_string)
+  save(board_string.reverse)
 end
 
 # adds a board string to the list (if new) and updates the current best/worst board
-def save( board_string)
+def save(board_string)
   if (@all_boards[board_string] == nil) then
     @min_board = board_string if (board_string < @min_board)
     @max_board = board_string if (board_string > @max_board)
@@ -524,35 +531,36 @@ def save( board_string)
     # take noticable time (performance).
     if (@boards_found == @stop_count) then
       print_results
-      exit(0)
+      return
     end
   end
 end
 
+benchmark = BenchmarkRunner.new(label, iterations, timeout)
+benchmark.run do
+  create_collector_support
+  @pieces = [
+    Piece.new( [ :nw, :ne, :east, :east ], 2),
+    Piece.new( [ :ne, :se, :east, :ne ], 7),
+    Piece.new( [ :ne, :east, :ne, :nw ], 1),
+    Piece.new( [ :east, :sw, :sw, :se ], 6),
+    Piece.new( [ :east, :ne, :se, :ne ], 5),
+    Piece.new( [ :east, :east, :east, :se ], 0),
+    Piece.new( [ :ne, :nw, :se, :east, :se ], 4),
+    Piece.new( [ :se, :se, :se, :west ], 9),
+    Piece.new( [ :se, :se, :east, :se ], 8),
+    Piece.new( [ :east, :east, :sw, :se ], 3)
+    ];
 
-##
-## MAIN BODY :)
-##
-create_collector_support
-@pieces = [
-  Piece.new( [ :nw, :ne, :east, :east ], 2),
-  Piece.new( [ :ne, :se, :east, :ne ], 7),
-  Piece.new( [ :ne, :east, :ne, :nw ], 1),
-  Piece.new( [ :east, :sw, :sw, :se ], 6),
-  Piece.new( [ :east, :ne, :se, :ne ], 5),
-  Piece.new( [ :east, :east, :east, :se ], 0),
-  Piece.new( [ :ne, :nw, :se, :east, :se ], 4),
-  Piece.new( [ :se, :se, :se, :west ], 9),
-  Piece.new( [ :se, :se, :east, :se ], 8),
-  Piece.new( [ :east, :east, :sw, :se ], 3)
-  ];
+  @all_pieces = Array.new( @pieces)
 
-@all_pieces = Array.new( @pieces)
+  @min_board = "99999999999999999999999999999999999999999999999999"
+  @max_board = "00000000000000000000000000000000000000000000000000"
+  @stop_count = 2089
+  @all_boards = {}
+  @boards_found = 0
 
-@min_board = "99999999999999999999999999999999999999999999999999"
-@max_board = "00000000000000000000000000000000000000000000000000"
-@stop_count = (ARGV[0] || 2089).to_i
-@all_boards = {}
-@boards_found = 0
-
-find_all
+  find_all
+end
+  
+File.open(report, "a") {|f| f.puts "#{benchmark.to_s},n/a" }

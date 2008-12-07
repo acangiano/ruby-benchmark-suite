@@ -4,6 +4,12 @@
 # Optimized for Ruby by Jesse Millikan
 # From version ported by Michael Neumann from the C gcc version,
 # which was written by Christoph Bauer.
+require File.dirname(__FILE__) + '/../lib/benchutils'
+
+label = File.expand_path(__FILE__).sub(File.expand_path("..") + "/", "")
+iterations = ARGV[-3].to_i
+timeout = ARGV[-2].to_i
+report = ARGV.last
 
 SOLAR_MASS = 4 * Math::PI**2
 DAYS_PER_YEAR = 365.24
@@ -124,22 +130,26 @@ BODIES = [
 ]
 
 
-n = (ARGV[0] || 1_000_000).to_i
+n = 100_000
 
-offset_momentum(BODIES)
+benchmark = BenchmarkRunner.new(label, iterations, timeout)
+benchmark.run do
+  offset_momentum(BODIES)
+  puts "%.9f" % energy(BODIES)
 
-puts "%.9f" % energy(BODIES)
+  nbodies = BODIES.size
+  dt = 0.01
 
-nbodies = BODIES.size
-dt = 0.01
-
-n.times do
-  i = 0
-  while i < nbodies
-    b = BODIES[i]
-    b.move_from_i(BODIES, nbodies, dt, i + 1)
-    i += 1
+  n.times do
+    i = 0
+    while i < nbodies
+      b = BODIES[i]
+      b.move_from_i(BODIES, nbodies, dt, i + 1)
+      i += 1
+    end
   end
-end
 
-puts "%.9f" % energy(BODIES)
+  puts "%.9f" % energy(BODIES)
+end
+  
+File.open(report, "a") {|f| f.puts "#{benchmark.to_s},n/a" }

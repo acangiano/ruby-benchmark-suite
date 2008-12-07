@@ -2,6 +2,12 @@
 # http://shootout.alioth.debian.org
 #
 # contributed by Jesse Millikan
+require File.dirname(__FILE__) + '/../lib/benchutils'
+
+label = File.expand_path(__FILE__).sub(File.expand_path("..") + "/", "")
+iterations = ARGV[-3].to_i
+timeout = 600 # ARGV[-2].to_i
+report = ARGV.last
 
 def item_check(tree)
  if tree[0] == nil
@@ -21,33 +27,36 @@ def bottom_up_tree(item, depth)
  end
 end
 
-max_depth = (ARGV[0] || 16).to_i
-min_depth = 4
+benchmark = BenchmarkRunner.new(label, iterations, timeout)
+benchmark.run do
+  max_depth = 16
+  min_depth = 4
+  max_depth = min_depth + 2 if min_depth + 2 > max_depth
 
-max_depth = min_depth + 2 if min_depth + 2 > max_depth
+  stretch_depth = max_depth + 1
+  stretch_tree = bottom_up_tree(0, stretch_depth)
 
-stretch_depth = max_depth + 1
-stretch_tree = bottom_up_tree(0, stretch_depth)
+  puts "stretch tree of depth #{stretch_depth}\t check: #{item_check(stretch_tree)}"
+  stretch_tree = nil
 
-puts "stretch tree of depth #{stretch_depth}\t check: #{item_check(stretch_tree)}"
-stretch_tree = nil
+  long_lived_tree = bottom_up_tree(0, max_depth)
 
-long_lived_tree = bottom_up_tree(0, max_depth)
+  min_depth.step(max_depth + 1, 2) do |depth|
+   iterations = 2**(max_depth - depth + min_depth)
 
-min_depth.step(max_depth + 1, 2) do |depth|
- iterations = 2**(max_depth - depth + min_depth)
+   check = 0
 
- check = 0
+   for i in 1..iterations
+    temp_tree = bottom_up_tree(i, depth)
+    check += item_check(temp_tree)
 
- for i in 1..iterations
-  temp_tree = bottom_up_tree(i, depth)
-  check += item_check(temp_tree)
+    temp_tree = bottom_up_tree(-i, depth)
+    check += item_check(temp_tree)
+   end
 
-  temp_tree = bottom_up_tree(-i, depth)
-  check += item_check(temp_tree)
- end
+   puts "#{iterations * 2}\t trees of depth #{depth}\t check: #{check}"
+  end
 
- puts "#{iterations * 2}\t trees of depth #{depth}\t check: #{check}"
+  puts "long lived tree of depth #{max_depth}\t check: #{item_check(long_lived_tree)}"
 end
-
-puts "long lived tree of depth #{max_depth}\t check: #{item_check(long_lived_tree)}"
+File.open(report, "a") {|f| f.puts "#{benchmark.to_s},n/a" }
