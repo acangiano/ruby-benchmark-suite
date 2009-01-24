@@ -40,7 +40,7 @@ task :report do
   end
 end
 
-desc "Runs a single benchmark; specify as FILE=micro-benchmarks/bm_mergesort.rb. Other options for all tasks: ITERATIONS=3 RUBY_VM=/path/to/ruby TIMEOUT=secs REPORT=outputfile"
+desc "Runs a single benchmark; specify as FILE=micro-benchmarks/bm_mergesort.rb. Other options for all tasks: ITERATIONS=3 RUBY_VM=\"/path/to/ruby opts\" TIMEOUT=secs REPORT=outputfile"
 task :run_one => :report do
   benchmark = ENV['FILE']
   puts 'ERROR: need to specify file, a la FILE="micro-benchmarks/bm_mergesort.rb"' unless benchmark
