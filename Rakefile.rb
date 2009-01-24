@@ -48,6 +48,7 @@ task :run_one => :report do
     exit
   end
   puts "Benchmarking #{benchmark}"
+  puts "Report will be written to #{REPORT}"
   `#{RUBY_VM} #{benchmark} #{ITERATIONS} #{TIMEOUT} #{MAIN_DIR}/#{REPORT}`
   puts "Report written in #{REPORT}"
 end
@@ -56,6 +57,7 @@ desc "Runs all the benchmarks in the suite."
 task :run_all => :report do
   puts "Ruby Benchmark Suite started"
   puts "-------------------------------"
+  puts "Report will be written to #{REPORT}"
   puts "Benchmarking startup time"
   benchmark_startup
   Find.find(MAIN_DIR) do |filename|
