@@ -62,7 +62,12 @@ task :run_all => :report do
   puts "Report will be written to #{REPORT}"
   puts "Benchmarking startup time"
   benchmark_startup
+  all_files = []
   Find.find(MAIN_DIR) do |filename|
+    all_files << filename
+  end
+
+  all_files.sort.each do |filename|
     basename = File.basename(filename)    
     next if basename !~ /^bm_.+\.rb$/
     dirname = File.dirname(filename)
