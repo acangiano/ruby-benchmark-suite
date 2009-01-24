@@ -43,6 +43,10 @@ end
 desc "Runs a single benchmark."
 task :run_one => :report do
   benchmark = ENV['FILE']
+  unless benchmark
+    puts 'ERROR: need to specify file, a la FILE="micro-benchmarks/bm_mergesort.rb"'
+    exit
+  end
   puts "Benchmarking #{benchmark}"
   `#{RUBY_VM} #{benchmark} #{ITERATIONS} #{TIMEOUT} #{MAIN_DIR}/#{REPORT}`
   puts "Report written in #{REPORT}"
