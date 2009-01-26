@@ -16,7 +16,7 @@ TIMEOUT =  (ENV['TIMEOUT'] || 300).to_i
 
 ITERATIONS = (ENV['ITERATIONS'] || 5).to_i
 
-report = "#{Time.now.strftime("%Y%m%d%H%M%S")}_#{RUBY_VM.gsub('/','').split.first}.csv"
+report = "#{Time.now.strftime("%Y%m%d%H%M%S")}_#{RUBY_VM.gsub('/','').gsub('\\', '').split.first}.csv"
 REPORT = ENV['REPORT'] || report
 
 MAIN_DIR = pwd
