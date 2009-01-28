@@ -4,6 +4,15 @@ else
   require File.dirname(__FILE__) + '/timeout.rb'
 end
 
+require 'benchmark'
+# attempt to use hitimes, if it exists
+require 'rubygems'
+begin
+ require 'hitimes'
+ Benchmark.module_eval { def self.realtime; Hitimes::Interval.measure { yield }; end }
+rescue LoadError
+end
+
 class BenchmarkRunner
   include Enumerable
   
@@ -28,10 +37,7 @@ class BenchmarkRunner
     begin
       Timeout.timeout(@timeout) do
         @iterations.times do
-          t0 = Time.now.to_f
-          yield
-          t1 = Time.now.to_f
-          @times << t1 - t0
+          @times << Benchmark.realtime { yield }
         end
       end
     rescue Timeout::Error
