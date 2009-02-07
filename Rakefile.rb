@@ -25,13 +25,19 @@ MAIN_DIR = pwd
 # Rake Tasks
 #--------------------------------
 
+# a friendly output on -T or --tasks
+if(ARGV.include?("-T") || ARGV.include?("--tasks"))
+ puts "Optional options: [ITERATIONS=3] [RUBY_VM=\"/path/to/ruby opts\"] [TIMEOUT=secs] [REPORT=outputfile]"
+end
+
 task :default => [:run_all]
+
 
 desc "Initializes report."
 task :report do
   File.open(REPORT, "w") do |f|
     f.puts "Report created on: #{Time.now}"
-    f.puts "Ruby VM: #{RUBY_VM}"
+    f.puts "Ruby VM: #{RUBY_VM} [#{`#{RUBY_VM} -v`}]"
     f.puts "Iterations: #{ITERATIONS}"
     f.puts
     times_header = ''
@@ -40,7 +46,7 @@ task :report do
   end
 end
 
-desc "Runs a single benchmark; specify as FILE=micro-benchmarks/bm_mergesort.rb. Other options for all tasks: ITERATIONS=3 RUBY_VM=\"/path/to/ruby opts\" TIMEOUT=secs REPORT=outputfile"
+desc "Runs a single benchmark; specify as FILE=micro-benchmarks/bm_mergesort.rb"
 task :run_one => :report do
   benchmark = ENV['FILE']
   puts 'ERROR: need to specify file, a la FILE="micro-benchmarks/bm_mergesort.rb"' unless benchmark
@@ -55,7 +61,7 @@ task :run_one => :report do
   puts "Report written in #{REPORT}"
 end
 
-desc "Runs all the benchmarks in the suite."
+desc "Default. Runs all the benchmarks in the suite."
 task :run_all => :report do
   puts "Ruby Benchmark Suite started"
   puts "-------------------------------"
@@ -93,3 +99,4 @@ def benchmark_startup
     f.puts "#{benchmark.to_s},n/a"
   end
 end
+
