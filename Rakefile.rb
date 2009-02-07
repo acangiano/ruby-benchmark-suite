@@ -33,11 +33,16 @@ end
 task :default => [:run_all]
 
 
-desc "Initializes report."
+desc "Initializes report; Used by the others."
 task :report do
   File.open(REPORT, "w") do |f|
     f.puts "Report created on: #{Time.now}"
-    f.puts "Ruby VM: #{RUBY_VM} [#{`#{RUBY_VM} -v`}]"
+    version_string = `#{RUBY_VM} -v`.chomp
+    begin
+      version_string = `#{RUBY_VM} -v -e \"require 'rbconfig'; print Config::CONFIG['CFLAGS']\"`.gsub("\n", ";")
+    rescue Exception
+    end
+    f.puts "Ruby VM: #{RUBY_VM} [#{version_string}]"
     f.puts "Iterations: #{ITERATIONS}"
     f.puts
     times_header = ''
