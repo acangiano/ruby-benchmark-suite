@@ -39,7 +39,7 @@ task :report do
     f.puts "Report created on: #{Time.now}"
     version_string = `#{RUBY_VM} -v`.chomp
     begin
-      version_string = `#{RUBY_VM} -v -e \"require 'rbconfig'; print Config::CONFIG['CFLAGS']\"`.gsub("\n", ";")
+      version_string = `#{RUBY_VM} -v -e \"require 'rbconfig'; print Config::CONFIG['CFLAGS']\"`.gsub("\n", ";").strip
     rescue Exception
     end
     f.puts "Ruby VM: #{RUBY_VM} [#{version_string}]"
