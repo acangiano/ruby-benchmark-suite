@@ -9,7 +9,7 @@ require 'benchmark'
 require 'rubygems'
 begin
  require 'hitimes'
- Benchmark.module_eval { def self.realtime; Hitimes::Interval.measure { yield }; end }
+ Benchmark.module_eval { def self.realtime; Hitimes::Interval.measure { yield }; end } if Hitimes::Interval.respond_to? :measure
 rescue LoadError
 end
 
