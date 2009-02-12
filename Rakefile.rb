@@ -47,7 +47,7 @@ task :report do
     f.puts
     times_header = ''
     ITERATIONS.times {|i| times_header << "Time ##{i+1},"  }
-    f.puts "Benchmark Name,#{times_header}Average Time,Standard Deviation,Input Size"
+    f.puts "Benchmark Name,#{times_header}Avg Time,Std Dev,Input Size"
   end
 end
 
