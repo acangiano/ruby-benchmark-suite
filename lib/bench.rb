@@ -66,7 +66,7 @@ class BenchmarkRunner
     rescue Timeout::Error
       @error = "Timeout: %.2f seconds" % (@timeout / @iterations.to_f)
     rescue Exception => e
-      @error = "Error: #{e.message}"
+      @error = "Error: #{e.message} #{e.class}"
     end          
   end
   
