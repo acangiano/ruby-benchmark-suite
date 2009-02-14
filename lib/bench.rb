@@ -5,11 +5,13 @@ else
 end
 
 require 'benchmark'
+
 # attempt to use hitimes, if it exists
-require 'rubygems'
 begin
+ require 'rubygems'
  require 'hitimes'
  Benchmark.module_eval { def self.realtime; Hitimes::Interval.measure { yield }; end } if Hitimes::Interval.respond_to? :measure
+
 rescue LoadError
 end
 
