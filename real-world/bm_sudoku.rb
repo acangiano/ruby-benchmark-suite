@@ -50,7 +50,13 @@ def next_state(state, x, y)
   false
 end
 
-start =
+
+# start test:
+
+  benchmark = BenchmarkRunner.new(label, iterations, timeout)
+  benchmark.run do
+    $count = 0
+    start =
 [
   [ 0, 0, 0, 4, 0, 5, 0, 0, 1 ],
   [ 0, 7, 0, 0, 0, 0, 0, 3, 0 ],
@@ -62,13 +68,6 @@ start =
   [ 0, 8, 0, 0, 0, 0, 0, 2, 0 ],
   [ 4, 0, 0, 2, 0, 0, 0, 0, 0 ]
 ]
-
-
-# start test:
-
-  benchmark = BenchmarkRunner.new(label, iterations, timeout)
-  benchmark.run do
-    $count = 0
     next_state(start, 0, 0)
   end
   
