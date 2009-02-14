@@ -35,10 +35,18 @@ task :default => [:run_all]
 
 desc "Initializes report; Used by the others."
 task :report do
+  have_rss = false
+  begin
+    require 'rubygems'
+    require 'sys/proctable'
+    # if this loads, let's hope that it will work from within the VM itself
+    have_rss = true
+  rescue LoadError
+  end
   File.open(REPORT, "w") do |f|
     f.puts "Report created on: #{Time.now}"
-    version_string = `#{RUBY_VM} -v`.chomp
     begin
+      version_string = `#{RUBY_VM} -v`.chomp
       version_string = `#{RUBY_VM} -v -e \"require 'rbconfig'; print Config::CONFIG['CFLAGS']\"`.gsub("\n", ";").strip
     rescue Exception
     end
@@ -47,7 +55,12 @@ task :report do
     f.puts
     times_header = ''
     ITERATIONS.times {|i| times_header << "Time ##{i+1},"  }
-    f.puts "Benchmark Name,#{times_header}Avg Time,Std Dev,Input Size"
+    rss_header = ''
+    if(have_rss) 
+      ITERATIONS.times {|i| rss_header << "RSS ##{i+1},"  }
+    end
+    header = "Benchmark Name,#{times_header}Avg Time,Std Dev,Input Size,#{rss_header}"
+    f.puts header
   end
 end
 
