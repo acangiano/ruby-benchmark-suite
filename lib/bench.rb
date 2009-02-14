@@ -23,6 +23,7 @@ class BenchmarkRunner
     @timeout = timeout
     @label = label
     @times = []
+    @rss = []
   end
   
   def each
@@ -32,12 +33,32 @@ class BenchmarkRunner
   def <=>(other)
     self.label <=> other.label
   end
+
+  def have_rss?
+   begin
+    require 'rubygems'
+    require 'sys/proctable'
+    return true
+   rescue Exception
+   end
+   return false
+  end
+
+  def current_rss
+   if RUBY_PLATFORM =~ /mswin|mingw/
+      Sys::ProcTable.ps(Process.pid).working_set_size
+   else
+     # linux etc
+     Sys::ProcTable.ps(Process.pid).rss
+   end
+  end
   
   def run
     begin
       Timeout.timeout(@timeout) do
         @iterations.times do
           @times << Benchmark.realtime { yield }
+          @rss << current_rss if have_rss? 
         end
       end
     rescue Timeout::Error
@@ -63,7 +84,7 @@ class BenchmarkRunner
     if @error
       "#{@label},#{@error}#{"," * (@iterations + 1)}"
     else
-      "#{@label},#{@times.join(',')},%.15f,%.15f" % [mean, standard_deviation]
+      "#{@label},#{@times.join(',')},%.15f,%.15f,#{@rss.join(',')}" % [mean, standard_deviation]
     end
   end
   
