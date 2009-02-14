@@ -37,7 +37,10 @@ class BenchmarkRunner
   end
 
   def have_rss?
+   # always true for non-windows
+   return true unless RUBY_PLATFORM =~ /mswin|mingw/
    begin
+    # for windows, use this
     require 'rubygems'
     require 'sys/proctable'
     return true
@@ -51,7 +54,9 @@ class BenchmarkRunner
       Sys::ProcTable.ps(Process.pid).working_set_size
    else
      # linux etc
-     Sys::ProcTable.ps(Process.pid).rss
+     stats = File.read "/proc/#{Process.pid}/status"
+     stats =~ /RSS:\s+(\d+)/ # attempt to parse it
+     $1
    end
   end
   
