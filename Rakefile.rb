@@ -35,14 +35,6 @@ task :default => [:run_all]
 
 desc "Initializes report; Used by the others."
 task :report do
-  have_rss = false
-  begin
-    require 'rubygems'
-    require 'sys/proctable'
-    # if this loads, let's hope that it will work from within the VM itself
-    have_rss = true
-  rescue LoadError
-  end
   File.open(REPORT, "w") do |f|
     f.puts "Report created on: #{Time.now}"
     begin
@@ -55,10 +47,9 @@ task :report do
     f.puts
     times_header = ''
     ITERATIONS.times {|i| times_header << "Time ##{i+1},"  }
+    # assume that you can get rss, for now
     rss_header = ''
-    if(have_rss) 
-      ITERATIONS.times {|i| rss_header << "RSS ##{i+1},"  }
-    end
+    ITERATIONS.times {|i| rss_header << "RSS ##{i+1},"  }
     header = "Benchmark Name,#{times_header}Avg Time,Std Dev,Input Size,#{rss_header}"
     f.puts header
   end

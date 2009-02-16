@@ -6,13 +6,14 @@ end
 
 require 'benchmark'
 
-# attempt to use hitimes, if it exists
+# attempt to use hitimes, if it exists, for higher accuracy timing
 begin
  require 'rubygems'
  require 'hitimes'
  Benchmark.module_eval { def self.realtime; Hitimes::Interval.measure { yield }; end } if Hitimes::Interval.respond_to? :measure
 
 rescue LoadError
+
 end
 
 class BenchmarkRunner
@@ -36,27 +37,20 @@ class BenchmarkRunner
     self.label <=> other.label
   end
 
-  def have_rss?
-   # always true for non-windows
-   return true unless RUBY_PLATFORM =~ /mswin|mingw/
-   begin
-    # for windows, use this
-    require 'rubygems'
-    require 'sys/proctable'
-    return true
-   rescue Exception
-   end
-   return false
-  end
-
   def current_rss
-   if RUBY_PLATFORM =~ /mswin|mingw/
-      Sys::ProcTable.ps(Process.pid).working_set_size
-   else
-     # linux etc
-     stats = File.read "/proc/#{Process.pid}/status"
-     stats =~ /RSS:\s+(\d+)/ # attempt to parse it
-     $1
+   begin
+     if RUBY_PLATFORM =~ /mswin|mingw/
+	require 'rubygems'     
+	require 'sys/proctable'
+        return Sys::ProcTable.ps(Process.pid).working_set_size
+     else
+       # linux etc
+       stats = File.read "/proc/#{Process.pid}/status"
+       stats =~ /RSS:\s+(\d+)/i # attempt to parse it
+       return $1
+     end
+   rescue Exception
+     return nil
    end
   end
   
@@ -65,7 +59,7 @@ class BenchmarkRunner
       Timeout.timeout(@timeout) do
         @iterations.times do
           @times << Benchmark.realtime { yield }
-          @rss << current_rss if have_rss? 
+          @rss << current_rss
         end
       end
     rescue Timeout::Error
