@@ -15,7 +15,7 @@ RUBY_VM = ENV['RUBY_VM'] || "ruby"
 TIMEOUT =  (ENV['TIMEOUT'] || 300).to_i
 
 ITERATIONS = (ENV['ITERATIONS'] || 5).to_i
-
+VERBOSE = ENV['VERBOSE']
 report = "#{Time.now.strftime("%Y%m%d%H%M%S")}_#{RUBY_VM.gsub('/','').gsub('\\', '').gsub(':', '').split.first}.csv"
 REPORT = ENV['REPORT'] || report
 
@@ -27,7 +27,7 @@ MAIN_DIR = pwd
 
 # a friendly output on -T or --tasks
 if(ARGV.include?("-T") || ARGV.include?("--tasks"))
- puts "Optional options: [ITERATIONS=3] [RUBY_VM=\"/path/to/ruby opts\"] [TIMEOUT=secs] [REPORT=outputfile]"
+ puts "Optional options: [ITERATIONS=3] [RUBY_VM=\"/path/to/ruby opts\"] [TIMEOUT=secs] [REPORT=outputfile] [VERBOSE=true]"
 end
 
 task :default => [:run_all]
@@ -110,7 +110,11 @@ def process_file filename
   dirname = File.dirname(filename)
   cd(dirname) do
     puts "Benchmarking #{filename}"
-    system("#{RUBY_VM} #{basename} #{ITERATIONS} #{TIMEOUT} #{MAIN_DIR}/#{REPORT}")
+    if(VERBOSE)
+      system("#{RUBY_VM} #{basename} #{ITERATIONS} #{TIMEOUT} #{MAIN_DIR}/#{REPORT}")
+    else
+      `#{RUBY_VM} #{basename} #{ITERATIONS} #{TIMEOUT} #{MAIN_DIR}/#{REPORT}`
+    end
   end
 
 end
