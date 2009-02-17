@@ -61,12 +61,8 @@ task :run_one => :report do
   puts 'ERROR: need to specify file, a la FILE="micro-benchmarks/bm_mergesort.rb"' unless benchmark
   basename = File.basename(benchmark)    
   puts "ERROR: non bm_ file specified" if basename !~ /^bm_.+\.rb$/
-  dirname = File.dirname(benchmark)
-  cd(dirname) do
-    puts "Benchmarking #{benchmark}"
-    puts "Report will be written to #{REPORT}"
-    `#{RUBY_VM} #{basename} #{ITERATIONS} #{TIMEOUT} #{MAIN_DIR}/#{REPORT}`
-  end
+  puts "Report will be written to #{REPORT}"
+  process_file benchmark
   puts "Report written in #{REPORT}"
 end
 
@@ -83,13 +79,7 @@ task :run_all => :report do
   end
 
   all_files.sort.each do |filename|
-    basename = File.basename(filename)    
-    next if basename !~ /^bm_.+\.rb$/
-    dirname = File.dirname(filename)
-    cd(dirname) do
-      puts "Benchmarking #{filename}"
-      `#{RUBY_VM} #{filename} #{ITERATIONS} #{TIMEOUT} #{MAIN_DIR}/#{REPORT}`
-    end
+	process_file filename
   end
   puts "-------------------------------"
   puts "Ruby Benchmark Suite completed"
@@ -97,6 +87,18 @@ task :run_all => :report do
 end
 
 private
+
+def process_file filename
+  basename = File.basename(filename)
+  return if basename !~ /^bm_.+\.rb$/  
+  dirname = File.dirname(filename)
+  cd(dirname) do
+    puts "Benchmarking #{filename}"
+    `#{RUBY_VM} #{basename} #{ITERATIONS} #{TIMEOUT} #{MAIN_DIR}/#{REPORT}`
+  end
+
+end
+
 
 def benchmark_startup
   benchmark = BenchmarkRunner.new("Startup", ITERATIONS, TIMEOUT)
