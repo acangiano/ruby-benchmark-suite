@@ -66,6 +66,22 @@ task :run_one => :report do
   puts "Report written in #{REPORT}"
 end
 
+desc "Runs a directory worth of benchmarks; specify as DIR=micro-benchmarks"
+task :run_dir => :report do
+  dir = ENV['DIR']
+  puts 'ERROR: need to specify directory, a la DIR="micro-benchmarks/bm_mergesort.rb"' unless dir
+  puts "Report will be written to #{REPORT}"
+  all_files = []
+  Find.find('./' + dir) do |filename|
+    all_files << filename
+  end
+
+  all_files.sort.each{|filename|
+    process_file filename
+  }
+  puts "Report written in #{REPORT}"
+end
+
 desc "Default. Runs all the benchmarks in the suite."
 task :run_all => :report do
   puts "Ruby Benchmark Suite started"
