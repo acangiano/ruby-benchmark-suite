@@ -42,6 +42,7 @@ class BenchmarkRunner
      if RUBY_PLATFORM =~ /mswin|mingw/
 	require 'rubygems'     
 	require 'sys/proctable'
+	require 'time' # accomodate for sys-proctable 0.7.6 bug
         return Sys::ProcTable.ps(Process.pid).working_set_size
      else
        # linux etc

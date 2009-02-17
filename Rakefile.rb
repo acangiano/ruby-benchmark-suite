@@ -110,7 +110,7 @@ def process_file filename
   dirname = File.dirname(filename)
   cd(dirname) do
     puts "Benchmarking #{filename}"
-    `#{RUBY_VM} #{basename} #{ITERATIONS} #{TIMEOUT} #{MAIN_DIR}/#{REPORT}`
+    system("#{RUBY_VM} #{basename} #{ITERATIONS} #{TIMEOUT} #{MAIN_DIR}/#{REPORT}")
   end
 
 end
