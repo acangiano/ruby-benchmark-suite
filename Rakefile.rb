@@ -12,7 +12,7 @@ RUBY_VM = ENV['RUBY_VM'] || "ruby"
 # can take up to a maxium of 60 seconds to complete.
 # If multiple input sizes are being tested in a benchmark,
 # they'll each be allocated this amount of time in seconds (before timing out).
-TIMEOUT =  (ENV['TIMEOUT'] || 300).to_i
+TIMEOUT =  (ENV['TIMEOUT'] || -1).to_i
 
 ITERATIONS = (ENV['ITERATIONS'] || 5).to_i
 VERBOSE = ENV['VERBOSE']
@@ -27,11 +27,10 @@ MAIN_DIR = pwd
 
 # a friendly output on -T or --tasks
 if(ARGV.include?("-T") || ARGV.include?("--tasks"))
- puts "Optional options: [ITERATIONS=3] [RUBY_VM=\"/path/to/ruby opts\"] [TIMEOUT=secs] [REPORT=outputfile] [VERBOSE=true]"
+ puts "Optional options: [ITERATIONS=3] [RUBY_VM=\"/path/to/ruby opts\"] [TIMEOUT=secs -- causes ruby to run a surrounding thread timing out the operation] [REPORT=outputfile] [VERBOSE=1 outputs the output of tests]"
 end
 
 task :default => [:run_all]
-
 
 desc "Initializes report; Used by the others."
 task :report do

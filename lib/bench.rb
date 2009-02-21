@@ -54,20 +54,31 @@ class BenchmarkRunner
      return nil
    end
   end
-  
+ 
+
   def run
     begin
-      Timeout.timeout(@timeout) do
-        @iterations.times do
-          @times << Benchmark.realtime { yield }
-          @rss << current_rss
+      if @timeout != -1
+        puts 'with time'
+        Timeout.timeout(@timeout) do
+	  do_iterations { yield }
         end
+      else
+       puts 'without time'
+        do_iterations { yield }
       end
     rescue Timeout::Error
       @error = "Timeout: %.2f seconds" % (@timeout / @iterations.to_f)
     rescue Exception => e
       @error = "Error: #{e.message} #{e.class}"
     end          
+  end
+
+  def do_iterations
+    @iterations.times do
+      @times << Benchmark.realtime { yield }
+      @rss << current_rss
+    end
   end
   
   def best
