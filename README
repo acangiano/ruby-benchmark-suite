@@ -38,6 +38,7 @@ Please note however that FILE will only work with the run_one task.
 
 The suite is cross-platform, but avoid paths with spaces if you are running it under Windows.
 
+Run rake --tasks to see more options.
 
 MANAGING ERRORS
 ===============
@@ -48,6 +49,6 @@ What this means in pratice is that certain Ruby VMs may generate a few less entr
 ADDITIONAL OPTIONS
 ==================
 Currently the suite is setup to use the hitimes gem, if it is installed, for more accurate timing on windows/linux.
-Also if you want the RSS sizes to show up on windows you'll need to install the sys-proctable gem.
+Also if you want the RSS sizes to show up on windows you'll need to first install the sys-proctable gem.
 
 The mailing list for the project is located at: http://groups.google.com/group/ruby-benchmark-suite
