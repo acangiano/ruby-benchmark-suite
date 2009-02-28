@@ -87,7 +87,7 @@ class BenchmarkRunner
         do_iterations { yield }
       end
     rescue Exception => e
-      @error = "Error: #{e.message} #{e.class} #{e.backtrace.inspect}"
+      @error = "Error: #{e.message} #{e.class} #{e.backtrace[0]}"
     end          
   end
 
