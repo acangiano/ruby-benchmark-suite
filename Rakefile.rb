@@ -1,5 +1,3 @@
-require 'lib/benchutils'
-
 #--------------------------------
 # Benchmark Configuration
 #--------------------------------
@@ -18,6 +16,7 @@ ITERATIONS = (ENV['ITERATIONS'] || 5).to_i
 VERBOSE = ENV['VERBOSE']
 report = "#{Time.now.strftime("%Y%m%d%H%M%S")}_#{RUBY_VM.gsub('/','').gsub('\\', '').gsub(':', '').split.first}.csv"
 REPORT = ENV['REPORT'] || report
+BARE_BONES = ENV['BARE_BONES'] || '0' # we'll interpret a 0 as turned off, anything else as turned on
 
 MAIN_DIR = pwd
          
@@ -27,7 +26,7 @@ MAIN_DIR = pwd
 
 # a friendly output on -T or --tasks
 if(ARGV.include?("-T") || ARGV.include?("--tasks"))
- puts "Optional options: [ITERATIONS=3] [RUBY_VM=\"/path/to/ruby opts\"] [TIMEOUT=secs -- causes ruby to run a surrounding thread timing out the operation] [REPORT=outputfile] [VERBOSE=1 outputs the output of tests]"
+ puts "Optional options: [ITERATIONS=3] [RUBY_VM=\"/path/to/ruby opts\"] [TIMEOUT=secs -- causes ruby to run a surrounding thread timing out the operation] [REPORT=outputfile] [VERBOSE=1 outputs the output of tests] [BARE_BONES=1 try not to require any external libraries for statistics gathering--useful for non fully fledged interpreters]"
 end
 
 task :default => [:run_all]
@@ -110,9 +109,9 @@ def process_file filename
   cd(dirname) do
     puts "Benchmarking #{filename}"
     if(VERBOSE)
-      system("#{RUBY_VM} #{basename} #{ITERATIONS} #{TIMEOUT} #{MAIN_DIR}/#{REPORT}")
+      system("#{RUBY_VM} #{basename} #{BARE_BONES} #{ITERATIONS} #{TIMEOUT} #{MAIN_DIR}/#{REPORT}")
     else
-      `#{RUBY_VM} #{basename} #{ITERATIONS} #{TIMEOUT} #{MAIN_DIR}/#{REPORT}`
+      `#{RUBY_VM} #{basename} #{BARE_BONES} #{ITERATIONS} #{TIMEOUT} #{MAIN_DIR}/#{REPORT}`
     end
   end
 
@@ -120,6 +119,14 @@ end
 
 
 def benchmark_startup
+
+  # fake some ARGV so that lib/bench.rb receives the right one
+  ARGV  << BARE_BONES.to_s
+  ARGV << ITERATIONS.to_s
+  ARGV << TIMEOUT.to_s
+  ARGV << REPORT
+  require 'lib/benchutils' 
+  4.times { ARGV.pop }
   benchmark = BenchmarkRunner.new("Startup", ITERATIONS, TIMEOUT)
   benchmark.run do
     `#{RUBY_VM} core-features/startup.rb`

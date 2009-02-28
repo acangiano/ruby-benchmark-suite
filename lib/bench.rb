@@ -1,22 +1,37 @@
-if RUBY_VERSION[0,3] == "1.9"
-  require 'timeout'
-else
-  require File.dirname(__FILE__) + '/timeout.rb'
-end
-
-require 'benchmark'
-
-# attempt to use hitimes, if it exists, for higher accuracy timing
-begin
- require 'rubygems'
- require 'hitimes'
- Benchmark.module_eval { def self.realtime; Hitimes::Interval.measure { yield }; end } if Hitimes::Interval.respond_to? :measure
-
-rescue LoadError
-
-end
 
 class BenchmarkRunner
+
+  if ARGV[-4] != "0"
+    BARE_BONES=true
+  else
+    BARE_BONES=false
+  end
+  unless BARE_BONES
+    if RUBY_VERSION[0,3] == "1.9"
+      require 'timeout'
+    else
+      require File.dirname(__FILE__) + '/timeout.rb'
+    end
+  end
+
+  # define our own so we don't have to require benchmark
+  def self.realtime
+    start = Time.now
+    yield
+    Time.now - start
+  end
+
+  # now attempt to use hitimes, if installed, for its higher accuracy timing
+  unless BARE_BONES
+    begin
+     require 'rubygems'
+     require 'hitimes'
+     def self.realtime; Hitimes::Interval.measure { yield }; end 
+    rescue LoadError
+
+    end
+  end
+
   include Enumerable
   
   attr_reader :label, :times, :error
@@ -40,6 +55,7 @@ class BenchmarkRunner
   def current_rss
    begin
      if RUBY_PLATFORM =~ /mswin|mingw/
+        raise if BARE_BONES 'currently BARE_BONES not accomodated on windoze'
 	require 'rubygems'     
 	require 'sys/proctable'
 	require 'time' # accomodate for sys-proctable 0.7.6 bug
@@ -59,18 +75,19 @@ class BenchmarkRunner
   def run
     begin
       if @timeout != -1
-        puts 'with time'
-        Timeout.timeout(@timeout) do
-	  do_iterations { yield }
+        raise 'cant have BARE_BONES and a timeout' if BARE_BONES
+        begin
+          Timeout.timeout(@timeout) do
+	    do_iterations { yield }
+          end
+        rescue Timeout::Error
+          @error = "Timeout: %.2f seconds" % (@timeout / @iterations.to_f)
         end
       else
-       puts 'without time'
         do_iterations { yield }
       end
-    rescue Timeout::Error
-      @error = "Timeout: %.2f seconds" % (@timeout / @iterations.to_f)
     rescue Exception => e
-      @error = "Error: #{e.message} #{e.class}"
+      @error = "Error: #{e.message} #{e.class} #{e.backtrace.inspect}"
     end          
   end
 
