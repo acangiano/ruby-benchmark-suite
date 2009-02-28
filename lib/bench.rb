@@ -64,7 +64,7 @@ class BenchmarkRunner
        # linux etc
        stats = File.read "/proc/#{Process.pid}/status"
        stats =~ /RSS:\s+(\d+)/i # attempt to parse it
-       return $1
+       return $1.to_i*1024 # comes in kB, assume 1024
      end
    rescue Exception
      return nil
