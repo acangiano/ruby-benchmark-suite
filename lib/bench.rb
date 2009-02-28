@@ -93,7 +93,7 @@ class BenchmarkRunner
 
   def do_iterations
     @iterations.times do
-      @times << Benchmark.realtime { yield }
+      @times << BenchmarkRunner.realtime { yield }
       @rss << current_rss
     end
   end
