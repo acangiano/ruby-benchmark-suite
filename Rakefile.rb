@@ -64,8 +64,10 @@ task :run_one => :report do
   puts "Report written in #{REPORT}"
 end
 
+require 'find'
 desc "Runs a directory worth of benchmarks; specify as DIR=micro-benchmarks"
 task :run_dir => :report do
+  
   dir = ENV['DIR']
   puts 'ERROR: need to specify directory, a la DIR="micro-benchmarks/bm_mergesort.rb"' unless dir
   puts "Report will be written to #{REPORT}"
