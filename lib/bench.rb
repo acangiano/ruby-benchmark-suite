@@ -6,13 +6,6 @@ class BenchmarkRunner
   else
     BARE_BONES=false
   end
-  unless BARE_BONES
-    if RUBY_VERSION[0,3] == "1.9"
-      require 'timeout'
-    else
-      require File.dirname(__FILE__) + '/timeout.rb'
-    end
-  end
 
   # define our own so we don't have to require benchmark
   def self.realtime
@@ -24,11 +17,19 @@ class BenchmarkRunner
   # now attempt to use hitimes, if installed, for its higher accuracy timing
   unless BARE_BONES
     begin
-     require 'rubygems'
-     require 'hitimes'
-     def self.realtime; Hitimes::Interval.measure { yield }; end 
+      require 'rubygems'
+      require 'hitimes'
+      def self.realtime; Hitimes::Interval.measure { yield }; end 
     rescue LoadError
 
+    end
+  end
+
+  unless BARE_BONES
+    if RUBY_VERSION[0,3] == "1.9"
+      require 'timeout'
+    else
+      require File.dirname(__FILE__) + '/timeout.rb'
     end
   end
 
