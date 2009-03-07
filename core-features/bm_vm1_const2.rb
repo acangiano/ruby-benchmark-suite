@@ -7,9 +7,9 @@ timeout = ARGV[-2].to_i
 report = ARGV.last
 
 benchmark = BenchmarkRunner.new(label, iterations, timeout)
+Const = 1 
 benchmark.run do
 
-Const = 1 
 i = 0 
 while i<3000000
   i+= Const 
