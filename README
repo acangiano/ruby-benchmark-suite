@@ -1,13 +1,11 @@
 This directory contains a copy of Brian Ford's refactoring of the
-Ruby Benchmark Suite project as used by the Rubinius project. We made
-a one line change to bench.rb to ensure it runs in MagLev as well as
-other Ruby implementations.
+Ruby Benchmark Suite project as used by the Rubinius project.
 
 Subdirectories:
   rbs   - contains the benchmarks themselves
   utils - contains the infrastructure necessary to run the benchmarks
 
-see $MAGLEV_HOME/benchmark/utils/README for more detail.
+see utils/README for more detail.
 
 Benchmarks are run using rake. Type "rake -T bench" to see options.
 
@@ -17,6 +15,11 @@ Examples:
   rake bench:dir DIR=benchmark/rbs/core-features
   rake bench:to_csv
 
+The :to_csv task creates a .csv spreadsheet of the results. Quite handy
+for comparing your results over time.
+    
+I'd welcome other output formatters. :to_wiki comes to mind so I could put
+the results directly in Confluence.
+
 Note: You'll probably want to copy bench.rake to your rakelib and modify
 some filenames and locations to suit your needs.
-
