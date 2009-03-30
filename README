@@ -21,5 +21,5 @@ for comparing your results over time.
 I'd welcome other output formatters. :to_wiki comes to mind so I could put
 the results directly in Confluence.
 
-Note: You'll probably want to copy bench.rake to your rakelib and modify
+NOTE: You'll probably want to copy rakelib/bench.rake and modify
 some filenames and locations to suit your needs.
