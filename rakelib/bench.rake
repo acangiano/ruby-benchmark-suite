@@ -17,7 +17,7 @@ WEB_DIR         = RESULTS_DIR + "/web"
 
 ITERATIONS      = (ENV['ITERATIONS'] || 5).to_i
 TIMEOUT         = (ENV['TIMEOUT'] || 300).to_i
-VM              = ENV['VM'] || "#{BASEDIR}/bin/maglev-ruby"
+VM              = ENV['VM'] || "ruby"
 
 def command(name)
   "ruby #{MONITOR} #{TIMEOUT} '#{VM}' #{RUNNER} #{name} #{ITERATIONS} #{report}"
@@ -26,10 +26,11 @@ end
 # Cache the name so it is only generated once during an invocation.
 # Eliminates having to save the name and pass it around.
 def report
-  os = `uname`.chomp
-  host = `uname -n`.chomp
+  # os = `uname`.chomp
+  # host = `uname -n`.chomp
   vm = File.basename VM.split.first
-  @report ||= "#{RBS_RESULTS_DIR}/RBS-#{vm}-#{os}-#{host}-#{Time.now.strftime "%y%m%d.%H%M%S"}.yaml"
+  # @report ||= "#{RBS_RESULTS_DIR}/RBS-#{vm}-#{os}-#{host}-#{Time.now.strftime "%y%m%d.%H%M%S"}.yaml"
+  @report ||= "#{RBS_RESULTS_DIR}/RBS-#{vm}-#{Time.now.strftime "%y%m%d.%H%M%S"}.yaml"
 end
 
 def report_name
