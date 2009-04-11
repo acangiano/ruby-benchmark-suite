@@ -1,8 +1,3 @@
-The benchmark/rbs benchmarks are imported and refactored from the Ruby
-Benchmark Suite project at:
-
-  http://github.com/acangiano/ruby-benchmark-suite/tree/master
-
 The benchmarks are organized into layers. These are described below from the
 inside out.
 
@@ -27,7 +22,7 @@ inside out.
     files, which can be post processed in many ways. Each run records an array
     of times kept in the order they were run, the inputs passed to Bench.run,
     the max, min, median, mean, and standard deviation for each set of
-    iterations. The Bench class is defined in benchmark/utils/bench.rb.
+    iterations. The Bench class is defined in utils/bench.rb.
 
     The benchmark file (above) and this Bench runner class are the most
     complex code that will be run by the implementation being benchmarked.
@@ -39,7 +34,7 @@ inside out.
 *   Above the Bench runner, there is a monitor that invoke the runner and
     aborts it if the run time exceeds a limit. This layer is entirely optional
     and likely platform specific (especially on Windows). The current monitor
-    is in benchmark/utils/monitor.rb and relies on a shell script to abort a
+    is in utils/monitor.rb and relies on a shell script to abort a
     process that runs longer than a certain number of seconds.
 
     On Windows, there are several options including (possibly) running under
@@ -55,12 +50,12 @@ inside out.
 
         rake bench  # Runs all the RBS benchmarks
 
-        rake bench:file FILE=benchmark/rbs/core-features/bm_app_fib.rb
+        rake bench:file FILE=rbs/core-features/bm_app_fib.rb
 
-        rake bench:dir DIR=benchmark/rbs/micro-benchmarks
+        rake bench:dir DIR=rbs/micro-benchmarks
 
     The rake tasks format the reporting filename with date and time. The files
-    are currently stored in benchmark/results/rbs as the rbs/**/bm_*.rb files
+    are currently stored in results/rbs as the rbs/**/bm_*.rb files
     are the only ones using this system. However, the reporting can be
     generalized to the other benchmark directories when/if those benchmarks
     are converted.
@@ -87,7 +82,7 @@ inside out.
     convenient CVS file. The YAML files are processed for the desired field in
     each benchmark result. The field defaults to the "min" time.
 
-    To convert all the .yaml files in benchmark/results/rbs:
+    To convert all the .yaml files in results/rbs:
 
         rake bench:to_csv
 
