@@ -8,6 +8,6 @@ def ack(m, n)
   end
 end
 
-Bench.run [5, 7, 9] do |n|
+Bench.run [7, 9] do |n|
   ack(3, n)
 end
