@@ -1,5 +1,5 @@
 def tak(x, y, z)
-  unless y < x
+  unless (y < x)
     z
   else
     tak(tak(x-1, y, z),
@@ -8,6 +8,6 @@ def tak(x, y, z)
   end
 end
 
-Bench.run [5, 6, 7] do |n|
+Bench.run [7, 8, 9] do |n|
   tak 18, n, 0
 end
