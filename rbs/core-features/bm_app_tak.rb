@@ -9,5 +9,5 @@ def tak(x, y, z)
 end
 
 Bench.run [7, 8, 9] do |n|
-  tak 18, n, 0
+  tak(18, n, 0)
 end
