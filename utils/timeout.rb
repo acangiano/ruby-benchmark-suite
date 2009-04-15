@@ -1,6 +1,15 @@
 #!/usr/bin/env ruby
 #
 # adapted from http://www.shelldorado.com/scripts/cmds/timeout
+# Converted to Ruby by Monty Williams, April 2009
+#
+# Starts a "watchdog" process, then execs a command
+# The "watchdog" sleeps for -t seconds then kills this process
+# This depends on 'exec' starting a process that retains this process' pid
+#   On some OS's (e.g. Windows) exec doesn't work that way. Here's a test:
+#     ruby -e "pid1=$$;puts pid1;exec'ruby -e \"pid2=$$;puts pid2\"'"
+#   The above should return two identical PIDs
+#   If it doesn't this pfogram won't work
 
 prog = File.dirname(__FILE__) + "/timeout.rb"
 prog_name  = File.basename(prog)		# Program name
@@ -28,30 +37,30 @@ end
 
 if parent_pid
 	# Sleep and then kill our parent process
-	puts "DEBUG: Sleep for #{time_out} seconds and then kill pid #{parent_pid}"
+	# puts "DEBUG: Sleep for #{time_out} seconds and then kill pid #{parent_pid}"
 	sleep time_out.to_i
-	puts "DEBUG: Finished sleeping"        
+	# puts "DEBUG: Finished sleeping"        
 	begin
 		Process.kill(:TERM, parent_pid.to_i)
-		puts "DEBUG: Tried kill -TERM"
+		# puts "DEBUG: Tried kill -TERM"
 		sleep 2
         	Process.kill(:HUP, parent_pid.to_i)
-		puts "DEBUG: Tried kill -HUP"
+		# puts "DEBUG: Tried kill -HUP"
 		sleep 2
         	Process.kill(:KILL, parent_pid.to_i)
-		puts "DEBUG: Tried kill -KILL"
+		# puts "DEBUG: Tried kill -KILL"
 	rescue Errno::ESRCH => e
-		puts "DEBUG: rescue #{e.class}: #{e.message}"
+		# puts "DEBUG: rescue #{e.class}: #{e.message}"
 		nil
 	end
 else
 	# Start "watchdog" process, and then run the command.
 	watchdog = "#{prog} -t #{time_out} -p #{$$} &"
-	puts "DEBUG: Watchdog invocation is #{watchdog}"
-	puts "DEBUG: Start watchdog process to kill pid #{$$} and then run:"
-        puts "DEBUG: #{ARGV.join(' ')}"
+	# puts "DEBUG: Watchdog invocation is #{watchdog}"
+	# puts "DEBUG: Start watchdog process to kill pid #{$$} and then run:"
+        # puts "DEBUG: #{ARGV.join(' ')}"
 	system("#{watchdog}")			# Start watchdog
 	exec "#{ARGV.join(' ')}"		# Run requested command
-	puts "DEBUG: Oops! We shouldn't get past the exec command"
+	# puts "DEBUG: Oops! We shouldn't get past the exec command"
 	exit 2                                  # NOT REACHED
 end
