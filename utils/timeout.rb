@@ -9,12 +9,15 @@
 #   On some OS's (e.g. Windows) exec doesn't work that way. Here's a test:
 #     ruby -e "pid1=$$;puts pid1;exec'ruby -e \"pid2=$$;puts pid2\"'"
 #   The above should return two identical PIDs
-#   If it doesn't this pfogram won't work
+#   If it doesn't this program won't work
+#
+# Antonio suggested this might yield an answer
+#   http://whynotwiki.com/Ruby_/_Process_management 
 
 prog = File.dirname(__FILE__) + "/timeout.rb"
 prog_name  = File.basename(prog)		# Program name
 version = 0.1
-time_out = 10				# Set default [seconds]
+time_out = 10					# Set default [seconds]
 
 if ARGV.length == 0
 	puts "#{prog_name} - set timeout for a command, version #{version}"
@@ -55,7 +58,7 @@ if parent_pid
 	end
 else
 	# Start "watchdog" process, and then run the command.
-	watchdog = "#{prog} -t #{time_out} -p #{$$} &"
+	watchdog = "ruby #{prog} -t #{time_out} -p #{$$} &"
 	# puts "DEBUG: Watchdog invocation is #{watchdog}"
 	# puts "DEBUG: Start watchdog process to kill pid #{$$} and then run:"
         # puts "DEBUG: #{ARGV.join(' ')}"
