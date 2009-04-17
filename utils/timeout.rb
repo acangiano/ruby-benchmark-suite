@@ -44,26 +44,24 @@ if parent_pid
 	sleep time_out.to_i
 	# puts "DEBUG: Finished sleeping"        
 	begin
-		Process.kill(:TERM, parent_pid.to_i)
-		# puts "DEBUG: Tried kill -TERM"
-		sleep 2
-        	Process.kill(:HUP, parent_pid.to_i)
-		# puts "DEBUG: Tried kill -HUP"
-		sleep 2
-        	Process.kill(:KILL, parent_pid.to_i)
-		# puts "DEBUG: Tried kill -KILL"
+                [:TERM, :HUP, :KILL].each do |sig|
+                  begin
+                    Process.kill(sig, parent_pid.to_i)
+                    sleep 2
+                  rescue Errno::EINVAL, ArgumentError => e
+                    next
+                  end
+                end
 	rescue Errno::ESRCH => e
 		# puts "DEBUG: rescue #{e.class}: #{e.message}"
 		nil
 	end
 else
 	# Start "watchdog" process, and then run the command.
-	watchdog = "ruby #{prog} -t #{time_out} -p #{$$} &"
 	# puts "DEBUG: Watchdog invocation is #{watchdog}"
 	# puts "DEBUG: Start watchdog process to kill pid #{$$} and then run:"
         # puts "DEBUG: #{ARGV.join(' ')}"
+        io = IO.popen("#{ARGV.join(' ')}")
+	watchdog = "ruby #{prog} -t #{time_out} -p #{io.pid}" 
 	system("#{watchdog}")			# Start watchdog
-	exec "#{ARGV.join(' ')}"		# Run requested command
-	# puts "DEBUG: Oops! We shouldn't get past the exec command"
-	exit 2                                  # NOT REACHED
 end
