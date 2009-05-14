@@ -1,0 +1,33 @@
+<!-- RIGHT -->
+<div id="right">
+  <br/>
+  <%= link_to 'Create New Role', {:action => 'new'}, :class => 'button hundredfifty' %>
+
+	<%= render :partial => '/admin/preferences/sidebar' %>
+	<div class="clear">&nbsp;</div>
+	<h1>Help</h1>
+	<div class="info">
+	<p>To control admin access in Substruct you assign roles to users.</p>
+	<p>A role is a collection of rights.</p>
+	<p>Rights consist of a controller name and an action list.</p>
+	<p>This action list can be either '*' for access to all actions	or a CSV list of actions.</p>
+	<p>
+		<b>Example Controllers</b>
+		<ul>
+			<li>orders</li>
+			<li>products</li>
+			<li>questions</li>
+		</ul>
+	</p>
+	<p>
+		<b>Example Actions</b>
+		<ul>
+			<li>list</li>
+			<li>create</li>
+			<li>edit</li>
+			<li>show</li>
+		</ul>
+	</p>
+	</div>
+</div>
+<div class="clear">&nbsp;</div>

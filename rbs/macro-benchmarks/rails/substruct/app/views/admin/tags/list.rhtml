@@ -1,0 +1,179 @@
+<% content_for :header do %>
+	<script language="javascript" type="text/javascript">
+		/**
+		 * There's a lot of JS in this page I should probably move
+		 * to an external file, but for now I'm just leaving it here.
+		 *
+		 * All of it is specific to the AJAX stuff on this page.
+		 */
+
+		// Deletes a row after AJAX completion & recolors table
+		var returnVal = null;
+
+		// Checks to see if there are no tags, shows the "no tags" row if necessary
+		function noTagsCheck() {
+			var list = $("tag_list");
+			// Possibly no tags - show no tags row
+			if (list.children.length == 2) {
+				Element.show("no_tags_row");
+			} else {
+				Element.hide("no_tags_row")
+			}
+		}
+
+		function deleteRow(row_id) {
+			Element.remove($(row_id));
+			noTagsCheck();
+		}
+
+		// Shows spinning status wait thing
+		function status(tag_id) {
+			Element.hide("trash_"+tag_id);
+			Element.show("spin_"+tag_id);
+		}
+
+		// Shows spinning loading status for creating a tag
+		function loadingCreateTag() {
+			// Show progress
+			$("save_button").disabled = true;
+		}
+
+		// On success of a tag creation makes a new row in our table
+		function insertTag(request) {
+			var content = request.responseText;
+	
+			if (content == "") {
+				// Create failed!
+				alert("Creation of this Tag failed.\nDid you enter a duplicate name?");
+			} else {
+				// Create worked, make new table row and fill it in
+				new Insertion.Bottom($("tag_list"), content);
+				Sortable.create("tag_list", {onUpdate:function(){new Ajax.Request('/admin/tags/update_tag_rank', {asynchronous:true, evalScripts:true, parameters:Sortable.serialize("tag_list")})}});
+			}
+			// Reload form
+			$("tag_name").value = "";
+			$("save_button").disabled = false;
+			noTagsCheck();
+		}
+
+		// Starts editing of tag
+		function showEditTag(tag_id) {
+			Element.hide("tag_name_"+tag_id);
+			Element.hide("tag_rename_"+tag_id);
+			Element.show("tag_rename_controls_"+tag_id);
+			Element.show("tag_edit_"+tag_id);
+			// focus on edit
+			//$("tag_input_"+tag_id).value = $("tag_name_"+tag_id).innerHTML;
+			$("tag_input_"+tag_id).focus();
+		}
+
+		// Saves edit to a tag name
+		function saveEdit(tag_id) {
+			Element.hide("tag_rename_controls_"+tag_id);
+			Element.show("spin_edit_"+tag_id);
+			// Make AJAX request to rename tag
+			new Ajax.Request('/admin/tags/update', 
+					{ parameters:'id='+tag_id+'&name='+$F("tag_input_"+tag_id), 
+						evalScripts:true,
+					  onFailure:editFailure }
+					);
+		}
+
+		// Runs when AJAX edit failure
+		function editFailure(t) {
+			alert("There was a communication error with the server when trying to save your tag.")
+		}
+
+	</script>
+	<style type="text/css">
+		/* make sure both hide/show divs have the same height so no UI jump */
+		#create_tag, #create_loading {
+			height: 35px;
+		}
+	</style>
+<% end %>
+
+<div id="left">
+
+	<h1><%= @title %></h1>
+	
+	<ul class="navigation secondary">
+		<li><a href="/admin/products/list">Back to Products</a></li>
+	</ul>
+
+	<!-- AJAX CREATE TAG FORM -->
+	<div id="create_tag" align="center">
+		<%= 
+			form_remote_tag(
+				:complete => "",
+				:url => {
+					:controller => "tags",
+					:action => "create",
+					:id => @parent_tag_id
+				},
+				:loading => "loadingCreateTag();",
+				:complete => "insertTag(request);",
+				:position => "tag_list"
+				)
+			%>
+			<table>
+				<tr>
+					<td>
+						<%= text_field 'tag', 'name', :class => 'textInput big' %>
+					</td>
+					<td>
+						<%= submit_tag "Save New Tag", :id => "save_button", :class => 'button' %>
+					</td>
+				</tr>
+			</table>
+		</form>
+	</div>
+	<!-- CREATE LOADING SCREEN -->
+
+	<h2>
+		<% if !@parent_tag %>
+			Top Level Tags
+		<% else %>
+			<a href="/admin/tags/list">Top Level Tags</a> &gt; 
+			<% if @parent_tag.parent %>
+				<%= link_to(@parent_tag.parent.name, :action => 'list', :id => @parent_tag.parent.name ) %> &gt;
+			<% end %>
+			<%= @parent_tag.name %>
+		<% end %>
+	</h2>
+
+	<!-- TAG TABLE LIST -->
+	<ul id="tag_list" class="sortable">
+		<%= render(:partial => 'tag_list_row', :collection => @tags) %>
+	</ul>
+	<div id="no_tags_row" style="display:<%= @tags.size > 0 ? 'none' : '' %>;">No tags to show...</div>
+	<%= 
+		sortable_element(
+			'tag_list',
+			:url => { :action => 'update_tag_rank' }
+		) 
+	%>
+
+</div>
+<div id="right">
+	<%= render :partial => '/admin/preferences/sidebar' %>
+		
+	<h1>Help</h1>
+	<h3>Tag Groups</h3>
+	<p><span class="hlt">
+		You may group tags two levels deep.
+	</span></p>
+	<p>
+		To use a tag as a group click on it's name. You will be taken to another view where you may create and order tags within the group.
+	</p>
+	<p>
+		Deleting a tag group will delete all tags within as well.
+	</p>
+	<h3>Sorting</h3>
+	<p>
+		You can sort the items shown by dragging and dropping them.
+	</p>
+	
+</div>
+
+<div class="clear"></div>

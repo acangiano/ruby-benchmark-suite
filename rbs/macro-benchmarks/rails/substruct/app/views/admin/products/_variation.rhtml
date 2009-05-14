@@ -1,0 +1,41 @@
+<div class="variation">
+	<input type="hidden" name="variation[][id]" value="<%= variation.id %>" />
+	<div class="float">
+		<%= make_label('Name', true) %>
+		<%= text_field_tag('variation[][name]', variation.short_name, :size => 30, :class => 'textInput') %>
+		<br/>
+		<span class="info">ie: Red XXL</span>
+	</div>
+	<div class="float">
+		<%= make_label('Product Code', true) %>
+		<%= text_field_tag('variation[][code]', variation.code, :size => 10, :class => 'textInput') %>
+	</div>
+	<div class="float">
+		<%= make_label('Price') %>
+		<%= text_field_tag('variation[][price]', variation.price, :size => 6, :class => 'textInput numeric') %>
+	</div>
+	<div class="float">
+		<%= make_label('Quantity') %>
+		<%= text_field_tag('variation[][quantity]', variation.quantity, :size => 6, :class => 'textInput numeric') %>
+	</div>
+	<div class="float">
+		<%= make_label('Weight') %>
+		<%= text_field_tag('variation[][weight]', variation.weight, :size => 6, :class => 'textInput numeric') %>
+		<br/>
+		<span class="info">(pounds)</span>
+	</div>
+	<!-- remove link -->
+	<div style="float:right;margin-top:20px;">
+		<%= 
+			link_to_remote image_tag("icons/png-24/16-em-cross.png", :plugin => 'substruct', :alt => 'Delete'),
+	    	{
+					:url => { :action => "remove_variation_ajax", :id => variation.id },
+					:loading => "$('remove_variation_link_#{variation.id}').hide(); $('variation_indicator_#{variation.id}').show();",
+	    		:complete => "$('remove_variation_link_#{variation.id}').up('.variation').remove();"
+				},
+				:id => "remove_variation_link_#{variation.id}"
+		%>
+		<%= image_tag("/indicator.gif", :plugin => 'substruct', :style => 'display:none;', :id => "variation_indicator_#{variation.id}") %>
+	</div>
+	<div class="clear"></div>
+</div>

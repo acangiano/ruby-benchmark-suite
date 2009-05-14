@@ -1,0 +1,81 @@
+<% content_for :header do %>
+	<!-- PRODUCTS FOR AUTO COMPLETE -->
+	<script language="javascript" type="text/javascript" src="/admin/products/suggestion_js?show_all_items=true"></script>
+<% end %>
+<!-- auto complete results div  -->
+<div class="auto_complete" id="product_lookup_auto_complete"></div>
+
+<%= make_label('Description', true) %>
+<p>
+	<%= text_field :promotion, :description, :maxlength => 256, :size => 50, :class => 'textInput' %>
+	<%= error_message_on(:promotion, :description) %>
+	<br/>
+	<span class="info">This will appear in your customers cart when the promo is applied.</span>
+</p>
+
+<!-- start and end -->
+<%= make_label('Start', true ) %>
+<p>
+	<%= datetime_select(:promotion, :start) %>
+</p>
+
+<%= make_label('End', true ) %>
+<p>
+	<%= datetime_select(:promotion, :end) %>
+</p>
+
+<!-- code -->
+<div class="float">	
+	<%= make_label('Code', true) %>
+	<p>
+		<%= text_field :promotion, :code, :maxlength => 20, :class => 'textInput' %>
+		<%= error_message_on(:promotion, :code) %>
+		<br/>
+		<span class="info">May not contain spaces.</span>
+	</p>
+</div>
+
+<div class="float">
+	<%= make_label('Discount Amount and Type', true) %>
+	<div class="float">
+		<p>
+			<%= text_field :promotion, :discount_amount, :size => 6, :class => 'textInput numeric' %>
+			<%= error_message_on(:promotion, :discount_amount) %>
+		</p>
+	</div>
+	<div class="float">
+		<p>
+			<%=
+				select(
+					:promotion, 
+					:discount_type, 
+					Promotion::TYPES, 
+					{ :include_blank => false }
+				)
+			%>
+		</p>
+	</div>
+	<div class="clear"></div>
+</div>
+
+<%= make_label('Minimum cart value') %>
+<p>
+	<%= text_field :promotion, :minimum_cart_value, :size => 6, :class => 'textInput numeric' %>
+	<%= error_message_on(:promotion, :minimum_cart_value) %>
+</p>
+
+<%= make_label('Add product to order') %>
+<p>
+	<input type="text" class="textInput" 
+		name="promotion[product_name]" id="product_name" 
+		value="<%= @promotion.item.suggestion_name if @promotion.item %>" 
+		onfocus="this.select();"
+	/>
+	<%= javascript_tag("new Autocompleter.Local('product_name', 'product_lookup_auto_complete', items);") %>
+	<br/>
+	<span class="info">
+		Type in the product name or code here. It will be auto-completed for you.
+	</span>
+</p>
+
+<div class="clear"></div>

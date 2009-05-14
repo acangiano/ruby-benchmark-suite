@@ -1,0 +1,9 @@
+<h2>Email Address</h2>
+<div class="padLeft" style="padding-bottom:10px;">
+	<%= make_label("Your Email Address", true) %>
+  <%= text_field 'order_user', 'email_address', :class => 'textInput' %>
+	<%= error_message_on(:order_user, :email_address) %>
+	<br/>
+	<span class="info">We won't ever sell, spam or share your email address.</span>
+	
+</div>

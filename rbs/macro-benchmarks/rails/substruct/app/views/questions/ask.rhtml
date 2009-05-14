@@ -1,0 +1,34 @@
+<% @title = 'Contact Us' %>
+
+<div id="fullContent">
+	
+	<div class="form_block">
+		<h1>Contact Us</h1>
+	
+		<p>Ask your question below.</p>
+	
+		<%= form_tag :action => 'send_question' %>
+		
+      <div style="padding-bottom:10px;">
+        <%= make_label("Your Email Address", true) %>
+        <%= text_field 'question', 'email_address', :size => 50, :maxlength => 50, :class => 'textInput' %>
+      	<%= error_message_on(:question, :email_address) %>
+        <br/>
+        <span class="info">We won't ever sell, spam or share your email address.</span>
+      </div>
+
+      <div style="padding-bottom:10px;">
+        <%= make_label("Question", true) %>
+        <%= text_area 'question', 'long_question', :cols => 60, :rows => 8, :class => 'textArea' %>
+      	<%= error_message_on(:question, :long_question) %>
+      </div>
+
+      <div class="clear">&nbsp;</div>
+      <p>
+  	    <%= submit_tag "Send your question to us", :class => 'button' %>
+        <div class="clear">&nbsp;</div>
+      </p>
+	  </form>
+	</div>
+	
+</div>

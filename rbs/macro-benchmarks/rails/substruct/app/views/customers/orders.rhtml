@@ -1,0 +1,42 @@
+<div id="left">
+	<h1><%= @title %></h1>
+	
+	<div class="padLeft">
+		<% if @orders.size == 0 %>
+			<h3>You haven't placed any orders with us yet.</h3>
+		<% else %>
+			<table class="list" cellpadding="0" cellspacing="0">
+				<tr>
+					<th class="numeric">Number</th>
+					<th class="numeric">Date</th>
+					<th class="numeric">Amount</th>
+					<th>Status</th>
+				</tr>
+				<% for order in @orders %>
+					<tr class="<%= alternate() %>">
+						<td class="numeric">
+							<%= link_to order.order_number, :action => 'order_details', :id => order.order_number %>
+						</td>
+						<td class="numeric">
+							<%= order.created_on.strftime("%m/%d/%Y") %>
+						</td>
+						<td class="numeric">
+							<%= sub_number_to_currency(order.total) %>
+						</td>
+						<td>
+							<%= order.order_status_code.name %>
+						</td>
+					</tr>
+				<% end %>
+			</table>
+		<% end %>
+	</div>
+	
+		<%= will_paginate @orders %>
+</div>
+
+<div id="right">
+	<%= render :partial => 'sidebar' %>
+</div>
+
+<div class="clear"></div>

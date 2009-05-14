@@ -1,0 +1,10 @@
+<% if flash[:notice] -%>
+	<div id="flash">
+		<div style="margin-bottom:0px;">
+			<%= get_markdown(flash[:notice]) %>
+		</div>
+		<p style="margin:0px;">
+			<a href="#" class="button" style="width:80px;" onmousedown="new Effect.Fade($('flash'))">Close</a>
+		</p>
+	</div>
+<% end -%>

@@ -1,0 +1,50 @@
+Order #: <%= @order.order_number %>
+
+ORDER DETAILS
+============================================================
+BILLING ADDRESS
+--------------------
+First Name: <%= @order.billing_address.first_name %>
+Last Name: <%= @order.billing_address.last_name %>
+Address: <%= @order.billing_address.address %>
+City: <%= @order.billing_address.city %>
+State: <%= @order.billing_address.state %>
+Zip: <%= @order.billing_address.zip %>
+Country: <%= @order.billing_address.country.name %>
+
+SHIPPING ADDRESS
+--------------------
+First Name: <%= @order.shipping_address.first_name %>
+Last Name: <%= @order.shipping_address.last_name %>
+Address: <%= @order.shipping_address.address %>
+City: <%= @order.shipping_address.city %>
+State: <%= @order.shipping_address.state %>
+Zip: <%= @order.shipping_address.zip %>
+Country: <%= @order.shipping_address.country.name %>
+------------------------------------------------------------
+Email: <%= @order.order_user.email_address %>
+<% if @order.account.cc_number.length > 16 || @order.account.cc_number == 'XXXXXXXXX0000'  %>
+(No credit card number on file)
+<% elsif @order.account.order_account_type_id == OrderAccount::TYPES['Credit Card']  %>
+CC Number: <%= @order.account.cc_number_last_four %>
+CC Exp Month: <%= @order.account.expiration_month %>
+CC Exp Year: <%= @order.account.expiration_year %>
+<% else %>
+Bank Name: <%= @order.account.bank_name %>
+Account Number: <%= @order.account.account_number %>
+Routing Number: <%= @order.account.routing_number %>
+<% end %>
+------------------------------------------------------------
+<% for item in @order.order_line_items %>
+Item Description: <%= item.product.name rescue false ? item.product.name : 'Promotion'; %>
+Quantity: <%= item.quantity %>
+Amount Per Item: <%= sub_number_to_currency(item.unit_price) %>
+Sub Total: <%= sub_number_to_currency(item.total) %>
+<% end %>
+------------------------------------------------------------
+<% if !@order.order_shipping_type.nil? then %>
+Shipping Via: <%= @order.order_shipping_type.name %>
+<% end %>
+Ship/Handling: <%= sub_number_to_currency(@order.shipping_cost) %>
+============================================================
+TOTAL: <%= sub_number_to_currency(@order.total) %>

@@ -1,0 +1,20 @@
+<div id="left">
+  <h1>Creating a New Question</h1>
+  <ul class="navigation secondary">  
+		<li><%= link_to 'Back to Question List', :action => 'list' %></li>
+	</ul>
+
+  <%= form_tag :action => 'create' %>
+    <%= render :partial => 'form' %>
+    <%= submit_tag "Save New Question", :class => 'button hundredfifty' %>
+  </form>
+
+</div>
+
+
+<!-- RIGHT -->
+<div id="right">
+
+</div>
+<div class="clear">&nbsp;</div>
+

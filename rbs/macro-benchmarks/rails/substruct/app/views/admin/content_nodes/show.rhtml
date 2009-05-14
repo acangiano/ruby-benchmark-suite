@@ -1,0 +1,15 @@
+<div id="left">
+
+  <div>
+    <%= get_markdown(@content_node.content) %>
+  </div>
+
+  <div class="line">&nbsp;</div>
+
+  <p>
+    <%= link_to 'Edit This Content', {:action => 'edit', :id => @content_node} %> |
+    <%= link_to 'Back To Content List', {:action => 'list'} %>
+  </p>
+</div>
+
+<%= render(:partial => 'content_right_side') %>

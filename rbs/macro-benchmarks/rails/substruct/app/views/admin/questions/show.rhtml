@@ -1,0 +1,39 @@
+<div id="left">
+  <h1>Showing Question</h1>
+
+  <h2>Short Question</h2>
+  <div class="padLeft">
+    <%=h @question.short_question %>
+  </div>
+
+  <!--
+  <h2>Long Question</h2>
+  <div class="padLeft">
+    <%=h @question.long_question %>
+  </div>
+  -->
+
+  <h2>Answer</h2>
+  <div class="padLeft">
+    <%= get_markdown(@question.answer) if !@question.answer.nil? %>
+  </div>
+
+  <h2>Rank</h2>
+  <div class="padLeft">
+    <%= @question.rank %>
+  </div>
+
+  <h2>Created On</h2>
+  <div class="padLeft">
+    <%= @question.created_on.strftime("%m/%d/%y") %>
+  </div>
+
+  <div class="line">&nbsp;</div>
+  <p>
+    <%= link_to 'Edit This Question', {:action => 'edit', :id => @question} %> |
+    <%= link_to 'Back To Question List', {:action => 'list'} %>
+  </p>
+</div>
+
+
+<%= render(:partial => 'right_side') %>

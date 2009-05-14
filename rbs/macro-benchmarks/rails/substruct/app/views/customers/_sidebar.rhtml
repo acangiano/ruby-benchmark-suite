@@ -1,0 +1,12 @@
+<h2>Your Stuff</h2>
+<ul>
+	<li>
+		<%= link_to_unless_current('Account Details', :action => 'account') %>
+	</li>
+	<li>
+		<%= link_to_unless_current('Orders', :action => 'orders') %>
+	</li>
+	<li>
+		<%= link_to_unless_current('Wishlist', :action => 'wishlist') %>
+	</li>
+</ul>

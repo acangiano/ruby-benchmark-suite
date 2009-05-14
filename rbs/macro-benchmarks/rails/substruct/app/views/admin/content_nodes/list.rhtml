@@ -1,0 +1,91 @@
+<div id="left">
+  <h1><%= @title %></h1>
+	<% if @aname != 'list' && @aname != 'index' %>
+		<ul class="navigation secondary">
+	    <li><a href="/admin/content_nodes/list_sections/">Back to Content Section List</a></li>
+	  </ul>
+	<% else %>
+		<ul class="navigation secondary">
+			<li>
+				<% if !params[:sort].nil? && params[:sort] == 'name' %>
+					<%=
+						link_to(
+							'Sort Newest to Oldest',
+							:action => 'index',
+							:key => params[:key],
+							:sort => 'date'
+						)
+					%>
+				<% else %>
+					Sorted Newest to Oldest
+				<% end %>
+			</li>
+			<li>
+				<% if params[:sort] != 'name' %>
+					<%=
+						link_to(
+							'Sort A-Z',
+							:action => 'index',
+							:key => params[:key],
+							:sort => 'name'
+						)
+					%>
+				<% else %>
+					Sorted A-Z
+				<% end %>
+			</li>
+		</ul>
+	<% end %>
+
+	<%= will_paginate @content_nodes %>
+	<br/>
+
+  <table class="list" cellspacing="0" cellpadding="0">
+    <colgroup>
+      <col style="width:150px;"/>
+      <col />
+      <col style="width:120px;"/>
+      <col />
+			<col />
+    </colgroup>
+    <tr>
+      <th>URL</th>
+      <th>Title</th>
+      <th>Content&nbsp;Length</th>
+      <th>Display&nbsp;Date</th>
+			<th>Type</th>
+    </tr>
+
+  <% if @content_nodes.length > 0 then %>
+    <% for content_node in @content_nodes %>
+    <tr class="<%= alternate %>">
+      <td>
+        <%= link_to truncate(content_node.name, 20), {:action => 'edit', :id => content_node} %>
+        <br/>
+        <br/>
+        <span class="info"><%= link_to 'Show here', {:action => 'show', :id => content_node}, :class=> 'normal' %></span>
+        <br/>
+        <span class="info"><a href="/<%= content_node.name %>" class="normal">Show on the site</a></span>
+      </td>
+      <td>
+        <%= content_node.title %>
+      </td>
+      <td><%= number_with_delimiter(content_node.content.length, ',') %> characters</td>
+      <td><%= content_node.display_on.strftime("%m/%d/%y") %></td>
+			<td><%= content_node.class.to_s %></td>
+    </tr>
+    <% end %>
+  <% else %>
+    <tr>
+      <td colspan="5">No content to display in this view</td>
+    </tr>
+  <% end %>
+  </table>
+
+  <!-- PAGINATION -->
+	<br/>
+	<%= will_paginate @content_nodes %>
+</div>
+
+
+<%= render(:partial => 'content_right_side') %>

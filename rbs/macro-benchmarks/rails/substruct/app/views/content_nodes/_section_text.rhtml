@@ -1,0 +1,6 @@
+<% if section.content_count > 0 then %>
+	<%= link_to section.name, :controller => 'content_nodes', :action => 'list_by_section', :section_name => section.name %>
+<% else %>
+	<%=h section.name %>
+<% end %>
+<span class="info">(<%= pluralize(section.content_count, 'item') %>)</span>

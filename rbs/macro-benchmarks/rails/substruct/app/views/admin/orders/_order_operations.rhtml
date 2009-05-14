@@ -1,0 +1,9 @@
+<h2>Things You Can Do</h2>
+
+<ul>
+<% if (!order.order_status_code.is_editable? && order.order_status_code_id != 9) then %>
+	<li><%= link_to 'Mark This Order Returned', {:action => 'return_order', :id => order}, :confirm => 'Are you sure you want to mark this order returned?' %></li>
+<% end %>
+	<li><%= link_to 'Re-Send Order Receipt', {:action => 'resend_receipt', :id => order} %></li>
+	<li><%= link_to 'Create New Order', {:action => 'new'} %></li>
+</ul>

@@ -1,0 +1,16 @@
+#cart {
+ position: absolute;
+ bottom: -1px;
+ left: auto;
+ width: 100%;
+ border: 2px solid #000;
+}
+html, body {
+  width: 100%;
+}
+.cartItem {
+  width: 80px;
+}
+#indicator {
+  margin-left: 3px;
+}

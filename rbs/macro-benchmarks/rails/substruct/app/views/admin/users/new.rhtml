@@ -1,0 +1,19 @@
+<div id="left">
+  <h1>Create new user</h1>
+  <ul class="navigation secondary">
+    <li><a href="/admin/users/list/">Back to User List</a></li>
+  </ul>
+
+  <%= form_tag :action=>"new" %>
+    <%= render_partial "form" %>
+    <%= submit_tag 'Save New User', :class => 'button hundredthirty' %>
+
+  </form>
+</div>
+
+
+<!-- RIGHT -->
+<div id="right">
+
+</div>
+<div class="clear">&nbsp;</div>

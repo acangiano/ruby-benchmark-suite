@@ -1,0 +1,64 @@
+<div class="padLeft">
+
+	<div class="floatHalf">
+		<%= make_label('First Name', true) %>
+		<%= text_field "#{address_type}_address", 'first_name', :maxlength => 50, :size => 30, :class => 'textInput' %>
+		<%= error_message_on("#{address_type}_address", :first_name) %>
+	</div>
+	<div class="floatHalf">
+		<%= make_label('Last Name', true) %>
+	  <%= text_field "#{address_type}_address", 'last_name', :maxlength => 50, :size => 30, :class => 'textInput' %>
+	  <%= error_message_on("#{address_type}_address", :last_name) %>
+	</div>
+	<div class="clear">&nbsp;</div>
+
+	<div class="floatHalf">
+		<%= make_label('Address', true) %>
+		<%= text_field "#{address_type}_address", 'address', :maxlength => 255, :size => 30, :class => 'textInput' %>
+		<p class="info">No shipments to PO or APO Boxes</p>
+		<%= error_message_on("#{address_type}_address", :address) %>
+	</div>
+	<div class="floatHalf">
+		<%= make_label('City') %>
+		<%= text_field "#{address_type}_address", 'city', :maxlength => 50, :size => 30, :class => 'textInput' %>
+		<%= error_message_on("#{address_type}_address", :city) %>
+  </div>
+	<div class="clear">&nbsp;</div>
+
+	<div class="floatHalf">
+		<div class="float">
+			<%= make_label('State/Prov') %>
+  		<%= text_field "#{address_type}_address", 'state', :maxlength => 30, :size => 10, :class => 'textInput' %>
+  		<%= error_message_on("#{address_type}_address", :state) %>
+  	</div>
+		<div class="float">
+			<%= make_label('Postal Code', true) %>
+		  <%= text_field "#{address_type}_address", 'zip', :maxlength => 10, :size => 10, :class => 'textInput' %>
+		  <%= error_message_on("#{address_type}_address", :zip) %>
+		</div>
+		<div class="clear"></div>
+	</div>
+	<div class="floatHalf">
+    <%
+ 			country = instance_variable_get("@#{address_type}_address").country
+			if country
+				selected_country = country.id 
+			else
+				selected_country = nil
+			end
+			# If not passed, so not defined, defaults to false.
+      show_obsolete ||= false
+		%>
+		<%= make_label('Country') %>
+		<%= render_component(:controller => "countries",
+		                      :action => show_obsolete ? "complete_select_list" : "select_list",
+		                      :params => {:select_name => "#{address_type}_address", :selected => selected_country}) %>
+	</div>
+	<div class="clear">&nbsp;</div>
+
+	<%= make_label('Phone', true) %>
+	<%= text_field "#{address_type}_address", 'telephone', :maxlength => 20, :class => 'textInput' %>
+	<%= error_message_on("#{address_type}_address", :telephone) %>
+
+</div>
+<div class="clear">&nbsp;</div>

@@ -1,0 +1,47 @@
+<!-- 
+	DOWNLOADS ######################################################################
+-->
+
+<h1>Downloads</h1>
+<div class="padLeft">
+	<p class="info">
+	  These are digital items that customers may purchase.
+	  <br/>
+	  They will be available to a customer after a successful transaction.
+	</p>
+	<% if @product.downloads.length > 0 then %>
+		<div>
+			<ul>
+			<% for @d in @product.downloads.find(:all) %>
+				<li id="download_<%= @d.id %>">
+					<a href="<%= @d.public_filename() %>"><%= @d.name %></a>
+					<div style="float:right;margin-top:10px;">
+						<%= 
+							link_to_remote image_tag("icons/png-24/16-em-cross.png", :plugin => 'substruct', :alt => 'Delete'),
+					    	{
+									:url => { :action => "remove_download_ajax", :id => @d.id },
+									:loading => "$('remove_d_link_#{@d.id}').hide(); $('download_indicator_#{@d.id}').show();",
+					    		:complete => "$('download_#{@d.id}').remove();"
+								},
+								:id => "remove_d_link_#{@d.id}"
+						%>
+						<%= image_tag("/indicator.gif", :plugin => 'substruct', :style => 'display:none;', :id => "download_indicator_#{@d.id}") %>
+					</div>
+					<div class="clear"></div>
+				</li>
+			<% end %>
+			</ul>
+		</div>
+	<% else %>
+		This product has no downloads associated with it currently.
+	<% end %>
+	
+	<h4>Upload</h4>
+	<%= 
+		render :partial => '/shared/multiple_upload',
+			:locals => {
+				:name => 'download',
+				:input_size => '30'
+			}
+	%>
+</div>

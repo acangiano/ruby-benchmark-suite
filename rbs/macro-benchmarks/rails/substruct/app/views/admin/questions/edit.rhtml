@@ -1,0 +1,20 @@
+<div id="left">
+  <h1>Editing question</h1>
+  <ul class="navigation secondary">
+    <li><a href="/admin/questions/list/">Back to Question List</a></li>
+  </ul>
+
+  <%= form_tag :action => 'update', :id => @question %>
+    <%= render :partial => 'form' %>
+    <%= submit_tag 'Save This Question', :class => 'button hundredfifty' %>
+  </form>
+
+	<div style="float:right;">
+		<%= link_to 'Show', :action => 'show', :id => @question %> |
+	  <%= link_to 'Delete This Question', {:action => 'destroy', :id => @question}, :confirm => 'Are you sure?', :class => 'action' %>
+	</div>
+
+
+</div>
+
+<%= render(:partial => 'right_side') %>

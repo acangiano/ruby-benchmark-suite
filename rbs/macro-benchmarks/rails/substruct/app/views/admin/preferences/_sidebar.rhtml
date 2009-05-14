@@ -1,0 +1,18 @@
+<h1>Preference Menu</h1>
+<ul>
+	<li>
+		<%= link_to_unless_current('General', :controller => 'preferences', :action => 'index')%>
+	</li>
+	<li>
+		<%= link_to_unless_current('Shipping Rates', :controller => 'preferences', :action => 'shipping') %>
+	</li>
+	<li>
+		<%= link_to_unless_current('User Roles', :controller => 'roles', :action => 'index')%>
+	</li>
+	<li>
+		<%= link_to_unless_current('Product Tags', :controller => 'tags', :action => 'list')%>
+	</li>
+	<li>
+		<%= link_to_unless_current('Content Sections', :controller => 'sections', :action => 'list')%>
+	</li>
+</ul>

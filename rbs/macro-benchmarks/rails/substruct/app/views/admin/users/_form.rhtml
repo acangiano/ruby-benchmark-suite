@@ -1,0 +1,57 @@
+<%= error_messages_for 'user' %>
+<!--[form:user]-->
+<p>
+	<label for="user_login">Login:</label>
+	<%= text_field 'user', 'login', :class => 'textInput'  %>
+</p>
+
+<% unless @user.new_record? %>
+  <h4>Enter password and confirmation if you wish to change password</h4>
+<% end %>
+<div id="change_password">
+	<p>
+		<label for="user_password">Password:</label>
+		<%= password_field 'user', 'password', :class => 'textInput'  %>
+	</p>
+
+	<p>
+		<label for="user_password">Retype password:</label>
+		<%= password_field 'user', 'password_confirmation', :class => 'textInput'  %>
+	</p>
+</div>
+
+
+<h2>User Roles</h2>
+<!-- 
+	Need hidden input for roles to make sure that if all
+ 	are cleared off it gets picked up.
+-->
+<input type="hidden" value="" name="user[role_ids][]" />
+<div class="padLeft">
+	<table>
+		<colgroup>
+			<col style="width:24px;" />
+			<col style="width:49%;" />
+			<col style="width:24px;" />
+			<col style="width:49%;" />
+		</colgroup>
+<% 
+	i = 0
+	for role in @roles %>
+	<% if (i % 2 == 0) then %>
+		<tr>
+	<% end %>
+			<td><input type="checkbox" name="user[role_ids][]" id="roles_<%= role.id %>" <%= @user.roles.include?(role) ? 'checked' : '' %> value="<%= role.id %>" /></td>
+			<td>
+				<label class="inline" for="roles_<%= role.id %>"><%= role.name %></label>
+				<br/>
+				<div class="info"><%= get_markdown(role.description) %></div>
+			</td>
+	<% if (i % 2 == 1 || i == @roles.size-1) then %>
+		</tr>
+	<% end %>
+<% 
+		i += 1
+	end %>
+	</table>
+</div>

@@ -1,0 +1,25 @@
+<html>
+<head>
+	<title><%=
+		if @title then
+			h @title
+		else
+			h controller.controller_name
+		end
+		-%></title>
+	<%= javascript_include_tag "prototype", "effects" %>
+  <%= javascript_include_tag "substruct", :plugin => 'substruct' %>
+	<%= stylesheet_link_tag "main", :plugin => 'substruct' %>
+	<style type="text/css">
+		body {
+			background-image: none;
+			background-color: #fff;
+			padding: 10px;
+			width: auto;
+		}
+	</style>
+</head>
+<body scrolling="no">
+	<%= yield %>
+</body>
+</html>

@@ -1,0 +1,73 @@
+--- 
+preference_00010: 
+  name: store_handling_fee
+  id: 10
+  value: "15.00"
+preference_00011: 
+  name: mail_copy_to
+  id: 11
+  value: ""
+preference_00012: 
+  name: mail_host
+  id: 12
+  value: localhost
+preference_00001: 
+  name: cc_processor
+  id: 1
+  value: Authorize.net
+preference_00002: 
+  name: cc_login
+  id: 2
+  value: ""
+preference_00013: 
+  name: mail_port
+  id: 13
+  value: "25"
+preference_00014: 
+  name: mail_auth_type
+  id: 14
+  value: none
+preference_00003: 
+  name: cc_pass
+  id: 3
+  value: ""
+preference_00004: 
+  name: cc_clear_after_order
+  id: 4
+  value: "1"
+preference_00015: 
+  name: mail_username
+  id: 15
+  value: ""
+preference_00016: 
+  name: mail_password
+  id: 16
+  value: ""
+preference_00005: 
+  name: store_name
+  id: 5
+  value: Substruct
+preference_00006: 
+  name: store_home_country
+  id: 6
+  value: "1"
+preference_00007: 
+  name: store_show_confirmation
+  id: 7
+  value: "1"
+preference_00008: 
+  name: store_use_inventory_control
+  id: 8
+  value: "1"
+preference_00009: 
+  name: store_require_login
+  id: 9
+  value: "0"
+preference_00017: 
+  name: store_test_transactions
+  id: 17
+  value: "1"
+use_smtp_tls_patch:
+  name: use_smtp_tls_patch
+  id: 18
+  value: "0"

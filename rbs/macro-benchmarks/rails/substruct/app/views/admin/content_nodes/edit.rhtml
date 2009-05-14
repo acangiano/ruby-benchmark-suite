@@ -1,0 +1,35 @@
+<%= form_tag({:action => 'update', :id => @content_node}, :multipart => true) %>
+	<div id="left">
+	  <h1><%= @title %></h1>
+	  <ul class="navigation secondary">
+	    <li><a href="/admin/content_nodes/list/">Back to Content List</a></li>
+	  </ul>
+
+	  <div class="warning">
+	    Please remember <b>not</b> to change URL unless you absolutely need to or you created the page.
+	  </div>
+	  <br/>
+
+
+	    <%= render_partial 'form' %>
+	    <div class="line">&nbsp;</div>
+	    <%= submit_tag 'Save This Content', :class => 'button hundredthirty' %>
+
+
+		<div style="float:right;">
+			<%= link_to 'Show', :action => 'show', :id => @content_node %> |
+		  <%= link_to 'Delete This Content', {:action => 'destroy', :id => @content_node}, :confirm => 'Are you sure?', :class => 'action' %>
+		</div>
+	
+	  <div class="clear">&nbsp;</div>
+	  <br/>
+	</div>
+
+
+	<!-- RIGHT -->
+	<div id="right">
+		<%= render :partial => 'crud_sidebar' %>
+	</div>
+	<div class="clear">&nbsp;</div>
+
+</form>

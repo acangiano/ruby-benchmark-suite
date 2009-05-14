@@ -1,0 +1,60 @@
+<div id="left">
+	<h1><%=h @title %></h1>
+
+	<% if @orders.length == 0 then %>
+		<h4>No orders for this promotion yet.</h4>
+	<% else %>
+
+	<table class="list" cellpadding="0" cellspacing="0">
+		<colgroup>
+			<col/>
+			<col style="width:70px;"/>
+			<col style="width:190px;"/>
+			<col style="width:70px;"/>
+		</colgroup>
+		<tr>
+			<th>Order Name / Number</th>
+			<th>Date</th>
+			<th>Status</th>
+			<th>Total</th>
+		</tr>
+		<% for order in @orders %>
+			<tr class="<%= alternate %>">
+				<td>
+					<%= link_to(h(order.name), :controller => 'orders', :action => 'show', :id => order) %>
+					<br/>
+					<%= link_to(order.order_number, :controller => 'orders', :action => 'show', :id => order) %>
+				</td>
+				<td><%= order.created_on.strftime("%m/%d/%y %I:%M %p") %></td>
+				<td><%= order.status %></td>
+				<td class="numeric"><%= sub_number_to_currency(order.total) %></td>
+			</tr>
+		<% end %>
+	</table>
+
+	<!-- DOWNLOAD ORDERS -->
+	<p style="margin-top:10px;">
+		<%= link_to "Download Orders: XML", 
+					{ :controller => 'orders',
+						:action => 'download',
+	          :ids => @orders.collect{|o| o.id},
+	 					:format => 'xml' }, 
+					:class => 'action' 
+		%>
+		<%= link_to "Download Orders: CSV", 
+					{ :controller => 'orders',
+						:action => 'download',
+	          :ids => @orders.collect{|o| o.id},
+	 					:format => 'csv' }, 
+					:class => 'action' 
+		%>
+	</p>
+
+		<!-- PAGINATION -->
+		<%= will_paginate @orders %>
+	<% end %>
+</div>
+
+
+<%= render(:partial => 'right_side') %>
+

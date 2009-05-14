@@ -1,0 +1,31 @@
+--- 
+order_shipping_type_00001: 
+  name: FedEx Ground (USA Only)
+  price: 10.0
+  code: FGR
+  id: 1
+  is_domestic: true
+order_shipping_type_00002: 
+  name: FedEx Next Day Air Shipping (USA Only)
+  price: 20.0
+  code: FES
+  id: 2
+  is_domestic: true
+order_shipping_type_00003: 
+  name: FedEx 2nd Day Air Shipping (USA Only)
+  price: 15.0
+  code: F2D
+  id: 3
+  is_domestic: true
+order_shipping_type_00004: 
+  name: FedEx International Economy (International Only)
+  price: 75.0
+  code: FIC
+  id: 4
+  is_domestic: false
+order_shipping_type_00005: 
+  name: FedEx International Priority (International Only)
+  price: 100.0
+  code: FIX
+  id: 5
+  is_domestic: false

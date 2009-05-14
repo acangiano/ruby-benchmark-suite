@@ -1,0 +1,30 @@
+#container {
+  background-image: none;
+	background-color: transparent;
+  width: 482px;
+	border: 0px;
+}
+#login {
+  width: 482px;
+  height: 408px;
+  background-image: url(/plugin_assets/substruct/images/login_bg.png) !important;
+  background-image: none;
+  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/plugin_assets/substruct/images/login_bg.png',sizingMethod='scale');
+}
+#content {
+  width: 425px;
+  position:relative;
+  top: 110px !important;
+  top: 90px;
+  margin-left: 40px;
+}
+
+#message {
+  float:right;
+  padding-right: 10px;
+  margin-top:-100px;
+  font-weight: bold;
+  color: #AC0021;
+  text-align: center;
+  width: 165px;
+}

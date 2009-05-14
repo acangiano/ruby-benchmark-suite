@@ -1,0 +1,71 @@
+<div id="left">
+	<%= render :partial => 'subnav' %>
+
+	<% if @promotions.length == 0 then %>
+		<h4>No promotions have been created.</h4>
+	<% else %>
+
+		<table class="list" cellpadding="0" cellspacing="0">
+			<colgroup>
+				<col/>
+				<col style="width:150px;" />
+				<col/>
+				<col style="width:100px;" />
+				<col style="width:100px;" />
+			</colgroup>
+			<tr>
+				<th>Code</th>
+				<th>Active?</th>
+				<th>Description</th>
+				<th class="numeric">Discount</th>
+				<th class="numeric">Orders</th>
+			</tr>
+			<% for promo in @promotions %>
+				<tr class="<%= alternate %>">
+					<td><%= link_to(promo.code, :action => 'edit', :id => promo) %></td>
+					<td style="text-align:center;">
+						<%=
+							image_tag(
+								promo.is_active? ? 'icons/png-24/16-square-green.png' : 'icons/png-24/16-square-red.png',
+								:align => 'left',
+								:style => 'margin: 5px;',
+								:plugin => 'substruct'
+							)
+						%>
+						<p class="info">
+							<%= promo.start.strftime("%m/%d/%y @ %I:%M %p") %>
+							<br/>
+							to
+							<br/>
+							<%= promo.end.strftime("%m/%d/%y @ %I:%M %p") %>
+						</p>
+					</td>
+					<td>
+						<%= promo.description %>
+						<br/>
+						<% if promo.item %>
+							<span class="info">
+							Add item: <%= promo.item.name %> - <%= sub_number_to_currency(promo.item.price) %>
+							</span>
+						<% end %>
+					</td>
+					<td class="numeric">
+						<% if promo.discount_type == 0 %>
+							<%= sub_number_to_currency(promo.discount_amount) %>
+						<% elsif promo.discount_type == 1 %>
+							<%= promo.discount_amount %>%
+						<% elsif promo.discount_type == 2 %>
+							Buy <%= promo.discount_amount.to_i %>, get 1 free
+						<% end %>
+					</td>
+					<td class="numeric"><%= link_to(number_with_delimiter(promo.orders.size, ','), :action => 'show_orders', :id => promo) %></td>
+				</tr>
+			<% end %>
+		</table>
+
+	<% end %>
+</div>
+
+
+<%= render(:partial => 'right_side') %>
+

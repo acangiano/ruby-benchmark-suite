@@ -1,0 +1,143 @@
+<%= error_messages_for 'product' %>
+
+
+<!-- 
+	PRODUCT AND VARIATIONS ######################################################
+-->
+<div class="padLeft">
+	<h2>Standard Product</h2>
+	<div class="padLeft">
+		<div class="float">
+			<%= make_label('Name', true) %>
+			<%= text_field 'product', 'name', :class => 'textInput', :size => 30  %>
+		</div>
+		<div class="float">
+			<%= make_label('Product Code', true) %>
+			<%= text_field 'product', 'code', :class => 'textInput', :size => 10 %>
+		</div>
+		<div class="float">
+			<%= make_label('Price') %>
+			<%= text_field 'product', 'price', :class => 'textInput numeric', :size => 6, :disabled => @product.variations.size > 0  %>
+		</div>
+		<div class="float">
+			<%= make_label('Quantity') %>
+			<%= text_field 'product', 'quantity', :class => 'textInput numeric', :size => 6, :disabled => @product.variations.size > 0  %>
+		</div>
+		<div class="clear"></div>
+		<% if @product.variations.size > 0 %>
+			<div class="hlt" style="padding:10px; text-align: center;">
+				When using product variations the price and quantity<br/>for the "standard product" will not be visible on the main site.
+			</div>
+		<% end %>
+
+	</div>
+
+	<!-- PRODUCT VARIATIONS -->
+
+	<h2>Variations</h2>
+
+	<div class="padLeft">
+
+		<div id="variation_container">
+			<!-- filled with variations -->
+			<%= render :partial => 'variation', :collection => @product.variations %>
+		</div>
+	
+		<p>
+			<%= 
+				link_to_remote 'Add product variation',
+		    	{
+						:url => { :action => "add_variation_ajax" },
+						:loading => "$('add_variation_link').hide(); $('add_variation_indicator').show();",
+		    		:complete => "$('add_variation_link').show(); $('add_variation_indicator').hide();",
+					},
+					:class => 'action',
+					:id => 'add_variation_link'
+			%>
+			<%= image_tag("/indicator.gif", :plugin => 'substruct', :style => 'display:none;', :id => "add_variation_indicator") %>
+		</p>
+		<br/>
+	</div>
+
+</div>
+
+<!-- 
+	DETAILS #####################################################################
+-->
+
+<h1>Details</h1>
+
+<div class="padLeft">
+	<div class="float" style="width:230px;">
+	
+		<p>
+			<label>
+				<%= check_box('product', 'is_discontinued', :class => 'inline') %> 
+				Product is discontinued
+			</label>
+			<span class="info">
+				Discontinued products will continue to show on the site until there are no more in stock.
+			</span>
+		</p>
+	
+		<p>
+			<%= make_label('Date available') %>
+			<%= date_select 'product', 'date_available'  %>
+		</p>
+
+		<div class="float">
+			<p>
+				<%= make_label('Width') %>
+				<%= text_field 'product', 'size_width', :size => '10', :class => 'textInput'  %>
+				<br/>
+				<span class="info">(inches)</span>
+			</p>
+			<p>
+				<%= make_label('Depth') %>
+				<%= text_field 'product', 'size_depth', :size => '10', :class => 'textInput'  %>
+				<br/>
+				<span class="info">(inches)</span>
+			</p>
+		</div>
+
+		<div class="float">
+			<p>
+				<%= make_label('Height') %>
+				<%= text_field 'product', 'size_height', :size => '10', :class => 'textInput'  %>
+				<br/>
+				<span class="info">(inches)</span>
+			</p>
+			<p>
+				<%= make_label('Weight') %>
+				<%= text_field 'product', 'weight', :size => '10', :class => 'textInput'  %>
+				<br/>
+				<span class="info">(pounds)</span>
+			</p>
+		</div>
+		<div class="clear">&nbsp;</div>
+	
+	</div>
+
+	<div class="float">
+		<p>
+			<label for="product_description">Description</label>
+			<span class="info">
+		    HTML and <a href="http://hobix.com/textile/" target="_blank">Textile</a> markup is allowed here.
+		  </span>
+			<br/>
+			<%= text_area 'product', 'description', :rows => 14, :class => 'textArea'  %>
+		</p>
+	</div>
+
+	<div class="clear">&nbsp;</div>
+</div>
+
+<%= render :partial => 'image_upload' %>
+
+<br/>
+<div class="line">&nbsp;</div>
+
+<%= render :partial => 'product_upload' %>
+
+<br/>
+<div class="line">&nbsp;</div>

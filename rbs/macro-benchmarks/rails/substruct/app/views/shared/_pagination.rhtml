@@ -1,0 +1,12 @@
+<% if pagination && pagination.item_count > pagination.items_per_page then %>
+  <p class="big">
+  	<b>Go to page:</b>
+  	<% if params then %>
+  	  <%= pagination_links(pagination, :window_size => 10, :params => params) %>
+  	<% else %>
+  	  <%= pagination_links(pagination, :window_size => 10) %>
+  	<% end %>
+  	<br/>
+  	<span class="info">(Showing <%= pagination.items_per_page %> of <%= pagination.item_count %> items total.)</span>
+  </p>
+<% end %>

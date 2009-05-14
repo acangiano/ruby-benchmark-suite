@@ -1,0 +1,130 @@
+<% @two_column_layout = true %>
+
+<div id="left">
+  <h1>Secure Order Form - Step 1 of 3</h1>
+
+  <h2>Please fill in the fields below</h2>
+  <p class="hlt">
+  <% if request.ssl? %>
+    <%= image_tag "icons/png-8/24-security-lock.png", :plugin => 'substruct' %>
+    All information transmitted is <b>secure</b>.
+  <% else %>
+    <%= image_tag "icons/png-8/24-security-lock-open.png", :plugin => 'substruct' %>
+    All information transmitted is <b>UNSECURE</b>.
+  <% end %>
+  </p>
+
+  <p>
+    Once you are done entering your information, scroll to the <a href="#bottom">bottom of the page</a> and press the <i>Submit Order Information</i> button.
+  </p>
+
+  <%= form_tag :action => 'checkout' %>
+
+		<!-- EMAIL ADDRESS -->
+		<div class="form_block">
+    	<%= render(:partial => '/admin/orders/user') %>
+		</div>
+
+		<% if !@customer && Preference.find_by_name('store_require_login').is_true?  %>
+			<!-- DUPE EMAIL ADDRESS CHECK -->		
+			<% 
+				login_url = url_for(
+					:controller => 'customers', :action => 'login',
+					:params => {
+						:modal => true
+					}
+				) 
+			%>
+			<script type="text/javascript" language="javascript">
+				/**
+				 * Shows login window when dupe email address is encountered.
+				 */
+				function showLoginWin(email_address) {
+					showPopWin("<%= login_url %>&login="+email_address, 600, 400, returnRefresh);
+				}
+			</script>
+			<%=
+				observe_field("order_user_email_address",
+			  	:frequency => 0.3,
+			  	:url => {
+						:controller => '/customers',
+						:action => :check_email_address
+					},
+			  	:with => "'email_address='+escape(value)"
+				)
+			%>
+		<% end %>
+
+		<!-- BILLING ADDRESS -->
+		<div class="form_block">
+	    <h2>Billing &amp; Shipping Address</h2>
+	    <%= render(:partial => '/admin/orders/address', :locals => {:address_type => 'billing'}) %>
+
+	    <br/>
+	    <div class="padLeft">
+	      <label><%= check_box_tag("use_separate_shipping_address", 'true', @use_separate_shipping_address, :class => 'inline', :id => 'use_diff_shipping') %> Ship to a different address</label>
+	    </div>
+		</div>
+		
+		<!-- SHIPPING ADDRESS -->
+    <div id="shipping_address" class="form_block"
+     style="<%= 'display:none;' if !@use_separate_shipping_address %>">
+      <h2>Shipping Address</h2>
+      <%= render(:partial => '/admin/orders/address', :locals => {:address_type => 'shipping'}) %>
+    </div>
+
+	
+	  <!-- PAYMENT INFORMATION -->
+    <% if @cc_processor != 'PayPal IPN' -%>
+    	<div class="form_block">
+      	<%= render(:partial => '/admin/orders/account') %>
+    	</div>
+    <% end -%>
+
+		<!-- PROMO CODE -->
+		<% if Promotion.any_active? %>
+			<div class="form_block">
+				<h2>Promotion Code</h2>
+				<div class="padLeft">
+					<div class="float">
+						<p>
+							<%= text_field :order, :promotion_code, :maxlength => 20, :class => 'textInput' %>
+							<%= error_message_on(:order, :promotion_code) %>
+						</p>
+					</div>
+						<p>
+							If you have a promotion code, enter it here.
+						</p>
+					<div class="clear"></div>
+				</div>
+			</div>
+		<% end %>
+
+    <div class="line">&nbsp;</div>
+
+    <a name="bottom"></a>
+    <p>
+			<%= submit_tag('Submit Order Information', :class => 'button', :disable_with => 'Submitting information, please wait...') %>
+      <div class="clear">&nbsp;</div>
+    </p>
+  </form>
+</div>
+
+<!-- RIGHT HAND SIDE -->
+
+<div id="right">
+
+  <h1>You Are Buying</h1>
+  <%= render(:partial => 'cart_contents', :locals => {:cart => @order}) %>
+
+  <%= render(:partial => 'clear_cart') %>
+
+  <h2>Need help?</h2>
+  <ul>
+    <li><a href="/contact">Contact us</a></li>
+  </ul>
+</div>
+
+<div class="clear">&nbsp;</div>
+
+<%= javascript_include_tag 'substruct', 'order', :plugin => 'substruct' -%>

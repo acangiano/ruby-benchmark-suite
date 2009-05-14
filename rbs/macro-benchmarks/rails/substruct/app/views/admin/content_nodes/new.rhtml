@@ -1,0 +1,17 @@
+<%= form_tag({:action => 'create'}, :multipart => true) %>
+	<div id="left">
+	  <h1><%= @title %></h1>
+	  <ul class="navigation secondary">
+	    <li><a href="/admin/content_nodes/list/">Back to Content List</a></li>
+	  </ul>
+
+    <%= render_partial 'form' %>
+    <%= submit_tag "Save New Content", :class=> 'button hundredthirty' %>
+	</div>
+
+	<!-- RIGHT -->
+	<div id="right">
+		<%= render :partial => 'crud_sidebar' %>
+	</div>
+	<div class="clear">&nbsp;</div>
+</form>

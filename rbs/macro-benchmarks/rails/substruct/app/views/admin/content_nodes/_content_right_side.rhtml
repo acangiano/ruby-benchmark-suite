@@ -1,0 +1,37 @@
+<!-- RIGHT -->
+<div id="right">
+  <br/>
+  <%= link_to 'Create New Content', {:action => 'new'}, :class => 'button hundredfifty' %>
+
+  <h1 style="margin-top:20px;">View Content by Type</h1>
+	<ul>
+		<li>
+			<%=
+				link_to_unless_current(
+					'All content, regardless of type',
+					:action => 'list'
+				)
+			%>
+		</li>
+		<% for type in ContentNode::TYPES do %>
+			<li>
+				<%= 
+					link_to_unless_current(
+						type,
+						:action => 'list',
+						:key => type
+					)
+				%>
+			</li>
+		<% end %>
+	</ul>
+
+  <h1>Sections</h1>
+	<p>
+		<a href="/admin/sections/list" class="action">Manage Sections</a>
+	</p>
+	<p>
+		<a href="/admin/content_nodes/list_sections">View Content By Section...</a>
+	</p>
+</div>
+<div class="clear">&nbsp;</div>

@@ -1,0 +1,121 @@
+--- 
+right_00020: 
+  name: Promotions - CRUD
+  actions: new,create,edit,update,destroy
+  id: 20
+  controller: promotions
+right_00009: 
+  name: Orders - CRUD
+  actions: new,create,edit,update,destroy
+  id: 9
+  controller: orders
+right_00010: 
+  name: Orders - View
+  actions: index,list,search,edit,show
+  id: 10
+  controller: orders
+right_00021: 
+  name: Promotions - View
+  actions: index,list,search,edit,show
+  id: 21
+  controller: promotions
+right_00022: 
+  name: Preferences - Admin
+  actions: "*"
+  id: 22
+  controller: preferences
+right_00011: 
+  name: Content - CRUD
+  actions: new,create,edit,update,destroy
+  id: 11
+  controller: content_nodes
+right_00012: 
+  name: Content - View
+  actions: index,list,search,edit,show
+  id: 12
+  controller: content_nodes
+right_00001: 
+  name: Orders - Admin
+  actions: "*"
+  id: 1
+  controller: orders
+right_00023: 
+  name: Sections - Admin
+  actions: "*"
+  id: 23
+  controller: sections
+right_00024: 
+  name: Files - Admin
+  actions: "*"
+  id: 24
+  controller: files
+right_00002: 
+  name: Users - Admin
+  actions: "*"
+  id: 2
+  controller: users
+right_00013: 
+  name: Products - CRUD
+  actions: new,create,edit,update,destroy
+  id: 13
+  controller: products
+right_00014: 
+  name: Products - View
+  actions: index,list,search,edit,show
+  id: 14
+  controller: products
+right_00003: 
+  name: Rights - Admin
+  actions: "*"
+  id: 3
+  controller: rights
+right_00004: 
+  name: Products - Admin
+  actions: "*"
+  id: 4
+  controller: products
+right_00015: 
+  name: Questions - CRUD
+  actions: new,create,edit,update,destroy
+  id: 15
+  controller: questions
+right_00016: 
+  name: Questions - View
+  actions: index,list,search,edit,show
+  id: 16
+  controller: questions
+right_00005: 
+  name: Content - Admin
+  actions: "*"
+  id: 5
+  controller: content_nodes
+right_00006: 
+  name: Questions - Admin
+  actions: "*"
+  id: 6
+  controller: questions
+right_00017: 
+  name: Tags - CRUD
+  actions: new,create,edit,update,destroy
+  id: 17
+  controller: tags
+right_00018: 
+  name: Tags - View
+  actions: index,list,search,edit,show
+  id: 18
+  controller: tags
+right_00007: 
+  name: Roles - Admin
+  actions: "*"
+  id: 7
+  controller: roles
+right_00008: 
+  name: Tags - Admin
+  actions: "*"
+  id: 8
+  controller: tags
+right_00019: 
+  name: Promotions - Admin
+  actions: "*"
+  id: 19
+  controller: promotions

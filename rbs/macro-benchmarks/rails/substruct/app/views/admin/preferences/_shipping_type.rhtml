@@ -1,0 +1,79 @@
+<div class="padLeft shipping_type">
+	<%
+		sid = shipping_type.id
+	%>
+	<!-- remove link -->
+	<div style="float:right;margin-top:20px;">
+		<%= 
+			link_to_remote image_tag("icons/png-24/16-em-cross.png", :id => "trash_#{sid}", :plugin => 'substruct', :alt => 'Delete'),
+	    	{
+					:url => { :action => "remove_shipping_type_ajax", :id => sid },
+					:loading => "$('remove_shipping_type_link_#{sid}').hide(); $('variation_indicator_#{sid}').show();",
+	    		:complete => "removeShippingType('#{sid}')"
+				},
+				:id => "remove_shipping_type_link_#{sid}"
+		%>
+		<%= image_tag("/indicator.gif", :plugin => 'substruct', :style => 'display:none;', :id => "variation_indicator_#{sid}") %>
+	</div>
+	
+	<!-- START OF FIELDS -->
+	<div class="float">
+		<%= make_label('Name', true) %>
+		<%= text_field_tag("shipping_types[#{sid}][name]", shipping_type.name, :class => 'textInput', :size => 40)  %>
+	</div>
+	<div class="float">
+		<%= make_label('Code', true) %>
+		<%= text_field_tag("shipping_types[#{sid}][code]", shipping_type.code, :class => 'textInput', :size => 10) %>
+	</div>
+	<div class="float">
+		<%= make_label('Price', true) %>
+		<%= text_field_tag("shipping_types[#{sid}][price]", shipping_type.price, :class => 'textInput numeric', :size => 6, :onfocus => 'this.select();') %>
+	</div>
+	<div class="float">
+		<%= make_label('Shipping Type', true) %>
+		<label class="inline">
+			<%= radio_button_tag("shipping_types[#{sid}][is_domestic]", true, shipping_type.is_domestic?) %> Domestic
+		</label>
+		<br/>
+		<label class="inline">
+			<%= radio_button_tag("shipping_types[#{sid}][is_domestic]", false, !shipping_type.is_domestic?) %> International
+		</label>
+	</div>
+	<div class="clear"></div>
+
+	<!-- VARIATIONS -->
+	<div id="variations_<%= sid %>" style="padding:10px;">
+		<%=
+			render(
+				:partial => 'shipping_variation', 
+				:collection => shipping_type.weights, 
+				:locals => { :sid => sid }
+			)
+		%>
+	</div>
+	
+	<p>
+		<%= 
+			link_to_remote 'Add weight variation',
+	    	{
+					:url => { 
+						:action => "add_shipping_variation_ajax", 
+						:params => { :id => sid} 
+					},
+					:loading => "$('add_variation_link_#{sid}').hide();
+						$('add_variation_indicator_#{sid}').show();",
+	    		:complete => "$('add_variation_link_#{sid}').show();
+	 					$('add_variation_indicator_#{sid}').hide();",
+				},
+				:class => 'action',
+				:id => "add_variation_link_#{sid}"
+		%>
+		<%= 
+			image_tag("/indicator.gif", 
+				:plugin => 'substruct', :style => 'display:none;', 
+				:id => "add_variation_indicator_#{sid}") 
+		%>
+	</p>
+	
+	<div class="line"></div>
+</div>

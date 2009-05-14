@@ -1,0 +1,173 @@
+<script language="javascript">
+	// Global content panes
+	var gPanes = new Array('order_fields', 'order_accounts',
+												'order_notes', 'order_items');
+</script>
+
+<div id="left">
+	<h1><%= @title %></h1>
+	<ul class="navigation secondary">
+    <li><a href="/admin/orders/list/">Back to Order List</a></li>
+  </ul>
+
+	<div id="subnav">
+		<ul class="navigation tertiary" id="sub_tabs">
+			<li class="active"><a href="#" onclick="showSubTab('order_fields', this);return false;">Address &amp; Status</a></li>
+			<li><a href="#" onclick="showSubTab('order_accounts', this);return false;">Account Info</a></li>
+			<li><a href="#" onclick="showSubTab('order_items', this);return false;">Order Items</a></li>
+			<li><a href="#" onclick="showSubTab('order_notes', this);return false;">Notes</a></li>
+		</ul>
+	</div>
+	<div class="clear">&nbsp;</div>
+
+	<%= form_tag :action => 'update', :id => @order %>
+
+
+	<!-- ORDER FIELDS -->
+	<div id="order_fields">
+		<div class="floatHalf">
+			<h2>Status</h2>
+			<div class="padLeft">
+				<p>
+				<%= select("order", :order_status_code_id,
+								 OrderStatusCode.find(:all, :order => 'id').map {|o| [o.name, o.id]} ) %>
+				</p>
+			</div>
+		</div>
+		<div class="floatHalf">
+			<%= render(:partial => 'user') %>
+		</div>
+		<div class="clear">&nbsp;</div>
+
+		<h2>Billing Address</h2>
+		<%= render(:partial => 'address', :locals => {:address_type => 'billing', :show_obsolete => true}) %>
+
+		<br/>
+		<div class="padLeft">
+			<label><%= check_box_tag("use_separate_shipping_address", 'true', @use_separate_shipping_address, :class => 'inline', :id => 'use_diff_shipping') %> Ship to a different address</label>
+			<br/>
+		</div>
+
+		<div id="shipping_address"
+			style="<%= 'display:none;' if !@use_separate_shipping_address %>">
+			<h2>Shipping Address</h2>
+			<%= render(:partial => 'address', :locals => {:address_type => 'shipping', :show_obsolete => true}) %>
+		</div>
+	<!-- / ORDER FIELDS -->
+	</div>
+
+	<!-- ORDER ACCOUNT -->
+	<div id="order_accounts" style="display:none;">
+		<%= render(:partial => 'account') %>
+	<!-- / ORDER ACCOUNT -->
+	</div>
+
+	<!-- ORDER NOTES -->
+	<div id="order_notes" style="display:none;">
+		<h2>Notes</h2>
+		<div class="padLeft">
+			<% if @order.notes %>
+				<div class="notes">
+					<%= get_markdown(@order.notes) %>
+				</div>
+			<% end %>
+			<%= text_area_tag('order[new_notes]', nil, :cols => 40, :rows => 3, :class => 'textArea notesEdit')  %>
+			<span class="info">
+				<p>
+					Enter any notes here that you'd like to add to this order.
+					<br/>
+					Notes will be saved when you click the <b>Save Order</b> button at the bottom of this page.
+				</p>
+			</span>
+		</div>
+	<!-- / ORDER NOTES -->
+	</div>
+
+	<!-- ORDER ITEMS -->
+	<div id="order_items" style="display:none;">
+		<div class="price" style="margin-top:5px;">Total: <%=h sub_number_to_currency(@order.total) %></div>
+		
+		<% if @order.referer %>
+			<h2>Referer</h2>
+			<div class="padLeft">
+				<p>
+					<%= auto_link(@order.referer)  %>
+				</p>
+			</div>
+			<br/>
+		<% end %>
+
+		<h2>Ship Via</h2>
+		<div class="padLeft">
+			<p>
+			<%= select("order", :order_shipping_type_id,
+							 OrderShippingType.find(:all, :order => 'id').map {|o| [o.name, o.id]} ) %>
+			</p>
+		</div>
+
+		<h2>Order Items</h2>
+
+		<div class="padLeft">
+			<table class="list" cellpadding="0" cellspacing="0">
+				<colgroup>
+					<col/>
+					<col style="width:65px;"/>
+					<col style="width:80px;"/>
+					<col style="width:70px;"/>
+				</colgroup>
+				<tr>
+					<th>Item</th>
+					<th>Quantity</th>
+					<th class="numeric">Price Each</th>
+					<th class="numeric">Total</th>
+				</tr>
+				
+				<!-- PRODUCTS IN THE ORDER -->
+				<% for item in @order.order_line_items %>
+					<tr class="<%= alternate %>">
+						<td><%= item.name %></td>
+						<td class="numeric">
+							<%= @order.get_line_item_quantity(item.id) %>
+							<%# text_field_tag("order[line_items][#{item.id}][quantity]",
+																	@order.get_line_item_quantity(item.id),
+																	{:size => 5, :maxlength => 5, :class => 'numeric'}) %>
+						</td>
+						<td class="numeric"><%= sub_number_to_currency(item.unit_price) %></td>
+						<td class="numeric">
+							<%= sub_number_to_currency(@order.get_line_item_total(item.id)) %>
+						</td>
+					</tr>
+				<% end %>
+				<tr class="footer">
+					<td class="numeric" colspan="3">
+						Shipping Cost
+					</td>
+					<td class="numeric">
+						<%= text_field 'order', 'shipping_cost', :size => '5', :class => 'numeric' %>
+					</td>
+				</tr>
+			</table>
+		</div>
+	<!-- / ORDER ITEMS -->
+	</div>
+
+		<div class="line">&nbsp;</div>
+
+		<div style="float:right;">
+			<%= link_to 'Delete This Order', {:action => 'destroy', :id => @order}, :class => 'action', :confirm => 'Are you sure?', :post => true %>
+		</div>
+		<p>
+			<%= submit_tag "Save This Order", :class => 'button hundred' %>
+		</p>
+	</form>
+</div>
+
+<%= javascript_include_tag 'substruct', 'order', :plugin => 'substruct' %>
+
+
+<div id="right">
+	<%= render(:partial => 'search') %>
+
+	<%= render(:partial => 'order_operations', :locals => {:order => @order})%>
+</div>
+<div class="clear">&nbsp</div>

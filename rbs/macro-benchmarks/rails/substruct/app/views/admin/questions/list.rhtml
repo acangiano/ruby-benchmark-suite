@@ -1,0 +1,43 @@
+<div id="left">
+  <h1><%= @title %></h1>
+
+  <table class="list" cellpadding="0" cellspacing="0">
+    <colgroup>
+      <col/>
+      <col style="width:70px;" />
+      <col style="width:70px;" />
+      <col style="width:60px;" />
+    </colgroup>
+    <tr>
+      <th>Question</th>
+      <th>Created</th>
+      <th>FAQ Rank</th>
+      <th>Viewed</th>
+    </tr>
+
+  <% if @questions.length > 0 then %>
+    <% for question in @questions %>
+    <tr class="<%= alternate %>">
+      <td><%= link_to(h(question.short_question), :action => 'edit', :id => question) %></td>
+      <td><%= question.created_on.strftime("%m/%d/%y %I:%M %p") %></td>
+      <td class="numeric"><%=h question.rank %></td>
+      <td class="numeric"><%=h question.times_viewed %></td>
+      <!--
+      <td><%= link_to 'Show', :action => 'show', :id => question %></td>
+      <td><%= link_to 'Edit', :action => 'edit', :id => question %></td>
+      <td><%= link_to 'Destroy', { :action => 'destroy', :id => question }, :confirm => 'Are you sure?' %></td>
+      -->
+    </tr>
+    <% end %>
+  <% else %>
+    <tr>
+      <td colspan="4">No questions have been asked yet.</td>
+    </tr>
+  <% end %>
+  </table>
+
+  <!-- PAGINATION -->
+  <%= will_paginate @questions %>
+</div>
+
+<%= render(:partial => 'right_side') %>

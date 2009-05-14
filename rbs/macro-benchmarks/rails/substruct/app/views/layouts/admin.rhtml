@@ -1,0 +1,92 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+	<title><%=
+		if @title then
+			h @title
+		else
+			h controller.controller_name
+		end
+		-%> : Substruct ADMIN</title>
+	<%= javascript_include_tag :defaults, :cache => 'default' %>
+  <%= javascript_include_tag 'substruct', 'subModal', :plugin => 'substruct', :cache => 'substruct_cache' %>
+	<%= stylesheet_link_tag 'admin', 'subModal', :plugin => 'substruct', :cache => 'substruct_admin' %>
+	<%= yield :header %>
+</head>
+<body>
+
+<% if flash[:notice] -%>
+	<div class="" id="flash" style="display:none;">
+		<p>
+			<%= flash[:notice] %>
+		</p>
+		<p>
+		<a href="#" class="action" onmousedown="new Effect.BlindUp($('flash'))">Close</a>
+		</p>
+	</div>
+	<script type="text/javascript">
+		 new Effect.BlindDown($("flash"));
+	</script>
+<% end -%>
+
+<div id="container">
+
+	<div id="logo">
+		&nbsp;
+		<div id="version_number">v<%= Substruct::Version::STRING %></div>
+	</div>
+
+	<div id="navigation">
+		<ul class="navigation">
+			<li class="<%= @cname == 'orders' ? 'active' : '' %>">
+				<a href="/admin/orders">Orders</a>
+			</li>
+			<li class="<%= @cname == 'products' ? 'active' : '' %>">
+				<%= link_to_section "Products", :controller=>"/admin/products" rescue nil %>
+			</li>
+			<li class="<%= @cname == 'promotions' ? 'active' : '' %>">
+				<%= link_to_section "Promotions", :controller=>"/admin/promotions" rescue nil %>
+			</li>
+			<li class="<%= @cname == 'questions' ? 'active' : '' %>">
+				<%= link_to_section "Questions", :controller=>"/admin/questions" rescue nil %>
+			</li>
+			<li class="<%= @cname == 'content_nodes' ? 'active' : '' %>">
+				<%= link_to_section "Content", :controller=>"/admin/content_nodes" rescue nil %>
+			</li>
+			<li class="<%= @cname == 'files' ? 'active' : '' %>">
+				<%= link_to_section "Files", :controller=>"/admin/files" rescue nil %>
+			</li>
+		  <li class="<%= @cname == 'users' ? 'active' : '' %>">
+				<%= link_to_section "Users &amp; Customers", :controller=>"/admin/users" rescue nil %>
+			</li>
+		</ul>
+	</div>
+
+	<div id="header">
+		<div id="global_nav"> 
+			<div style="margin-bottom:10px;">
+			  <span style="text-transform:capitalize;"><%= current_user_notice rescue nil %></span>
+			  <br/>
+			  <span class="user_id"><%=h User.find(session[:user]).login %> - <%=h request.env["SERVER_NAME"] %></span>
+			</div>
+			<a href="/">Public site</a> -
+			<a href="/admin/preferences/">Preferences</a> - 
+			<a href="http://code.google.com/p/substruct/wiki/HelpUsage" class="submodal-800-600">Online Help</a> -
+			<a href="http://dev.subimage.com/projects/substruct/">About Substruct</a>
+		</div>
+	</div>
+
+	<!-- content body -->
+	<div id="contentBody">
+
+		<%= yield %>
+
+	<!-- end content body -->
+	</div>
+
+<!-- end container -->
+</div>
+
+</body>
+</html>

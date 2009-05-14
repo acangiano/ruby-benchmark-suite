@@ -1,0 +1,13 @@
+<%
+# Tag names are passed in so we can generate a view link that includes
+# our tag breadcrumb navigation.
+if tag_names then
+  link_to_tags = tag_names.clone
+  link_to_tags << tag_link.name
+else
+  link_to_tags = tag_link.name
+end
+%>
+<%= link_to h(tag_link.name), :controller => 'store', :action => 'show_by_tags', :tags => link_to_tags %>
+<span class="info">(<%= pluralize(tag_link.product_count, 'item') %>)</span>
+<br/>

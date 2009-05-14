@@ -1,0 +1,154 @@
+<% content_for :header do %>
+	<style type="text/css">
+		.user_upload {
+			width: 90px;
+			overflow: hidden;
+			float: left;
+			text-align: center;
+			margin-right: 5px;
+			margin-bottom: 10px;
+			border: 1px solid #ccc;
+			padding: 5px;
+		}
+		.user_upload .image {
+			height: 60px;
+		}
+		.user_upload .delete_icon {
+			position: absolute;
+			z-index: 20;
+			margin-left: -10px;
+			margin-top: -10px;
+		}
+		#upload_container {
+			margin-bottom:25px;
+		}
+	</style>
+	
+	<script language="javascript">
+		function status(file_id) {
+			$('trash_'+file_id).hide();
+			$('spin_'+file_id).show();
+		}
+		function deleteFile(file_id) {
+			new Effect.Fade($('file_'+file_id));
+		}
+		function showUploadArea() {
+			new Effect.Appear($('upload_container'));
+			$('show_upload_button').hide();
+			$('hide_upload_button').show();
+		}
+		function hideUploadArea() {
+			new Effect.Fade($('upload_container'));
+			$('hide_upload_button').hide();
+			$('show_upload_button').show();
+		}
+	</script>
+<% end %>
+
+<div id="left"><!-- upload files -->
+	<div id="upload_container" style="display:none;">
+		<h1>Upload New Files</h1>
+		<%= form_tag({:action => 'upload'}, :multipart => true) %>
+			<%= 
+				render :partial => '/shared/multiple_upload',
+					:locals => {
+						:name => 'file',
+						:input_size => '30'
+					}
+			%>
+			<%= submit_tag 'Upload Files', :class => 'button' %>
+		</form>
+	</div>
+
+	<h1 style="margin-top:0px;"><%=h @title %></h1>
+	
+	<ul class="navigation secondary">
+		<li>
+			<% if !params[:sort].nil? && params[:sort] == 'name' %>
+				<%=
+					link_to(
+						'Sort Newest to Oldest',
+						:action => 'index',
+						:key => params[:key],
+						:sort => 'date'
+					)
+				%>
+			<% else %>
+				Sorted Newest to Oldest
+			<% end %>
+		</li>
+		<li>
+			<% if params[:sort] != 'name' %>
+				<%=
+					link_to(
+						'Sort A-Z',
+						:action => 'index',
+						:key => params[:key],
+						:sort => 'name'
+					)
+				%>
+			<% else %>
+				Sorted A-Z
+			<% end %>
+		</li>
+	</ul>
+
+	<%= will_paginate @files %>
+	<br/>
+	
+	<% if @files.size == 0 %>
+		<div class="content_pad">
+			<p>
+				No files to show.
+			</p>
+		</div>
+	<% end %>
+
+	<% for @file in @files do %>
+		<%= render :partial => 'file' %>
+	<% end %>
+	<div class="clear">&nbsp;</div>
+	
+	<br/>
+	<%= will_paginate @files %>
+</div>
+
+<!-- right side -->
+<div id="right">
+	<br/>
+	<a href="#" onclick="showUploadArea();" class="button" id="show_upload_button">Upload New Files</a>
+	<a href="#" onclick="hideUploadArea();" class="button cancel" style="display:none;" id="hide_upload_button">Cancel Uploading Files</a>
+	<div class="clear">&nbsp;</div>
+	
+	<h1>View Files by Type</h1>
+	<ul>
+		<li>
+			<%= 
+				link_to_unless_current(
+					'All Files',
+					:action => 'index'
+				)
+			%>
+		</li>
+		<li>
+			<%= 
+				link_to_unless_current(
+					'Images',
+					:action => 'index',
+					:key => 'Image'
+				)
+			%>
+		</li>
+		<li>
+			<%= 
+				link_to_unless_current(
+					'Others',
+					:action => 'index',
+					:key => 'Asset'
+				)
+			%>
+		</li>
+	</ul>
+</div>
+
+<div class="clear">&nbsp;</div>

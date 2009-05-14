@@ -1,0 +1,21 @@
+<h2>Payment Information</h2>
+
+<div class="padLeft">
+
+	<div class="floatHalf">
+		<%= make_label('Card Number') %>
+		<div class="padLeft">
+			<%= @order_account.cc_number_last_four %>
+		</div>
+	</div>
+
+	<div class="floatHalf">
+		<%= make_label('Expiration Date') %>
+		<div class="padLeft">
+			<div class="float">
+				<%= @order_account.expiration_month %> / <%= @order_account.expiration_year %>
+			</div>
+		</div>
+	</div>
+	
+</div>

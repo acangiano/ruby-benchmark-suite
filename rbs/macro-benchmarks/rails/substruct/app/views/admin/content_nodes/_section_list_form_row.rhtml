@@ -1,0 +1,21 @@
+<% section = section_list_form_row %>
+<% row_class = alternate() %>
+<tr class="<%= row_class %> <%= 'selected' if content_node.sections.include?(section)%>">
+	<td>
+		<%= check_box_tag("content_node[sections][]", section.id, content_node.sections.include?(section)) %>
+	</td>
+	<td colspan="2">
+		<%=h section.name %>
+	</td>
+</tr>
+<% for child in section.children do %>
+	<tr class="<%= row_class %> <%= 'selected' if content_node.sections.include?(child)%>">
+		<td>&nbsp;</td>
+		<td>
+			<%= check_box_tag("content_node[sections][]", child.id, content_node.sections.include?(child)) %>
+		</td>
+		<td>
+			<%=h child.name %>
+		</td>
+	</tr>
+<% end %>

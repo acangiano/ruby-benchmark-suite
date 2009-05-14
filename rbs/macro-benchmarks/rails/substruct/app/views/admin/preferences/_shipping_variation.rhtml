@@ -1,0 +1,33 @@
+<div class="variation">
+	<%
+		svid = shipping_variation.id
+	%>
+	<!-- remove link -->
+	<div style="float:right;margin-top:20px;">
+		<%= 
+			link_to_remote image_tag("icons/png-24/16-em-cross.png", :id => "trash_#{svid}", :plugin => 'substruct', :alt => 'Delete'),
+	    	{
+					:url => { :action => "remove_shipping_variation_ajax", :id => svid },
+					:loading => "$('remove_shipping_var_link_#{svid}').hide(); $('variation_indicator_#{svid}').show();",
+	    		:complete => "$('remove_shipping_var_link_#{svid}').up('.variation').remove();"
+				},
+				:id => "remove_shipping_var_link_#{svid}"
+		%>
+		<%= image_tag("/indicator.gif", :plugin => 'substruct', :style => 'display:none;', :id => "variation_indicator_#{svid}") %>
+	</div>
+	
+	<!-- START OF FIELDS -->
+	<div class="float">
+		<%= make_label('Min Weight', true) %>
+		<%= text_field_tag("shipping_types[#{sid}][weights][][min_weight]", shipping_variation.min_weight, :class => 'textInput numeric', :size => 7, :onfocus => 'this.select();')  %> lbs
+	</div>
+	<div class="float">
+		<%= make_label('Max Weight', true) %>
+		<%= text_field_tag("shipping_types[#{sid}][weights][][max_weight]", shipping_variation.max_weight, :class => 'textInput numeric', :size => 7, :onfocus => 'this.select();')  %> lbs
+	</div>
+	<div class="float">
+		<%= make_label('Price', true) %>
+		<%= text_field_tag("shipping_types[#{sid}][weights][][price]", shipping_variation.price, :class => 'textInput numeric', :size => 6, :onfocus => 'this.select();')  %>
+	</div>
+	<div class="clear"></div>
+</div>

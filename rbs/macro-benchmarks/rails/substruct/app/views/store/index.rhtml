@@ -1,0 +1,43 @@
+<div id="fullContent">
+	<% if @viewing_tags == nil then %>
+  	<h1>Store</h1>
+	<% else %>
+		<h1>
+			<a href="/store">Store</a></a> &gt;
+			<%
+				# Show breadcrumb navigation for store
+				tag_name_list = Array.new
+				i = 0
+				for tag in @tag_names
+					tag_name_list << tag
+			%>
+				<% if i > 0 then %>&gt;<% end %>
+				<%= link_to tag, :controller => 'store', :action => 'show_by_tags', :tags => tag_name_list %>
+
+			<%
+				i += 1
+				end
+			%>
+		</h1>
+	<% end %>
+	
+	<%= will_paginate @products %>
+
+	<!-- PRODUCTS LIST -->
+	<%= render :partial => 'product', :collection => @products %>
+
+
+  <% if @products.length == 0 then %>
+    <p>
+      Sorry, no products to show in this view.
+    </p>
+  <% end %>
+
+	<%= will_paginate @products %>
+
+  <br/>
+	<!-- takes up space so we can see the bottom content on this page -->
+	<div id="bottomSpacer">&nbsp;</div>
+</div>
+
+<div class="clear">&nbsp;</div>

@@ -1,0 +1,8 @@
+<p>
+	<input type="text" class="textInput" id="<%= input_id %>"
+		name="product[related_product_ids][]" 
+		value="<%= relative.suggestion_name if relative %>" 
+		onfocus="this.select();"
+	/>
+	<%= javascript_tag("new Autocompleter.Local('#{input_id}', 'product_lookup_auto_complete', items);") %>
+</p>

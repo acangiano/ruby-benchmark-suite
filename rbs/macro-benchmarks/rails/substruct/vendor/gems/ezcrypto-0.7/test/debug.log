@@ -1,0 +1,1920 @@
+# Logfile created on Mon Jun 26 23:08:41 CEST 2006 by logger.rb/1.5.2.7
+  [4;36;1mAsset Columns (0.008388)[0m   [0;1mSHOW FIELDS FROM assets[0m
+  [4;35;1mSQL (0.007744)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.001147)[0m   [0;1mINSERT INTO assets (`updated_at`, `title`, `created_at`) VALUES('2006-06-26 23:08:42', x'9e98fee657d4d507013994fabe456bd5', '2006-06-26 23:08:42')[0m
+  [4;35;1mSQL (0.000677)[0m   [0mCOMMIT[0m
+  [4;36;1mCap Columns (0.016698)[0m   [0;1mSHOW FIELDS FROM caps[0m
+  [4;35;1mSQL (0.001026)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.001033)[0m   [0;1mINSERT INTO caps (`updated_at`, `key_hash`, `shared_key`, `key`, `asset_id`, `created_at`, `email`) VALUES('2006-06-26 23:08:42', NULL, NULL, NULL, 67, '2006-06-26 23:08:42', 'pelle@neubia.com')[0m
+  [4;35;1mSQL (0.000552)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000506)[0m   [0;1mBEGIN[0m
+  [4;35;1mCap Update (0.001911)[0m   [0mUPDATE caps SET `created_at` = '2006-06-26 23:08:42', `key_hash` = '1568bd30ba9bd654d7afd8948304dde6b2caa7fd', `key` = NULL, `asset_id` = 67, `email` = 'pelle@neubia.com', `shared_key` = x'8bbdc3964a7cbe937101ca8cf774f7fe403a3e243d0c68f2042b7d48dac8e4ed', `updated_at` = '2006-06-26 23:08:42' WHERE id = 87[0m
+  [4;36;1mSQL (0.000556)[0m   [0;1mCOMMIT[0m
+  [4;35;1mCap Load (0.002457)[0m   [0mSELECT * FROM caps WHERE (caps.`key_hash` = '1568bd30ba9bd654d7afd8948304dde6b2caa7fd' ) LIMIT 1[0m
+  [4;36;1mAsset Load (0.001748)[0m   [0;1mSELECT * FROM assets WHERE (assets.id = 67) LIMIT 1[0m
+  [4;35;1mAssetRaw Load (0.002112)[0m   [0mSELECT * FROM assets WHERE (assets.id = 67) LIMIT 1[0m
+  [4;36;1mAssetRaw Columns (0.014849)[0m   [0;1mSHOW FIELDS FROM assets[0m
+  [4;35;1mSQL (0.000775)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.001160)[0m   [0;1mINSERT INTO caps (`updated_at`, `key_hash`, `shared_key`, `key`, `asset_id`, `created_at`, `email`) VALUES('2006-06-26 23:08:42', NULL, NULL, NULL, 67, '2006-06-26 23:08:42', 'bob@bob.com')[0m
+  [4;35;1mSQL (0.000532)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000631)[0m   [0;1mBEGIN[0m
+  [4;35;1mCap Update (0.001192)[0m   [0mUPDATE caps SET `created_at` = '2006-06-26 23:08:42', `key_hash` = 'a80ad191c09d4c2b673461436d3d184e42789b92', `key` = NULL, `asset_id` = 67, `email` = 'bob@bob.com', `shared_key` = x'82f7ba06662e9c4a8d69e8663f685a2de34b1ba7bf319e14e3ccbc06840db9ed', `updated_at` = '2006-06-26 23:08:42' WHERE id = 88[0m
+  [4;36;1mSQL (0.000567)[0m   [0;1mCOMMIT[0m
+  [4;35;1mCap Load (0.003083)[0m   [0mSELECT * FROM caps WHERE (caps.`key_hash` = 'a80ad191c09d4c2b673461436d3d184e42789b92' ) LIMIT 1[0m
+  [4;36;1mAsset Load (0.001744)[0m   [0;1mSELECT * FROM assets WHERE (assets.id = 67) LIMIT 1[0m
+  [4;35;1mUser Columns (0.014334)[0m   [0mSHOW FIELDS FROM users[0m
+  [4;36;1mSQL (0.000734)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.001297)[0m   [0mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;36;1mSQL (0.000589)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSecret Load (0.001915)[0m   [0mSELECT * FROM secrets WHERE (secrets.user_id = 544) [0m
+  [4;36;1mSecret Columns (0.032563)[0m   [0;1mSHOW FIELDS FROM secrets[0m
+  [4;35;1mSQL (0.000623)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.001278)[0m   [0;1mINSERT INTO secrets (`name`, `user_id`, `email`) VALUES(NULL, 544, NULL)[0m
+  [4;35;1mSQL (0.000528)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (0.001913)[0m   [0;1mSELECT * FROM users WHERE (users.id = 544) LIMIT 1[0m
+  [4;35;1mSQL (0.069614)[0m   [0mBEGIN[0m
+  [4;36;1mSecret Update (0.057050)[0m   [0;1mUPDATE secrets SET `user_id` = 544, `email` = NULL, `name` = x'c42d49cb44c44d9e9288b5d94c6dda6b' WHERE id = 75[0m
+  [4;35;1mSQL (0.000469)[0m   [0mCOMMIT[0m
+  [4;36;1mChild Load (0.001575)[0m   [0;1mSELECT * FROM children WHERE (children.secret_id = 75) [0m
+  [4;35;1mChild Columns (0.007993)[0m   [0mSHOW FIELDS FROM children[0m
+  [4;36;1mSQL (0.007694)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000757)[0m   [0mINSERT INTO children (`secret_id`, `email`) VALUES(75, NULL)[0m
+  [4;36;1mSQL (0.000372)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000347)[0m   [0mBEGIN[0m
+  [4;36;1mSecret Load (0.001658)[0m   [0;1mSELECT * FROM secrets WHERE (secrets.id = 75) LIMIT 1[0m
+  [4;35;1mUser Load (0.001475)[0m   [0mSELECT * FROM users WHERE (users.id = 544) LIMIT 1[0m
+  [4;36;1mChild Update (0.001034)[0m   [0;1mUPDATE children SET `secret_id` = 75, `email` = 'ﬁPI36Z’ñt;&Ωë(|nF/ªoøx8ñA¿a¯ç' WHERE id = 60[0m
+  [4;35;1mSQL (0.000413)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000335)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000778)[0m   [0mINSERT INTO users (`name`) VALUES('bob')[0m
+  [4;36;1mSQL (0.000501)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000452)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.072586)[0m   [0;1mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;35;1mSQL (0.000446)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000440)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000991)[0m   [0mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;36;1mSQL (0.000503)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000475)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000843)[0m   [0;1mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;35;1mSQL (0.000511)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000485)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000775)[0m   [0mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;36;1mSQL (0.000505)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.011066)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000752)[0m   [0;1mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;35;1mSQL (0.000398)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (0.005141)[0m   [0;1mSELECT * FROM users WHERE (users.id = 550) LIMIT 1[0m
+  [4;35;1mSQL (0.074907)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000738)[0m   [0;1mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;35;1mSQL (0.000395)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000370)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000676)[0m   [0mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;36;1mSQL (0.000403)[0m   [0;1mCOMMIT[0m
+  [4;35;1mUser Load (0.001184)[0m   [0mSELECT * FROM users WHERE (users.id = 552) LIMIT 1[0m
+  [4;36;1mEncUser Columns (0.012070)[0m   [0;1mSHOW FIELDS FROM users[0m
+  [4;35;1mSQL (0.022249)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000759)[0m   [0;1mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;35;1mSQL (0.000368)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000429)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.001092)[0m   [0mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;36;1mSQL (0.000379)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000458)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000688)[0m   [0;1mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;35;1mSQL (0.000370)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.003594)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.001030)[0m   [0mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;36;1mSQL (0.000381)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000461)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.003250)[0m   [0;1mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;35;1mSQL (0.000713)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000383)[0m   [0;1mBEGIN[0m
+  [4;35;1mEncUser Update (0.000966)[0m   [0mUPDATE users SET `name` = 'ÀOÏ≈¨∫hŸ3)”4/õ' WHERE id = 557[0m
+  [4;36;1mSQL (0.000389)[0m   [0;1mCOMMIT[0m
+  [4;35;1mEncUser Load (0.001402)[0m   [0mSELECT * FROM users WHERE (users.id = 557) LIMIT 1[0m
+  [4;36;1mRawUser Load (0.001419)[0m   [0;1mSELECT * FROM users WHERE (users.id = 557) LIMIT 1[0m
+  [4;35;1mRawUser Columns (0.008253)[0m   [0mSHOW FIELDS FROM users[0m
+  [4;36;1mSQL (0.011267)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000794)[0m   [0mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;36;1mSQL (0.000768)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000475)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000713)[0m   [0;1mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;35;1mSQL (0.000394)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (0.001529)[0m   [0;1mSELECT * FROM users WHERE (users.id = 559) LIMIT 1[0m
+  [4;36;1mAsset Columns (0.122398)[0m   [0;1mSHOW FIELDS FROM assets[0m
+  [4;35;1mSQL (0.003768)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.165869)[0m   [0;1mINSERT INTO assets (`updated_at`, `title`, `created_at`) VALUES('2006-07-19 14:30:06', x'ea321f769bbedb5de9c9d936c4cb12d6', '2006-07-19 14:30:06')[0m
+  [4;35;1mSQL (0.000456)[0m   [0mCOMMIT[0m
+  [4;36;1mCap Columns (0.042072)[0m   [0;1mSHOW FIELDS FROM caps[0m
+  [4;35;1mSQL (0.007241)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.008618)[0m   [0;1mINSERT INTO caps (`updated_at`, `key_hash`, `shared_key`, `key`, `asset_id`, `created_at`, `email`) VALUES('2006-07-19 14:30:06', NULL, NULL, NULL, 68, '2006-07-19 14:30:06', 'pelle@neubia.com')[0m
+  [4;35;1mSQL (0.000436)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000527)[0m   [0;1mBEGIN[0m
+  [4;35;1mCap Update (0.001584)[0m   [0mUPDATE caps SET `created_at` = '2006-07-19 14:30:06', `key_hash` = 'f9c991d31301531437c441bcd8f414348d03a079', `key` = NULL, `asset_id` = 68, `email` = 'pelle@neubia.com', `shared_key` = x'41d489f5f8ef1737ffb847ed14c2b79d3af7cbfced92fdb4a26342e70ef8ccfc', `updated_at` = '2006-07-19 14:30:06' WHERE id = 89[0m
+  [4;36;1mSQL (0.000427)[0m   [0;1mCOMMIT[0m
+  [4;35;1mCap Load (0.019398)[0m   [0mSELECT * FROM caps WHERE (caps.`key_hash` = 'f9c991d31301531437c441bcd8f414348d03a079' ) LIMIT 1[0m
+  [4;36;1mAsset Load (0.001687)[0m   [0;1mSELECT * FROM assets WHERE (assets.id = 68) LIMIT 1[0m
+  [4;35;1mAssetRaw Load (0.001928)[0m   [0mSELECT * FROM assets WHERE (assets.id = 68) LIMIT 1[0m
+  [4;36;1mAssetRaw Columns (0.008303)[0m   [0;1mSHOW FIELDS FROM assets[0m
+  [4;35;1mSQL (0.006758)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.001291)[0m   [0;1mINSERT INTO caps (`updated_at`, `key_hash`, `shared_key`, `key`, `asset_id`, `created_at`, `email`) VALUES('2006-07-19 14:30:06', NULL, NULL, NULL, 68, '2006-07-19 14:30:06', 'bob@bob.com')[0m
+  [4;35;1mSQL (0.000415)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000360)[0m   [0;1mBEGIN[0m
+  [4;35;1mCap Update (0.002074)[0m   [0mUPDATE caps SET `created_at` = '2006-07-19 14:30:06', `key_hash` = '65cbaf99de40013ee08780c1823e5cc7e9427b34', `key` = NULL, `asset_id` = 68, `email` = 'bob@bob.com', `shared_key` = x'99b58f82b5f4e021f143d800c8aee6e523498bc4260bdcd51d226b275062dfcc', `updated_at` = '2006-07-19 14:30:06' WHERE id = 90[0m
+  [4;36;1mSQL (0.000428)[0m   [0;1mCOMMIT[0m
+  [4;35;1mCap Load (0.002402)[0m   [0mSELECT * FROM caps WHERE (caps.`key_hash` = '65cbaf99de40013ee08780c1823e5cc7e9427b34' ) LIMIT 1[0m
+  [4;36;1mAsset Load (0.001505)[0m   [0;1mSELECT * FROM assets WHERE (assets.id = 68) LIMIT 1[0m
+  [4;35;1mUser Columns (0.176279)[0m   [0mSHOW FIELDS FROM users[0m
+  [4;36;1mSQL (0.006658)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.013928)[0m   [0mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;36;1mSQL (0.000436)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSecret Load (0.006232)[0m   [0mSELECT * FROM secrets WHERE (secrets.user_id = 560) [0m
+  [4;36;1mSecret Columns (0.008093)[0m   [0;1mSHOW FIELDS FROM secrets[0m
+  [4;35;1mSQL (0.007102)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000961)[0m   [0;1mINSERT INTO secrets (`name`, `user_id`, `email`) VALUES(NULL, 560, NULL)[0m
+  [4;35;1mSQL (0.000410)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (0.001519)[0m   [0;1mSELECT * FROM users WHERE (users.id = 560) LIMIT 1[0m
+  [4;35;1mSQL (0.000480)[0m   [0mBEGIN[0m
+  [4;36;1mSecret Update (0.001119)[0m   [0;1mUPDATE secrets SET `user_id` = 560, `email` = NULL, `name` = x'c42d49cb44c44d9e9288b5d94c6dda6b' WHERE id = 76[0m
+  [4;35;1mSQL (0.000436)[0m   [0mCOMMIT[0m
+  [4;36;1mChild Load (0.034930)[0m   [0;1mSELECT * FROM children WHERE (children.secret_id = 76) [0m
+  [4;35;1mChild Columns (0.008565)[0m   [0mSHOW FIELDS FROM children[0m
+  [4;36;1mSQL (0.006693)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000800)[0m   [0mINSERT INTO children (`secret_id`, `email`) VALUES(76, NULL)[0m
+  [4;36;1mSQL (0.000688)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000379)[0m   [0mBEGIN[0m
+  [4;36;1mSecret Load (0.002081)[0m   [0;1mSELECT * FROM secrets WHERE (secrets.id = 76) LIMIT 1[0m
+  [4;35;1mUser Load (0.001388)[0m   [0mSELECT * FROM users WHERE (users.id = 560) LIMIT 1[0m
+  [4;36;1mChild Update (0.000956)[0m   [0;1mUPDATE children SET `secret_id` = 76, `email` = 'ﬁPI36Z’ñt;&Ωë(|nF/ªoøx8ñA¿a¯ç' WHERE id = 61[0m
+  [4;35;1mSQL (0.000427)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000325)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000715)[0m   [0mINSERT INTO users (`name`) VALUES('bob')[0m
+  [4;36;1mSQL (0.000502)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000795)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.001039)[0m   [0;1mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;35;1mSQL (0.000419)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000437)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000712)[0m   [0mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;36;1mSQL (0.000494)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000428)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.001013)[0m   [0;1mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;35;1mSQL (0.000397)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000451)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.003872)[0m   [0mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;36;1mSQL (0.000425)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000437)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000697)[0m   [0;1mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;35;1mSQL (0.000749)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (0.001268)[0m   [0;1mSELECT * FROM users WHERE (users.id = 566) LIMIT 1[0m
+  [4;35;1mSQL (0.000484)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.001166)[0m   [0;1mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;35;1mSQL (0.000403)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000367)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000917)[0m   [0mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;36;1mSQL (0.000540)[0m   [0;1mCOMMIT[0m
+  [4;35;1mUser Load (0.001214)[0m   [0mSELECT * FROM users WHERE (users.id = 568) LIMIT 1[0m
+  [4;36;1mEncUser Columns (0.011722)[0m   [0;1mSHOW FIELDS FROM users[0m
+  [4;35;1mSQL (0.006778)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.003122)[0m   [0;1mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;35;1mSQL (0.000419)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000433)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.001564)[0m   [0mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;36;1mSQL (0.000474)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.009263)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000999)[0m   [0;1mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;35;1mSQL (0.000428)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000530)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000821)[0m   [0mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;36;1mSQL (0.000385)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000466)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000737)[0m   [0;1mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;35;1mSQL (0.000368)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000596)[0m   [0;1mBEGIN[0m
+  [4;35;1mEncUser Update (0.001114)[0m   [0mUPDATE users SET `name` = 'ŒT¿ná‰O%`	´Œ' WHERE id = 573[0m
+  [4;36;1mSQL (0.000407)[0m   [0;1mCOMMIT[0m
+  [4;35;1mEncUser Load (0.001269)[0m   [0mSELECT * FROM users WHERE (users.id = 573) LIMIT 1[0m
+  [4;36;1mRawUser Load (0.003733)[0m   [0;1mSELECT * FROM users WHERE (users.id = 573) LIMIT 1[0m
+  [4;35;1mRawUser Columns (0.013586)[0m   [0mSHOW FIELDS FROM users[0m
+  [4;36;1mSQL (0.000795)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000916)[0m   [0mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;36;1mSQL (0.000386)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000395)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.001061)[0m   [0;1mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;35;1mSQL (0.000410)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (0.001295)[0m   [0;1mSELECT * FROM users WHERE (users.id = 575) LIMIT 1[0m
+  [4;36;1mAsset Columns (0.306289)[0m   [0;1mSHOW FIELDS FROM assets[0m
+  [4;35;1mSQL (0.000513)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.219693)[0m   [0;1mINSERT INTO assets (`updated_at`, `title`, `created_at`) VALUES('2006-08-09 17:18:10', x'b8bc4e16688e7b28a2dbcdeee8d5a0ae', '2006-08-09 17:18:10')[0m
+  [4;35;1mSQL (0.000448)[0m   [0mCOMMIT[0m
+  [4;36;1mCap Columns (0.107095)[0m   [0;1mSHOW FIELDS FROM caps[0m
+  [4;35;1mSQL (0.002826)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.013048)[0m   [0;1mINSERT INTO caps (`updated_at`, `key_hash`, `shared_key`, `key`, `asset_id`, `created_at`, `email`) VALUES('2006-08-09 17:18:11', NULL, NULL, NULL, 69, '2006-08-09 17:18:11', 'pelle@neubia.com')[0m
+  [4;35;1mSQL (0.000674)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000912)[0m   [0;1mBEGIN[0m
+  [4;35;1mCap Update (0.076417)[0m   [0mUPDATE caps SET `created_at` = '2006-08-09 17:18:11', `key_hash` = '956b29cb8f5010c928301aa05027eab2903d659a', `key` = NULL, `asset_id` = 69, `email` = 'pelle@neubia.com', `shared_key` = x'ff916c88972cc53c69e6c9ff08a64e2b7e1e021b16deed8d50be7fcec03b1af4', `updated_at` = '2006-08-09 17:18:11' WHERE id = 91[0m
+  [4;36;1mSQL (0.000518)[0m   [0;1mCOMMIT[0m
+  [4;35;1mCap Load (0.018216)[0m   [0mSELECT * FROM caps WHERE (caps.`key_hash` = '956b29cb8f5010c928301aa05027eab2903d659a' ) LIMIT 1[0m
+  [4;36;1mAsset Load (0.001777)[0m   [0;1mSELECT * FROM assets WHERE (assets.id = 69) LIMIT 1[0m
+  [4;35;1mAssetRaw Load (0.001562)[0m   [0mSELECT * FROM assets WHERE (assets.id = 69) LIMIT 1[0m
+  [4;36;1mAssetRaw Columns (0.005863)[0m   [0;1mSHOW FIELDS FROM assets[0m
+  [4;35;1mSQL (0.005573)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000823)[0m   [0;1mINSERT INTO caps (`updated_at`, `key_hash`, `shared_key`, `key`, `asset_id`, `created_at`, `email`) VALUES('2006-08-09 17:18:11', NULL, NULL, NULL, 69, '2006-08-09 17:18:11', 'bob@bob.com')[0m
+  [4;35;1mSQL (0.000403)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000355)[0m   [0;1mBEGIN[0m
+  [4;35;1mCap Update (0.001189)[0m   [0mUPDATE caps SET `created_at` = '2006-08-09 17:18:11', `key_hash` = 'c1bf9a0d9604267c66c0198b35d797401d5d00c9', `key` = NULL, `asset_id` = 69, `email` = 'bob@bob.com', `shared_key` = x'581dc49c31ba70eee8e0239784c20dfa421d647959588d8cfa31085e17e970ee', `updated_at` = '2006-08-09 17:18:11' WHERE id = 92[0m
+  [4;36;1mSQL (0.000406)[0m   [0;1mCOMMIT[0m
+  [4;35;1mCap Load (0.002890)[0m   [0mSELECT * FROM caps WHERE (caps.`key_hash` = 'c1bf9a0d9604267c66c0198b35d797401d5d00c9' ) LIMIT 1[0m
+  [4;36;1mAsset Load (0.001556)[0m   [0;1mSELECT * FROM assets WHERE (assets.id = 69) LIMIT 1[0m
+  [4;35;1mUser Columns (0.044692)[0m   [0mSHOW FIELDS FROM users[0m
+  [4;36;1mSQL (0.002927)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.038634)[0m   [0mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;36;1mSQL (0.000471)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSecret Load (0.058030)[0m   [0mSELECT * FROM secrets WHERE (secrets.user_id = 576) [0m
+  [4;36;1mSecret Columns (0.022593)[0m   [0;1mSHOW FIELDS FROM secrets[0m
+  [4;35;1mSQL (0.000792)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.001453)[0m   [0;1mINSERT INTO secrets (`name`, `user_id`, `email`) VALUES(NULL, 576, NULL)[0m
+  [4;35;1mSQL (0.000710)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (0.001560)[0m   [0;1mSELECT * FROM users WHERE (users.id = 576) LIMIT 1[0m
+  [4;35;1mSQL (0.000641)[0m   [0mBEGIN[0m
+  [4;36;1mSecret Update (0.001200)[0m   [0;1mUPDATE secrets SET `user_id` = 576, `email` = NULL, `name` = x'c42d49cb44c44d9e9288b5d94c6dda6b' WHERE id = 77[0m
+  [4;35;1mSQL (0.000608)[0m   [0mCOMMIT[0m
+  [4;36;1mChild Load (0.045763)[0m   [0;1mSELECT * FROM children WHERE (children.secret_id = 77) [0m
+  [4;35;1mChild Columns (0.013091)[0m   [0mSHOW FIELDS FROM children[0m
+  [4;36;1mSQL (0.000694)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.001213)[0m   [0mINSERT INTO children (`secret_id`, `email`) VALUES(77, NULL)[0m
+  [4;36;1mSQL (0.000685)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000591)[0m   [0mBEGIN[0m
+  [4;36;1mSecret Load (0.002500)[0m   [0;1mSELECT * FROM secrets WHERE (secrets.id = 77) LIMIT 1[0m
+  [4;35;1mUser Load (0.002064)[0m   [0mSELECT * FROM users WHERE (users.id = 576) LIMIT 1[0m
+  [4;36;1mChild Update (0.001211)[0m   [0;1mUPDATE children SET `secret_id` = 77, `email` = 'ﬁPI36Z’ñt;&Ωë(|nF/ªoøx8ñA¿a¯ç' WHERE id = 62[0m
+  [4;35;1mSQL (0.000874)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000647)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.001001)[0m   [0mINSERT INTO users (`name`) VALUES('bob')[0m
+  [4;36;1mSQL (0.000412)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000440)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000768)[0m   [0;1mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;35;1mSQL (0.000472)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000543)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.001040)[0m   [0mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;36;1mSQL (0.000426)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000425)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000727)[0m   [0;1mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;35;1mSQL (0.000819)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000465)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000714)[0m   [0mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;36;1mSQL (0.000501)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000450)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000702)[0m   [0;1mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;35;1mSQL (0.000643)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (0.001505)[0m   [0;1mSELECT * FROM users WHERE (users.id = 582) LIMIT 1[0m
+  [4;35;1mSQL (0.000561)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.003938)[0m   [0;1mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;35;1mSQL (0.000420)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000368)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000898)[0m   [0mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;36;1mSQL (0.000502)[0m   [0;1mCOMMIT[0m
+  [4;35;1mUser Load (0.001779)[0m   [0mSELECT * FROM users WHERE (users.id = 584) LIMIT 1[0m
+  [4;36;1mEncUser Columns (0.016117)[0m   [0;1mSHOW FIELDS FROM users[0m
+  [4;35;1mSQL (0.004772)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000753)[0m   [0;1mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;35;1mSQL (0.000355)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000460)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000716)[0m   [0mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;36;1mSQL (0.000349)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000470)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000779)[0m   [0;1mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;35;1mSQL (0.000360)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.003210)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.001510)[0m   [0mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;36;1mSQL (0.000392)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000426)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000696)[0m   [0;1mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;35;1mSQL (0.000380)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000366)[0m   [0;1mBEGIN[0m
+  [4;35;1mEncUser Update (0.000903)[0m   [0mUPDATE users SET `name` = '˝EU)ØH¨”Áï\"~?F' WHERE id = 589[0m
+  [4;36;1mSQL (0.000855)[0m   [0;1mCOMMIT[0m
+  [4;35;1mEncUser Load (0.001219)[0m   [0mSELECT * FROM users WHERE (users.id = 589) LIMIT 1[0m
+  [4;36;1mRawUser Load (0.001330)[0m   [0;1mSELECT * FROM users WHERE (users.id = 589) LIMIT 1[0m
+  [4;35;1mRawUser Columns (0.005665)[0m   [0mSHOW FIELDS FROM users[0m
+  [4;36;1mSQL (0.003027)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.009308)[0m   [0mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;36;1mSQL (0.001019)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000413)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000690)[0m   [0;1mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;35;1mSQL (0.000382)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (0.003885)[0m   [0;1mSELECT * FROM users WHERE (users.id = 591) LIMIT 1[0m
+  [4;36;1mAsset Columns (0.005661)[0m   [0;1mSHOW FIELDS FROM assets[0m
+  [4;35;1mSQL (0.111175)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.001096)[0m   [0;1mINSERT INTO assets (`updated_at`, `title`, `created_at`) VALUES('2006-08-09 17:20:36', x'e52976e9492927f0fae872bc066cae34', '2006-08-09 17:20:36')[0m
+  [4;35;1mSQL (0.000428)[0m   [0mCOMMIT[0m
+  [4;36;1mCap Columns (0.005763)[0m   [0;1mSHOW FIELDS FROM caps[0m
+  [4;35;1mSQL (0.005854)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.001193)[0m   [0;1mINSERT INTO caps (`updated_at`, `key_hash`, `shared_key`, `key`, `asset_id`, `created_at`, `email`) VALUES('2006-08-09 17:20:36', NULL, NULL, NULL, 70, '2006-08-09 17:20:36', 'pelle@neubia.com')[0m
+  [4;35;1mSQL (0.000436)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000385)[0m   [0;1mBEGIN[0m
+  [4;35;1mCap Update (0.001076)[0m   [0mUPDATE caps SET `created_at` = '2006-08-09 17:20:36', `key_hash` = 'ec7bb7a5a90577681d76b5f2552bd5e7641df314', `key` = NULL, `asset_id` = 70, `email` = 'pelle@neubia.com', `shared_key` = x'8bb93bf746784b7574dcaac4f1d647ae8b5a81e04f126195e3e588572ed95485', `updated_at` = '2006-08-09 17:20:36' WHERE id = 93[0m
+  [4;36;1mSQL (0.000409)[0m   [0;1mCOMMIT[0m
+  [4;35;1mCap Load (0.002725)[0m   [0mSELECT * FROM caps WHERE (caps.`key_hash` = 'ec7bb7a5a90577681d76b5f2552bd5e7641df314' ) LIMIT 1[0m
+  [4;36;1mAsset Load (0.002291)[0m   [0;1mSELECT * FROM assets WHERE (assets.id = 70) LIMIT 1[0m
+  [4;35;1mAssetRaw Load (0.001620)[0m   [0mSELECT * FROM assets WHERE (assets.id = 70) LIMIT 1[0m
+  [4;36;1mAssetRaw Columns (0.005799)[0m   [0;1mSHOW FIELDS FROM assets[0m
+  [4;35;1mSQL (0.002827)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000827)[0m   [0;1mINSERT INTO caps (`updated_at`, `key_hash`, `shared_key`, `key`, `asset_id`, `created_at`, `email`) VALUES('2006-08-09 17:20:36', NULL, NULL, NULL, 70, '2006-08-09 17:20:36', 'bob@bob.com')[0m
+  [4;35;1mSQL (0.000403)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000354)[0m   [0;1mBEGIN[0m
+  [4;35;1mCap Update (0.001354)[0m   [0mUPDATE caps SET `created_at` = '2006-08-09 17:20:36', `key_hash` = '5d511a7db04092dec9116e1d555e3470ee9624bb', `key` = NULL, `asset_id` = 70, `email` = 'bob@bob.com', `shared_key` = x'9ca02590433f8f5d52a2243912fa753efbfc2e035310845db5b8bb3a76c0ab70', `updated_at` = '2006-08-09 17:20:36' WHERE id = 94[0m
+  [4;36;1mSQL (0.000730)[0m   [0;1mCOMMIT[0m
+  [4;35;1mCap Load (0.002816)[0m   [0mSELECT * FROM caps WHERE (caps.`key_hash` = '5d511a7db04092dec9116e1d555e3470ee9624bb' ) LIMIT 1[0m
+  [4;36;1mAsset Load (0.001714)[0m   [0;1mSELECT * FROM assets WHERE (assets.id = 70) LIMIT 1[0m
+  [4;35;1mUser Columns (0.004666)[0m   [0mSHOW FIELDS FROM users[0m
+  [4;36;1mSQL (0.002823)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000793)[0m   [0mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;36;1mSQL (0.000932)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSecret Load (0.002938)[0m   [0mSELECT * FROM secrets WHERE (secrets.user_id = 592) [0m
+  [4;36;1mSecret Columns (0.004846)[0m   [0;1mSHOW FIELDS FROM secrets[0m
+  [4;35;1mSQL (0.003641)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000825)[0m   [0;1mINSERT INTO secrets (`name`, `user_id`, `email`) VALUES(NULL, 592, NULL)[0m
+  [4;35;1mSQL (0.000622)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (0.001597)[0m   [0;1mSELECT * FROM users WHERE (users.id = 592) LIMIT 1[0m
+  [4;35;1mSQL (0.000625)[0m   [0mBEGIN[0m
+  [4;36;1mSecret Update (0.000987)[0m   [0;1mUPDATE secrets SET `user_id` = 592, `email` = NULL, `name` = x'c42d49cb44c44d9e9288b5d94c6dda6b' WHERE id = 78[0m
+  [4;35;1mSQL (0.000419)[0m   [0mCOMMIT[0m
+  [4;36;1mChild Load (0.002048)[0m   [0;1mSELECT * FROM children WHERE (children.secret_id = 78) [0m
+  [4;35;1mChild Columns (0.005762)[0m   [0mSHOW FIELDS FROM children[0m
+  [4;36;1mSQL (0.003059)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000764)[0m   [0mINSERT INTO children (`secret_id`, `email`) VALUES(78, NULL)[0m
+  [4;36;1mSQL (0.003882)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000771)[0m   [0mBEGIN[0m
+  [4;36;1mSecret Load (0.001945)[0m   [0;1mSELECT * FROM secrets WHERE (secrets.id = 78) LIMIT 1[0m
+  [4;35;1mUser Load (0.001709)[0m   [0mSELECT * FROM users WHERE (users.id = 592) LIMIT 1[0m
+  [4;36;1mChild Update (0.001594)[0m   [0;1mUPDATE children SET `secret_id` = 78, `email` = 'ﬁPI36Z’ñt;&Ωë(|nF/ªoøx8ñA¿a¯ç' WHERE id = 63[0m
+  [4;35;1mSQL (0.000432)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000326)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000708)[0m   [0mINSERT INTO users (`name`) VALUES('bob')[0m
+  [4;36;1mSQL (0.000504)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000485)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.005617)[0m   [0;1mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;35;1mSQL (0.000499)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000430)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000833)[0m   [0mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;36;1mSQL (0.000486)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000477)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.001123)[0m   [0;1mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;35;1mSQL (0.000432)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000601)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.001030)[0m   [0mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;36;1mSQL (0.003254)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000442)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.001165)[0m   [0;1mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;35;1mSQL (0.000496)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (0.006821)[0m   [0;1mSELECT * FROM users WHERE (users.id = 598) LIMIT 1[0m
+  [4;35;1mSQL (0.002620)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000783)[0m   [0;1mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;35;1mSQL (0.000405)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000581)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.001234)[0m   [0mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;36;1mSQL (0.000721)[0m   [0;1mCOMMIT[0m
+  [4;35;1mUser Load (0.001139)[0m   [0mSELECT * FROM users WHERE (users.id = 600) LIMIT 1[0m
+  [4;36;1mEncUser Columns (0.011367)[0m   [0;1mSHOW FIELDS FROM users[0m
+  [4;35;1mSQL (0.003351)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000931)[0m   [0;1mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;35;1mSQL (0.000407)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000436)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.001073)[0m   [0mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;36;1mSQL (0.000505)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000427)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.001299)[0m   [0;1mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;35;1mSQL (0.000477)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000642)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.008964)[0m   [0mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;36;1mSQL (0.004886)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000506)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000729)[0m   [0;1mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;35;1mSQL (0.000365)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000916)[0m   [0;1mBEGIN[0m
+  [4;35;1mEncUser Update (0.000883)[0m   [0mUPDATE users SET `name` = 'ä)Ç$Cé»Jm∂·ó:™' WHERE id = 605[0m
+  [4;36;1mSQL (0.000529)[0m   [0;1mCOMMIT[0m
+  [4;35;1mEncUser Load (0.001510)[0m   [0mSELECT * FROM users WHERE (users.id = 605) LIMIT 1[0m
+  [4;36;1mRawUser Load (0.001582)[0m   [0;1mSELECT * FROM users WHERE (users.id = 605) LIMIT 1[0m
+  [4;35;1mRawUser Columns (0.011476)[0m   [0mSHOW FIELDS FROM users[0m
+  [4;36;1mSQL (0.002683)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.001343)[0m   [0mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;36;1mSQL (0.000430)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.001007)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000967)[0m   [0;1mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;35;1mSQL (0.000523)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (0.001287)[0m   [0;1mSELECT * FROM users WHERE (users.id = 607) LIMIT 1[0m
+  [4;36;1mAsset Columns (0.005872)[0m   [0;1mSHOW FIELDS FROM assets[0m
+  [4;35;1mSQL (0.003822)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000838)[0m   [0;1mINSERT INTO assets (`updated_at`, `title`, `created_at`) VALUES('2006-08-09 17:21:41', x'bebc7597fb15f389ba4f9a5c433ecb31', '2006-08-09 17:21:41')[0m
+  [4;35;1mSQL (0.000459)[0m   [0mCOMMIT[0m
+  [4;36;1mCap Columns (0.005637)[0m   [0;1mSHOW FIELDS FROM caps[0m
+  [4;35;1mSQL (0.006491)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.001043)[0m   [0;1mINSERT INTO caps (`updated_at`, `key_hash`, `shared_key`, `key`, `asset_id`, `created_at`, `email`) VALUES('2006-08-09 17:21:41', NULL, NULL, NULL, 71, '2006-08-09 17:21:41', 'pelle@neubia.com')[0m
+  [4;35;1mSQL (0.000581)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000370)[0m   [0;1mBEGIN[0m
+  [4;35;1mCap Update (0.001034)[0m   [0mUPDATE caps SET `created_at` = '2006-08-09 17:21:41', `key_hash` = '36a2b5328c392b289dd50bc7d866e1b1bf3c996e', `key` = NULL, `asset_id` = 71, `email` = 'pelle@neubia.com', `shared_key` = x'db41a447efb1e25ae7ced8eca8b626bba2969b73966a8a342a3d41f9fc97cdd3', `updated_at` = '2006-08-09 17:21:41' WHERE id = 95[0m
+  [4;36;1mSQL (0.000481)[0m   [0;1mCOMMIT[0m
+  [4;35;1mCap Load (0.002669)[0m   [0mSELECT * FROM caps WHERE (caps.`key_hash` = '36a2b5328c392b289dd50bc7d866e1b1bf3c996e' ) LIMIT 1[0m
+  [4;36;1mAsset Load (0.001769)[0m   [0;1mSELECT * FROM assets WHERE (assets.id = 71) LIMIT 1[0m
+  [4;35;1mAssetRaw Load (0.004322)[0m   [0mSELECT * FROM assets WHERE (assets.id = 71) LIMIT 1[0m
+  [4;36;1mAssetRaw Columns (0.006926)[0m   [0;1mSHOW FIELDS FROM assets[0m
+  [4;35;1mSQL (0.000694)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.001080)[0m   [0;1mINSERT INTO caps (`updated_at`, `key_hash`, `shared_key`, `key`, `asset_id`, `created_at`, `email`) VALUES('2006-08-09 17:21:41', NULL, NULL, NULL, 71, '2006-08-09 17:21:41', 'bob@bob.com')[0m
+  [4;35;1mSQL (0.000667)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000566)[0m   [0;1mBEGIN[0m
+  [4;35;1mCap Update (0.001365)[0m   [0mUPDATE caps SET `created_at` = '2006-08-09 17:21:41', `key_hash` = '569920e7c6be47e68a3450ad80c4a991f1b538ed', `key` = NULL, `asset_id` = 71, `email` = 'bob@bob.com', `shared_key` = x'24306dca876c14fca9c79b2c32af0a7fa5059116c86c9e8b22b88b56af23257f', `updated_at` = '2006-08-09 17:21:41' WHERE id = 96[0m
+  [4;36;1mSQL (0.000967)[0m   [0;1mCOMMIT[0m
+  [4;35;1mCap Load (0.006003)[0m   [0mSELECT * FROM caps WHERE (caps.`key_hash` = '569920e7c6be47e68a3450ad80c4a991f1b538ed' ) LIMIT 1[0m
+  [4;36;1mAsset Load (0.002231)[0m   [0;1mSELECT * FROM assets WHERE (assets.id = 71) LIMIT 1[0m
+  [4;35;1mUser Columns (0.007416)[0m   [0mSHOW FIELDS FROM users[0m
+  [4;36;1mSQL (0.000719)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.001057)[0m   [0mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;36;1mSQL (0.000614)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSecret Load (0.002957)[0m   [0mSELECT * FROM secrets WHERE (secrets.user_id = 608) [0m
+  [4;36;1mSecret Columns (0.010055)[0m   [0;1mSHOW FIELDS FROM secrets[0m
+  [4;35;1mSQL (0.000547)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000795)[0m   [0;1mINSERT INTO secrets (`name`, `user_id`, `email`) VALUES(NULL, 608, NULL)[0m
+  [4;35;1mSQL (0.000408)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (0.001693)[0m   [0;1mSELECT * FROM users WHERE (users.id = 608) LIMIT 1[0m
+  [4;35;1mSQL (0.000499)[0m   [0mBEGIN[0m
+  [4;36;1mSecret Update (0.000932)[0m   [0;1mUPDATE secrets SET `user_id` = 608, `email` = NULL, `name` = x'c42d49cb44c44d9e9288b5d94c6dda6b' WHERE id = 79[0m
+  [4;35;1mSQL (0.000428)[0m   [0mCOMMIT[0m
+  [4;36;1mChild Load (0.001641)[0m   [0;1mSELECT * FROM children WHERE (children.secret_id = 79) [0m
+  [4;35;1mChild Columns (0.015215)[0m   [0mSHOW FIELDS FROM children[0m
+  [4;36;1mSQL (0.002919)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000769)[0m   [0mINSERT INTO children (`secret_id`, `email`) VALUES(79, NULL)[0m
+  [4;36;1mSQL (0.000542)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000366)[0m   [0mBEGIN[0m
+  [4;36;1mSecret Load (0.001664)[0m   [0;1mSELECT * FROM secrets WHERE (secrets.id = 79) LIMIT 1[0m
+  [4;35;1mUser Load (0.001390)[0m   [0mSELECT * FROM users WHERE (users.id = 608) LIMIT 1[0m
+  [4;36;1mChild Update (0.001072)[0m   [0;1mUPDATE children SET `secret_id` = 79, `email` = 'ﬁPI36Z’ñt;&Ωë(|nF/ªoøx8ñA¿a¯ç' WHERE id = 64[0m
+  [4;35;1mSQL (0.000448)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000326)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000723)[0m   [0mINSERT INTO users (`name`) VALUES('bob')[0m
+  [4;36;1mSQL (0.000897)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000509)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000839)[0m   [0;1mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;35;1mSQL (0.000516)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000446)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000702)[0m   [0mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;36;1mSQL (0.000472)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000411)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.001504)[0m   [0;1mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;35;1mSQL (0.000423)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.001196)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.001264)[0m   [0mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;36;1mSQL (0.000425)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000419)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000704)[0m   [0;1mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;35;1mSQL (0.000471)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (0.001166)[0m   [0;1mSELECT * FROM users WHERE (users.id = 614) LIMIT 1[0m
+  [4;35;1mSQL (0.000540)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.001126)[0m   [0;1mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;35;1mSQL (0.000952)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000398)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000809)[0m   [0mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;36;1mSQL (0.000394)[0m   [0;1mCOMMIT[0m
+  [4;35;1mUser Load (0.001433)[0m   [0mSELECT * FROM users WHERE (users.id = 616) LIMIT 1[0m
+  [4;36;1mEncUser Columns (0.004841)[0m   [0;1mSHOW FIELDS FROM users[0m
+  [4;35;1mSQL (0.009168)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.001071)[0m   [0;1mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;35;1mSQL (0.000389)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000419)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000678)[0m   [0mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;36;1mSQL (0.000497)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000440)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000682)[0m   [0;1mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;35;1mSQL (0.000350)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.007912)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.004339)[0m   [0mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;36;1mSQL (0.000431)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000591)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.001227)[0m   [0;1mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;35;1mSQL (0.004443)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.001101)[0m   [0;1mBEGIN[0m
+  [4;35;1mEncUser Update (0.000885)[0m   [0mUPDATE users SET `name` = 'JµàJ·öÖ]˛{j¥h' WHERE id = 621[0m
+  [4;36;1mSQL (0.000665)[0m   [0;1mCOMMIT[0m
+  [4;35;1mEncUser Load (0.074475)[0m   [0mSELECT * FROM users WHERE (users.id = 621) LIMIT 1[0m
+  [4;36;1mRawUser Load (0.001500)[0m   [0;1mSELECT * FROM users WHERE (users.id = 621) LIMIT 1[0m
+  [4;35;1mRawUser Columns (0.018373)[0m   [0mSHOW FIELDS FROM users[0m
+  [4;36;1mSQL (0.000442)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.010072)[0m   [0mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;36;1mSQL (0.000435)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000561)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000813)[0m   [0;1mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;35;1mSQL (0.000410)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (0.001403)[0m   [0;1mSELECT * FROM users WHERE (users.id = 623) LIMIT 1[0m
+  [4;36;1mAsset Columns (0.006518)[0m   [0;1mSHOW FIELDS FROM assets[0m
+  [4;35;1mSQL (0.002905)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.002080)[0m   [0;1mINSERT INTO assets (`updated_at`, `title`, `created_at`) VALUES('2006-08-09 17:22:40', x'1f2aa0c104f1dc56803f82f5b5a30f5f', '2006-08-09 17:22:40')[0m
+  [4;35;1mSQL (0.000443)[0m   [0mCOMMIT[0m
+  [4;36;1mCap Columns (0.007079)[0m   [0;1mSHOW FIELDS FROM caps[0m
+  [4;35;1mSQL (0.002991)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.004360)[0m   [0;1mINSERT INTO caps (`updated_at`, `key_hash`, `shared_key`, `key`, `asset_id`, `created_at`, `email`) VALUES('2006-08-09 17:22:40', NULL, NULL, NULL, 72, '2006-08-09 17:22:40', 'pelle@neubia.com')[0m
+  [4;35;1mSQL (0.000425)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000372)[0m   [0;1mBEGIN[0m
+  [4;35;1mCap Update (0.001318)[0m   [0mUPDATE caps SET `created_at` = '2006-08-09 17:22:40', `key_hash` = 'a6f20444dd479b5f3ddb234e43bb45e3654d3d6e', `key` = NULL, `asset_id` = 72, `email` = 'pelle@neubia.com', `shared_key` = x'ddc22f10a491a2739bd94fcd2981aa73f590e71daf6f456f3fb9507f5f6978aa', `updated_at` = '2006-08-09 17:22:40' WHERE id = 97[0m
+  [4;36;1mSQL (0.000862)[0m   [0;1mCOMMIT[0m
+  [4;35;1mCap Load (0.003375)[0m   [0mSELECT * FROM caps WHERE (caps.`key_hash` = 'a6f20444dd479b5f3ddb234e43bb45e3654d3d6e' ) LIMIT 1[0m
+  [4;36;1mAsset Load (0.002192)[0m   [0;1mSELECT * FROM assets WHERE (assets.id = 72) LIMIT 1[0m
+  [4;35;1mAssetRaw Load (0.003255)[0m   [0mSELECT * FROM assets WHERE (assets.id = 72) LIMIT 1[0m
+  [4;36;1mAssetRaw Columns (0.008244)[0m   [0;1mSHOW FIELDS FROM assets[0m
+  [4;35;1mSQL (0.002660)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.001189)[0m   [0;1mINSERT INTO caps (`updated_at`, `key_hash`, `shared_key`, `key`, `asset_id`, `created_at`, `email`) VALUES('2006-08-09 17:22:40', NULL, NULL, NULL, 72, '2006-08-09 17:22:40', 'bob@bob.com')[0m
+  [4;35;1mSQL (0.000429)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000360)[0m   [0;1mBEGIN[0m
+  [4;35;1mCap Update (0.001187)[0m   [0mUPDATE caps SET `created_at` = '2006-08-09 17:22:40', `key_hash` = '1873c22bf9a0f2c0fa5e5deb6290909ab46961af', `key` = NULL, `asset_id` = 72, `email` = 'bob@bob.com', `shared_key` = x'4e3d1374c56a2e76db0a02e4a9db0e937fb11b83b76f589b7e8acb16d953dcff', `updated_at` = '2006-08-09 17:22:40' WHERE id = 98[0m
+  [4;36;1mSQL (0.000427)[0m   [0;1mCOMMIT[0m
+  [4;35;1mCap Load (0.002324)[0m   [0mSELECT * FROM caps WHERE (caps.`key_hash` = '1873c22bf9a0f2c0fa5e5deb6290909ab46961af' ) LIMIT 1[0m
+  [4;36;1mAsset Load (0.002013)[0m   [0;1mSELECT * FROM assets WHERE (assets.id = 72) LIMIT 1[0m
+  [4;35;1mUser Columns (0.005754)[0m   [0mSHOW FIELDS FROM users[0m
+  [4;36;1mSQL (0.003184)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000907)[0m   [0mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;36;1mSQL (0.000483)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSecret Load (0.001998)[0m   [0mSELECT * FROM secrets WHERE (secrets.user_id = 624) [0m
+  [4;36;1mSecret Columns (0.008332)[0m   [0;1mSHOW FIELDS FROM secrets[0m
+  [4;35;1mSQL (0.000568)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.001275)[0m   [0;1mINSERT INTO secrets (`name`, `user_id`, `email`) VALUES(NULL, 624, NULL)[0m
+  [4;35;1mSQL (0.000494)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (0.001514)[0m   [0;1mSELECT * FROM users WHERE (users.id = 624) LIMIT 1[0m
+  [4;35;1mSQL (0.000752)[0m   [0mBEGIN[0m
+  [4;36;1mSecret Update (0.000977)[0m   [0;1mUPDATE secrets SET `user_id` = 624, `email` = NULL, `name` = x'c42d49cb44c44d9e9288b5d94c6dda6b' WHERE id = 80[0m
+  [4;35;1mSQL (0.000476)[0m   [0mCOMMIT[0m
+  [4;36;1mChild Load (0.005389)[0m   [0;1mSELECT * FROM children WHERE (children.secret_id = 80) [0m
+  [4;35;1mChild Columns (0.004583)[0m   [0mSHOW FIELDS FROM children[0m
+  [4;36;1mSQL (0.003525)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000944)[0m   [0mINSERT INTO children (`secret_id`, `email`) VALUES(80, NULL)[0m
+  [4;36;1mSQL (0.001152)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000361)[0m   [0mBEGIN[0m
+  [4;36;1mSecret Load (0.002306)[0m   [0;1mSELECT * FROM secrets WHERE (secrets.id = 80) LIMIT 1[0m
+  [4;35;1mUser Load (0.001386)[0m   [0mSELECT * FROM users WHERE (users.id = 624) LIMIT 1[0m
+  [4;36;1mChild Update (0.000981)[0m   [0;1mUPDATE children SET `secret_id` = 80, `email` = 'ﬁPI36Z’ñt;&Ωë(|nF/ªoøx8ñA¿a¯ç' WHERE id = 65[0m
+  [4;35;1mSQL (0.000738)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000371)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.005507)[0m   [0mINSERT INTO users (`name`) VALUES('bob')[0m
+  [4;36;1mSQL (0.000648)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000440)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.010102)[0m   [0;1mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;35;1mSQL (0.000471)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000428)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.001173)[0m   [0mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;36;1mSQL (0.000966)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000423)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000701)[0m   [0;1mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;35;1mSQL (0.000382)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.002693)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.001322)[0m   [0mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;36;1mSQL (0.004580)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000501)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000705)[0m   [0;1mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;35;1mSQL (0.000517)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (0.001279)[0m   [0;1mSELECT * FROM users WHERE (users.id = 630) LIMIT 1[0m
+  [4;35;1mSQL (0.000536)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000770)[0m   [0;1mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;35;1mSQL (0.004693)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000648)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000777)[0m   [0mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;36;1mSQL (0.000386)[0m   [0;1mCOMMIT[0m
+  [4;35;1mUser Load (0.001482)[0m   [0mSELECT * FROM users WHERE (users.id = 632) LIMIT 1[0m
+  [4;36;1mEncUser Columns (0.020719)[0m   [0;1mSHOW FIELDS FROM users[0m
+  [4;35;1mSQL (0.000686)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.001036)[0m   [0;1mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;35;1mSQL (0.000676)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000616)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.009673)[0m   [0mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;36;1mSQL (0.000615)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000711)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000922)[0m   [0;1mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;35;1mSQL (0.000521)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.004913)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.003603)[0m   [0mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;36;1mSQL (0.001128)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000738)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.001020)[0m   [0;1mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;35;1mSQL (0.000668)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.016748)[0m   [0;1mBEGIN[0m
+  [4;35;1mEncUser Update (0.001566)[0m   [0mUPDATE users SET `name` = '3È~ˇ.VV¢*Ná€ﬂ' WHERE id = 637[0m
+  [4;36;1mSQL (0.000855)[0m   [0;1mCOMMIT[0m
+  [4;35;1mEncUser Load (0.001604)[0m   [0mSELECT * FROM users WHERE (users.id = 637) LIMIT 1[0m
+  [4;36;1mRawUser Load (0.001532)[0m   [0;1mSELECT * FROM users WHERE (users.id = 637) LIMIT 1[0m
+  [4;35;1mRawUser Columns (0.005067)[0m   [0mSHOW FIELDS FROM users[0m
+  [4;36;1mSQL (0.002605)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000885)[0m   [0mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;36;1mSQL (0.000434)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000578)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000693)[0m   [0;1mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;35;1mSQL (0.000388)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (0.001171)[0m   [0;1mSELECT * FROM users WHERE (users.id = 639) LIMIT 1[0m
+  [4;36;1mAsset Columns (0.012193)[0m   [0;1mSHOW FIELDS FROM assets[0m
+  [4;35;1mSQL (0.114457)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.001126)[0m   [0;1mINSERT INTO assets (`updated_at`, `title`, `created_at`) VALUES('2006-08-09 17:27:33', x'db7f3b510434c62cbae474ec7638b42b', '2006-08-09 17:27:33')[0m
+  [4;35;1mSQL (0.000609)[0m   [0mCOMMIT[0m
+  [4;36;1mCap Columns (0.009718)[0m   [0;1mSHOW FIELDS FROM caps[0m
+  [4;35;1mSQL (0.000858)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.004174)[0m   [0;1mINSERT INTO caps (`updated_at`, `key_hash`, `shared_key`, `key`, `asset_id`, `created_at`, `email`) VALUES('2006-08-09 17:27:33', NULL, NULL, NULL, 73, '2006-08-09 17:27:33', 'pelle@neubia.com')[0m
+  [4;35;1mSQL (0.000454)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000364)[0m   [0;1mBEGIN[0m
+  [4;35;1mCap Update (0.001328)[0m   [0mUPDATE caps SET `created_at` = '2006-08-09 17:27:33', `key_hash` = 'e9dce8ef1f46898b9139b63d86f929367365ce92', `key` = NULL, `asset_id` = 73, `email` = 'pelle@neubia.com', `shared_key` = x'5546f4a9738e3491daba38829fca4f428468e6993aa13bf4e9314da7272450c9', `updated_at` = '2006-08-09 17:27:33' WHERE id = 99[0m
+  [4;36;1mSQL (0.000422)[0m   [0;1mCOMMIT[0m
+  [4;35;1mCap Load (0.002750)[0m   [0mSELECT * FROM caps WHERE (caps.`key_hash` = 'e9dce8ef1f46898b9139b63d86f929367365ce92' ) LIMIT 1[0m
+  [4;36;1mAsset Load (0.001594)[0m   [0;1mSELECT * FROM assets WHERE (assets.id = 73) LIMIT 1[0m
+  [4;35;1mAssetRaw Load (0.004851)[0m   [0mSELECT * FROM assets WHERE (assets.id = 73) LIMIT 1[0m
+  [4;36;1mAssetRaw Columns (0.005560)[0m   [0;1mSHOW FIELDS FROM assets[0m
+  [4;35;1mSQL (0.002584)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000842)[0m   [0;1mINSERT INTO caps (`updated_at`, `key_hash`, `shared_key`, `key`, `asset_id`, `created_at`, `email`) VALUES('2006-08-09 17:27:33', NULL, NULL, NULL, 73, '2006-08-09 17:27:33', 'bob@bob.com')[0m
+  [4;35;1mSQL (0.000430)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000399)[0m   [0;1mBEGIN[0m
+  [4;35;1mCap Update (0.001378)[0m   [0mUPDATE caps SET `created_at` = '2006-08-09 17:27:33', `key_hash` = '81538dce46938497b377e4567d286590024177f0', `key` = NULL, `asset_id` = 73, `email` = 'bob@bob.com', `shared_key` = x'3fbc4a1799d94d8db06b140385780b9666bf2de04b7de8863d240771fe444cb6', `updated_at` = '2006-08-09 17:27:33' WHERE id = 100[0m
+  [4;36;1mSQL (0.000554)[0m   [0;1mCOMMIT[0m
+  [4;35;1mCap Load (0.007750)[0m   [0mSELECT * FROM caps WHERE (caps.`key_hash` = '81538dce46938497b377e4567d286590024177f0' ) LIMIT 1[0m
+  [4;36;1mAsset Load (0.001622)[0m   [0;1mSELECT * FROM assets WHERE (assets.id = 73) LIMIT 1[0m
+  [4;35;1mUser Columns (0.005424)[0m   [0mSHOW FIELDS FROM users[0m
+  [4;36;1mSQL (0.002464)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000913)[0m   [0mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;36;1mSQL (0.000422)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSecret Load (0.002282)[0m   [0mSELECT * FROM secrets WHERE (secrets.user_id = 640) [0m
+  [4;36;1mSecret Columns (0.005839)[0m   [0;1mSHOW FIELDS FROM secrets[0m
+  [4;35;1mSQL (0.000549)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.001014)[0m   [0;1mINSERT INTO secrets (`name`, `user_id`, `email`) VALUES(NULL, 640, NULL)[0m
+  [4;35;1mSQL (0.000555)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (0.001472)[0m   [0;1mSELECT * FROM users WHERE (users.id = 640) LIMIT 1[0m
+  [4;35;1mSQL (0.000696)[0m   [0mBEGIN[0m
+  [4;36;1mSecret Update (0.001014)[0m   [0;1mUPDATE secrets SET `user_id` = 640, `email` = NULL, `name` = x'c42d49cb44c44d9e9288b5d94c6dda6b' WHERE id = 81[0m
+  [4;35;1mSQL (0.000426)[0m   [0mCOMMIT[0m
+  [4;36;1mChild Load (0.001639)[0m   [0;1mSELECT * FROM children WHERE (children.secret_id = 81) [0m
+  [4;35;1mChild Columns (0.005770)[0m   [0mSHOW FIELDS FROM children[0m
+  [4;36;1mSQL (0.002994)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.003821)[0m   [0mINSERT INTO children (`secret_id`, `email`) VALUES(81, NULL)[0m
+  [4;36;1mSQL (0.000414)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000349)[0m   [0mBEGIN[0m
+  [4;36;1mSecret Load (0.001609)[0m   [0;1mSELECT * FROM secrets WHERE (secrets.id = 81) LIMIT 1[0m
+  [4;35;1mUser Load (0.001406)[0m   [0mSELECT * FROM users WHERE (users.id = 640) LIMIT 1[0m
+  [4;36;1mChild Update (0.001219)[0m   [0;1mUPDATE children SET `secret_id` = 81, `email` = 'ﬁPI36Z’ñt;&Ωë(|nF/ªoøx8ñA¿a¯ç' WHERE id = 66[0m
+  [4;35;1mSQL (0.000414)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000345)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.001263)[0m   [0mINSERT INTO users (`name`) VALUES('bob')[0m
+  [4;36;1mSQL (0.001122)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000418)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000849)[0m   [0;1mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;35;1mSQL (0.000831)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000842)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000975)[0m   [0mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;36;1mSQL (0.000898)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000716)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.001527)[0m   [0;1mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;35;1mSQL (0.000606)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.003018)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.001227)[0m   [0mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;36;1mSQL (0.000593)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000648)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.001429)[0m   [0;1mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;35;1mSQL (0.000641)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (0.001666)[0m   [0;1mSELECT * FROM users WHERE (users.id = 646) LIMIT 1[0m
+  [4;35;1mSQL (0.000892)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.001387)[0m   [0;1mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;35;1mSQL (0.000689)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000582)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000957)[0m   [0mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;36;1mSQL (0.000947)[0m   [0;1mCOMMIT[0m
+  [4;35;1mUser Load (0.001874)[0m   [0mSELECT * FROM users WHERE (users.id = 648) LIMIT 1[0m
+  [4;36;1mEncUser Columns (0.017603)[0m   [0;1mSHOW FIELDS FROM users[0m
+  [4;35;1mSQL (0.000746)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.001025)[0m   [0;1mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;35;1mSQL (0.000539)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000622)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.001335)[0m   [0mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;36;1mSQL (0.000536)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.003688)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.002107)[0m   [0;1mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;35;1mSQL (0.000417)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000662)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.001221)[0m   [0mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;36;1mSQL (0.000686)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000453)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.003606)[0m   [0;1mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;35;1mSQL (0.000426)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.001013)[0m   [0;1mBEGIN[0m
+  [4;35;1mEncUser Update (0.000881)[0m   [0mUPDATE users SET `name` = ' {9˜®*§≈j}â7ä†M' WHERE id = 653[0m
+  [4;36;1mSQL (0.000385)[0m   [0;1mCOMMIT[0m
+  [4;35;1mEncUser Load (0.001213)[0m   [0mSELECT * FROM users WHERE (users.id = 653) LIMIT 1[0m
+  [4;36;1mRawUser Load (0.001749)[0m   [0;1mSELECT * FROM users WHERE (users.id = 653) LIMIT 1[0m
+  [4;35;1mRawUser Columns (0.009413)[0m   [0mSHOW FIELDS FROM users[0m
+  [4;36;1mSQL (0.010989)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.011080)[0m   [0mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;36;1mSQL (0.000426)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000621)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.001017)[0m   [0;1mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;35;1mSQL (0.000507)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (0.001171)[0m   [0;1mSELECT * FROM users WHERE (users.id = 655) LIMIT 1[0m
+  [4;36;1mAsset Columns (0.010641)[0m   [0;1mSHOW FIELDS FROM assets[0m
+  [4;35;1mSQL (0.003505)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.001518)[0m   [0;1mINSERT INTO assets (`updated_at`, `title`, `created_at`) VALUES('2006-08-09 17:29:00', x'd91ccbf26e5faa3ec2a695ca7704c55a', '2006-08-09 17:29:00')[0m
+  [4;35;1mSQL (0.000690)[0m   [0mCOMMIT[0m
+  [4;36;1mCap Columns (0.013331)[0m   [0;1mSHOW FIELDS FROM caps[0m
+  [4;35;1mSQL (0.002875)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.001552)[0m   [0;1mINSERT INTO caps (`updated_at`, `key_hash`, `shared_key`, `key`, `asset_id`, `created_at`, `email`) VALUES('2006-08-09 17:29:00', NULL, NULL, NULL, 74, '2006-08-09 17:29:00', 'pelle@neubia.com')[0m
+  [4;35;1mSQL (0.000396)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000415)[0m   [0;1mBEGIN[0m
+  [4;35;1mCap Update (0.001875)[0m   [0mUPDATE caps SET `created_at` = '2006-08-09 17:29:00', `key_hash` = '823e8e0e0f6c8eac79bda2940b492d3e4c135f86', `key` = NULL, `asset_id` = 74, `email` = 'pelle@neubia.com', `shared_key` = x'8e90f16e5188f36b2928e1c6a5536c042564e699f86e554447dabde803c37dbb', `updated_at` = '2006-08-09 17:29:00' WHERE id = 101[0m
+  [4;36;1mSQL (0.000434)[0m   [0;1mCOMMIT[0m
+  [4;35;1mCap Load (0.002543)[0m   [0mSELECT * FROM caps WHERE (caps.`key_hash` = '823e8e0e0f6c8eac79bda2940b492d3e4c135f86' ) LIMIT 1[0m
+  [4;36;1mAsset Load (0.001718)[0m   [0;1mSELECT * FROM assets WHERE (assets.id = 74) LIMIT 1[0m
+  [4;35;1mAssetRaw Load (0.001644)[0m   [0mSELECT * FROM assets WHERE (assets.id = 74) LIMIT 1[0m
+  [4;36;1mAssetRaw Columns (0.005789)[0m   [0;1mSHOW FIELDS FROM assets[0m
+  [4;35;1mSQL (0.003386)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.001131)[0m   [0;1mINSERT INTO caps (`updated_at`, `key_hash`, `shared_key`, `key`, `asset_id`, `created_at`, `email`) VALUES('2006-08-09 17:29:00', NULL, NULL, NULL, 74, '2006-08-09 17:29:00', 'bob@bob.com')[0m
+  [4;35;1mSQL (0.000442)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.001001)[0m   [0;1mBEGIN[0m
+  [4;35;1mCap Update (0.001026)[0m   [0mUPDATE caps SET `created_at` = '2006-08-09 17:29:00', `key_hash` = '58477e7479d4476d94e6c1cd29d9e77c5b7adc2f', `key` = NULL, `asset_id` = 74, `email` = 'bob@bob.com', `shared_key` = x'eb849d3278fb66323dd0c4a1ff16fc05888481127e9054c49a523936d73701b1', `updated_at` = '2006-08-09 17:29:00' WHERE id = 102[0m
+  [4;36;1mSQL (0.000402)[0m   [0;1mCOMMIT[0m
+  [4;35;1mCap Load (0.002427)[0m   [0mSELECT * FROM caps WHERE (caps.`key_hash` = '58477e7479d4476d94e6c1cd29d9e77c5b7adc2f' ) LIMIT 1[0m
+  [4;36;1mAsset Load (0.001558)[0m   [0;1mSELECT * FROM assets WHERE (assets.id = 74) LIMIT 1[0m
+  [4;35;1mUser Columns (0.004865)[0m   [0mSHOW FIELDS FROM users[0m
+  [4;36;1mSQL (0.006529)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000816)[0m   [0mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;36;1mSQL (0.000405)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSecret Load (0.005749)[0m   [0mSELECT * FROM secrets WHERE (secrets.user_id = 656) [0m
+  [4;36;1mSecret Columns (0.006044)[0m   [0;1mSHOW FIELDS FROM secrets[0m
+  [4;35;1mSQL (0.000802)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.001866)[0m   [0;1mINSERT INTO secrets (`name`, `user_id`, `email`) VALUES(NULL, 656, NULL)[0m
+  [4;35;1mSQL (0.000656)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (0.004483)[0m   [0;1mSELECT * FROM users WHERE (users.id = 656) LIMIT 1[0m
+  [4;35;1mSQL (0.000852)[0m   [0mBEGIN[0m
+  [4;36;1mSecret Update (0.001807)[0m   [0;1mUPDATE secrets SET `user_id` = 656, `email` = NULL, `name` = x'c42d49cb44c44d9e9288b5d94c6dda6b' WHERE id = 82[0m
+  [4;35;1mSQL (0.000715)[0m   [0mCOMMIT[0m
+  [4;36;1mChild Load (0.001673)[0m   [0;1mSELECT * FROM children WHERE (children.secret_id = 82) [0m
+  [4;35;1mChild Columns (0.007214)[0m   [0mSHOW FIELDS FROM children[0m
+  [4;36;1mSQL (0.000795)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.001228)[0m   [0mINSERT INTO children (`secret_id`, `email`) VALUES(82, NULL)[0m
+  [4;36;1mSQL (0.000532)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.001070)[0m   [0mBEGIN[0m
+  [4;36;1mSecret Load (0.002109)[0m   [0;1mSELECT * FROM secrets WHERE (secrets.id = 82) LIMIT 1[0m
+  [4;35;1mUser Load (0.001863)[0m   [0mSELECT * FROM users WHERE (users.id = 656) LIMIT 1[0m
+  [4;36;1mChild Update (0.001188)[0m   [0;1mUPDATE children SET `secret_id` = 82, `email` = 'ﬁPI36Z’ñt;&Ωë(|nF/ªoøx8ñA¿a¯ç' WHERE id = 67[0m
+  [4;35;1mSQL (0.000607)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000588)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.010506)[0m   [0mINSERT INTO users (`name`) VALUES('bob')[0m
+  [4;36;1mSQL (0.000643)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000988)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000940)[0m   [0;1mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;35;1mSQL (0.003584)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000628)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.001299)[0m   [0mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;36;1mSQL (0.000671)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.001039)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.015403)[0m   [0;1mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;35;1mSQL (0.000690)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000666)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.001065)[0m   [0mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;36;1mSQL (0.000648)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000611)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.001504)[0m   [0;1mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;35;1mSQL (0.000625)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (0.001606)[0m   [0;1mSELECT * FROM users WHERE (users.id = 662) LIMIT 1[0m
+  [4;35;1mSQL (0.000820)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000790)[0m   [0;1mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;35;1mSQL (0.002609)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000759)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000820)[0m   [0mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;36;1mSQL (0.000392)[0m   [0;1mCOMMIT[0m
+  [4;35;1mUser Load (0.001152)[0m   [0mSELECT * FROM users WHERE (users.id = 664) LIMIT 1[0m
+  [4;36;1mEncUser Columns (0.009398)[0m   [0;1mSHOW FIELDS FROM users[0m
+  [4;35;1mSQL (0.002692)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.001015)[0m   [0;1mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;35;1mSQL (0.000380)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000563)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.001942)[0m   [0mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;36;1mSQL (0.000475)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000453)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000869)[0m   [0;1mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;35;1mSQL (0.000486)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000464)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000766)[0m   [0mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;36;1mSQL (0.000348)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000885)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000834)[0m   [0;1mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;35;1mSQL (0.000371)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000630)[0m   [0;1mBEGIN[0m
+  [4;35;1mEncUser Update (0.000928)[0m   [0mUPDATE users SET `name` = '^%´ΩnK}àfﬂõX¨Hp3' WHERE id = 669[0m
+  [4;36;1mSQL (0.000411)[0m   [0;1mCOMMIT[0m
+  [4;35;1mEncUser Load (0.001213)[0m   [0mSELECT * FROM users WHERE (users.id = 669) LIMIT 1[0m
+  [4;36;1mRawUser Load (0.001170)[0m   [0;1mSELECT * FROM users WHERE (users.id = 669) LIMIT 1[0m
+  [4;35;1mRawUser Columns (0.004817)[0m   [0mSHOW FIELDS FROM users[0m
+  [4;36;1mSQL (0.009850)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.001042)[0m   [0mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;36;1mSQL (0.000409)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000537)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.001013)[0m   [0;1mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;35;1mSQL (0.000817)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (0.001142)[0m   [0;1mSELECT * FROM users WHERE (users.id = 671) LIMIT 1[0m
+  [4;36;1mAsset Columns (0.005208)[0m   [0;1mSHOW FIELDS FROM assets[0m
+  [4;35;1mSQL (0.003273)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000832)[0m   [0;1mINSERT INTO assets (`updated_at`, `title`, `created_at`) VALUES('2006-08-09 17:29:32', x'7a97b2e945a3bebb6180244726806274', '2006-08-09 17:29:32')[0m
+  [4;35;1mSQL (0.000644)[0m   [0mCOMMIT[0m
+  [4;36;1mCap Columns (0.006485)[0m   [0;1mSHOW FIELDS FROM caps[0m
+  [4;35;1mSQL (0.002934)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.001232)[0m   [0;1mINSERT INTO caps (`updated_at`, `key_hash`, `shared_key`, `key`, `asset_id`, `created_at`, `email`) VALUES('2006-08-09 17:29:32', NULL, NULL, NULL, 75, '2006-08-09 17:29:32', 'pelle@neubia.com')[0m
+  [4;35;1mSQL (0.001243)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000423)[0m   [0;1mBEGIN[0m
+  [4;35;1mCap Update (0.001573)[0m   [0mUPDATE caps SET `created_at` = '2006-08-09 17:29:32', `key_hash` = 'b89ca9c1fab8c0f40e45eb2cae454de8d93ad785', `key` = NULL, `asset_id` = 75, `email` = 'pelle@neubia.com', `shared_key` = x'7d61a7867cdebb2675345ce7c20b0af59f6b1cd97b51e383bfcdc08525d4f071', `updated_at` = '2006-08-09 17:29:32' WHERE id = 103[0m
+  [4;36;1mSQL (0.000445)[0m   [0;1mCOMMIT[0m
+  [4;35;1mCap Load (0.002656)[0m   [0mSELECT * FROM caps WHERE (caps.`key_hash` = 'b89ca9c1fab8c0f40e45eb2cae454de8d93ad785' ) LIMIT 1[0m
+  [4;36;1mAsset Load (0.001542)[0m   [0;1mSELECT * FROM assets WHERE (assets.id = 75) LIMIT 1[0m
+  [4;35;1mAssetRaw Load (0.002081)[0m   [0mSELECT * FROM assets WHERE (assets.id = 75) LIMIT 1[0m
+  [4;36;1mAssetRaw Columns (0.011832)[0m   [0;1mSHOW FIELDS FROM assets[0m
+  [4;35;1mSQL (0.001105)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.001122)[0m   [0;1mINSERT INTO caps (`updated_at`, `key_hash`, `shared_key`, `key`, `asset_id`, `created_at`, `email`) VALUES('2006-08-09 17:29:32', NULL, NULL, NULL, 75, '2006-08-09 17:29:32', 'bob@bob.com')[0m
+  [4;35;1mSQL (0.000603)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000559)[0m   [0;1mBEGIN[0m
+  [4;35;1mCap Update (0.001249)[0m   [0mUPDATE caps SET `created_at` = '2006-08-09 17:29:32', `key_hash` = 'dd51a25bcd84761e7dd332676f41c6758c900f06', `key` = NULL, `asset_id` = 75, `email` = 'bob@bob.com', `shared_key` = x'039a040e8c842f0458a32d9a0d2262f24a265934136732fc8dd96397ed268cf8', `updated_at` = '2006-08-09 17:29:32' WHERE id = 104[0m
+  [4;36;1mSQL (0.000584)[0m   [0;1mCOMMIT[0m
+  [4;35;1mCap Load (0.006539)[0m   [0mSELECT * FROM caps WHERE (caps.`key_hash` = 'dd51a25bcd84761e7dd332676f41c6758c900f06' ) LIMIT 1[0m
+  [4;36;1mAsset Load (0.002247)[0m   [0;1mSELECT * FROM assets WHERE (assets.id = 75) LIMIT 1[0m
+  [4;35;1mUser Columns (0.006991)[0m   [0mSHOW FIELDS FROM users[0m
+  [4;36;1mSQL (0.000704)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.001007)[0m   [0mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;36;1mSQL (0.000626)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSecret Load (0.002087)[0m   [0mSELECT * FROM secrets WHERE (secrets.user_id = 672) [0m
+  [4;36;1mSecret Columns (0.009219)[0m   [0;1mSHOW FIELDS FROM secrets[0m
+  [4;35;1mSQL (0.000942)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.001169)[0m   [0;1mINSERT INTO secrets (`name`, `user_id`, `email`) VALUES(NULL, 672, NULL)[0m
+  [4;35;1mSQL (0.000971)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (0.001805)[0m   [0;1mSELECT * FROM users WHERE (users.id = 672) LIMIT 1[0m
+  [4;35;1mSQL (0.000977)[0m   [0mBEGIN[0m
+  [4;36;1mSecret Update (0.001188)[0m   [0;1mUPDATE secrets SET `user_id` = 672, `email` = NULL, `name` = x'c42d49cb44c44d9e9288b5d94c6dda6b' WHERE id = 83[0m
+  [4;35;1mSQL (0.000624)[0m   [0mCOMMIT[0m
+  [4;36;1mChild Load (0.002246)[0m   [0;1mSELECT * FROM children WHERE (children.secret_id = 83) [0m
+  [4;35;1mChild Columns (0.007255)[0m   [0mSHOW FIELDS FROM children[0m
+  [4;36;1mSQL (0.001009)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.001151)[0m   [0mINSERT INTO children (`secret_id`, `email`) VALUES(83, NULL)[0m
+  [4;36;1mSQL (0.000595)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000508)[0m   [0mBEGIN[0m
+  [4;36;1mSecret Load (0.001902)[0m   [0;1mSELECT * FROM secrets WHERE (secrets.id = 83) LIMIT 1[0m
+  [4;35;1mUser Load (0.005707)[0m   [0mSELECT * FROM users WHERE (users.id = 672) LIMIT 1[0m
+  [4;36;1mChild Update (0.001477)[0m   [0;1mUPDATE children SET `secret_id` = 83, `email` = 'ﬁPI36Z’ñt;&Ωë(|nF/ªoøx8ñA¿a¯ç' WHERE id = 68[0m
+  [4;35;1mSQL (0.000930)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000486)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000924)[0m   [0mINSERT INTO users (`name`) VALUES('bob')[0m
+  [4;36;1mSQL (0.000562)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000981)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.001400)[0m   [0;1mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;35;1mSQL (0.002981)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000676)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000951)[0m   [0mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;36;1mSQL (0.000704)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.011670)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.001500)[0m   [0;1mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;35;1mSQL (0.002593)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000451)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000751)[0m   [0mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;36;1mSQL (0.000501)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000469)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000822)[0m   [0;1mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;35;1mSQL (0.000425)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (0.004413)[0m   [0;1mSELECT * FROM users WHERE (users.id = 678) LIMIT 1[0m
+  [4;35;1mSQL (0.000500)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000744)[0m   [0;1mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;35;1mSQL (0.000435)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000800)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.001367)[0m   [0mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;36;1mSQL (0.000480)[0m   [0;1mCOMMIT[0m
+  [4;35;1mUser Load (0.001497)[0m   [0mSELECT * FROM users WHERE (users.id = 680) LIMIT 1[0m
+  [4;36;1mEncUser Columns (0.009679)[0m   [0;1mSHOW FIELDS FROM users[0m
+  [4;35;1mSQL (0.003532)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.023306)[0m   [0;1mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;35;1mSQL (0.000452)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000440)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000769)[0m   [0mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;36;1mSQL (0.000510)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000437)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000718)[0m   [0;1mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;35;1mSQL (0.013915)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000718)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000716)[0m   [0mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;36;1mSQL (0.000413)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000785)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000706)[0m   [0;1mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;35;1mSQL (0.000385)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000504)[0m   [0;1mBEGIN[0m
+  [4;35;1mEncUser Update (0.004721)[0m   [0mUPDATE users SET `name` = 'QÜ^nÓ@Ó®åÒü¥jO\"' WHERE id = 685[0m
+  [4;36;1mSQL (0.000496)[0m   [0;1mCOMMIT[0m
+  [4;35;1mEncUser Load (0.001464)[0m   [0mSELECT * FROM users WHERE (users.id = 685) LIMIT 1[0m
+  [4;36;1mRawUser Load (0.008991)[0m   [0;1mSELECT * FROM users WHERE (users.id = 685) LIMIT 1[0m
+  [4;35;1mRawUser Columns (0.004841)[0m   [0mSHOW FIELDS FROM users[0m
+  [4;36;1mSQL (0.003143)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000923)[0m   [0mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;36;1mSQL (0.000422)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000368)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000836)[0m   [0;1mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;35;1mSQL (0.004459)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (0.001191)[0m   [0;1mSELECT * FROM users WHERE (users.id = 687) LIMIT 1[0m
+  [4;36;1mAsset Columns (0.220632)[0m   [0;1mSHOW FIELDS FROM assets[0m
+  [4;35;1mSQL (0.002368)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.154206)[0m   [0;1mINSERT INTO assets (`updated_at`, `title`, `created_at`) VALUES('2006-08-25 15:08:30', x'935804d8bf4895d5770067a3132f5e5e', '2006-08-25 15:08:30')[0m
+  [4;35;1mSQL (0.000443)[0m   [0mCOMMIT[0m
+  [4;36;1mCap Columns (0.081561)[0m   [0;1mSHOW FIELDS FROM caps[0m
+  [4;35;1mSQL (0.004149)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.009739)[0m   [0;1mINSERT INTO caps (`updated_at`, `key_hash`, `shared_key`, `key`, `asset_id`, `created_at`, `email`) VALUES('2006-08-25 15:08:30', NULL, NULL, NULL, 76, '2006-08-25 15:08:30', 'pelle@neubia.com')[0m
+  [4;35;1mSQL (0.000416)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.004513)[0m   [0;1mBEGIN[0m
+  [4;35;1mCap Update (0.070576)[0m   [0mUPDATE caps SET `created_at` = '2006-08-25 15:08:30', `key_hash` = 'ebf6b4335e22393464e401b584cc004827e4d475', `key` = NULL, `asset_id` = 76, `email` = 'pelle@neubia.com', `shared_key` = x'2818d82a123ff519840b6914704fb9364d5c3150767260bda466c3395f4a8c0c', `updated_at` = '2006-08-25 15:08:30' WHERE id = 105[0m
+  [4;36;1mSQL (0.000465)[0m   [0;1mCOMMIT[0m
+  [4;35;1mCap Load (0.021869)[0m   [0mSELECT * FROM caps WHERE (caps.`key_hash` = 'ebf6b4335e22393464e401b584cc004827e4d475' ) LIMIT 1[0m
+  [4;36;1mAsset Load (0.001609)[0m   [0;1mSELECT * FROM assets WHERE (assets.id = 76) LIMIT 1[0m
+  [4;35;1mAssetRaw Load (0.001495)[0m   [0mSELECT * FROM assets WHERE (assets.id = 76) LIMIT 1[0m
+  [4;36;1mAssetRaw Columns (0.004502)[0m   [0;1mSHOW FIELDS FROM assets[0m
+  [4;35;1mSQL (0.003558)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.004565)[0m   [0;1mINSERT INTO caps (`updated_at`, `key_hash`, `shared_key`, `key`, `asset_id`, `created_at`, `email`) VALUES('2006-08-25 15:08:30', NULL, NULL, NULL, 76, '2006-08-25 15:08:30', 'bob@bob.com')[0m
+  [4;35;1mSQL (0.001273)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000391)[0m   [0;1mBEGIN[0m
+  [4;35;1mCap Update (0.001085)[0m   [0mUPDATE caps SET `created_at` = '2006-08-25 15:08:30', `key_hash` = '9436fbb1bd366ba8f860a1d71ec2173cc441dd36', `key` = NULL, `asset_id` = 76, `email` = 'bob@bob.com', `shared_key` = x'bacaf3534b8b25eb5b523bc38719a20932e7781cb6bb18a220e9e5677439e918', `updated_at` = '2006-08-25 15:08:30' WHERE id = 106[0m
+  [4;36;1mSQL (0.001535)[0m   [0;1mCOMMIT[0m
+  [4;35;1mCap Load (0.002596)[0m   [0mSELECT * FROM caps WHERE (caps.`key_hash` = '9436fbb1bd366ba8f860a1d71ec2173cc441dd36' ) LIMIT 1[0m
+  [4;36;1mAsset Load (0.001484)[0m   [0;1mSELECT * FROM assets WHERE (assets.id = 76) LIMIT 1[0m
+  [4;35;1mUser Columns (0.024339)[0m   [0mSHOW FIELDS FROM users[0m
+  [4;36;1mSQL (0.003574)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.047800)[0m   [0mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;36;1mSQL (0.000481)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSecret Load (0.049049)[0m   [0mSELECT * FROM secrets WHERE (secrets.user_id = 688) [0m
+  [4;36;1mSecret Columns (0.005376)[0m   [0;1mSHOW FIELDS FROM secrets[0m
+  [4;35;1mSQL (0.003272)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.018252)[0m   [0;1mINSERT INTO secrets (`name`, `user_id`, `email`) VALUES(NULL, 688, NULL)[0m
+  [4;35;1mSQL (0.000806)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (0.001224)[0m   [0;1mSELECT * FROM users WHERE (users.id = 688) LIMIT 1[0m
+  [4;35;1mSQL (0.000462)[0m   [0mBEGIN[0m
+  [4;36;1mSecret Update (0.002027)[0m   [0;1mUPDATE secrets SET `user_id` = 688, `email` = NULL, `name` = x'c42d49cb44c44d9e9288b5d94c6dda6b' WHERE id = 84[0m
+  [4;35;1mSQL (0.000496)[0m   [0mCOMMIT[0m
+  [4;36;1mChild Load (0.038601)[0m   [0;1mSELECT * FROM children WHERE (children.secret_id = 84) [0m
+  [4;35;1mChild Columns (0.005029)[0m   [0mSHOW FIELDS FROM children[0m
+  [4;36;1mSQL (0.003414)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000784)[0m   [0mINSERT INTO children (`secret_id`, `email`) VALUES(84, NULL)[0m
+  [4;36;1mSQL (0.000390)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.008146)[0m   [0mBEGIN[0m
+  [4;36;1mSecret Load (0.008197)[0m   [0;1mSELECT * FROM secrets WHERE (secrets.id = 84) LIMIT 1[0m
+  [4;35;1mUser Load (0.003219)[0m   [0mSELECT * FROM users WHERE (users.id = 688) LIMIT 1[0m
+  [4;36;1mChild Update (0.000942)[0m   [0;1mUPDATE children SET `secret_id` = 84, `email` = 'ﬁPI36Z’ñt;&Ωë(|nF/ªoøx8ñA¿a¯ç' WHERE id = 69[0m
+  [4;35;1mSQL (0.002400)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000679)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000789)[0m   [0mINSERT INTO users (`name`) VALUES('bob')[0m
+  [4;36;1mSQL (0.000649)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.001035)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000714)[0m   [0;1mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;35;1mSQL (0.000375)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000406)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.003236)[0m   [0mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;36;1mSQL (0.000587)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.001005)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000727)[0m   [0;1mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;35;1mSQL (0.012099)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000679)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000875)[0m   [0mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;36;1mSQL (0.000403)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000431)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000702)[0m   [0;1mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;35;1mSQL (0.004185)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (0.007385)[0m   [0;1mSELECT * FROM users WHERE (users.id = 694) LIMIT 1[0m
+  [4;35;1mSQL (0.000884)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000845)[0m   [0;1mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;35;1mSQL (0.000417)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000364)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.005055)[0m   [0mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;36;1mSQL (0.000416)[0m   [0;1mCOMMIT[0m
+  [4;35;1mUser Load (0.001251)[0m   [0mSELECT * FROM users WHERE (users.id = 696) LIMIT 1[0m
+  [4;36;1mEncUser Columns (0.009207)[0m   [0;1mSHOW FIELDS FROM users[0m
+  [4;35;1mSQL (0.003151)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.001181)[0m   [0;1mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;35;1mSQL (0.068101)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000461)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.005162)[0m   [0mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;36;1mSQL (0.000427)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.004026)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000763)[0m   [0;1mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;35;1mSQL (0.000373)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000503)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000842)[0m   [0mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;36;1mSQL (0.001083)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000486)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.001125)[0m   [0;1mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;35;1mSQL (0.000371)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000490)[0m   [0;1mBEGIN[0m
+  [4;35;1mEncUser Update (0.000942)[0m   [0mUPDATE users SET `name` = ']%]–$7ˆñögsØ.›' WHERE id = 701[0m
+  [4;36;1mSQL (0.000649)[0m   [0;1mCOMMIT[0m
+  [4;35;1mEncUser Load (0.001235)[0m   [0mSELECT * FROM users WHERE (users.id = 701) LIMIT 1[0m
+  [4;36;1mRawUser Load (0.001714)[0m   [0;1mSELECT * FROM users WHERE (users.id = 701) LIMIT 1[0m
+  [4;35;1mRawUser Columns (0.019904)[0m   [0mSHOW FIELDS FROM users[0m
+  [4;36;1mSQL (0.004796)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.001283)[0m   [0mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;36;1mSQL (0.000393)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.001189)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.001345)[0m   [0;1mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;35;1mSQL (0.000779)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (0.008308)[0m   [0;1mSELECT * FROM users WHERE (users.id = 703) LIMIT 1[0m
+  [4;36;1mAsset Columns (0.010434)[0m   [0;1mSHOW FIELDS FROM assets[0m
+  [4;35;1mSQL (0.000537)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000840)[0m   [0;1mINSERT INTO assets (`updated_at`, `title`, `created_at`) VALUES('2006-08-25 15:10:08', x'd5e963411cccdbac0e7c0ce7b865de48', '2006-08-25 15:10:08')[0m
+  [4;35;1mSQL (0.000455)[0m   [0mCOMMIT[0m
+  [4;36;1mCap Columns (0.006201)[0m   [0;1mSHOW FIELDS FROM caps[0m
+  [4;35;1mSQL (0.003635)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.001430)[0m   [0;1mINSERT INTO caps (`updated_at`, `key_hash`, `shared_key`, `key`, `asset_id`, `created_at`, `email`) VALUES('2006-08-25 15:10:08', NULL, NULL, NULL, 77, '2006-08-25 15:10:08', 'pelle@neubia.com')[0m
+  [4;35;1mSQL (0.000396)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000374)[0m   [0;1mBEGIN[0m
+  [4;35;1mCap Update (0.001031)[0m   [0mUPDATE caps SET `created_at` = '2006-08-25 15:10:08', `key_hash` = '636abd55e422b0468890331927193cbb9974a2af', `key` = NULL, `asset_id` = 77, `email` = 'pelle@neubia.com', `shared_key` = x'b3085257bae6ce658ec6794fd45af1887f1f3fe36bb00088e561443d82ff024b', `updated_at` = '2006-08-25 15:10:08' WHERE id = 107[0m
+  [4;36;1mSQL (0.000490)[0m   [0;1mCOMMIT[0m
+  [4;35;1mCap Load (0.002501)[0m   [0mSELECT * FROM caps WHERE (caps.`key_hash` = '636abd55e422b0468890331927193cbb9974a2af' ) LIMIT 1[0m
+  [4;36;1mAsset Load (0.003351)[0m   [0;1mSELECT * FROM assets WHERE (assets.id = 77) LIMIT 1[0m
+  [4;35;1mAssetRaw Load (0.001805)[0m   [0mSELECT * FROM assets WHERE (assets.id = 77) LIMIT 1[0m
+  [4;36;1mAssetRaw Columns (0.005972)[0m   [0;1mSHOW FIELDS FROM assets[0m
+  [4;35;1mSQL (0.004547)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000893)[0m   [0;1mINSERT INTO caps (`updated_at`, `key_hash`, `shared_key`, `key`, `asset_id`, `created_at`, `email`) VALUES('2006-08-25 15:10:08', NULL, NULL, NULL, 77, '2006-08-25 15:10:08', 'bob@bob.com')[0m
+  [4;35;1mSQL (0.000433)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000366)[0m   [0;1mBEGIN[0m
+  [4;35;1mCap Update (0.001065)[0m   [0mUPDATE caps SET `created_at` = '2006-08-25 15:10:08', `key_hash` = '0f681d65c3c522df94f3449b5ce4832c3448084a', `key` = NULL, `asset_id` = 77, `email` = 'bob@bob.com', `shared_key` = x'6e8921ddde4fd46a0018341c85b7cf774c15754aa3a7686424bb8be8f49f4e2f', `updated_at` = '2006-08-25 15:10:08' WHERE id = 108[0m
+  [4;36;1mSQL (0.000426)[0m   [0;1mCOMMIT[0m
+  [4;35;1mCap Load (0.002653)[0m   [0mSELECT * FROM caps WHERE (caps.`key_hash` = '0f681d65c3c522df94f3449b5ce4832c3448084a' ) LIMIT 1[0m
+  [4;36;1mAsset Load (0.064246)[0m   [0;1mSELECT * FROM assets WHERE (assets.id = 77) LIMIT 1[0m
+  [4;35;1mUser Columns (0.004891)[0m   [0mSHOW FIELDS FROM users[0m
+  [4;36;1mSQL (0.003927)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000749)[0m   [0mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;36;1mSQL (0.000873)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSecret Load (0.001717)[0m   [0mSELECT * FROM secrets WHERE (secrets.user_id = 704) [0m
+  [4;36;1mSecret Columns (0.011501)[0m   [0;1mSHOW FIELDS FROM secrets[0m
+  [4;35;1mSQL (0.004122)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.002059)[0m   [0;1mINSERT INTO secrets (`name`, `user_id`, `email`) VALUES(NULL, 704, NULL)[0m
+  [4;35;1mSQL (0.000678)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (0.002078)[0m   [0;1mSELECT * FROM users WHERE (users.id = 704) LIMIT 1[0m
+  [4;35;1mSQL (0.000471)[0m   [0mBEGIN[0m
+  [4;36;1mSecret Update (0.000993)[0m   [0;1mUPDATE secrets SET `user_id` = 704, `email` = NULL, `name` = x'c42d49cb44c44d9e9288b5d94c6dda6b' WHERE id = 85[0m
+  [4;35;1mSQL (0.000402)[0m   [0mCOMMIT[0m
+  [4;36;1mChild Load (0.001406)[0m   [0;1mSELECT * FROM children WHERE (children.secret_id = 85) [0m
+  [4;35;1mChild Columns (0.004351)[0m   [0mSHOW FIELDS FROM children[0m
+  [4;36;1mSQL (0.010366)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000865)[0m   [0mINSERT INTO children (`secret_id`, `email`) VALUES(85, NULL)[0m
+  [4;36;1mSQL (0.000367)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000333)[0m   [0mBEGIN[0m
+  [4;36;1mSecret Load (0.002465)[0m   [0;1mSELECT * FROM secrets WHERE (secrets.id = 85) LIMIT 1[0m
+  [4;35;1mUser Load (0.001392)[0m   [0mSELECT * FROM users WHERE (users.id = 704) LIMIT 1[0m
+  [4;36;1mChild Update (0.001526)[0m   [0;1mUPDATE children SET `secret_id` = 85, `email` = 'ﬁPI36Z’ñt;&Ωë(|nF/ªoøx8ñA¿a¯ç' WHERE id = 70[0m
+  [4;35;1mSQL (0.000543)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000324)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.001516)[0m   [0mINSERT INTO users (`name`) VALUES('bob')[0m
+  [4;36;1mSQL (0.000562)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000440)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000718)[0m   [0;1mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;35;1mSQL (0.000377)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.003512)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.014890)[0m   [0mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;36;1mSQL (0.000454)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.001460)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.004650)[0m   [0;1mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;35;1mSQL (0.000409)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000848)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.001152)[0m   [0mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;36;1mSQL (0.000405)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000491)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.004110)[0m   [0;1mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;35;1mSQL (0.000467)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (0.001211)[0m   [0;1mSELECT * FROM users WHERE (users.id = 710) LIMIT 1[0m
+  [4;35;1mSQL (0.000789)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000953)[0m   [0;1mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;35;1mSQL (0.000381)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000406)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000978)[0m   [0mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;36;1mSQL (0.000722)[0m   [0;1mCOMMIT[0m
+  [4;35;1mUser Load (0.001211)[0m   [0mSELECT * FROM users WHERE (users.id = 712) LIMIT 1[0m
+  [4;36;1mEncUser Columns (0.008078)[0m   [0;1mSHOW FIELDS FROM users[0m
+  [4;35;1mSQL (0.003272)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000773)[0m   [0;1mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;35;1mSQL (0.000367)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000479)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000731)[0m   [0mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;36;1mSQL (0.000360)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000479)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000716)[0m   [0;1mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;35;1mSQL (0.000386)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.001671)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.007187)[0m   [0mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;36;1mSQL (0.000504)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000541)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000963)[0m   [0;1mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;35;1mSQL (0.000373)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000394)[0m   [0;1mBEGIN[0m
+  [4;35;1mEncUser Update (0.001943)[0m   [0mUPDATE users SET `name` = '≤Ò\\Æo–ˆÆÀvÆU-' WHERE id = 717[0m
+  [4;36;1mSQL (0.000418)[0m   [0;1mCOMMIT[0m
+  [4;35;1mEncUser Load (0.001651)[0m   [0mSELECT * FROM users WHERE (users.id = 717) LIMIT 1[0m
+  [4;36;1mRawUser Load (0.001306)[0m   [0;1mSELECT * FROM users WHERE (users.id = 717) LIMIT 1[0m
+  [4;35;1mRawUser Columns (0.005437)[0m   [0mSHOW FIELDS FROM users[0m
+  [4;36;1mSQL (0.003687)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000784)[0m   [0mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;36;1mSQL (0.000367)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.004874)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000820)[0m   [0;1mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;35;1mSQL (0.000427)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (0.001473)[0m   [0;1mSELECT * FROM users WHERE (users.id = 719) LIMIT 1[0m
+  [4;36;1mAsset Columns (0.092498)[0m   [0;1mSHOW FIELDS FROM assets[0m
+  [4;35;1mSQL (0.004386)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.111616)[0m   [0;1mINSERT INTO assets (`updated_at`, `title`, `created_at`) VALUES('2006-09-12 11:07:23', x'ee9d7632247bd9c5605664883d3f788f', '2006-09-12 11:07:23')[0m
+  [4;35;1mSQL (0.000497)[0m   [0mCOMMIT[0m
+  [4;36;1mCap Columns (0.041898)[0m   [0;1mSHOW FIELDS FROM caps[0m
+  [4;35;1mSQL (0.007554)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.008579)[0m   [0;1mINSERT INTO caps (`updated_at`, `key_hash`, `shared_key`, `key`, `asset_id`, `created_at`, `email`) VALUES('2006-09-12 11:07:24', NULL, NULL, NULL, 78, '2006-09-12 11:07:24', 'pelle@neubia.com')[0m
+  [4;35;1mSQL (0.000438)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000436)[0m   [0;1mBEGIN[0m
+  [4;35;1mCap Update (0.041774)[0m   [0mUPDATE caps SET `created_at` = '2006-09-12 11:07:24', `key_hash` = 'f9c9c175387617a5ba135a60383639a87d34d9d4', `key` = NULL, `asset_id` = 78, `email` = 'pelle@neubia.com', `shared_key` = x'de87fe8308e9825fe8744d3e20ac4fafa98d4b617e522392bd915dab9d5e6407', `updated_at` = '2006-09-12 11:07:24' WHERE id = 109[0m
+  [4;36;1mSQL (0.000469)[0m   [0;1mCOMMIT[0m
+  [4;35;1mCap Load (0.046380)[0m   [0mSELECT * FROM caps WHERE (caps.`key_hash` = 'f9c9c175387617a5ba135a60383639a87d34d9d4' ) LIMIT 1[0m
+  [4;36;1mAsset Load (0.001595)[0m   [0;1mSELECT * FROM assets WHERE (assets.id = 78) LIMIT 1[0m
+  [4;35;1mAssetRaw Load (0.001577)[0m   [0mSELECT * FROM assets WHERE (assets.id = 78) LIMIT 1[0m
+  [4;36;1mAssetRaw Columns (0.008595)[0m   [0;1mSHOW FIELDS FROM assets[0m
+  [4;35;1mSQL (0.009099)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000880)[0m   [0;1mINSERT INTO caps (`updated_at`, `key_hash`, `shared_key`, `key`, `asset_id`, `created_at`, `email`) VALUES('2006-09-12 11:07:24', NULL, NULL, NULL, 78, '2006-09-12 11:07:24', 'bob@bob.com')[0m
+  [4;35;1mSQL (0.000382)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000358)[0m   [0;1mBEGIN[0m
+  [4;35;1mCap Update (0.005039)[0m   [0mUPDATE caps SET `created_at` = '2006-09-12 11:07:24', `key_hash` = '8ec831b0dfa57a04a6f6ded31508d6cbe86955a6', `key` = NULL, `asset_id` = 78, `email` = 'bob@bob.com', `shared_key` = x'4c4da300fa286cb8f62c559122b78249dfdcace591fc5cd6f120163e9bfe11f3', `updated_at` = '2006-09-12 11:07:24' WHERE id = 110[0m
+  [4;36;1mSQL (0.000477)[0m   [0;1mCOMMIT[0m
+  [4;35;1mCap Load (0.002788)[0m   [0mSELECT * FROM caps WHERE (caps.`key_hash` = '8ec831b0dfa57a04a6f6ded31508d6cbe86955a6' ) LIMIT 1[0m
+  [4;36;1mAsset Load (0.001928)[0m   [0;1mSELECT * FROM assets WHERE (assets.id = 78) LIMIT 1[0m
+  [4;35;1mUser Columns (0.045421)[0m   [0mSHOW FIELDS FROM users[0m
+  [4;36;1mSQL (0.006991)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.033481)[0m   [0mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;36;1mSQL (0.000443)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSecret Load (0.015270)[0m   [0mSELECT * FROM secrets WHERE (secrets.user_id = 720) [0m
+  [4;36;1mSecret Columns (0.035114)[0m   [0;1mSHOW FIELDS FROM secrets[0m
+  [4;35;1mSQL (0.007472)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000870)[0m   [0;1mINSERT INTO secrets (`name`, `user_id`, `email`) VALUES(NULL, 720, NULL)[0m
+  [4;35;1mSQL (0.000418)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (0.001252)[0m   [0;1mSELECT * FROM users WHERE (users.id = 720) LIMIT 1[0m
+  [4;35;1mSQL (0.000621)[0m   [0mBEGIN[0m
+  [4;36;1mSecret Update (0.000967)[0m   [0;1mUPDATE secrets SET `user_id` = 720, `email` = NULL, `name` = x'c42d49cb44c44d9e9288b5d94c6dda6b' WHERE id = 86[0m
+  [4;35;1mSQL (0.000418)[0m   [0mCOMMIT[0m
+  [4;36;1mChild Load (0.037554)[0m   [0;1mSELECT * FROM children WHERE (children.secret_id = 86) [0m
+  [4;35;1mChild Columns (0.008777)[0m   [0mSHOW FIELDS FROM children[0m
+  [4;36;1mSQL (0.007567)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.001096)[0m   [0mINSERT INTO children (`secret_id`, `email`) VALUES(86, NULL)[0m
+  [4;36;1mSQL (0.000378)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000324)[0m   [0mBEGIN[0m
+  [4;36;1mSecret Load (0.001669)[0m   [0;1mSELECT * FROM secrets WHERE (secrets.id = 86) LIMIT 1[0m
+  [4;35;1mUser Load (0.001790)[0m   [0mSELECT * FROM users WHERE (users.id = 720) LIMIT 1[0m
+  [4;36;1mChild Update (0.001387)[0m   [0;1mUPDATE children SET `secret_id` = 86, `email` = 'ﬁPI36Z’ñt;&Ωë(|nF/ªoøx8ñA¿a¯ç' WHERE id = 71[0m
+  [4;35;1mSQL (0.000423)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000356)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000714)[0m   [0mINSERT INTO users (`name`) VALUES('bob')[0m
+  [4;36;1mSQL (0.000387)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.001859)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.001127)[0m   [0;1mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;35;1mSQL (0.000417)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000446)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.002966)[0m   [0mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;36;1mSQL (0.093582)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.004028)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000765)[0m   [0;1mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;35;1mSQL (0.000388)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000945)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000879)[0m   [0mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;36;1mSQL (0.000401)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000442)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.001041)[0m   [0;1mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;35;1mSQL (0.000507)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (0.001855)[0m   [0;1mSELECT * FROM users WHERE (users.id = 726) LIMIT 1[0m
+  [4;35;1mSQL (0.000488)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.001085)[0m   [0;1mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;35;1mSQL (0.000568)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000411)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.001244)[0m   [0mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;36;1mSQL (0.000405)[0m   [0;1mCOMMIT[0m
+  [4;35;1mUser Load (0.001145)[0m   [0mSELECT * FROM users WHERE (users.id = 728) LIMIT 1[0m
+  [4;36;1mEncUser Columns (0.041929)[0m   [0;1mSHOW FIELDS FROM users[0m
+  [4;35;1mSQL (0.007475)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000813)[0m   [0;1mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;35;1mSQL (0.000362)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000432)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000737)[0m   [0mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;36;1mSQL (0.000556)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000454)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000706)[0m   [0;1mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;35;1mSQL (0.000391)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000444)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000691)[0m   [0mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;36;1mSQL (0.000356)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000427)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000678)[0m   [0;1mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;35;1mSQL (0.000503)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000398)[0m   [0;1mBEGIN[0m
+  [4;35;1mEncUser Update (0.000855)[0m   [0mUPDATE users SET `name` = '‚Iì~h/G,ÊÙhÓ‘˚Îƒ' WHERE id = 733[0m
+  [4;36;1mSQL (0.000396)[0m   [0;1mCOMMIT[0m
+  [4;35;1mEncUser Load (0.001556)[0m   [0mSELECT * FROM users WHERE (users.id = 733) LIMIT 1[0m
+  [4;36;1mRawUser Load (0.001301)[0m   [0;1mSELECT * FROM users WHERE (users.id = 733) LIMIT 1[0m
+  [4;35;1mRawUser Columns (0.011072)[0m   [0mSHOW FIELDS FROM users[0m
+  [4;36;1mSQL (0.010528)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.002632)[0m   [0mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;36;1mSQL (0.000433)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000377)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000680)[0m   [0;1mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;35;1mSQL (0.000371)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (0.001486)[0m   [0;1mSELECT * FROM users WHERE (users.id = 735) LIMIT 1[0m
+  [4;36;1mAsset Columns (0.014676)[0m   [0;1mSHOW FIELDS FROM assets[0m
+  [4;35;1mSQL (0.009616)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000840)[0m   [0;1mINSERT INTO assets (`updated_at`, `title`, `created_at`) VALUES('2006-09-12 11:13:48', x'1dee9e3d7c80772a2ff12cd1b8ca86ce', '2006-09-12 11:13:48')[0m
+  [4;35;1mSQL (0.001074)[0m   [0mCOMMIT[0m
+  [4;36;1mCap Columns (0.008768)[0m   [0;1mSHOW FIELDS FROM caps[0m
+  [4;35;1mSQL (0.007594)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000888)[0m   [0;1mINSERT INTO caps (`updated_at`, `key_hash`, `shared_key`, `key`, `asset_id`, `created_at`, `email`) VALUES('2006-09-12 11:13:48', NULL, NULL, NULL, 79, '2006-09-12 11:13:48', 'pelle@neubia.com')[0m
+  [4;35;1mSQL (0.000394)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000404)[0m   [0;1mBEGIN[0m
+  [4;35;1mCap Update (0.001306)[0m   [0mUPDATE caps SET `created_at` = '2006-09-12 11:13:48', `key_hash` = '547c64a24da10329b7618ff9a08ecaf66bacc8d4', `key` = NULL, `asset_id` = 79, `email` = 'pelle@neubia.com', `shared_key` = x'b02d2139499d74b0d3539fc85064714c519a5486c6b0c6074ac07ba9c0ae2874', `updated_at` = '2006-09-12 11:13:48' WHERE id = 111[0m
+  [4;36;1mSQL (0.000755)[0m   [0;1mCOMMIT[0m
+  [4;35;1mCap Load (0.002324)[0m   [0mSELECT * FROM caps WHERE (caps.`key_hash` = '547c64a24da10329b7618ff9a08ecaf66bacc8d4' ) LIMIT 1[0m
+  [4;36;1mAsset Load (0.001568)[0m   [0;1mSELECT * FROM assets WHERE (assets.id = 79) LIMIT 1[0m
+  [4;35;1mAssetRaw Load (0.001546)[0m   [0mSELECT * FROM assets WHERE (assets.id = 79) LIMIT 1[0m
+  [4;36;1mAssetRaw Columns (0.008445)[0m   [0;1mSHOW FIELDS FROM assets[0m
+  [4;35;1mSQL (0.008306)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000912)[0m   [0;1mINSERT INTO caps (`updated_at`, `key_hash`, `shared_key`, `key`, `asset_id`, `created_at`, `email`) VALUES('2006-09-12 11:13:48', NULL, NULL, NULL, 79, '2006-09-12 11:13:48', 'bob@bob.com')[0m
+  [4;35;1mSQL (0.001769)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000448)[0m   [0;1mBEGIN[0m
+  [4;35;1mCap Update (0.001006)[0m   [0mUPDATE caps SET `created_at` = '2006-09-12 11:13:48', `key_hash` = '7e000cc4f3a23bde46bcb51bffa215fee4b2a39e', `key` = NULL, `asset_id` = 79, `email` = 'bob@bob.com', `shared_key` = x'19cf3f0a75c68aee17cd479f150eaf51de18257d7935f49cc0db3f0fca755f7e', `updated_at` = '2006-09-12 11:13:48' WHERE id = 112[0m
+  [4;36;1mSQL (0.000411)[0m   [0;1mCOMMIT[0m
+  [4;35;1mCap Load (0.003361)[0m   [0mSELECT * FROM caps WHERE (caps.`key_hash` = '7e000cc4f3a23bde46bcb51bffa215fee4b2a39e' ) LIMIT 1[0m
+  [4;36;1mAsset Load (0.001568)[0m   [0;1mSELECT * FROM assets WHERE (assets.id = 79) LIMIT 1[0m
+  [4;35;1mUser Columns (0.007577)[0m   [0mSHOW FIELDS FROM users[0m
+  [4;36;1mSQL (0.007349)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000763)[0m   [0mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;36;1mSQL (0.005933)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSecret Load (0.002302)[0m   [0mSELECT * FROM secrets WHERE (secrets.user_id = 736) [0m
+  [4;36;1mSecret Columns (0.019924)[0m   [0;1mSHOW FIELDS FROM secrets[0m
+  [4;35;1mSQL (0.009137)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000811)[0m   [0;1mINSERT INTO secrets (`name`, `user_id`, `email`) VALUES(NULL, 736, NULL)[0m
+  [4;35;1mSQL (0.000469)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (0.001775)[0m   [0;1mSELECT * FROM users WHERE (users.id = 736) LIMIT 1[0m
+  [4;35;1mSQL (0.000485)[0m   [0mBEGIN[0m
+  [4;36;1mSecret Update (0.001004)[0m   [0;1mUPDATE secrets SET `user_id` = 736, `email` = NULL, `name` = x'c42d49cb44c44d9e9288b5d94c6dda6b' WHERE id = 87[0m
+  [4;35;1mSQL (0.000435)[0m   [0mCOMMIT[0m
+  [4;36;1mChild Load (0.001574)[0m   [0;1mSELECT * FROM children WHERE (children.secret_id = 87) [0m
+  [4;35;1mChild Columns (0.008741)[0m   [0mSHOW FIELDS FROM children[0m
+  [4;36;1mSQL (0.007625)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000784)[0m   [0mINSERT INTO children (`secret_id`, `email`) VALUES(87, NULL)[0m
+  [4;36;1mSQL (0.000784)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000367)[0m   [0mBEGIN[0m
+  [4;36;1mSecret Load (0.002080)[0m   [0;1mSELECT * FROM secrets WHERE (secrets.id = 87) LIMIT 1[0m
+  [4;35;1mUser Load (0.001462)[0m   [0mSELECT * FROM users WHERE (users.id = 736) LIMIT 1[0m
+  [4;36;1mChild Update (0.000978)[0m   [0;1mUPDATE children SET `secret_id` = 87, `email` = 'ﬁPI36Z’ñt;&Ωë(|nF/ªoøx8ñA¿a¯ç' WHERE id = 72[0m
+  [4;35;1mSQL (0.000420)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000324)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000733)[0m   [0mINSERT INTO users (`name`) VALUES('bob')[0m
+  [4;36;1mSQL (0.000419)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000610)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000794)[0m   [0;1mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;35;1mSQL (0.000416)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000498)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.001321)[0m   [0mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;36;1mSQL (0.000503)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000765)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.004826)[0m   [0;1mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;35;1mSQL (0.000473)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000489)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000713)[0m   [0mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;36;1mSQL (0.000519)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000436)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.008080)[0m   [0;1mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;35;1mSQL (0.000481)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (0.001224)[0m   [0;1mSELECT * FROM users WHERE (users.id = 742) LIMIT 1[0m
+  [4;35;1mSQL (0.001137)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000820)[0m   [0;1mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;35;1mSQL (0.000520)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000471)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000740)[0m   [0mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;36;1mSQL (0.000397)[0m   [0;1mCOMMIT[0m
+  [4;35;1mUser Load (0.001401)[0m   [0mSELECT * FROM users WHERE (users.id = 744) LIMIT 1[0m
+  [4;36;1mEncUser Columns (0.016402)[0m   [0;1mSHOW FIELDS FROM users[0m
+  [4;35;1mSQL (0.008280)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.002221)[0m   [0;1mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;35;1mSQL (0.000707)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000451)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000689)[0m   [0mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;36;1mSQL (0.000364)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000506)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.001137)[0m   [0;1mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;35;1mSQL (0.000412)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000750)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000728)[0m   [0mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;36;1mSQL (0.000369)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.002982)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000803)[0m   [0;1mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;35;1mSQL (0.000380)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000441)[0m   [0;1mBEGIN[0m
+  [4;35;1mEncUser Update (0.000958)[0m   [0mUPDATE users SET `name` = '4SÊ÷œ[∏À‹ªË±%' WHERE id = 749[0m
+  [4;36;1mSQL (0.002113)[0m   [0;1mCOMMIT[0m
+  [4;35;1mEncUser Load (0.001305)[0m   [0mSELECT * FROM users WHERE (users.id = 749) LIMIT 1[0m
+  [4;36;1mRawUser Load (0.001229)[0m   [0;1mSELECT * FROM users WHERE (users.id = 749) LIMIT 1[0m
+  [4;35;1mRawUser Columns (0.008526)[0m   [0mSHOW FIELDS FROM users[0m
+  [4;36;1mSQL (0.014360)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.001472)[0m   [0mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;36;1mSQL (0.000397)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000426)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000694)[0m   [0;1mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;35;1mSQL (0.002246)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (0.001256)[0m   [0;1mSELECT * FROM users WHERE (users.id = 751) LIMIT 1[0m
+  [4;36;1mAsset Columns (0.010499)[0m   [0;1mSHOW FIELDS FROM assets[0m
+  [4;35;1mSQL (0.096088)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000854)[0m   [0;1mINSERT INTO assets (`updated_at`, `title`, `created_at`) VALUES('2006-09-12 11:24:29', x'f3259941444dbc896199bec391c57d62', '2006-09-12 11:24:29')[0m
+  [4;35;1mSQL (0.000410)[0m   [0mCOMMIT[0m
+  [4;36;1mCap Columns (0.009659)[0m   [0;1mSHOW FIELDS FROM caps[0m
+  [4;35;1mSQL (0.007522)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.001054)[0m   [0;1mINSERT INTO caps (`updated_at`, `key_hash`, `shared_key`, `key`, `asset_id`, `created_at`, `email`) VALUES('2006-09-12 11:24:29', NULL, NULL, NULL, 80, '2006-09-12 11:24:29', 'pelle@neubia.com')[0m
+  [4;35;1mSQL (0.000483)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000410)[0m   [0;1mBEGIN[0m
+  [4;35;1mCap Update (0.001018)[0m   [0mUPDATE caps SET `created_at` = '2006-09-12 11:24:29', `key_hash` = '4d49ef4fc119276549e02a10bc5fec8a3c30d316', `key` = NULL, `asset_id` = 80, `email` = 'pelle@neubia.com', `shared_key` = x'5483ae51eff818ba2b79612e8a50a3704db832ef68cbcd03cc6c1658a0aaa311', `updated_at` = '2006-09-12 11:24:29' WHERE id = 113[0m
+  [4;36;1mSQL (0.000413)[0m   [0;1mCOMMIT[0m
+  [4;35;1mCap Load (0.002625)[0m   [0mSELECT * FROM caps WHERE (caps.`key_hash` = '4d49ef4fc119276549e02a10bc5fec8a3c30d316' ) LIMIT 1[0m
+  [4;36;1mAsset Load (0.001986)[0m   [0;1mSELECT * FROM assets WHERE (assets.id = 80) LIMIT 1[0m
+  [4;35;1mAssetRaw Load (0.001723)[0m   [0mSELECT * FROM assets WHERE (assets.id = 80) LIMIT 1[0m
+  [4;36;1mAssetRaw Columns (0.008243)[0m   [0;1mSHOW FIELDS FROM assets[0m
+  [4;35;1mSQL (0.007670)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000872)[0m   [0;1mINSERT INTO caps (`updated_at`, `key_hash`, `shared_key`, `key`, `asset_id`, `created_at`, `email`) VALUES('2006-09-12 11:24:29', NULL, NULL, NULL, 80, '2006-09-12 11:24:29', 'bob@bob.com')[0m
+  [4;35;1mSQL (0.000371)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000399)[0m   [0;1mBEGIN[0m
+  [4;35;1mCap Update (0.000990)[0m   [0mUPDATE caps SET `created_at` = '2006-09-12 11:24:29', `key_hash` = '3eb19a622091729ca311fd992f32a36fb1cfc1e0', `key` = NULL, `asset_id` = 80, `email` = 'bob@bob.com', `shared_key` = x'6262c1c4cdd548a4342032ae0107f5f084af8806f5e5ec1a0c4e9a005a54c872', `updated_at` = '2006-09-12 11:24:29' WHERE id = 114[0m
+  [4;36;1mSQL (0.000394)[0m   [0;1mCOMMIT[0m
+  [4;35;1mCap Load (0.004248)[0m   [0mSELECT * FROM caps WHERE (caps.`key_hash` = '3eb19a622091729ca311fd992f32a36fb1cfc1e0' ) LIMIT 1[0m
+  [4;36;1mAsset Load (0.001974)[0m   [0;1mSELECT * FROM assets WHERE (assets.id = 80) LIMIT 1[0m
+  [4;35;1mUser Columns (0.007655)[0m   [0mSHOW FIELDS FROM users[0m
+  [4;36;1mSQL (0.007069)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000803)[0m   [0mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;36;1mSQL (0.004225)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSecret Load (0.001900)[0m   [0mSELECT * FROM secrets WHERE (secrets.user_id = 752) [0m
+  [4;36;1mSecret Columns (0.015470)[0m   [0;1mSHOW FIELDS FROM secrets[0m
+  [4;35;1mSQL (0.010039)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000755)[0m   [0;1mINSERT INTO secrets (`name`, `user_id`, `email`) VALUES(NULL, 752, NULL)[0m
+  [4;35;1mSQL (0.000410)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (0.001210)[0m   [0;1mSELECT * FROM users WHERE (users.id = 752) LIMIT 1[0m
+  [4;35;1mSQL (0.000510)[0m   [0mBEGIN[0m
+  [4;36;1mSecret Update (0.000941)[0m   [0;1mUPDATE secrets SET `user_id` = 752, `email` = NULL, `name` = x'c42d49cb44c44d9e9288b5d94c6dda6b' WHERE id = 88[0m
+  [4;35;1mSQL (0.000418)[0m   [0mCOMMIT[0m
+  [4;36;1mChild Load (0.001916)[0m   [0;1mSELECT * FROM children WHERE (children.secret_id = 88) [0m
+  [4;35;1mChild Columns (0.008331)[0m   [0mSHOW FIELDS FROM children[0m
+  [4;36;1mSQL (0.008983)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000785)[0m   [0mINSERT INTO children (`secret_id`, `email`) VALUES(88, NULL)[0m
+  [4;36;1mSQL (0.000344)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000355)[0m   [0mBEGIN[0m
+  [4;36;1mSecret Load (0.001556)[0m   [0;1mSELECT * FROM secrets WHERE (secrets.id = 88) LIMIT 1[0m
+  [4;35;1mUser Load (0.001768)[0m   [0mSELECT * FROM users WHERE (users.id = 752) LIMIT 1[0m
+  [4;36;1mChild Update (0.001261)[0m   [0;1mUPDATE children SET `secret_id` = 88, `email` = 'ﬁPI36Z’ñt;&Ωë(|nF/ªoøx8ñA¿a¯ç' WHERE id = 73[0m
+  [4;35;1mSQL (0.000415)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000804)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000763)[0m   [0mINSERT INTO users (`name`) VALUES('bob')[0m
+  [4;36;1mSQL (0.000406)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000538)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.001214)[0m   [0;1mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;35;1mSQL (0.000406)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000574)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000714)[0m   [0mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;36;1mSQL (0.000458)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000399)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000749)[0m   [0;1mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;35;1mSQL (0.000375)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000509)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000708)[0m   [0mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;36;1mSQL (0.000370)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000720)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000793)[0m   [0;1mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;35;1mSQL (0.000442)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (0.001190)[0m   [0;1mSELECT * FROM users WHERE (users.id = 758) LIMIT 1[0m
+  [4;35;1mSQL (0.000473)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000679)[0m   [0;1mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;35;1mSQL (0.000388)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000367)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.001023)[0m   [0mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;36;1mSQL (0.000386)[0m   [0;1mCOMMIT[0m
+  [4;35;1mUser Load (0.001128)[0m   [0mSELECT * FROM users WHERE (users.id = 760) LIMIT 1[0m
+  [4;36;1mEncUser Columns (0.015975)[0m   [0;1mSHOW FIELDS FROM users[0m
+  [4;35;1mSQL (0.007594)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000745)[0m   [0;1mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;35;1mSQL (0.000367)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000445)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000676)[0m   [0mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;36;1mSQL (0.000737)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000753)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.002869)[0m   [0;1mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;35;1mSQL (0.000410)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000447)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000687)[0m   [0mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;36;1mSQL (0.000568)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000730)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000684)[0m   [0;1mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;35;1mSQL (0.000354)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.001721)[0m   [0;1mBEGIN[0m
+  [4;35;1mEncUser Update (0.000861)[0m   [0mUPDATE users SET `name` = '$≤pm¶Œ´„h-ç>i[' WHERE id = 765[0m
+  [4;36;1mSQL (0.000491)[0m   [0;1mCOMMIT[0m
+  [4;35;1mEncUser Load (0.005347)[0m   [0mSELECT * FROM users WHERE (users.id = 765) LIMIT 1[0m
+  [4;36;1mRawUser Load (0.001243)[0m   [0;1mSELECT * FROM users WHERE (users.id = 765) LIMIT 1[0m
+  [4;35;1mRawUser Columns (0.012272)[0m   [0mSHOW FIELDS FROM users[0m
+  [4;36;1mSQL (0.007964)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000717)[0m   [0mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;36;1mSQL (0.000357)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000386)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000653)[0m   [0;1mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;35;1mSQL (0.000549)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (0.001555)[0m   [0;1mSELECT * FROM users WHERE (users.id = 767) LIMIT 1[0m
+  [4;36;1mAsset Columns (0.009659)[0m   [0;1mSHOW FIELDS FROM assets[0m
+  [4;35;1mSQL (0.076420)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000842)[0m   [0;1mINSERT INTO assets (`updated_at`, `title`, `created_at`) VALUES('2006-09-12 11:25:08', x'c09ec4dd98583036531665b17bf9c41e', '2006-09-12 11:25:08')[0m
+  [4;35;1mSQL (0.000457)[0m   [0mCOMMIT[0m
+  [4;36;1mCap Columns (0.009529)[0m   [0;1mSHOW FIELDS FROM caps[0m
+  [4;35;1mSQL (0.007997)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000897)[0m   [0;1mINSERT INTO caps (`updated_at`, `key_hash`, `shared_key`, `key`, `asset_id`, `created_at`, `email`) VALUES('2006-09-12 11:25:08', NULL, NULL, NULL, 81, '2006-09-12 11:25:08', 'pelle@neubia.com')[0m
+  [4;35;1mSQL (0.000763)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000860)[0m   [0;1mBEGIN[0m
+  [4;35;1mCap Update (0.001060)[0m   [0mUPDATE caps SET `created_at` = '2006-09-12 11:25:08', `key_hash` = 'edd0d9583a1591f3273880ef808c43d68fbd30d6', `key` = NULL, `asset_id` = 81, `email` = 'pelle@neubia.com', `shared_key` = x'3681c074803183b36c6cd20f19fc747a099e9e021d29d372e95c078815f8035d', `updated_at` = '2006-09-12 11:25:08' WHERE id = 115[0m
+  [4;36;1mSQL (0.000413)[0m   [0;1mCOMMIT[0m
+  [4;35;1mCap Load (0.002387)[0m   [0mSELECT * FROM caps WHERE (caps.`key_hash` = 'edd0d9583a1591f3273880ef808c43d68fbd30d6' ) LIMIT 1[0m
+  [4;36;1mAsset Load (0.002618)[0m   [0;1mSELECT * FROM assets WHERE (assets.id = 81) LIMIT 1[0m
+  [4;35;1mAssetRaw Load (0.001481)[0m   [0mSELECT * FROM assets WHERE (assets.id = 81) LIMIT 1[0m
+  [4;36;1mAssetRaw Columns (0.009177)[0m   [0;1mSHOW FIELDS FROM assets[0m
+  [4;35;1mSQL (0.007304)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000845)[0m   [0;1mINSERT INTO caps (`updated_at`, `key_hash`, `shared_key`, `key`, `asset_id`, `created_at`, `email`) VALUES('2006-09-12 11:25:08', NULL, NULL, NULL, 81, '2006-09-12 11:25:08', 'bob@bob.com')[0m
+  [4;35;1mSQL (0.000512)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000418)[0m   [0;1mBEGIN[0m
+  [4;35;1mCap Update (0.002693)[0m   [0mUPDATE caps SET `created_at` = '2006-09-12 11:25:08', `key_hash` = '920e7c6d1f75d93f83fb239bf5e13e7c2a5eda6a', `key` = NULL, `asset_id` = 81, `email` = 'bob@bob.com', `shared_key` = x'f72da0b6d47d25da1ca76ead6d7282c003646b11d175138dc789cc1670a90db0', `updated_at` = '2006-09-12 11:25:08' WHERE id = 116[0m
+  [4;36;1mSQL (0.000437)[0m   [0;1mCOMMIT[0m
+  [4;35;1mCap Load (0.002335)[0m   [0mSELECT * FROM caps WHERE (caps.`key_hash` = '920e7c6d1f75d93f83fb239bf5e13e7c2a5eda6a' ) LIMIT 1[0m
+  [4;36;1mAsset Load (0.001476)[0m   [0;1mSELECT * FROM assets WHERE (assets.id = 81) LIMIT 1[0m
+  [4;35;1mUser Columns (0.008641)[0m   [0mSHOW FIELDS FROM users[0m
+  [4;36;1mSQL (0.007260)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.005412)[0m   [0mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;36;1mSQL (0.000469)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSecret Load (0.002237)[0m   [0mSELECT * FROM secrets WHERE (secrets.user_id = 768) [0m
+  [4;36;1mSecret Columns (0.011759)[0m   [0;1mSHOW FIELDS FROM secrets[0m
+  [4;35;1mSQL (0.007594)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.001470)[0m   [0;1mINSERT INTO secrets (`name`, `user_id`, `email`) VALUES(NULL, 768, NULL)[0m
+  [4;35;1mSQL (0.000616)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (0.001829)[0m   [0;1mSELECT * FROM users WHERE (users.id = 768) LIMIT 1[0m
+  [4;35;1mSQL (0.000888)[0m   [0mBEGIN[0m
+  [4;36;1mSecret Update (0.001160)[0m   [0;1mUPDATE secrets SET `user_id` = 768, `email` = NULL, `name` = x'c42d49cb44c44d9e9288b5d94c6dda6b' WHERE id = 89[0m
+  [4;35;1mSQL (0.000631)[0m   [0mCOMMIT[0m
+  [4;36;1mChild Load (0.002397)[0m   [0;1mSELECT * FROM children WHERE (children.secret_id = 89) [0m
+  [4;35;1mChild Columns (0.014718)[0m   [0mSHOW FIELDS FROM children[0m
+  [4;36;1mSQL (0.000704)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000972)[0m   [0mINSERT INTO children (`secret_id`, `email`) VALUES(89, NULL)[0m
+  [4;36;1mSQL (0.000528)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000594)[0m   [0mBEGIN[0m
+  [4;36;1mSecret Load (0.002426)[0m   [0;1mSELECT * FROM secrets WHERE (secrets.id = 89) LIMIT 1[0m
+  [4;35;1mUser Load (0.001704)[0m   [0mSELECT * FROM users WHERE (users.id = 768) LIMIT 1[0m
+  [4;36;1mChild Update (0.001495)[0m   [0;1mUPDATE children SET `secret_id` = 89, `email` = 'ﬁPI36Z’ñt;&Ωë(|nF/ªoøx8ñA¿a¯ç' WHERE id = 74[0m
+  [4;35;1mSQL (0.000580)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000480)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.007008)[0m   [0mINSERT INTO users (`name`) VALUES('bob')[0m
+  [4;36;1mSQL (0.000701)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000663)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000932)[0m   [0;1mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;35;1mSQL (0.000681)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000667)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.005160)[0m   [0mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;36;1mSQL (0.000613)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.008083)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000764)[0m   [0;1mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;35;1mSQL (0.000379)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000479)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000783)[0m   [0mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;36;1mSQL (0.000847)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000426)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000747)[0m   [0;1mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;35;1mSQL (0.000442)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (0.008004)[0m   [0;1mSELECT * FROM users WHERE (users.id = 774) LIMIT 1[0m
+  [4;35;1mSQL (0.000497)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000757)[0m   [0;1mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;35;1mSQL (0.000387)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.002528)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.008270)[0m   [0mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;36;1mSQL (0.000416)[0m   [0;1mCOMMIT[0m
+  [4;35;1mUser Load (0.001930)[0m   [0mSELECT * FROM users WHERE (users.id = 776) LIMIT 1[0m
+  [4;36;1mEncUser Columns (0.008370)[0m   [0;1mSHOW FIELDS FROM users[0m
+  [4;35;1mSQL (0.010897)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000737)[0m   [0;1mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;35;1mSQL (0.000393)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000513)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.004602)[0m   [0mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;36;1mSQL (0.000381)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000428)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.001814)[0m   [0;1mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;35;1mSQL (0.000884)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.003620)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000708)[0m   [0mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;36;1mSQL (0.000354)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.001073)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000949)[0m   [0;1mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;35;1mSQL (0.000579)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000555)[0m   [0;1mBEGIN[0m
+  [4;35;1mEncUser Update (0.001442)[0m   [0mUPDATE users SET `name` = 'ßp(≤\'‡;–ª/9∏,' WHERE id = 781[0m
+  [4;36;1mSQL (0.000644)[0m   [0;1mCOMMIT[0m
+  [4;35;1mEncUser Load (0.001663)[0m   [0mSELECT * FROM users WHERE (users.id = 781) LIMIT 1[0m
+  [4;36;1mRawUser Load (0.001525)[0m   [0;1mSELECT * FROM users WHERE (users.id = 781) LIMIT 1[0m
+  [4;35;1mRawUser Columns (0.017432)[0m   [0mSHOW FIELDS FROM users[0m
+  [4;36;1mSQL (0.000646)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.001155)[0m   [0mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;36;1mSQL (0.000553)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000399)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000672)[0m   [0;1mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;35;1mSQL (0.004658)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (0.003889)[0m   [0;1mSELECT * FROM users WHERE (users.id = 783) LIMIT 1[0m
+  [4;36;1mAsset Columns (0.015356)[0m   [0;1mSHOW FIELDS FROM assets[0m
+  [4;35;1mSQL (0.007838)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000854)[0m   [0;1mINSERT INTO assets (`updated_at`, `title`, `created_at`) VALUES('2006-09-12 11:26:49', x'2d5b2947a6a25aba72a691ba1fb8153d', '2006-09-12 11:26:49')[0m
+  [4;35;1mSQL (0.000404)[0m   [0mCOMMIT[0m
+  [4;36;1mCap Columns (0.011002)[0m   [0;1mSHOW FIELDS FROM caps[0m
+  [4;35;1mSQL (0.007203)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.001221)[0m   [0;1mINSERT INTO caps (`updated_at`, `key_hash`, `shared_key`, `key`, `asset_id`, `created_at`, `email`) VALUES('2006-09-12 11:26:49', NULL, NULL, NULL, 82, '2006-09-12 11:26:49', 'pelle@neubia.com')[0m
+  [4;35;1mSQL (0.000832)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000393)[0m   [0;1mBEGIN[0m
+  [4;35;1mCap Update (0.001010)[0m   [0mUPDATE caps SET `created_at` = '2006-09-12 11:26:49', `key_hash` = '1d89f3726c69ae0bd240a6b3ce02a18e3dc434de', `key` = NULL, `asset_id` = 82, `email` = 'pelle@neubia.com', `shared_key` = x'9ac120b9621462ba64587978f30faae0e3ec76d0218794e89c33d35742a76bd4', `updated_at` = '2006-09-12 11:26:49' WHERE id = 117[0m
+  [4;36;1mSQL (0.000427)[0m   [0;1mCOMMIT[0m
+  [4;35;1mCap Load (0.002609)[0m   [0mSELECT * FROM caps WHERE (caps.`key_hash` = '1d89f3726c69ae0bd240a6b3ce02a18e3dc434de' ) LIMIT 1[0m
+  [4;36;1mAsset Load (0.001474)[0m   [0;1mSELECT * FROM assets WHERE (assets.id = 82) LIMIT 1[0m
+  [4;35;1mAssetRaw Load (0.001502)[0m   [0mSELECT * FROM assets WHERE (assets.id = 82) LIMIT 1[0m
+  [4;36;1mAssetRaw Columns (0.031005)[0m   [0;1mSHOW FIELDS FROM assets[0m
+  [4;35;1mSQL (0.007376)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.001140)[0m   [0;1mINSERT INTO caps (`updated_at`, `key_hash`, `shared_key`, `key`, `asset_id`, `created_at`, `email`) VALUES('2006-09-12 11:26:49', NULL, NULL, NULL, 82, '2006-09-12 11:26:49', 'bob@bob.com')[0m
+  [4;35;1mSQL (0.000408)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000422)[0m   [0;1mBEGIN[0m
+  [4;35;1mCap Update (0.000992)[0m   [0mUPDATE caps SET `created_at` = '2006-09-12 11:26:49', `key_hash` = '2f64e76acf6b05f01487f55d826dbccd60ca8462', `key` = NULL, `asset_id` = 82, `email` = 'bob@bob.com', `shared_key` = x'1dc3519ceb3552668d067fb2410082450c4a42fbb00c3b81543ee6a64b721316', `updated_at` = '2006-09-12 11:26:49' WHERE id = 118[0m
+  [4;36;1mSQL (0.002120)[0m   [0;1mCOMMIT[0m
+  [4;35;1mCap Load (0.002794)[0m   [0mSELECT * FROM caps WHERE (caps.`key_hash` = '2f64e76acf6b05f01487f55d826dbccd60ca8462' ) LIMIT 1[0m
+  [4;36;1mAsset Load (0.001489)[0m   [0;1mSELECT * FROM assets WHERE (assets.id = 82) LIMIT 1[0m
+  [4;35;1mUser Columns (0.015714)[0m   [0mSHOW FIELDS FROM users[0m
+  [4;36;1mSQL (0.015609)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000783)[0m   [0mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;36;1mSQL (0.000420)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSecret Load (0.002297)[0m   [0mSELECT * FROM secrets WHERE (secrets.user_id = 784) [0m
+  [4;36;1mSecret Columns (0.011242)[0m   [0;1mSHOW FIELDS FROM secrets[0m
+  [4;35;1mSQL (0.008327)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000777)[0m   [0;1mINSERT INTO secrets (`name`, `user_id`, `email`) VALUES(NULL, 784, NULL)[0m
+  [4;35;1mSQL (0.000925)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (0.001267)[0m   [0;1mSELECT * FROM users WHERE (users.id = 784) LIMIT 1[0m
+  [4;35;1mSQL (0.000465)[0m   [0mBEGIN[0m
+  [4;36;1mSecret Update (0.001242)[0m   [0;1mUPDATE secrets SET `user_id` = 784, `email` = NULL, `name` = x'c42d49cb44c44d9e9288b5d94c6dda6b' WHERE id = 90[0m
+  [4;35;1mSQL (0.000426)[0m   [0mCOMMIT[0m
+  [4;36;1mChild Load (0.001527)[0m   [0;1mSELECT * FROM children WHERE (children.secret_id = 90) [0m
+  [4;35;1mChild Columns (0.009243)[0m   [0mSHOW FIELDS FROM children[0m
+  [4;36;1mSQL (0.007407)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.001073)[0m   [0mINSERT INTO children (`secret_id`, `email`) VALUES(90, NULL)[0m
+  [4;36;1mSQL (0.000366)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000324)[0m   [0mBEGIN[0m
+  [4;36;1mSecret Load (0.001712)[0m   [0;1mSELECT * FROM secrets WHERE (secrets.id = 90) LIMIT 1[0m
+  [4;35;1mUser Load (0.001708)[0m   [0mSELECT * FROM users WHERE (users.id = 784) LIMIT 1[0m
+  [4;36;1mChild Update (0.002381)[0m   [0;1mUPDATE children SET `secret_id` = 90, `email` = 'ﬁPI36Z’ñt;&Ωë(|nF/ªoøx8ñA¿a¯ç' WHERE id = 75[0m
+  [4;35;1mSQL (0.000438)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000310)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.004453)[0m   [0mINSERT INTO users (`name`) VALUES('bob')[0m
+  [4;36;1mSQL (0.000757)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000433)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.001087)[0m   [0;1mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;35;1mSQL (0.000454)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000479)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000786)[0m   [0mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;36;1mSQL (0.000607)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000447)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000687)[0m   [0;1mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;35;1mSQL (0.000461)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000424)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000682)[0m   [0mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;36;1mSQL (0.000409)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000500)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000674)[0m   [0;1mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;35;1mSQL (0.000362)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (0.001477)[0m   [0;1mSELECT * FROM users WHERE (users.id = 790) LIMIT 1[0m
+  [4;35;1mSQL (0.000478)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000981)[0m   [0;1mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;35;1mSQL (0.000458)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000381)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.001122)[0m   [0mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;36;1mSQL (0.000397)[0m   [0;1mCOMMIT[0m
+  [4;35;1mUser Load (0.001489)[0m   [0mSELECT * FROM users WHERE (users.id = 792) LIMIT 1[0m
+  [4;36;1mEncUser Columns (0.015999)[0m   [0;1mSHOW FIELDS FROM users[0m
+  [4;35;1mSQL (0.007810)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000762)[0m   [0;1mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;35;1mSQL (0.000365)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000437)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000677)[0m   [0mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;36;1mSQL (0.004136)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000470)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000775)[0m   [0;1mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;35;1mSQL (0.000470)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000452)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.005242)[0m   [0mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;36;1mSQL (0.000402)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000421)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000729)[0m   [0;1mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;35;1mSQL (0.000473)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000998)[0m   [0;1mBEGIN[0m
+  [4;35;1mEncUser Update (0.000916)[0m   [0mUPDATE users SET `name` = 'AÆYˇˆÛ£L{◊ªxÑ' WHERE id = 797[0m
+  [4;36;1mSQL (0.000414)[0m   [0;1mCOMMIT[0m
+  [4;35;1mEncUser Load (0.001173)[0m   [0mSELECT * FROM users WHERE (users.id = 797) LIMIT 1[0m
+  [4;36;1mRawUser Load (0.002745)[0m   [0;1mSELECT * FROM users WHERE (users.id = 797) LIMIT 1[0m
+  [4;35;1mRawUser Columns (0.008998)[0m   [0mSHOW FIELDS FROM users[0m
+  [4;36;1mSQL (0.008215)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000739)[0m   [0mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;36;1mSQL (0.000535)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000465)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000726)[0m   [0;1mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;35;1mSQL (0.000661)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (0.001112)[0m   [0;1mSELECT * FROM users WHERE (users.id = 799) LIMIT 1[0m
+  [4;36;1mAsset Columns (0.008851)[0m   [0;1mSHOW FIELDS FROM assets[0m
+  [4;35;1mSQL (0.008201)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000827)[0m   [0;1mINSERT INTO assets (`updated_at`, `title`, `created_at`) VALUES('2006-09-12 11:31:13', x'ad8c0d59085984f9a729412ecae036a8', '2006-09-12 11:31:13')[0m
+  [4;35;1mSQL (0.000405)[0m   [0mCOMMIT[0m
+  [4;36;1mCap Columns (0.011951)[0m   [0;1mSHOW FIELDS FROM caps[0m
+  [4;35;1mSQL (0.007257)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000856)[0m   [0;1mINSERT INTO caps (`updated_at`, `key_hash`, `shared_key`, `key`, `asset_id`, `created_at`, `email`) VALUES('2006-09-12 11:31:13', NULL, NULL, NULL, 83, '2006-09-12 11:31:13', 'pelle@neubia.com')[0m
+  [4;35;1mSQL (0.000410)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000369)[0m   [0;1mBEGIN[0m
+  [4;35;1mCap Update (0.001000)[0m   [0mUPDATE caps SET `created_at` = '2006-09-12 11:31:13', `key_hash` = '4916d1780b2a59ccd12f1395736ea07d07179f85', `key` = NULL, `asset_id` = 83, `email` = 'pelle@neubia.com', `shared_key` = x'bb26aac820d00e661c6031df6b6990382d1f530a30eed92ebd6985f94a2549fb', `updated_at` = '2006-09-12 11:31:13' WHERE id = 119[0m
+  [4;36;1mSQL (0.000449)[0m   [0;1mCOMMIT[0m
+  [4;35;1mCap Load (0.002809)[0m   [0mSELECT * FROM caps WHERE (caps.`key_hash` = '4916d1780b2a59ccd12f1395736ea07d07179f85' ) LIMIT 1[0m
+  [4;36;1mAsset Load (0.001867)[0m   [0;1mSELECT * FROM assets WHERE (assets.id = 83) LIMIT 1[0m
+  [4;35;1mAssetRaw Load (0.001618)[0m   [0mSELECT * FROM assets WHERE (assets.id = 83) LIMIT 1[0m
+  [4;36;1mAssetRaw Columns (0.008618)[0m   [0;1mSHOW FIELDS FROM assets[0m
+  [4;35;1mSQL (0.007680)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000851)[0m   [0;1mINSERT INTO caps (`updated_at`, `key_hash`, `shared_key`, `key`, `asset_id`, `created_at`, `email`) VALUES('2006-09-12 11:31:13', NULL, NULL, NULL, 83, '2006-09-12 11:31:13', 'bob@bob.com')[0m
+  [4;35;1mSQL (0.000377)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000352)[0m   [0;1mBEGIN[0m
+  [4;35;1mCap Update (0.001029)[0m   [0mUPDATE caps SET `created_at` = '2006-09-12 11:31:13', `key_hash` = '89a393289193fcad79b86812b3ab3a92aa9a8ba5', `key` = NULL, `asset_id` = 83, `email` = 'bob@bob.com', `shared_key` = x'610744e9d84b0aa9c4da751ee4ff848018b41175b1baebcce54343e6559e5bbd', `updated_at` = '2006-09-12 11:31:13' WHERE id = 120[0m
+  [4;36;1mSQL (0.000420)[0m   [0;1mCOMMIT[0m
+  [4;35;1mCap Load (0.003375)[0m   [0mSELECT * FROM caps WHERE (caps.`key_hash` = '89a393289193fcad79b86812b3ab3a92aa9a8ba5' ) LIMIT 1[0m
+  [4;36;1mAsset Load (0.001602)[0m   [0;1mSELECT * FROM assets WHERE (assets.id = 83) LIMIT 1[0m
+  [4;35;1mUser Columns (0.010691)[0m   [0mSHOW FIELDS FROM users[0m
+  [4;36;1mSQL (0.011991)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000758)[0m   [0mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;36;1mSQL (0.000375)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSecret Load (0.004698)[0m   [0mSELECT * FROM secrets WHERE (secrets.user_id = 800) [0m
+  [4;36;1mSecret Columns (0.009914)[0m   [0;1mSHOW FIELDS FROM secrets[0m
+  [4;35;1mSQL (0.007770)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000810)[0m   [0;1mINSERT INTO secrets (`name`, `user_id`, `email`) VALUES(NULL, 800, NULL)[0m
+  [4;35;1mSQL (0.000712)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (0.001231)[0m   [0;1mSELECT * FROM users WHERE (users.id = 800) LIMIT 1[0m
+  [4;35;1mSQL (0.000435)[0m   [0mBEGIN[0m
+  [4;36;1mSecret Update (0.001232)[0m   [0;1mUPDATE secrets SET `user_id` = 800, `email` = NULL, `name` = x'c42d49cb44c44d9e9288b5d94c6dda6b' WHERE id = 91[0m
+  [4;35;1mSQL (0.000436)[0m   [0mCOMMIT[0m
+  [4;36;1mChild Load (0.002208)[0m   [0;1mSELECT * FROM children WHERE (children.secret_id = 91) [0m
+  [4;35;1mChild Columns (0.008128)[0m   [0mSHOW FIELDS FROM children[0m
+  [4;36;1mSQL (0.007150)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000745)[0m   [0mINSERT INTO children (`secret_id`, `email`) VALUES(91, NULL)[0m
+  [4;36;1mSQL (0.000514)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000331)[0m   [0mBEGIN[0m
+  [4;36;1mSecret Load (0.001554)[0m   [0;1mSELECT * FROM secrets WHERE (secrets.id = 91) LIMIT 1[0m
+  [4;35;1mUser Load (0.001348)[0m   [0mSELECT * FROM users WHERE (users.id = 800) LIMIT 1[0m
+  [4;36;1mChild Update (0.000965)[0m   [0;1mUPDATE children SET `secret_id` = 91, `email` = 'ﬁPI36Z’ñt;&Ωë(|nF/ªoøx8ñA¿a¯ç' WHERE id = 76[0m
+  [4;35;1mSQL (0.000394)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000340)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.004168)[0m   [0mINSERT INTO users (`name`) VALUES('bob')[0m
+  [4;36;1mSQL (0.000433)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000484)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000721)[0m   [0;1mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;35;1mSQL (0.000469)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000525)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.004450)[0m   [0mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;36;1mSQL (0.000405)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.004405)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000747)[0m   [0;1mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;35;1mSQL (0.000402)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000453)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000776)[0m   [0mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;36;1mSQL (0.000499)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000461)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000707)[0m   [0;1mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;35;1mSQL (0.002802)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (0.004736)[0m   [0;1mSELECT * FROM users WHERE (users.id = 806) LIMIT 1[0m
+  [4;35;1mSQL (0.000561)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000895)[0m   [0;1mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;35;1mSQL (0.000407)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000789)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000699)[0m   [0mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;36;1mSQL (0.000401)[0m   [0;1mCOMMIT[0m
+  [4;35;1mUser Load (0.001108)[0m   [0mSELECT * FROM users WHERE (users.id = 808) LIMIT 1[0m
+  [4;36;1mEncUser Columns (0.018513)[0m   [0;1mSHOW FIELDS FROM users[0m
+  [4;35;1mSQL (0.007791)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000760)[0m   [0;1mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;35;1mSQL (0.000359)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000448)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000670)[0m   [0mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;36;1mSQL (0.000544)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000502)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000720)[0m   [0;1mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;35;1mSQL (0.000363)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000559)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000851)[0m   [0mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;36;1mSQL (0.000525)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000440)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000891)[0m   [0;1mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;35;1mSQL (0.000401)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000355)[0m   [0;1mBEGIN[0m
+  [4;35;1mEncUser Update (0.000882)[0m   [0mUPDATE users SET `name` = '©†Ÿòf„ˆˇ9Yπù‚º' WHERE id = 813[0m
+  [4;36;1mSQL (0.000387)[0m   [0;1mCOMMIT[0m
+  [4;35;1mEncUser Load (0.002326)[0m   [0mSELECT * FROM users WHERE (users.id = 813) LIMIT 1[0m
+  [4;36;1mRawUser Load (0.001613)[0m   [0;1mSELECT * FROM users WHERE (users.id = 813) LIMIT 1[0m
+  [4;35;1mRawUser Columns (0.008361)[0m   [0mSHOW FIELDS FROM users[0m
+  [4;36;1mSQL (0.022973)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.001248)[0m   [0mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;36;1mSQL (0.000374)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000386)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000697)[0m   [0;1mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;35;1mSQL (0.000392)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (0.001490)[0m   [0;1mSELECT * FROM users WHERE (users.id = 815) LIMIT 1[0m
+  [4;36;1mAsset Columns (0.009044)[0m   [0;1mSHOW FIELDS FROM assets[0m
+  [4;35;1mSQL (0.007366)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000850)[0m   [0;1mINSERT INTO assets (`updated_at`, `title`, `created_at`) VALUES('2006-09-12 11:33:14', x'7d3de6830d11a7839bacb0874d087313', '2006-09-12 11:33:14')[0m
+  [4;35;1mSQL (0.000414)[0m   [0mCOMMIT[0m
+  [4;36;1mCap Columns (0.013539)[0m   [0;1mSHOW FIELDS FROM caps[0m
+  [4;35;1mSQL (0.008684)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000892)[0m   [0;1mINSERT INTO caps (`updated_at`, `key_hash`, `shared_key`, `key`, `asset_id`, `created_at`, `email`) VALUES('2006-09-12 11:33:14', NULL, NULL, NULL, 84, '2006-09-12 11:33:14', 'pelle@neubia.com')[0m
+  [4;35;1mSQL (0.000367)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.001017)[0m   [0;1mBEGIN[0m
+  [4;35;1mCap Update (0.001016)[0m   [0mUPDATE caps SET `created_at` = '2006-09-12 11:33:14', `key_hash` = '38b71081b28d3629bd1268a643f6d40951602a81', `key` = NULL, `asset_id` = 84, `email` = 'pelle@neubia.com', `shared_key` = x'535e1a610c0b1c6b2da679130f12286ee709f9b376c01703f17acfead31f1ba7', `updated_at` = '2006-09-12 11:33:14' WHERE id = 121[0m
+  [4;36;1mSQL (0.000693)[0m   [0;1mCOMMIT[0m
+  [4;35;1mCap Load (0.002539)[0m   [0mSELECT * FROM caps WHERE (caps.`key_hash` = '38b71081b28d3629bd1268a643f6d40951602a81' ) LIMIT 1[0m
+  [4;36;1mAsset Load (0.001529)[0m   [0;1mSELECT * FROM assets WHERE (assets.id = 84) LIMIT 1[0m
+  [4;35;1mAssetRaw Load (0.001468)[0m   [0mSELECT * FROM assets WHERE (assets.id = 84) LIMIT 1[0m
+  [4;36;1mAssetRaw Columns (0.009492)[0m   [0;1mSHOW FIELDS FROM assets[0m
+  [4;35;1mSQL (0.009153)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.001230)[0m   [0;1mINSERT INTO caps (`updated_at`, `key_hash`, `shared_key`, `key`, `asset_id`, `created_at`, `email`) VALUES('2006-09-12 11:33:14', NULL, NULL, NULL, 84, '2006-09-12 11:33:14', 'bob@bob.com')[0m
+  [4;35;1mSQL (0.000381)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000340)[0m   [0;1mBEGIN[0m
+  [4;35;1mCap Update (0.001274)[0m   [0mUPDATE caps SET `created_at` = '2006-09-12 11:33:14', `key_hash` = '115e4c92cd98be1287a8d615befa4d9d1cc0682d', `key` = NULL, `asset_id` = 84, `email` = 'bob@bob.com', `shared_key` = x'7d76e8bc228ae37947da29701e8a693ad8967596f4a50ea0897eea67e01af486', `updated_at` = '2006-09-12 11:33:14' WHERE id = 122[0m
+  [4;36;1mSQL (0.000436)[0m   [0;1mCOMMIT[0m
+  [4;35;1mCap Load (0.003440)[0m   [0mSELECT * FROM caps WHERE (caps.`key_hash` = '115e4c92cd98be1287a8d615befa4d9d1cc0682d' ) LIMIT 1[0m
+  [4;36;1mAsset Load (0.001876)[0m   [0;1mSELECT * FROM assets WHERE (assets.id = 84) LIMIT 1[0m
+  [4;35;1mUser Columns (0.008350)[0m   [0mSHOW FIELDS FROM users[0m
+  [4;36;1mSQL (0.011103)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000858)[0m   [0mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;36;1mSQL (0.000478)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSecret Load (0.002130)[0m   [0mSELECT * FROM secrets WHERE (secrets.user_id = 816) [0m
+  [4;36;1mSecret Columns (0.008926)[0m   [0;1mSHOW FIELDS FROM secrets[0m
+  [4;35;1mSQL (0.007785)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000830)[0m   [0;1mINSERT INTO secrets (`name`, `user_id`, `email`) VALUES(NULL, 816, NULL)[0m
+  [4;35;1mSQL (0.000381)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (0.001247)[0m   [0;1mSELECT * FROM users WHERE (users.id = 816) LIMIT 1[0m
+  [4;35;1mSQL (0.000940)[0m   [0mBEGIN[0m
+  [4;36;1mSecret Update (0.000923)[0m   [0;1mUPDATE secrets SET `user_id` = 816, `email` = NULL, `name` = x'c42d49cb44c44d9e9288b5d94c6dda6b' WHERE id = 92[0m
+  [4;35;1mSQL (0.000403)[0m   [0mCOMMIT[0m
+  [4;36;1mChild Load (0.002096)[0m   [0;1mSELECT * FROM children WHERE (children.secret_id = 92) [0m
+  [4;35;1mChild Columns (0.011450)[0m   [0mSHOW FIELDS FROM children[0m
+  [4;36;1mSQL (0.007148)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000765)[0m   [0mINSERT INTO children (`secret_id`, `email`) VALUES(92, NULL)[0m
+  [4;36;1mSQL (0.000390)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000320)[0m   [0mBEGIN[0m
+  [4;36;1mSecret Load (0.001572)[0m   [0;1mSELECT * FROM secrets WHERE (secrets.id = 92) LIMIT 1[0m
+  [4;35;1mUser Load (0.001408)[0m   [0mSELECT * FROM users WHERE (users.id = 816) LIMIT 1[0m
+  [4;36;1mChild Update (0.000967)[0m   [0;1mUPDATE children SET `secret_id` = 92, `email` = 'ﬁPI36Z’ñt;&Ωë(|nF/ªoøx8ñA¿a¯ç' WHERE id = 77[0m
+  [4;35;1mSQL (0.000386)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000311)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000690)[0m   [0mINSERT INTO users (`name`) VALUES('bob')[0m
+  [4;36;1mSQL (0.000488)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000442)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000936)[0m   [0;1mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;35;1mSQL (0.000753)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.001979)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000857)[0m   [0mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;36;1mSQL (0.000488)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000493)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000687)[0m   [0;1mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;35;1mSQL (0.002424)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000443)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000732)[0m   [0mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;36;1mSQL (0.000370)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000414)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.001050)[0m   [0;1mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;35;1mSQL (0.000786)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (0.001166)[0m   [0;1mSELECT * FROM users WHERE (users.id = 822) LIMIT 1[0m
+  [4;35;1mSQL (0.000458)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000728)[0m   [0;1mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;35;1mSQL (0.001336)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.004302)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000996)[0m   [0mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;36;1mSQL (0.000541)[0m   [0;1mCOMMIT[0m
+  [4;35;1mUser Load (0.001189)[0m   [0mSELECT * FROM users WHERE (users.id = 824) LIMIT 1[0m
+  [4;36;1mEncUser Columns (0.014996)[0m   [0;1mSHOW FIELDS FROM users[0m
+  [4;35;1mSQL (0.007176)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000760)[0m   [0;1mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;35;1mSQL (0.000351)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000833)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.002001)[0m   [0mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;36;1mSQL (0.000462)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000458)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000757)[0m   [0;1mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;35;1mSQL (0.000343)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.010488)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000765)[0m   [0mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;36;1mSQL (0.000347)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000742)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000697)[0m   [0;1mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;35;1mSQL (0.000352)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.002533)[0m   [0;1mBEGIN[0m
+  [4;35;1mEncUser Update (0.000914)[0m   [0mUPDATE users SET `name` = '–ù{N|`µ¯6ÅΩÔ§˛' WHERE id = 829[0m
+  [4;36;1mSQL (0.000381)[0m   [0;1mCOMMIT[0m
+  [4;35;1mEncUser Load (0.001600)[0m   [0mSELECT * FROM users WHERE (users.id = 829) LIMIT 1[0m
+  [4;36;1mRawUser Load (0.003318)[0m   [0;1mSELECT * FROM users WHERE (users.id = 829) LIMIT 1[0m
+  [4;35;1mRawUser Columns (0.008089)[0m   [0mSHOW FIELDS FROM users[0m
+  [4;36;1mSQL (0.007895)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000755)[0m   [0mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;36;1mSQL (0.000447)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000390)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000709)[0m   [0;1mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;35;1mSQL (0.000405)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (0.001163)[0m   [0;1mSELECT * FROM users WHERE (users.id = 831) LIMIT 1[0m
+  [4;36;1mAsset Columns (0.009485)[0m   [0;1mSHOW FIELDS FROM assets[0m
+  [4;35;1mSQL (0.007148)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000853)[0m   [0;1mINSERT INTO assets (`updated_at`, `title`, `created_at`) VALUES('2006-09-12 11:36:46', x'fbc515995824436e06bc579dbb44c9d4', '2006-09-12 11:36:46')[0m
+  [4;35;1mSQL (0.000397)[0m   [0mCOMMIT[0m
+  [4;36;1mCap Columns (0.013860)[0m   [0;1mSHOW FIELDS FROM caps[0m
+  [4;35;1mSQL (0.007196)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000879)[0m   [0;1mINSERT INTO caps (`updated_at`, `key_hash`, `shared_key`, `key`, `asset_id`, `created_at`, `email`) VALUES('2006-09-12 11:36:46', NULL, NULL, NULL, 85, '2006-09-12 11:36:46', 'pelle@neubia.com')[0m
+  [4;35;1mSQL (0.000373)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000347)[0m   [0;1mBEGIN[0m
+  [4;35;1mCap Update (0.001031)[0m   [0mUPDATE caps SET `created_at` = '2006-09-12 11:36:46', `key_hash` = '0c86ea0ccbfe6b69cfdaa30185ffc32c16c8b9ed', `key` = NULL, `asset_id` = 85, `email` = 'pelle@neubia.com', `shared_key` = x'cffcfa97665a7fb76755387975bb10f33255fbd9460adf15613fc161242260a7', `updated_at` = '2006-09-12 11:36:46' WHERE id = 123[0m
+  [4;36;1mSQL (0.000399)[0m   [0;1mCOMMIT[0m
+  [4;35;1mCap Load (0.002820)[0m   [0mSELECT * FROM caps WHERE (caps.`key_hash` = '0c86ea0ccbfe6b69cfdaa30185ffc32c16c8b9ed' ) LIMIT 1[0m
+  [4;36;1mAsset Load (0.001556)[0m   [0;1mSELECT * FROM assets WHERE (assets.id = 85) LIMIT 1[0m
+  [4;35;1mAssetRaw Load (0.001460)[0m   [0mSELECT * FROM assets WHERE (assets.id = 85) LIMIT 1[0m
+  [4;36;1mAssetRaw Columns (0.008197)[0m   [0;1mSHOW FIELDS FROM assets[0m
+  [4;35;1mSQL (0.008577)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.001227)[0m   [0;1mINSERT INTO caps (`updated_at`, `key_hash`, `shared_key`, `key`, `asset_id`, `created_at`, `email`) VALUES('2006-09-12 11:36:46', NULL, NULL, NULL, 85, '2006-09-12 11:36:46', 'bob@bob.com')[0m
+  [4;35;1mSQL (0.000387)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000350)[0m   [0;1mBEGIN[0m
+  [4;35;1mCap Update (0.001302)[0m   [0mUPDATE caps SET `created_at` = '2006-09-12 11:36:46', `key_hash` = '841c4de862e6aa7d4c8fbe76585195a72552711c', `key` = NULL, `asset_id` = 85, `email` = 'bob@bob.com', `shared_key` = x'1d3ff3ac0850008eda9e664efa876c05612ac94f5353f1cc00738e20b584a5dd', `updated_at` = '2006-09-12 11:36:46' WHERE id = 124[0m
+  [4;36;1mSQL (0.000392)[0m   [0;1mCOMMIT[0m
+  [4;35;1mCap Load (0.011046)[0m   [0mSELECT * FROM caps WHERE (caps.`key_hash` = '841c4de862e6aa7d4c8fbe76585195a72552711c' ) LIMIT 1[0m
+  [4;36;1mAsset Load (0.002017)[0m   [0;1mSELECT * FROM assets WHERE (assets.id = 85) LIMIT 1[0m
+  [4;35;1mUser Columns (0.008183)[0m   [0mSHOW FIELDS FROM users[0m
+  [4;36;1mSQL (0.007376)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.001228)[0m   [0mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;36;1mSQL (0.000510)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSecret Load (0.002068)[0m   [0mSELECT * FROM secrets WHERE (secrets.user_id = 832) [0m
+  [4;36;1mSecret Columns (0.011577)[0m   [0;1mSHOW FIELDS FROM secrets[0m
+  [4;35;1mSQL (0.007030)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000854)[0m   [0;1mINSERT INTO secrets (`name`, `user_id`, `email`) VALUES(NULL, 832, NULL)[0m
+  [4;35;1mSQL (0.000771)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (0.001190)[0m   [0;1mSELECT * FROM users WHERE (users.id = 832) LIMIT 1[0m
+  [4;35;1mSQL (0.000431)[0m   [0mBEGIN[0m
+  [4;36;1mSecret Update (0.001453)[0m   [0;1mUPDATE secrets SET `user_id` = 832, `email` = NULL, `name` = x'c42d49cb44c44d9e9288b5d94c6dda6b' WHERE id = 93[0m
+  [4;35;1mSQL (0.000439)[0m   [0mCOMMIT[0m
+  [4;36;1mChild Load (0.002923)[0m   [0;1mSELECT * FROM children WHERE (children.secret_id = 93) [0m
+  [4;35;1mChild Columns (0.008063)[0m   [0mSHOW FIELDS FROM children[0m
+  [4;36;1mSQL (0.007487)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000874)[0m   [0mINSERT INTO children (`secret_id`, `email`) VALUES(93, NULL)[0m
+  [4;36;1mSQL (0.000378)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000313)[0m   [0mBEGIN[0m
+  [4;36;1mSecret Load (0.001670)[0m   [0;1mSELECT * FROM secrets WHERE (secrets.id = 93) LIMIT 1[0m
+  [4;35;1mUser Load (0.001372)[0m   [0mSELECT * FROM users WHERE (users.id = 832) LIMIT 1[0m
+  [4;36;1mChild Update (0.000934)[0m   [0;1mUPDATE children SET `secret_id` = 93, `email` = 'ﬁPI36Z’ñt;&Ωë(|nF/ªoøx8ñA¿a¯ç' WHERE id = 78[0m
+  [4;35;1mSQL (0.000387)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000330)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000773)[0m   [0mINSERT INTO users (`name`) VALUES('bob')[0m
+  [4;36;1mSQL (0.000402)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000449)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.006272)[0m   [0;1mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;35;1mSQL (0.000410)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000496)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000704)[0m   [0mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;36;1mSQL (0.000400)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000407)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000675)[0m   [0;1mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;35;1mSQL (0.000794)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000704)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000707)[0m   [0mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;36;1mSQL (0.000365)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000414)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000729)[0m   [0;1mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;35;1mSQL (0.000405)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (0.001135)[0m   [0;1mSELECT * FROM users WHERE (users.id = 838) LIMIT 1[0m
+  [4;35;1mSQL (0.000511)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.005746)[0m   [0;1mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;35;1mSQL (0.000459)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000651)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000745)[0m   [0mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;36;1mSQL (0.000407)[0m   [0;1mCOMMIT[0m
+  [4;35;1mUser Load (0.001108)[0m   [0mSELECT * FROM users WHERE (users.id = 840) LIMIT 1[0m
+  [4;36;1mEncUser Columns (0.012584)[0m   [0;1mSHOW FIELDS FROM users[0m
+  [4;35;1mSQL (0.010332)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000779)[0m   [0;1mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;35;1mSQL (0.000391)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000449)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000670)[0m   [0mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;36;1mSQL (0.000489)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000445)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000681)[0m   [0;1mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;35;1mSQL (0.000344)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.000434)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.003799)[0m   [0mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;36;1mSQL (0.000403)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000476)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000827)[0m   [0;1mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;35;1mSQL (0.000473)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.003649)[0m   [0;1mBEGIN[0m
+  [4;35;1mEncUser Update (0.000878)[0m   [0mUPDATE users SET `name` = '÷}gŒV≥÷…÷®Ω' WHERE id = 845[0m
+  [4;36;1mSQL (0.000384)[0m   [0;1mCOMMIT[0m
+  [4;35;1mEncUser Load (0.001263)[0m   [0mSELECT * FROM users WHERE (users.id = 845) LIMIT 1[0m
+  [4;36;1mRawUser Load (0.001514)[0m   [0;1mSELECT * FROM users WHERE (users.id = 845) LIMIT 1[0m
+  [4;35;1mRawUser Columns (0.012883)[0m   [0mSHOW FIELDS FROM users[0m
+  [4;36;1mSQL (0.014925)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000721)[0m   [0mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;36;1mSQL (0.000346)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.000365)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.002085)[0m   [0;1mINSERT INTO users (`name`) VALUES(NULL)[0m
+  [4;35;1mSQL (0.000440)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (0.001222)[0m   [0;1mSELECT * FROM users WHERE (users.id = 847) LIMIT 1[0m

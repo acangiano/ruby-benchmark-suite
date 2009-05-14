@@ -1,0 +1,25 @@
+common: &common
+  adapter: mysql
+  encoding: utf8
+  host: localhost
+  socket: <%= %w[/tmp/mysql.sock /var/lib/mysql/mysql.sock /var/run/mysqld/mysqld.sock /opt/local/var/run/mysql5/mysqld.sock].detect { |f| File.exists? f } %>
+  database: petstore_<%= RAILS_ENV %>
+  username: root
+  password: 
+
+development:
+  <<: *common
+
+test:
+  <<: *common
+
+production:
+  <<: *common
+
+ar_jdbc: 
+  <<: *common
+  adapter: jdbc
+  driver: com.mysql.jdbc.Driver
+  url: jdbc:mysql://localhost/petstore_production
+  database: petstore_production
+

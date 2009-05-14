@@ -1,0 +1,68 @@
+<!-- 
+	SECTION ########################################################################
+-->
+<h1>Place Content in Section</h1>
+
+<p>
+	<a href="/admin/sections/list" class="action">Manage Sections</a>
+</p>
+
+<!-- 
+	Empty tag to force updates even if no checkboxes are selected
+ -->
+<input type="hidden" value="" name="content_node[sections][]" />
+<div class="listContainer" style="height:250px;">
+	<table class="list" cellpadding="0" cellspacing="0">
+		<colgroup>
+			<col style="width:25px;" />
+			<col style="width:25px;" />
+			<col />
+		</colgroup>
+		<tr class="fixedHeader">
+			<th colspan="3">Section Name</th>
+		</tr>
+		<tbody id="tag_list_tbody">
+		<% if @sections.length > 0 %>
+			<%= render(:partial => 'section_list_form_row', :collection => @sections, :locals => {:content_node => @content_node}) %>
+		<% else %>
+			<tr>
+				<td colspan="3">No sections have been created yet.</td>
+			</tr>
+		<% end %>
+			<!-- blank row so the stupid columns line up right -->
+			<tr><td></td><td></td><td></td></tr>
+		</tbody>
+	</table>
+</div>
+
+<p class="info">
+	Sections will be assigned when you save this content.
+</p>
+<p class="info">
+	<span class="hlt">You can place any type of content in a section, but really it's only relevant for Blogs at this time.</span>
+</p>
+<p class="info">
+	<i>(Button at the bottom of this page)</i>
+</p>
+
+<!--
+	LATEST UPLOADS #################################################################
+-->
+<h1>Latest File Uploads</h1>
+<% for @file in @recent_uploads do %>
+	<div id="recent_upload_<%= @file.id %>" 
+		style="float:left; height: 50px; width: 50px; overflow: hidden; margin: 5px;"
+	>
+		<div class="image">
+			<% if @file.read_attribute(:type) == "Image" %>
+				<!-- this is an image -->
+        <a href="<%= @file.public_filename %>" class="submodal-400-400"><%= image_tag @file.public_filename(:thumb) %></a>
+			<% else %>
+				<div style="background-color:#eee; padding:5px; width:40px; height:40px; font-size: 1.2em; text-align: center;">
+          <a href="<%= @file.public_filename %>"><%= @file.extension.upcase %></a>
+				</div>
+			<% end %>
+		</div>
+	</div>
+<% end %>
+<div class="clear">&nbsp;</div>

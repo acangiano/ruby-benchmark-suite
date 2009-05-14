@@ -1,0 +1,23 @@
+<div class="tealBg" id="left" style="min-height:700px;">
+  <h1><%= @title %></h1>
+  <% for question in @questions %>
+    <a name="<%= question.id %>">
+      <h2><%= question.short_question %></h2>
+    </a>
+    <div class="padLeft">
+      <%= get_markdown(question.answer) %>
+    </div>
+    <br/>
+  <% end %>
+</div>
+
+<div class="yellowBg" id="right">
+  <h1>Quick FAQ List</h1>
+  <ul>
+    <% for question in @questions %>
+      <li><a href="#<%= question.id %>"><%= question.short_question %></a></li>
+    <% end %>
+  </ul>
+</div>
+
+<div class="clear">&nbsp;</div>

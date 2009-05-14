@@ -1,0 +1,62 @@
+<div style="">
+  <h1 class="super_big">
+    Your order was successful.
+  </h1>
+
+  <div class="float" style="width:45%;margin-right:20px;margin-left:20px;">
+    <h1>Thank you</h1>
+    <h3>Please print this page for your records.</h3>
+    <p style="font-weight:bold;">
+    	<% if @payment_message %>
+    	  <%= @payment_message %>
+    	<% end %>
+    </p>
+    <p>
+      An email is being sent to <%= @order.customer.email_address %>.
+      <br/>
+      If you don't receive that email within a few hours please check your "spam" folder.
+    </p>
+    <div class="line"></div>
+    <%= render :partial => '/shared/product_downloads' %>
+
+    <h3><a href="/">Back to the home page</a></h3>
+  </div>
+
+  <div class="float" style="width:45%;">
+    <h1>Order #<%= @order.order_number %></h1>
+
+    <h2>Billing Info</h2>
+    <%= render(:partial => 'address_table', :locals => {:address => @order.billing_address}) %>
+
+    <h2>Shipping Info</h2>
+    <%= render(:partial => 'address_table', :locals => {:address => @order.shipping_address}) %>
+
+    <h2>Order Items</h2>
+    <%= render(:partial => 'cart_contents', :locals => {:cart => @order}) %>
+
+    <h2>Shipping And Totals</h2>
+    <table cellpadding="0" cellspacing="0" class="list">
+      <colgroup>
+        <col style="width:35%;"/>
+        <col />
+      </colgroup>
+      <tr>
+        <th>Shipping Via</th>
+        <td><%= @order.order_shipping_type.name %></td>
+      </tr>
+      <tr>
+        <th>Shipping Cost</th>
+        <td><%= number_to_currency(@order.shipping_cost) %></td>
+      </tr>
+      <tr>
+        <th>Order Total</th>
+        <td class="money"><%= number_to_currency(@order.total) %></td>
+      </tr>
+    </table>
+  </div>
+
+
+
+	<div style="clear:both;"></div>	
+
+</div>

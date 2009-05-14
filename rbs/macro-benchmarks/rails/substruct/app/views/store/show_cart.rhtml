@@ -1,0 +1,105 @@
+<div class="price" style="float:right;">
+	Total - <%= sub_number_to_currency(@order.total) %>
+</div>
+<h1>Your Cart</h1>
+
+<p>
+<a href="#" onclick="window.top.hidePopWin();return false;" class="action">Continue Shopping</a>
+</p>
+
+<% if @order.empty? then %>
+	<div>
+		There's nothing in your cart at this time.
+	</div>
+<% else %>
+	<table class="list" cellpadding="0" cellspacing="0">
+		<colgroup>
+			<col style="width:25px;" />
+			<col style="width:;" />
+			<col style="width:80px;" />
+			<col style="width:80px;" />
+			<col style="width:80px;" />
+		</colgroup>
+		<tr>
+			<th>&nbsp;</th>
+			<th class="first">Item</th>
+			<th class="numeric">Price Each</th>
+			<th class="numeric">Quantity</th>
+			<th class="numeric">Total Price</th>
+
+		</tr>
+		<% @order.items.each do |item| %>
+			<tr id="cart_item_<%= item.product_id %>" class="<%= alternate() %>">
+				<td>
+					<%= 
+						link_to_remote(
+							image_tag('icons/png-24/16-em-cross.png', :plugin => 'substruct', :alt => 'Remove from cart', :id => "remove_#{item.product_id}"),
+							:url => {
+									:controller => "store",
+									:action => "remove_from_cart_ajax",
+									:id => item.product_id },
+							:loading => " $('remove_#{item.product_id}').hide(); $('indicator_#{item.product_id}').show();",
+							:complete => "window.location.reload();",
+							:update => "items"
+						)
+					%>
+					<%= image_tag('indicator.gif', :plugin => 'substruct', :style => 'display:none;', :id => "indicator_#{item.product_id}") %>
+				</td>
+				<td>
+					<%
+					  if item.product && item.product.images[0]
+						  @image = item.product.images[0]
+              image_url = @image.public_filename(:thumb)
+							if image_url then
+					-%>
+							<%= image_tag image_url, :align => 'left', :style => 'margin:5px;' %>
+					<%
+							end
+						else
+					%>
+						<%= image_tag "/public/no_image_50.png", :plugin => 'substruct', :align => 'left',  :style => 'margin:5px;' %>
+					<% end %>
+					<%= item.name %>
+				</td>
+				<td class="money numeric"><%= sub_number_to_currency(item.unit_price) %></td>
+				<td class="numeric"><%= item.quantity %></td>
+				<td class="money numeric"><%= sub_number_to_currency(item.quantity*item.unit_price) %></td>
+			</tr>
+		<% end %>
+		<tr class="footer">
+			<td>
+				<%= 
+					link_to_remote(
+						image_tag('icons/png-24/16-em-cross.png', :plugin => 'substruct', :alt => 'Empty Cart', :id => 'empty_cart_image'),
+						{
+			  	  	:url => {
+					    	:controller => "store",
+					    	:action => "empty_cart_ajax"},
+					    :loading => "$('empty_cart_image').hide(); $('indicator_delete_all').show();",
+							:complete => "window.location.reload();",
+							:update => "items",
+							:confirm => "Empty your entire cart?"
+						}
+					)
+				%>
+				<%= image_tag('indicator.gif', :plugin => 'substruct', :style => 'display:none;', :id => "indicator_delete_all") %>
+			</td>
+			<td colspan="3" class="numeric">Cart Total</td>
+			<td class="money numeric">
+				<%= sub_number_to_currency(@order.total) %>
+			</td>
+		</tr>
+	</table>
+	<!-- take action on the cart -->
+	<div style="margin-top:10px;">
+		<div style="float:right;">
+			<a href="<%= get_link_to_checkout %>" class="button" style="width:150px;" target="_top">Checkout Now</a>
+		</div>
+		<p>
+			<a href="#" onclick="window.top.hidePopWin();return false;" class="action">Continue Shopping</a>
+		</p>
+	</div>
+<% end #products  %>
+
+<br/>
+<br/>

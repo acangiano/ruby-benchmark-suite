@@ -1,0 +1,49 @@
+<%= error_messages_for 'role' %>
+<p>
+	<label for="role_name">Name:</label>
+	<%= text_field 'role', 'name', :class => 'textInput'  %>
+</p>
+
+<p>
+  <label for="role_description">Description:</label>
+  <span class="info">
+    HTML and <a href="http://hobix.com/textile/" target="_blank">Textile</a> markup is allowed here.
+  </span>
+  <br/>
+  <%= text_area 'role', 'description', :cols => 70, :rows => 5, :class => 'textArea'  %>
+</p>
+
+<h2>Rights</h2>
+<!-- 
+	Need hidden input for rights to make sure that if all
+ 	are cleared off it gets picked up.
+-->
+<input type="hidden" value="" name="role[right_ids][]" />
+<div class="padLeft">
+	<table>
+		<colgroup>
+			<col style="width:24px;" />
+			<col style="width:49%;" />
+			<col style="width:24px;" />
+			<col style="width:49%;" />
+		</colgroup>
+<% 
+	i = 0
+	for right in @rights %>
+	<% if (i % 2 == 0) then %>
+		<tr>
+	<% end %>
+			<td><input type="checkbox" name="role[right_ids][]" id="rights_<%= right.id %>" <%= @role.rights.include?(right) ? 'checked' : '' %> value="<%= right.id %>" /></td>
+			<td>
+				<label class="inline" for="rights_<%= right.id %>"><%= right.name %></label>
+				<br/>
+				<div class="info"><%= right.controller %> - <%= right.actions %></div>
+			</td>
+	<% if (i % 2 == 1 || i == @rights.size-1) then %>
+		</tr>
+	<% end %>
+<% 
+		i += 1
+	end %>
+	</table>
+</div>

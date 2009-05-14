@@ -1,0 +1,46 @@
+<%= stylesheet_link_tag "cart", :plugin => 'substruct' %>
+
+<!-- Hopefully, future versions of IE will natively understand position: fixed, and this can go away. -->
+
+<!--[if IE]>
+<%= stylesheet_link_tag "cart-ie", :plugin => 'substruct' %>
+<script type="text/javascript">
+	var gFloater = null;
+	var gBody = null;
+
+	function initScroller() {
+		window.setInterval("doScroll();", 50);
+		gFloater = document.getElementById("cart");
+		if (document.documentElement) {
+			gBody = document.documentElement;
+		} else if (document.body) {
+			gBody = document.body;
+		} else {
+			gBody = document.getElementsByTagName("BODY")[0];
+		}
+	}
+	function doScroll() {
+		if (!gFloater) {
+			return;
+		}
+		if (self.pageYOffset) {
+			scrollTop = self.pageYOffset;
+		} else {
+			scrollTop = gBody.scrollTop;
+		}
+		gFloater.style.top = (getViewportHeight() + scrollTop - 125)+ "px";
+	}
+
+	Event.observe(window, "load", initScroller);
+</script>
+<![endif]-->
+
+<div id="cart">
+	<div id="cartTitle">
+		<div id="indicator" style="display:none;"><%= image_tag "indicator.gif", :plugin => 'substruct' %></div>
+		<div id="cartTitleText">Shopping Cart</div>
+	</div>
+	<div id="items">
+		<%= render(:partial => 'cart') %>
+	</div>
+</div>

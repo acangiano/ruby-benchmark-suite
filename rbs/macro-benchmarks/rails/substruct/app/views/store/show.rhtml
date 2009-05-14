@@ -1,0 +1,128 @@
+<% @two_column_layout = true %>
+<div id="left">
+ 	<h1>
+		<%= @product.name %>
+		<span class="info"><%= @product.code %></span>
+	</h1>
+	<ul class="navigation secondary">
+    <li><a href="/store">Back to store index</a></li>
+  </ul>
+	<% if @default_image %>
+		<div style="float:left; margin:20px; width: 200px;">
+      <% if @default_image.public_filename(:small) then %>
+        <a href="<%= @default_image.public_filename %>" class="submodal-800-400">
+          <%= image_tag @default_image.public_filename(:small) %>
+        </a>
+      <% end %>
+			<p class="info">Click to see full view</p>
+			<!-- thumbnails! -->
+			<% if @images.size > 1 %>
+				<h4>Other product images</h4>
+				<% for @p_image in @images do %>
+					<!-- product image for reordering -->
+					<div class="float" style="margin:5px;">
+					  <% if @p_image.public_filename(:thumb) then %>
+              <a href="<%= @p_image.public_filename %>" class="submodal-800-400"><%= image_tag @p_image.public_filename(:thumb) %></a>
+            <% end %>
+					</div>
+				<% end %>
+			<% end %>
+		</div>
+	<% end %>
+	
+	<div>
+		<%= get_markdown(@product.description) %>
+	</div>
+
+	<div class="clear"></div>
+	<% if @product.related_products.size > 0 %>
+		<br/>
+		<h2>Related Products</h2>
+		<br/>
+		<%= render :partial => 'product', :collection => @product.related_products %>
+		<div class="clear"></div>
+	<% end %>
+
+</div>
+
+<div id="right">
+	<div class="price"><%= sub_number_to_currency(@product.display_price) %></div>
+	
+	<% 
+		# ITEM IS OUT OF STOCK
+		if (Preference.find_by_name('store_use_inventory_control').is_true? && 0 >= @product.quantity )
+	%>
+		<br/>
+		<h3 id="out_of_stock">Item is out of stock</h3>
+	<%
+	 	# ITEM OR ONE OF ITS VARIATIONS IN STOCK
+		else 
+	%>
+	
+		<%=
+			form_remote_tag(
+				:url=> { :controller=>'store', :action=>'add_to_cart_ajax', :id => @product.id },
+				:html => {:name => 'add_product_form', :id => 'add_to_cart_form'},
+				:complete => "showPopWin('/store/show_cart', 600, 400, null, true)",
+				:failure => 'alert("That item appears to have gone out of stock before you were able to add it to your cart.\n\nPlease refresh this page.")',
+				:update => 'items'
+			)
+		%>
+		<% if @variations.size > 0 %>
+			<!-- product variations -->
+			<h2>Options</h2>
+			<div>
+				<table>
+				<% @variations.each_index do |i| %>
+					<% next if 0 >= @variations[i].quantity %>
+					<tr>
+						<td style="vertical-align:middle;">
+							<input type="radio" name="variation" id="variation_<%= @variations[i].id %>" value="<%= @variations[i].id %>" <%= i == 0 ? 'checked' : '' %>>
+						</td>
+						<td style="padding-left:4px;">
+							<label class="inline" for="variation_<%= @variations[i].id %>">
+								<%=h @variations[i].short_name %>
+								<br/>
+								<span class="money"><%= sub_number_to_currency(@variations[i].price) %></span>
+							</label>
+						</td>
+					</tr>
+				<% end %>
+				</table>
+			</div>
+		<% end %>
+		
+		<br/>
+		<h3>How many do you want?</h3>
+		<table style="width:100%;text-align:center;">
+			<tr>
+				<td style="width:40%;text-align:right;padding-right:5px;">
+					<input type="text" name="quantity" class="textInput numeric" value="1" size="4" onfocus="this.select();" />
+				</td><td>
+					<input type="submit" class="button" value="Add to Cart" />
+				</td>
+			</tr>
+		</table>
+		</form>
+	<% end # item in stock %>
+	
+	<div align="center" style="margin-top:10px;">
+		<p>
+		Not ready to buy yet?
+		<br/>
+		<%= 
+			link_to(
+				'Add this item to your wishlist',
+				{
+					:controller => 'customers',
+					:action => 'add_to_wishlist',
+					:id => @product.id
+				},
+				:class => 'action'
+			)
+		%>
+		</p>
+	</div>
+	
+</div>
+<div class="clear">&nbsp;</div>

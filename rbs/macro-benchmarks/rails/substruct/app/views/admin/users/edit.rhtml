@@ -1,0 +1,31 @@
+<div id="left">
+<%= form_tag :action=>"edit", :id => @user.id %>
+
+  <h1>Editing user</h1>
+  <ul class="navigation secondary">
+    <li><a href="/admin/users/list/">Back to User List</a></li>
+  </ul>
+
+  <%= render :partial => "form" %>
+
+	<!-- SAVE BUTTON -->
+	<div class="line" style="margin-top:20px;">&nbsp;</div>
+  <%= submit_tag 'Save This User', :class => 'button hundred' %>
+
+	<div style="float:right;">
+  	<%= link_to 'Delete This User', {:action => 'destroy', :id => @user}, :confirm => 'Are you sure?', :method => 'post', :class => 'action' %>
+	</div>
+	
+
+</form>
+</div>
+
+<!-- RIGHT -->
+<div id="right">
+	<h1>Help</h1>
+	<p>Here you can edit and assign roles to a user.</p>
+	<p>Roles allow a user to perform certain actions within Substruct.</p>
+	<p>To get more information about a role, click its name.</p>
+	<p><%= link_to('View All Roles', :controller => 'roles', :action => 'index') %></p>
+</div>
+<div class="clear">&nbsp;</div>

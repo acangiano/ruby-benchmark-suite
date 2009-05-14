@@ -1,0 +1,21 @@
+<% tag = tag_list_form_row %>
+<% row_class = alternate() %>
+<tr class="<%= row_class %> <%= 'selected' if product.tags.include?(tag)%>">
+	<td>
+		<%= check_box_tag("product[tag_ids][]", tag.id, product.tags.include?(tag)) %>
+	</td>
+	<td colspan="3">
+		<%=h tag.name %>
+	</td>
+</tr>
+<% for child in tag.children do %>
+	<tr class="<%= row_class %> <%= 'selected' if product.tags.include?(child)%>">
+		<td>&nbsp;</td>
+		<td>
+			<%= check_box_tag("product[tag_ids][]", child.id, product.tags.include?(child)) %>
+		</td>
+		<td colspan="2">
+			<%=h child.name %>
+		</td>
+	</tr>
+<% end %>

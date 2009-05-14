@@ -1,0 +1,6 @@
+<% if tag.product_count > 0 then %>
+	<%= link_to tag.name, :action => 'list_by_tags', :key => tag.id %>
+<% else %>
+	<%=h tag.name %>
+<% end %>
+<span class="info">(<%= pluralize(tag.product_count, 'item') %>)</span>

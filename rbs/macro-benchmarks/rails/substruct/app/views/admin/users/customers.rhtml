@@ -1,0 +1,55 @@
+
+
+<div id="left">
+	<%= render :partial => 'subnav' %>
+
+	<%= will_paginate @customers %>
+	<br/>
+
+  <table class="list" cellpadding="0" cellspacing="0">
+  <tr>
+    <th>Customer Name</th>
+		<th>E-mail Address</th>
+		<th class="numeric">Orders</th>
+  </tr>
+  <% for c in @customers %>
+  <tr class="<%= alternate %>">
+    <td>
+    	<%= "#{c.last_name}," if !c.last_name.blank? %> <%= c.first_name %>
+    </td>
+		<td>
+			<a href="mailto:<%= c.email_address %>"><%= c.email_address %></a>
+		</td>
+		<td class="numeric">
+			<% if c.orders.size == 0 %>
+				No orders
+			<% else %>
+				<%=
+					link_to(
+						"#{c.orders.size} Order(s)",
+						:controller => '/admin/orders',
+						:action => 'search_by_email',
+						:term => c.email_address
+					)
+				%>
+			<% end %>
+		</td>
+  </tr>
+  <% end %>
+  </table>
+
+
+	<!-- DOWNLOAD ORDERS -->
+	<p style="margin-top:10px;">
+		<%= link_to "Download All Customer Records as CSV", 
+					{ :action => 'download_customers_csv' }, 
+					:class => 'action' 
+		%>
+	</p>
+
+	<br/>
+	<%= will_paginate @customers %>
+
+</div>
+
+<%= render(:partial => 'right_side') %>

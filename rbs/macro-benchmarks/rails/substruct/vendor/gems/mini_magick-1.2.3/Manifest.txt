@@ -1,0 +1,14 @@
+MIT-LICENSE
+History.txt
+Manifest.txt
+README.txt
+Rakefile
+init.rb
+lib/image_temp_file.rb
+lib/mini_magick.rb
+test/actually_a_gif.jpg
+test/not_an_image.php
+test/simple.gif
+test/test_image_temp_file.rb
+test/test_mini_magick_test.rb
+test/trogdor.jpg

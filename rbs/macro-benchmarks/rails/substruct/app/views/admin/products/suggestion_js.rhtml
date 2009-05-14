@@ -1,0 +1,5 @@
+var items = new Array(<%= @items.size %>); 
+
+<% @items.each_with_index do |item, index| %> 
+items[<%= index %>] = "<%= item.suggestion_name.gsub('"', '\"') %>"; 
+<% end %>

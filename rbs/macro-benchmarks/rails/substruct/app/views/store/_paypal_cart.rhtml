@@ -1,0 +1,41 @@
+<input type="hidden" name="business" value="<%= @cc_login %>"/>
+<input type="hidden" name="upload" value="1"/>
+<input type="hidden" name="return" value="http://<%= request.env["HTTP_X_FORWARDED_HOST"] || request.env["HTTP_HOST"] %>/store/finish_order"/>
+<input type="hidden" name="invoice" value="<%= cart.order_number %>"/>
+
+<% if cart.is_discounted? %>
+	<input type="hidden" name="cmd" value="_xclick"/>
+  <input type="hidden" name="amount" value="<%= (cart.total*100).round/100.0 %>"/>
+	<input type="hidden" name="item_name" value="Order Invoice Number <%= cart.order_number %>"/>
+<% else %>
+	<input type="hidden" name="cmd" value="_cart"/>
+	<!-- cart items -->
+  <% i=1 %>
+  <% cart.items.each do |item| %>
+	  <input type="hidden" name="item_name_<%= i.to_s %>" value="<%= item.name %>"/>
+    <% if item.total > 0 %>
+	    <input type="hidden" name="amount_<%= i.to_s %>" value="<%= item.total %>"/>
+      <% i+=1 %>
+    <% end %>
+  <% end %>
+
+	<!-- tax -->
+  <% if cart.tax_cost > 0 %>
+ 	  <input type="hidden" name="tax_cart" value="<%= cart.tax_cost %>"/>
+  <% end %>
+
+	<!-- shipping -->
+  <% if cart.shipping_cost > 0 %>
+  	<input type="hidden" name="shipping_1" value="<%= cart.shipping_cost %>"/>
+  <% end %>
+
+	<!-- billing address -->
+  <% ba = cart.billing_address %>
+	<input type="hidden" name="last_name" value="<%= ba.last_name %>"/>
+	<input type="hidden" name="first_name" value="<%= ba.first_name %>"/>
+	<input type="hidden" name="address1" value="<%= ba.address %>"/>
+	<input type="hidden" name="city" value="<%= ba.city %>"/>
+	<input type="hidden" name="state" value="<%= ba.state.upcase %>"/>
+	<input type="hidden" name="zip" value="<%= ba.zip %>"/>
+	<input type="hidden" name="night_phone_b" value="<%= ba.telephone %>"/>
+<% end %>

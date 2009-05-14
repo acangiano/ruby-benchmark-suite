@@ -1,0 +1,70 @@
+<!--[form:content_node]-->
+<div class="floatHalf">
+	<p>
+	  <label for="content_node_title">Title</label>
+	  <%= text_field 'content_node', 'title', :class => 'textInput'  %>
+	  <br/>
+	  <span class="info">Appears in the browser title bar and sometimes in the page itself</span>
+	</p>
+	<p>
+	  <label for="content_node_display_one">Display date</label>
+	  <%= date_select 'content_node', 'display_on'  %>
+	</p>
+</div>
+<div class="floatHalf">
+	<p>
+	  <label for="content_node_name">URL</label>
+	  <%= text_field 'content_node', 'name', :class => 'textInput'  %>
+	  <%= error_message_on(:content_node, :name) %>
+	  <br/>
+	  <span class="info">
+	    <ul>
+	      <li>Blog Posts will appear as /blog/URL or /URL</li>
+	      <li>Pages will appear as /URL</li>
+	      <li>Snippets can be inserted anywhere on your site</li>
+	    </ul>
+	  </span>
+	</p>
+	
+	<p><label>Content Type</label>
+	  <%= select_tag('content_node[type]', options_for_select(ContentNode::TYPES, @content_node.type.to_s)) %>
+	  <br/>
+	  <span class="info">Determines where content shows up on the customer-facing site.</span>
+	</p>
+
+</div>
+<div class="clear">&nbsp;</div>
+
+<br/>
+
+<!-- content tabs -->
+
+
+<!-- content edit -->
+<h3>Content</h3>
+<div id="content_edit">
+  <span class="info">
+    HTML and <a href="http://hobix.com/textile/" target="_blank">Textile</a> markup is allowed here.
+  </span>
+  <br/>
+  <%= text_area 'content_node', 'content', :cols => 70, :rows => 20, :class => 'textAreaCode'  %>
+</div>
+
+
+<!-- LATEST UPLOADS & UPLOAD FILE FORM -->
+<h3>Upload files with this content</h3>
+<%= 
+	render :partial => '/shared/multiple_upload',
+		:locals => {
+			:name => 'file',
+			:input_size => '30'
+		}
+%>
+<p class="info">
+	The files uploaded here can be inserted into your content automatically.
+	<br/>
+	If you place the text '[file1]' into your document, the path of the first file 
+	<br/>will be placed into your content when this is saved.
+	<br/>
+	You may upload and place as many files as you wish.
+</p>

@@ -1,0 +1,54 @@
+<% content_for :header do %>
+	<style type="text/css">
+		.product_icon_floater {
+			float:left;
+			margin-left:-160px;
+		}
+	</style>
+<% end %>
+
+<div id="left">
+	<h1><%= @title %></h1>
+	<div class="padLeft">
+		<% if @items.size == 0 %>
+			<h3>
+				No items are in your wishlist at this time.
+			</h3>
+		<% else %>
+			<% for item in @items do %>
+				<div id="item_<%= item.id %>">
+					<%= render :partial => '/store/product', :locals => { :product => item } %>
+					<!-- remove link -->
+					<%= 
+						link_to_remote(
+							image_tag("icons/png-24/16-em-cross.png", 
+								:id => "trash_#{item.id}", :plugin => 'substruct', :alt => 'Delete'),
+							{	
+					    :url => {
+					        :controller => "customers",
+					        :action => "remove_wishlist_item", 
+					        :id => item.id},
+					    :loading => "$('trash_#{item.id}').hide();$('spin_#{item.id}').show();",
+							:complete => "new Effect.Fade($('item_#{item.id}'));"
+							},
+							{
+								:class => "product_icon_floater"
+							}
+						)
+					%>
+					<!-- delete indicator -->
+					<%= image_tag 'indicator.gif', :id => "spin_#{item.id}", :style => "display:none;", :class => 'product_icon_floater', :plugin => 'substruct' %>
+				</div>
+			<% end %>
+		<% end %>
+	</div>
+	
+	<div class="clear"></div>
+	<%= will_paginate @items %>
+</div>
+
+<div id="right">
+		<%= render :partial => 'sidebar' %>
+</div>
+
+<div class="clear"></div>

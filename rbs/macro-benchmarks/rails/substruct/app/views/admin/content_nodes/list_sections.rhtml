@@ -1,0 +1,18 @@
+<div id="left">
+	<h1>View Content By Section</h1>
+	<ul class="navigation secondary">
+    <li><a href="/admin/content_nodes/list/">Back to Content List</a></li>
+  </ul>
+	<!-- View content by section -->
+	<ul id="view_sections">
+		<% if @sections.length > 0 %>
+			<%= render(:partial => 'section_list_view_item', :collection => @sections) %>
+		<% else %>
+			<li>No Sections have been created yet</li>
+		<% end %>
+	</ul>
+</div>
+
+<%= render(:partial => 'content_right_side') %>
+
+<div class="clear"></div>

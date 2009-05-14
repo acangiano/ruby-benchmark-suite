@@ -1,0 +1,105 @@
+<div id="left">
+  <h1>
+    <div class="info" style="float:right;"><%= @order_time %></div>
+    <%=h @title %>
+  </h1>
+  
+  <%= render :partial => '/shared/product_downloads' %>
+  
+  <div class="line">&nbsp;</div>
+
+	<%= render(:partial => 'user') %>
+
+	<div class="clear">&nbsp;</div>
+	<div class="line">&nbsp;</div>
+
+	<h2>Billing Address</h2>
+	<%= render(:partial => 'address', :locals => {:address_type => 'billing'}) %>
+
+	<div class="clear">&nbsp;</div>
+	<div class="line">&nbsp;</div>
+
+	<h2>Shipping Address</h2>
+	<%= render(:partial => 'address', :locals => {:address_type => 'shipping'}) %>
+
+	<div class="clear">&nbsp;</div>
+	<div class="line">&nbsp;</div>
+
+	<%= render(:partial => 'account') %>
+
+  <div class="clear">&nbsp;</div>
+	<div class="line">&nbsp;</div>
+
+	<% if @order.referer %>
+		<br/>
+		<h2>Referer</h2>
+		<div class="padLeft">
+			<p>
+				<%= auto_link(@order.referer)  %>
+			</p>
+		</div>
+	<% end %>
+
+	<h2>Ship Via</h2>
+	<div class="padLeft">
+		<%= OrderShippingType.find(@order.order_shipping_type_id).name %>
+	</div>
+
+  <div class="clear">&nbsp;</div>
+	<div class="line">&nbsp;</div>
+
+	<h2>Order Items</h2>
+	<table class="list" cellpadding="0" cellspacing="0">
+		<colgroup>
+			<col/>
+			<col style="width:65px;"/>
+			<col style="width:80px;"/>
+			<col style="width:70px;"/>
+		</colgroup>
+		<tr>
+			<th>Item</th>
+			<th>Quantity</th>
+			<th class="numeric">Price Each</th>
+			<th class="numeric">Total</th>
+		</tr>
+		<% if @order.order_line_items.length > 0 then %>
+			<% for item in @order.order_line_items %>
+				<tr class="<%= alternate %>">
+					<td><%= item.name %></td>
+					<td class="numeric"><%= item.quantity %>	</td>
+					<td class="numeric">
+						<%= number_to_currency(item.unit_price) %>
+					</td>
+					<td class="numeric">
+						<%= number_to_currency(item.total) %>
+					</td>
+				</tr>
+			<% end %>
+		<% else %>
+			<!--
+				<tr>
+					<td colspan="4">No items are included in this order</td>
+				</tr>
+			-->
+		<% end %>
+		<tr>
+			<td class="borderTop" colspan="3">Shipping &amp; Handling - <%= @order.order_shipping_type.name if @order.order_shipping_type %></td>
+			<td class="borderTop numeric"><%= number_to_currency(@order.shipping_cost) %></td>
+		</tr>
+		<tr class="footer">
+			<td colspan="3" class="numeric">Order Total:</td>
+			<td class="numeric"><%= number_to_currency(@order.total) %></td>
+		</tr>
+	</table>
+
+	<div class="clear">&nbsp;</div>
+	<div class="line">&nbsp;</div>
+
+	<%= link_to 'Back To The Order List', :action => 'orders' %>
+</div>
+
+<div id="right">
+	<%= render :partial => 'sidebar' %>
+</div>
+
+<div class="clear"></div>

@@ -1,0 +1,35 @@
+<div class="product" id="product_<%= @product.id %>">
+	<h2>
+	  <%= @product.name %> -  <span class="money"><%= sub_number_to_currency(@product.price) %></span>
+	</h2>
+
+	<!-- product image -->
+	<%
+		if @image then
+                       image_url = @image.public_filename(:small)
+			if image_url then
+	%>
+			<%= image_tag(image_url, :id => "product_image_#{@product.id}", :align => 'left', :class => 'productImage') %>
+	<%
+			end
+		end
+	%>
+
+	<%= get_markdown_snippet(@product.description) %>
+
+	<div style="float:right;">
+		<%= link_to_remote 'Add To Cart',
+				{
+	  	  	:url => {
+		        :controller => 'store',
+		        :action => 'add_to_cart_ajax',
+		        :id => @product.id},
+		    :loading => "Element.show('indicator')",
+				:complete => "Element.hide('indicator');new Effect.Highlight('cart');",
+				:update => 'items'
+				},
+				{ }
+		%>
+	</div>
+	<div class="clear">&nbsp;</div>
+</div>

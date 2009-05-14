@@ -1,0 +1,35 @@
+<div id="right">
+
+	<br/>
+	<%= link_to 'Create New Product', {:action => 'new'}, :class => 'button hundredfifty' %>
+	<div class="clear">&nbsp;</div>
+
+	<h1>Search All Products</h1>
+	<%= form_tag :controller => 'products', :action => 'search' %>
+	  <input class="textInput" type="text" name="term" size="28" style="width:135px;float:left;margin-right:5px;" /> <%= submit_tag('Go', {:class => 'button fifty'}) %>
+	  <div class="clear info">&nbsp;</div>
+	  <span class="info">Product Name, Code or Description</span>
+
+	</form>
+
+<script language="javascript" type="text/javascript">
+	// Called when closing the Tag edit dialog box
+	// Fires off a request for rendering the partial in our list box
+	//
+	// OUTDATED, since we moved tags to a new page.
+	//
+	function returnGetTags() {
+		//
+	}
+</script>
+
+  <h1 style="margin-top:20px;">Tagging</h1>
+	<p>
+		<a href="/admin/tags/list" class="action">Manage Tags</a> - <a href="http://dev.subimage.com/projects/substruct/wiki/HelpTagging" class="submodal-600-400 info">What are Tags?</a>
+	</p>
+	<p>
+		<a href="/admin/products/list_tags">View Products By Tag...</a>
+	</p>
+</div>
+
+<div class="clear">&nbsp;</div>

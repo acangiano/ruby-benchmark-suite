@@ -1,0 +1,28 @@
+<table cellpadding="0" cellspacing="0" class="list">
+  <colgroup>
+		<col style="width:35%;"/>
+		<col />
+	</colgroup>
+  <tr>
+    <th>Shipping Via</th>
+		<td>
+			<% if @order.order_shipping_type.nil? then %>
+	    	The fastest way possible...
+			<% else %>
+				<%= @order.order_shipping_type.name %>
+			<% end %>
+		</td>
+  </tr>
+  <tr>
+    <th>Shipping Cost</th>
+    <td><%= sub_number_to_currency(@order.shipping_cost) %></td>
+  </tr>
+	<tr>
+		<th>Items</th>
+		<td><%= sub_number_to_currency(@order.line_items_total) %></td>
+	</tr>
+  <tr>
+    <th>Final Order Total</th>
+    <td class="money"><%= sub_number_to_currency(@order.total) %></td>
+  </tr>
+</table>

@@ -1,0 +1,27 @@
+<h1>Listing order_accounts</h1>
+
+<table>
+  <tr>
+  <% for column in OrderAccount.content_columns %>
+    <th><%= column.human_name %></th>
+  <% end %>
+  </tr>
+  
+<% for order_account in @order_accounts %>
+  <tr>
+  <% for column in OrderAccount.content_columns %>
+    <td><%=h order_account.send(column.name) %></td>
+  <% end %>
+    <td><%= link_to 'Show', :action => 'show', :id => order_account %></td>
+    <td><%= link_to 'Edit', :action => 'edit', :id => order_account %></td>
+    <td><%= link_to 'Destroy', { :action => 'destroy', :id => order_account }, :confirm => 'Are you sure?' %></td>
+  </tr>
+<% end %>
+</table>
+
+<%= link_to 'Previous page', { :page => @order_account_pages.current.previous } if @order_account_pages.current.previous %>
+<%= link_to 'Next page', { :page => @order_account_pages.current.next } if @order_account_pages.current.next %> 
+
+<br />
+
+<%= link_to 'New order_account', :action => 'new' %>

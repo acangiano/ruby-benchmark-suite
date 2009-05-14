@@ -1,0 +1,28 @@
+--- 
+order_status_code_00006: 
+  name: ORDERED - PAID - SHIPPED
+  id: 6
+order_status_code_00007: 
+  name: SENT TO FULFILLMENT
+  id: 7
+order_status_code_00008: 
+  name: CANCELLED
+  id: 8
+order_status_code_00009: 
+  name: RETURNED
+  id: 9
+order_status_code_00001: 
+  name: CART
+  id: 1
+order_status_code_00002: 
+  name: TO CHARGE
+  id: 2
+order_status_code_00003: 
+  name: ON HOLD - PAYMENT FAILED
+  id: 3
+order_status_code_00004: 
+  name: ON HOLD - AWAITING PAYMENT
+  id: 4
+order_status_code_00005: 
+  name: ORDERED - PAID - TO SHIP
+  id: 5

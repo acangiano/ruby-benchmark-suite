@@ -1,0 +1,28 @@
+<%= error_messages_for 'order_address' %>
+
+<!--[form:order_address]-->
+<p><label for="order_address_is_shipping">Is shipping</label><br/>
+<select id="order_address_is_shipping" name="order_address[is_shipping]"><option value="false" selected>False</option><option value="true">True</option></select></p>
+
+<p><label for="order_address_first_name">First name</label><br/>
+<%= text_field 'order_address', 'first_name'  %></p>
+
+<p><label for="order_address_last_name">Last name</label><br/>
+<%= text_field 'order_address', 'last_name'  %></p>
+
+<p><label for="order_address_telephone">Telephone</label><br/>
+<%= text_field 'order_address', 'telephone'  %></p>
+
+<p><label for="order_address_address">Address</label><br/>
+<%= text_field 'order_address', 'address'  %></p>
+
+<p><label for="order_address_city">City</label><br/>
+<%= text_field 'order_address', 'city'  %></p>
+
+<p><label for="order_address_state">State</label><br/>
+<%= text_field 'order_address', 'state'  %></p>
+
+<p><label for="order_address_zip">Zip</label><br/>
+<%= text_field 'order_address', 'zip'  %></p>
+<!--[eoform:order_address]-->
+

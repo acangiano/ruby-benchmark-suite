@@ -1,0 +1,76 @@
+<% if @order.empty? then %>
+	<div style="margin-top:25px;">
+		Add items to your cart using the <i>Add To Cart</i> links above.
+		<br/>
+		If you'd like to add multiple quantities of an item click the link twice.
+	</div>
+<% else %>
+	<div class="cartItem" style="text-align:left;width:100px;margin-top:22px;">
+		<div style="font-size:1.1em;">
+			<b>Total</b>
+			<br/>
+			<span class="money">
+				<%= sub_number_to_currency(@order.total) %>
+			</span>
+		</div>
+		<div style="margin-top:4px;">
+			<a href="<%= get_link_to_checkout %>" class="action">Checkout Now</a>
+		</div>
+		<div style="margin-top:10px;"><%= link_to_remote 'Empty cart',
+	  	  :url => {
+		        :controller => "store",
+		        :action => "empty_cart_ajax"},
+		    :loading => "Element.show('indicator')",
+				:complete => "Element.hide('indicator');new Effect.Highlight('cart');",
+				:update => "items"
+		%></div>
+	</div>
+
+	<div id="itemsContainer">
+		<% @order.items.each do |item| %>
+			<% item.quantity.times do |i| %>
+				<div class="cartItem" id="cart_item_<%= item.product_id %>_<%= i %>">
+					<span class="title" title="<%=h item.name %>">
+						<%= 
+							link_to(
+								truncate(item.name, 10), 
+								:controller => 'store', 
+								:action => 'show', 
+								:id => item.product_id
+							) 
+						%>
+					</span>
+					<br/>
+					<span class="money"><%= sub_number_to_currency(item.unit_price) %></span>
+					<br/>
+					<div style="height:50px;">
+						<%
+						if item.product && item.product.images[0]
+						  @image = item.product.images[0]
+              image_url = @image.public_filename(:thumb)
+							if image_url then
+						-%>
+								<%= image_tag image_url %>
+						<%
+					    end
+						else
+						%>
+							<%= image_tag "/public/no_image_50.png", :plugin => 'substruct' %>
+						<% 
+						end 
+						%>
+					</div>
+					<span class="info"><%= link_to_remote 'Remove',
+							:url => {
+									:controller => "store",
+									:action => "remove_from_cart_ajax",
+									:id => item.product_id },
+							:loading => "new Effect.Fade('cart_item_#{item.product_id}_#{i}');Element.show('indicator');",
+							:complete => "Element.hide('indicator');new Effect.Highlight('cart');",
+							:update => "items"
+					%></span>
+				</div>
+			<% end %>
+		<% end %>
+	</div>
+<% end %>

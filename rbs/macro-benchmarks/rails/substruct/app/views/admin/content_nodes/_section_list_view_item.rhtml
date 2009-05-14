@@ -1,0 +1,11 @@
+<% section = section_list_view_item %>
+<li>
+	<%= render :partial => 'section_text', :locals => { :section => section } %>
+	<% if section.content_count > 0 %>
+		<ul>
+			<% for child in section.children do %>
+				<li><%= render :partial => 'section_text', :locals => { :section => child } %></li>
+			<% end %>
+		</ul>
+	<% end %>
+</li>

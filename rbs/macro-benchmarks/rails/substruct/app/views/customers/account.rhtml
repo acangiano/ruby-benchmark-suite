@@ -1,0 +1,20 @@
+<div id="left">
+	<h1><%= @title %></h1>
+  <%= form_tag :action => 'account' %>
+		<div class="form_block">
+			<%= render :partial => 'details_form' %>
+			<div class="line"></div>
+			<p>
+	      <%= submit_tag "Save", :class => 'button' %>
+	      <div class="clear">&nbsp;</div>
+	    </p>
+		</div>
+
+	</form>
+</div>
+
+<div id="right">
+		<%= render :partial => 'sidebar' %>
+</div>
+
+<div class="clear"></div>

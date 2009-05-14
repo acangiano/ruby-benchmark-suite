@@ -1,0 +1,75 @@
+<!-- PRODUCTS FOR AUTO COMPLETE -->
+<script language="javascript" type="text/javascript" src="/admin/products/suggestion_js"></script>
+<!-- auto complete results div  -->
+<div class="auto_complete" id="product_lookup_auto_complete"></div>
+
+<div id="right">
+
+<!-- 
+	TAGS ########################################################################
+-->
+<h1>Tag This Product</h1>
+
+<p>
+	<a href="/admin/tags/list" class="action">Manage Tags</a> - <a href="http://dev.subimage.com/projects/substruct/wiki/HelpTagging" class="submodal-600-400 info">What are Tags?</a>
+</p>
+
+
+<!-- 
+	Empty tag to force updates even if no checkboxes are selected
+ -->
+<input type="hidden" value="" name="product[tag_ids][]" />
+<div class="listContainer" style="height:300px;">
+	<table class="list" cellpadding="0" cellspacing="0">
+		<colgroup>
+			<col style="width:25px;" />
+			<col style="width:25px;" />
+			<col />
+		</colgroup>
+		<tr class="fixedHeader">
+			<th colspan="4">Tag Name</th>
+		</tr>
+		<tbody id="tag_list_tbody">
+		<% if @tags.length > 0 %>
+			<%= render(:partial => 'tag_list_form_row', :collection => @tags, :locals => {:product => @product}) %>
+		<% else %>
+			<tr>
+				<td colspan="3">No tags have been created yet.</td>
+			</tr>
+		<% end %>
+			<!-- blank row so the stupid columns line up right -->
+			<tr><td></td><td></td><td></td></tr>
+		</tbody>
+	</table>
+</div>
+
+<p class="info">
+	Tags will be assigned when you save this product.
+</p>
+<p class="info">
+	<i>(Button at the bottom of this page)</i>
+</p>
+
+<!-- 
+	RELATED PRODUCTS ############################################################
+-->
+<h1>Related Products</h1>
+<%
+	i = 0
+	for relative in @product.related_products do
+%>
+	<%= render :partial => 'relative', :locals => { :relative => relative, :input_id => "relative_box_#{i}" } %>
+	<% i += 1 %>
+<% end %>
+<% (i..4).each do |i| %>
+	<%= render :partial => 'relative', :locals => { :input_id => "relative_box_#{i}" } %>
+<% end%>
+
+<span class="info">
+	Type in the product name or code here. It will be auto-completed for you.
+</span>
+
+</div>
+<div class="clear">&nbsp;</div>
+
+

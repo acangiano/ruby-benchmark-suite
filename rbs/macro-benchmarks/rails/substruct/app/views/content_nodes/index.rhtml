@@ -1,0 +1,30 @@
+<div id="left">
+  <h1>Blog</h1>
+
+  <% for node in @content_nodes %>
+    <h2 class="cap"><a href="/blog/<%= node.name %>/"><%= node.title %></a></h2>
+    <div class="padLeft">
+      <%= get_markdown_snippet(node.content) %>
+      <div class="line">&nbsp;</div>
+      <p class="info">
+        <a href="/blog/<%= node.name %>/">Read more...</a> |
+        Published: <%= node.display_on.strftime("%m/%d/%y") %>
+      </p>
+    </div>
+  <% end %>
+
+  <% if @content_nodes.length == 0 then %>
+    <p>
+      No content has been created yet. Please login to the <a href="/admin">admin section</a> and create some.
+    </p>
+  <% end %>
+
+	<%= will_paginate @content_nodes %>
+
+</div>
+
+<div id="right">
+	<%= render :partial => 'section_list' %>
+</div>
+
+<div class="clear"></div>

@@ -1,0 +1,21 @@
+<div id="left">
+	<h1><%= @title %></h1>
+	<ul class="navigation secondary">
+    <li><a href="/admin/promotions/list/">Back to Promotion List</a></li>
+  </ul>
+	<%= form_tag :action => 'create' %>
+		<%= render(:partial => 'form') %>
+
+		<div class="line">&nbsp;</div>
+		
+		<p>
+			<%= submit_tag "Create Promotion", :class => 'button hundred' %>
+		</p>
+		<div class="clear"></div>
+	</form>
+</div>
+
+<div id="right">
+	<%= render :partial => 'help' %>
+</div>
+<div class="clear">&nbsp;</div>

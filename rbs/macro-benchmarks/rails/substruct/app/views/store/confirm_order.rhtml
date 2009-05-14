@@ -1,0 +1,39 @@
+<div id="left">
+
+	<h1><%= @title %></h1>
+
+<% if Order.get_cc_processor == 'PayPal IPN' -%>
+  <form action="<%= @paypal_url %>" method="POST">
+  <%= render(:partial => 'paypal_cart', :locals => {:cart => @order}) %>
+<% else -%>
+  <%= form_tag :action => 'finish_order' %>
+<% end -%>
+
+	<div class="padLeft">
+		<%= render(:partial => 'cart_contents', :locals => {:cart => @order}) %>
+		
+		<br/>
+	
+		<div class="line"></div>
+		
+	  <p>
+	    <%= submit_tag "Submit Your Order", :class => 'button', :id => 'submit_button', :disable_with => 'Submitting, please wait...' %>
+	  </p>
+	</div>
+
+	</form>
+</div>
+
+<div id="right">
+	<h1>Help</h1>
+	<p>
+		Please make sure your order is correct before continuing.
+	</p>
+	<p>
+		After pressing the <i>Submit Your Order</i> button on this page you will be charged for the item(s) shown.
+ 	</p>
+
+	<%= render :partial => 'clear_cart' %>
+</div>
+
+<div class="clear"></div>

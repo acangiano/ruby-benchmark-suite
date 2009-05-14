@@ -1,0 +1,17 @@
+<% if @sections.size > 0 %>
+	<h2>Content By Section</h2>
+
+	<!-- View content by section -->
+	<ul id="view_sections">
+		<%= render(:partial => 'section_list_view_item', :collection => @sections) %>
+	</ul>
+	<p>
+		<%= 
+			link_to(
+				'View all content',
+				:controller => 'content_nodes',
+				:action => 'index'
+			)
+		%>
+	</p>
+<% end %>

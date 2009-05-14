@@ -1,0 +1,11 @@
+<% tag = tag_list_view_item %>
+<li>
+	<%= render :partial => 'tag_text', :locals => { :tag => tag } %>
+	<% if tag.product_count > 0 %>
+		<ul>
+			<% for child in tag.children do %>
+				<li><%= render :partial => 'tag_text', :locals => { :tag => child } %></li>
+			<% end %>
+		</ul>
+	<% end %>
+</li>

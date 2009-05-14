@@ -1,0 +1,43 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<!--
+  Layout that looks like a receipt for the finish_checkout method.
+-->
+<head>
+	<title><%=
+		if @title then
+			h @title
+		else
+			h controller.controller_name
+		end
+		-%> : <%=h @store_name %></title>
+	<%= javascript_include_tag :defaults, :cache => 'default' %>
+  <%= stylesheet_link_tag 'main', :plugin => 'substruct' %>
+  <style type="text/css">
+    body {
+      background-image: none;
+      background-color: #fff;
+      padding: 30px;
+      width: 800px;
+      margin: auto auto;
+    }
+    h1.super_big {
+      background-color: #3F9C3C;
+      color: #fff;
+      border-bottom: 0px !important;
+      padding: 20px;
+      margin-bottom: 30px;
+      font-size: 30px;
+      text-align: center;
+      text-transform: capitalize;
+      -moz-border-radius: 10px;
+      -khtml-border-radius: 10px;
+    }
+  </style>
+	<%= yield :header %>
+</head>
+<body>
+
+  <%= yield %>
+
+</body>
+</html>

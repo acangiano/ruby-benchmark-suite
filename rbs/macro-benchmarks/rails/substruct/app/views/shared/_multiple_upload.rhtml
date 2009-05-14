@@ -1,0 +1,18 @@
+<!-- file uploads -->
+<div id="<%= name %>_file_upload_container">
+	<p>
+		<input name="<%= "#{name}[][#{name}_data]" %>" size="<%= input_size %>" type="file" />
+		<input name="<%= "#{name}[][#{name}_data_temp]" %>" type="hidden" />
+	</p>
+</div>
+
+<!-- empty file upload box that gets added / removed via JS -->
+<p id="<%= name %>_empty_file_upload" style="display:none;" class="upload_box">
+	<a style="float:right;" class="action" href="#" onclick="this.up('p').remove();return false;">Remove</a>
+	<input name="<%= "#{name}[][#{name}_data]" %>" size="<%= input_size %>" type="file" />
+	<input name="<%= "#{name}[][#{name}_data_temp]" %>" type="hidden" />
+</p>
+
+<p>
+	<a href="#" class="action" onclick="addEmptyUpload('<%= name %>');return false;">Add file to upload</a>
+</p>

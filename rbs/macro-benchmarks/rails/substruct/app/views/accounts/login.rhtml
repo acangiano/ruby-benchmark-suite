@@ -1,0 +1,36 @@
+<%= form_tag :action=> "login" %>
+
+<h1>Login To Continue</h1>
+
+
+<% if flash['notice'] %>
+  <div id="message"><%= flash['notice'] %></div>
+<% end %>
+
+<div class="padLeft">
+  <p class="info">
+    All attempts to access this system are logged.
+    <br/>Unauthorized access is prohibited and punishable by law.
+  </p>
+
+
+  <p>
+    <label for="user_login">Login:</label>
+    <input type="text" class="textInput" name="user_login" id="user_login" size="30" value=""/>
+    <br/><br/>
+    <label for="user_password">Password:</label>
+    <input type="password" class="textInput" name="user_password" id="user_password" size="30"/>
+  </p>
+
+  <p>
+    <input type="submit" name="login" value="Login" class="button eighty" />
+  </p>
+
+
+</div>
+</form>
+
+<script language="javascript">
+	// focus our login input
+	$('user_login').focus();
+</script>

@@ -1,0 +1,19 @@
+<h1>Search all orders by...</h1>
+
+<h4>Order #, First or Last Name</h4>
+<%= form_tag :controller => 'orders', :action => 'search' %>
+  <input class="textInput" type="text" id="searchTerm" name="term" size="28" style="width:135px;float:left;margin-right:5px;" /> <%= submit_tag('Go', {:class => 'button fifty', :id => 'searchButton'}) %>
+  <div class="clear info">&nbsp;</div>
+</form>
+
+<h4>Email Address</h4>
+<%= form_tag :controller => 'orders', :action => 'search_by_email' %>
+  <input class="textInput" type="text" id="searchTerm2" name="term" size="28" style="width:135px;float:left;margin-right:5px;" /> <%= submit_tag('Go', {:class => 'button fifty', :id => 'searchButton2'}) %>
+  <div class="clear info">&nbsp;</div>
+</form>
+
+<h4>Order Notes Field</h4>
+<%= form_tag :controller => 'orders', :action => 'search_by_notes' %>
+  <input class="textInput" type="text" id="searchTerm3" name="term" size="28" style="width:135px;float:left;margin-right:5px;" /> <%= submit_tag('Go', {:class => 'button fifty', :id => 'searchButton3'}) %>
+  <div class="clear info">&nbsp;</div>
+</form>

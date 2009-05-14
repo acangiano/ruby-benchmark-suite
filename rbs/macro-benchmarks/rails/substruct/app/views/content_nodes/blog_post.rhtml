@@ -1,0 +1,13 @@
+<!-- MAIN -->
+<div id="left" style="min-height:700px;">
+  <h1 class="cap"><%= @title %></h1>
+  <div class="leftpad">
+    <%= get_markdown(@content_node.content) %>
+  </div>
+</div>
+
+<div id="right">
+	<%= render :partial => 'section_list' %>
+</div>
+
+<div class="clear"></div>

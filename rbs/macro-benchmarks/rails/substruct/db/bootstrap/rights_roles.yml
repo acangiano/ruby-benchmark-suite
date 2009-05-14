@@ -1,0 +1,37 @@
+--- 
+join_00002: 
+  role_id: "1"
+  right_id: "5"
+join_00003: 
+  role_id: "1"
+  right_id: "6"
+join_00004: 
+  role_id: "1"
+  right_id: "7"
+join_00005: 
+  role_id: "1"
+  right_id: "8"
+join_00006: 
+  role_id: "1"
+  right_id: "19"
+join_00007: 
+  role_id: "1"
+  right_id: "22"
+join_00008: 
+  role_id: "1"
+  right_id: "23"
+join_00010: 
+  role_id: "1"
+  right_id: "24"
+join_00009: 
+  role_id: "1"
+  right_id: "1"
+join_00011: 
+  role_id: "1"
+  right_id: "2"
+join_00000: 
+  role_id: "1"
+  right_id: "3"
+join_00001: 
+  role_id: "1"
+  right_id: "4"

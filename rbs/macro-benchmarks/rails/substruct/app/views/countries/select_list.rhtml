@@ -1,0 +1,6 @@
+<select name="<%= @select_name %>[country_id]">
+  <% @countries.each { |country| %>
+    <option value="<%= country.id %>" <%= country.id == @selected.to_i ? "selected" : "" %>><%= country.name %></option>
+  <% } %>
+</select>
+

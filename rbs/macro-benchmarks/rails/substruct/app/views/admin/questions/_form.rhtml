@@ -1,0 +1,43 @@
+<!--[form:question]-->
+<div class="float">
+	<p><label for="question_rank">FAQ Rank</label>
+	<%= text_field 'question', 'rank', :size => 4, :maxlength => 4, :class => 'textInput'  %>
+	<%= error_message_on(:question, :rank) %>
+	</p>
+</div>
+<div class="float">
+	<p><label for="question_times_viewed">Times viewed</label>
+	<%= text_field 'question', 'times_viewed', :size => 10, :class => 'textInput'  %>
+	<%= error_message_on(:question, :times_viewed) %>
+</p>
+</div>
+<div class="clear">&nbsp;</div>
+
+<p><label><%= check_box 'question', 'featured'  %> Feature this question in the FAQ</label></p>
+
+<p><label for="question_email_address">Email Address</label>
+	<%= text_field 'question', 'email_address', :size => 50, :class => 'textInput'  %>
+	<%= error_message_on(:question, :email_address) %>
+<br/>
+<span class="info">Address of the person who sent the question - not publicly visible</span>
+</p>
+
+<p><label for="question_short_question">Title</label>
+<%= text_field 'question', 'short_question', :size => 60, :class => 'textInput'  %>
+<br/>
+<span class="info">This is what will show in the FAQ</span>
+	<%= error_message_on(:question, :short_question) %>
+</p>
+
+<p><label for="question_long_question">Question</label>
+<%= text_area 'question', 'long_question', :cols => 60, :rows => 5, :class => 'textArea'  %>
+	<%= error_message_on(:question, :long_question) %>
+</p>
+
+<p><label for="question_answer">Answer</label>
+<%= text_area 'question', 'answer', :cols => 60, :class => 'textArea'  %>
+	<%= error_message_on(:question, :answer) %>
+</p>
+
+<!--[eoform:question]-->
+

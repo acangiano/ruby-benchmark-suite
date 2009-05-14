@@ -1,0 +1,51 @@
+<div id="left">
+  <h1>New order</h1>
+
+  <ul class="navigation secondary">
+    <li><a href="/admin/orders/list/">Back to Order List</a></li>
+  </ul>
+
+  <%= form_tag :action => 'create' %>
+
+    <%= render(:partial => 'user') %>
+
+    <h2>Billing &amp; Shipping Address</h2>
+    <%= render(:partial => 'address', :locals => {:address_type => 'billing', :show_obsolete => true}) %>
+
+    <br/>
+    <div class="padLeft">
+      <label><%= check_box_tag("use_separate_shipping_address", '1', @use_separate_shipping_address, :class => 'inline', :id => 'use_diff_shipping') %> Ship to a different address</label>
+      <br/>
+    </div>
+
+    <div id="shipping_address"
+     style="<%= 'display:none;' if !@use_separate_shipping_address %>">
+      <h2>Shipping Address</h2>
+      <%= render(:partial => 'address', :locals => {:address_type => 'shipping', :show_obsolete => true}) %>
+    </div>
+
+    <%= render(:partial => 'account') %>
+
+    <div class="line">&nbsp;</div>
+
+    <p>
+      <%= submit_tag "Save New Order", :class => 'button hundredfifty' %>
+    </p>
+  </form>
+
+
+</div>
+
+<%= javascript_include_tag 'substruct', 'order', :plugin => 'substruct' %>
+
+<!-- RIGHT -->
+<div id="right">
+	<h1>Help</h1>
+	<p>You'll be able to add items and notes to this order once it's been created.</p>
+	
+	<h2>Other Forms of Payment</h2>
+	<p>If you're creating an order that will be paid for some other way than credit card don't worry, it can be done.</p>
+	<p>Enter an invalid credit card number <span class="info">(1111111111)</span> and a valid expiration date.</p>
+	<p>After creating the order you can use the notes field to mark that this order has been paid for already, and by what method.</p>
+</div>
+<div class="clear">&nbsp;</div>

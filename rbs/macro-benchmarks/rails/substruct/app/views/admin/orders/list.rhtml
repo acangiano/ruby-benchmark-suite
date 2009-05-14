@@ -1,0 +1,105 @@
+<div id="left">
+	<h1><%=h @title %></h1>
+
+  <%= generate_navigation(@list_options, @viewing_by, 'list') %>
+
+	<% if @search_title %>
+		<h2><%=h @search_title %></h2>
+	<% end %>
+
+	<% if @orders.length == 0 then %>
+		<h4>No orders have been taken that apply to this view.</h4>
+		<div class="padLeft">
+			<p>Would you like to try another view?</p>
+			<ul>
+				<li>
+					<a href="/admin/orders/list?key=Ready+To+Ship">Ready To Ship</a>
+					<br/>
+					<span class="info">Orders that have been paid for and are ready to be shipped out.</span>
+				</li>
+				<li>
+					<a href="/admin/orders/list?key=On+Hold">On Hold</a>
+					<br/>
+					<span class="info">Orders awaiting payment, or orders that have failed to process correctly.
+					<br/>(Due to invalid data entry of credit card, address, etc)</span>
+				</li>
+				<li>
+					<a href="/admin/orders/list?key=Completed">Completed</a>
+					<br/>
+					<span class="info">Orders have been shipped and completed</span>
+				</li>
+				<li>
+					<a href="/admin/orders/list?key=All">All</a>
+					<br/>
+					<span class="info">All orders, regardless of status</span>
+				</li>
+			</ul>
+		</div>
+
+		<!--h4>Here's An Idea...</h4>
+		<div class="padLeft">
+			<p><a href="/admin/orders/new">Create a test order</a> to see how the system acts.</p>
+		</div-->
+
+	<% else %>
+
+		<table class="list" cellpadding="0" cellspacing="0">
+			<colgroup>
+				<col/>
+				<col style="width:70px;"/>
+				<col style="width:190px;"/>
+				<col style="width:70px;"/>
+			</colgroup>
+			<tr>
+				<th>Order Name / Number</th>
+				<th>Date</th>
+				<th>Status</th>
+				<th>Total</th>
+			</tr>
+			<% for order in @orders %>
+				<tr class="<%= alternate %>">
+					<td>
+					  <% unless order.name.empty? %>
+						  <%= link_to(h(order.name), :action => 'show', :id => order) %>
+						<% else %>
+						  [Checkout incomplete]
+						<% end %>
+						<br/>
+						<%= link_to(order.order_number, :action => 'show', :id => order) %>
+					</td>
+					<td><%= order.created_on.strftime("%m/%d/%y %I:%M %p") %></td>
+					<td><%= order.status %></td>
+					<td class="numeric"><%= sub_number_to_currency(order.total) %></td>
+				</tr>
+			<% end %>
+		</table>
+
+		<!-- DOWNLOAD ORDERS -->
+		<p style="margin-top:10px;">
+			<%= link_to "Download Orders: XML", 
+						{ :action => 'download',
+		          :ids => @orders.collect{|o| o.id},
+		 					:format => 'xml' }, 
+						:class => 'action' 
+			%>
+			<%= link_to "Download Orders: CSV", 
+						{ :action => 'download',
+		          :ids => @orders.collect{|o| o.id},
+		 					:format => 'csv' }, 
+						:class => 'action' 
+			%>
+		</p>
+
+		<!-- PAGINATION -->
+		<%= will_paginate @orders %>
+
+		<%# render(:partial => '/shared/pagination',
+								 :object => @order_pages,
+								 :locals => {:params => {:key =>@viewing_by, :term => @search_term} }) %>
+
+	<% end %>
+</div>
+
+
+<%= render(:partial => 'right_side') %>
+

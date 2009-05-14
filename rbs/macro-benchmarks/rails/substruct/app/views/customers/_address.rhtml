@@ -1,0 +1,67 @@
+<div class="padLeft">
+
+	<div class="floatHalf">
+		<%= make_label('First Name') %>
+		<div class="padLeft">
+			<%= instance_variable_get("@#{address_type}_address").first_name %>
+		</div>
+	</div>
+
+	<div class="floatHalf">
+		<%= make_label('Last Name') %>
+		<div class="padLeft">
+			<%= instance_variable_get("@#{address_type}_address").last_name %>
+		</div>
+	</div>
+
+	<div class="clear">&nbsp;</div>
+
+	<div class="floatHalf">
+		<%= make_label('Address') %>
+		<div class="padLeft">
+			<%= instance_variable_get("@#{address_type}_address").address %>
+		</div>
+	</div>
+
+	<div class="floatHalf">
+		<%= make_label('City') %>
+		<div class="padLeft">
+			<%= instance_variable_get("@#{address_type}_address").city %>
+		</div>
+  </div>
+
+	<div class="clear">&nbsp;</div>
+
+	<div class="floatHalf">
+		<%= make_label('State/Prov') %>
+		<div class="padLeft">
+			<%= instance_variable_get("@#{address_type}_address").state %>
+		</div>
+	</div>
+
+	<div class="floatHalf">
+		<%= make_label('Country') %>
+		<div class="padLeft">
+			<%= Country.find(instance_variable_get("@#{address_type}_address").country).name %>
+		</div>
+	</div>
+
+	<div class="clear">&nbsp;</div>
+
+	<div class="floatHalf">
+		<%= make_label('Postal Code') %>
+		<div class="padLeft">
+			<%= instance_variable_get("@#{address_type}_address").zip %>
+		</div>
+	</div>
+
+	<div class="clear">&nbsp;</div>
+
+	<div class="floatHalf">
+		<%= make_label('Phone') %>
+		<div class="padLeft">
+			<%= instance_variable_get("@#{address_type}_address").telephone %>
+		</div>
+	</div>
+
+</div>

@@ -1,0 +1,149 @@
+<div id="left">
+  <h1><%=h @title %></h1>
+	<ul class="navigation secondary">
+    <li><a href="/admin/orders/list/">Back to Order List</a></li>
+  </ul>
+
+	<div style="color:#999;font-size:1.3em;text-align:center;letter-spacing:0.5em;">THIS ORDER IS CLOSED</div>
+
+  <div class="floatHalf">
+			<h2>Status</h2>
+			<div class="padLeft">
+				<p>
+				<%= select("order", :order_status_code_id,
+								 OrderStatusCode.find(:all, :order => 'id').map {|o| [o.name, o.id]} ) %>
+				</p>
+			</div>
+		</div>
+		<div class="floatHalf">
+			<%= render(:partial => 'user') %>
+		</div>
+		<div class="clear">&nbsp;</div>
+
+		<h2>Billing Address</h2>
+		<%= render(:partial => 'address', :locals => {:address_type => 'billing', :show_obsolete => true}) %>
+
+		<br/>
+		<div class="padLeft">
+			<label><%= check_box_tag("use_separate_shipping_address", '1', @use_separate_shipping_address, :class => 'inline', :id => 'use_diff_shipping') %> Ship to a different address</label>
+			<br/>
+		</div>
+
+		<div id="shipping_address"
+		 style="<%= 'display:none;' if !@use_separate_shipping_address %>">
+			<h2>Shipping Address</h2>
+			<%= render(:partial => 'address', :locals => {:address_type => 'shipping', :show_obsolete => true}) %>
+		</div>
+
+		<%= render(:partial => 'account') %>
+
+		<% if @order.referer %>
+			<br/>
+			<h2>Referer</h2>
+			<div class="padLeft">
+				<p>
+					<%= auto_link(@order.referer)  %>
+				</p>
+			</div>
+		<% end %>
+
+		<br/>
+		<h2>Ship Via</h2>
+		<div class="padLeft">
+			<p>
+			<%= select("order", :order_shipping_type_id,
+							 OrderShippingType.find(:all, :order => 'id').map {|o| [o.name, o.id]} ) %>
+			</p>
+		</div>
+
+		<h2>Order Items</h2>
+		<table class="list" cellpadding="0" cellspacing="0">
+			<colgroup>
+				<col/>
+				<col style="width:65px;"/>
+				<col style="width:80px;"/>
+				<col style="width:70px;"/>
+			</colgroup>
+			<tr>
+				<th>Item</th>
+				<th>Quantity</th>
+				<th class="numeric">Price Each</th>
+				<th class="numeric">Total</th>
+			</tr>
+			<% if @order.order_line_items.length > 0 then %>
+				<% for item in @order.order_line_items %>
+				<tr class="<%= alternate %>">
+					<td><%= item.name %></td>
+					<td class="numeric"><%= item.quantity %>	</td>
+					<td class="numeric">
+						<%= sub_number_to_currency(item.unit_price) %>
+					</td>
+					<td class="numeric">
+						<%= sub_number_to_currency(item.total) %>
+					</td>
+				</tr>
+				<% end %>
+			<% else %>
+			<!--
+				<tr>
+					<td colspan="4">No items are included in this order</td>
+				</tr>
+			-->
+			<% end %>
+			<tr>
+				<td class="borderTop" colspan="3">Shipping &amp; Handling - <%= @order.order_shipping_type.name if @order.order_shipping_type %></td>
+				<td class="borderTop numeric"><%= sub_number_to_currency(@order.shipping_cost) %></td>
+			</tr>
+			<tr class="footer">
+				<td colspan="3" class="numeric">Order Total:</td>
+				<td class="numeric"><%= sub_number_to_currency(@order.total) %></td>
+			</tr>
+		</table>
+
+  <div class="line">&nbsp;</div>
+
+
+	<!-- ORDER NOTES -->
+	<%= form_tag :action => 'update', :id => @order %>
+	<br/>
+	<h1>Notes</h1>
+	<div class="padLeft">
+		<% if @order.notes %>
+			<div class="notes">
+				<%= get_markdown(@order.notes) %>
+			</div>
+		<% end %>
+		<%= text_area_tag('order[new_notes]', nil, :cols => 40, :rows => 3, :class => 'textArea notesEdit')  %>
+		<span class="info">
+			<p>
+				Enter any notes here that you'd like to add to this order.
+			</p>
+		</span>
+	</div>
+	<%= submit_tag "Add Notes", :class => 'button hundred', :id => 'add_note_button' %>
+  <div style="float:right;">
+      <%= link_to 'Delete This Order', {:action => 'destroy', :id => @order}, :class => 'action', :confirm => 'Are you sure?', :post => true %>
+  </div>
+	<div class="clear">&nbsp;</div>
+	<br/>
+	</form>
+	<!-- END NOTES -->
+
+	<div class="line">&nbsp;</div>
+  <%= link_to 'Back To The Order List', :action => 'list' %>
+</div>
+
+<div id="right">
+	<%= render(:partial => 'search') %>
+
+  <h1>Order Completed</h1>
+  <p><b>This order has a status of <i><%= @order.order_status_code.name %></i>.</b></p>
+  <p>You can no longer modify it.</p>
+
+	<h2>Help</h2>
+	<p class="info">If you're looking for notes, they're at the bottom of the page.</p>
+	<p class="info">Everything is on one page so you can print it out.</p>
+
+	<%= render(:partial => 'order_operations', :locals => {:order => @order})%>
+</div>
+<div class="clear">&nbsp;</div>

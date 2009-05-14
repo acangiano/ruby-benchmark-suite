@@ -1,0 +1,32 @@
+<div id="left">
+<% if @aname == 'new' then %>
+	<%= form_tag :action=>"new" %>
+<% else %>
+	<%= form_tag :action=>"edit", :id => @role.id %>
+<% end %>
+
+  <h1>Editing Role</h1>
+  <ul class="navigation secondary">
+    <li><a href="/admin/roles/list/">Back to Role List</a></li>
+  </ul>
+
+  <%= render :partial => "form" %>
+
+	<!-- SAVE BUTTON -->
+	<div class="line" style="margin-top:20px;">&nbsp;</div>
+  <%= submit_tag 'Save This Role', :class => 'button hundred' %>
+
+	<div style="float:right;">
+  	<%= link_to 'Delete This Role', {:action => 'destroy', :id => @role}, :method => 'post', :confirm => 'Are you sure?', :class => 'action' %>
+	</div>
+	
+
+</form>
+</div>
+
+<!-- RIGHT -->
+<div id="right">
+	<h1>Help</h1>
+	<p class="info">CRUD = CReate, Update, Delete</p>
+</div>
+<div class="clear">&nbsp;</div>

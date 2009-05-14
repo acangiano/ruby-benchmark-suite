@@ -1,0 +1,57 @@
+<div id="left">
+  <h1><%= @title %></h1>
+
+  <% if @search_term || @list_options %>
+  <!-- Navigation back to all products list -->
+  <p>
+    <a href="/admin/products/list/">Show all Products...</a>
+  </p>
+  <% end %>
+
+  <%= will_paginate @products %>
+	<br/>
+
+  <table class="list" cellpadding="0" cellspacing="0">
+    <colgroup>
+      <col />
+      <col style="width:150px;" />
+      <col style="width:110px;" />
+      <col style="width:60px;" />
+			<col style="width:60px;" />
+    </colgroup>
+    <tr>
+      <th>Name</th>
+      <th>Code</th>
+      <th class="numeric">Price</th>
+      <th class="numeric">Quantity</th>
+			<th>Published?</th>
+    </tr>
+  <% if @products.length > 0 then %>
+    <% for product in @products %>
+    <tr class="<%= alternate %>">
+      <td><%= link_to(h(product.name), :action => 'edit', :id => product) %></td>
+      <td><%= product.code %></td>
+      <td class="numeric"><%= sub_number_to_currency(product.price) %></td>
+      <td class="numeric"><%= product.quantity %></td>
+			<td style="text-align:center">
+				<%=
+					image_tag(
+						product.is_published? ? 'icons/png-24/16-square-green.png' : 'icons/png-24/16-square-red.png',
+						:style => 'margin: 5px;',
+						:plugin => 'substruct'
+					)
+				%>
+				</td>
+    </tr>
+    <% end %>
+  <% else %>
+    <tr><td colspan="4">No products to show in this view.</td></tr>
+  <% end %>
+  </table>
+
+	<br/>
+  <%= will_paginate @products %>
+
+</div>
+
+<%= render(:partial => 'right_side') %>

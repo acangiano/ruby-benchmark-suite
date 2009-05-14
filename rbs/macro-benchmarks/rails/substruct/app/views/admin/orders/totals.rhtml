@@ -1,0 +1,53 @@
+<div id="left">
+  <h1><%= @title %></h1>
+  <p>
+    This report represents the orders with a status of:
+  </p>
+  <ul>
+    <li>ORDERED - PAID - SHIPPED</li>
+    <li>SENT TO FULFILLMENT</li>
+  </ul>
+  <br/>
+
+  <% @years.each { |year, orders| %>
+    <h2><%= year %></h2>
+    <div class="padLeft">
+      <table class="list" cellpadding="0" cellspacing="0" style="width:auto;">
+        <colgroup>
+          <col style="width:75px;"/>
+          <col style="width:50px;"/>
+          <col style="width:100px;"/>
+          <col style="width:80px;"/>
+          <col style="width:80px;"/>
+        </colgroup>
+        <tr>
+          <th>Date</th>
+          <th class="numeric">Orders</th>
+          <th class="numeric">Sale Total</th>
+          <th class="numeric">Tax</th>
+          <th class="numeric">Shipping</th>
+        </tr>
+        <% 1.upto(12) { |i| %>
+          <tr class="<%=alternate%>">
+            <td class="numeric"><%= "#{i} - #{year}" %></td>
+            <td class="numeric"><%= number_with_delimiter(orders[i]['number_of_sales'], ',') %></td>
+            <td class="numeric"><%= sub_number_to_currency(orders[i]['sales_total']) %></td>
+            <td class="numeric"><%= sub_number_to_currency(orders[i]['tax']) %></td>
+            <td class="numeric"><%= sub_number_to_currency(orders[i]['shipping']) %></td>
+          </tr>
+        <% } %>
+        <tr class="footer">
+          <td>Totals</td>
+          <td class="numeric"><%= number_with_delimiter(orders[0]['number_of_sales'], ',') %></td>
+          <td class="numeric"><%= sub_number_to_currency(orders[0]['sales_total']) %></td>
+          <td class="numeric"><%= sub_number_to_currency(orders[0]['tax']) %></td>
+          <td class="numeric"><%= sub_number_to_currency(orders[0]['shipping']) %></td>
+        </tr>
+      </table>
+    </div>
+    <br/>
+  <% } %>
+</div>
+
+<%= render(:partial => 'right_side') %>
+

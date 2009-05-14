@@ -1,0 +1,175 @@
+<% content_for :header do %>
+	<script language="javascript" type="text/javascript">
+		/**
+		 * There's a lot of JS in this page I should probably move
+		 * to an external file, but for now I'm just leaving it here.
+		 *
+		 * All of it is specific to the AJAX stuff on this page.
+		 */
+
+		// Deletes a row after AJAX completion & recolors table
+		var returnVal = null;
+
+		// Checks to see if there are no sections, shows the "no sections" row if necessary
+		function noSectionsCheck() {
+			var list = $("section_list");
+			// Possibly no sections - show no sections row
+			if (list.children.length == 2) {
+				Element.show("no_sections_row");
+			} else {
+				Element.hide("no_sections_row")
+			}
+		}
+
+		function deleteRow(row_id) {
+			Element.remove($(row_id));
+			noSectionsCheck();
+		}
+
+		// Shows spinning status wait thing
+		function status(section_id) {
+			Element.hide("trash_"+section_id);
+			Element.show("spin_"+section_id);
+		}
+
+		// Shows spinning loading status for creating a section
+		function loadingCreateSection() {
+			// Show progress
+			$("save_button").disabled = true;
+		}
+
+		// On success of a section creation makes a new row in our table
+		function insertSection(request) {
+			var content = request.responseText;
+	
+			if (content == "") {
+				// Create failed!
+				alert("Creation of this Section failed.\nDid you enter a duplicate name?");
+			} else {
+				// Create worked, make new table row and fill it in
+				new Insertion.Bottom($("section_list"), content);
+				Sortable.create("section_list", {onUpdate:function(){new Ajax.Request('/admin/sections/update_rank', {asynchronous:true, evalScripts:true, parameters:Sortable.serialize("section_list")})}});
+			}
+			// Reload form
+			$("section_name").value = "";
+			$("save_button").disabled = false;
+			noSectionsCheck();
+		}
+
+		// Starts editing of section
+		function showEditSection(section_id) {
+			Element.hide("section_name_"+section_id);
+			Element.hide("section_rename_"+section_id);
+			Element.show("section_rename_controls_"+section_id);
+			Element.show("section_edit_"+section_id);
+			// focus on edit
+			//$("section_input_"+section_id).value = $("section_name_"+section_id).innerHTML;
+			$("section_input_"+section_id).focus();
+		}
+
+		// Saves edit to a section name
+		function saveEdit(section_id) {
+			Element.hide("section_rename_controls_"+section_id);
+			Element.show("spin_edit_"+section_id);
+			// Make AJAX request to rename section
+			new Ajax.Request('/admin/sections/update', 
+					{ parameters:'id='+section_id+'&name='+$F("section_input_"+section_id), 
+						evalScripts:true,
+					  onFailure:editFailure }
+					);
+		}
+
+		// Runs when AJAX edit failure
+		function editFailure(t) {
+			alert("There was a communication error with the server when trying to save your section.")
+		}
+
+	</script>
+	<style type="text/css">
+		/* make sure both hide/show divs have the same height so no UI jump */
+		#create_section, #create_loading {
+			height: 35px;
+		}
+	</style>
+<% end %>
+
+<div id="left">
+
+	<h1><%= @title %></h1>
+	
+	<ul class="navigation secondary">
+		<li><a href="/admin/content_nodes/list">Back to Content Nodes</a></li>
+	</ul>
+
+	<!-- AJAX CREATE TAG FORM -->
+	<div id="create_section" align="center">
+		<%= 
+			form_remote_tag(
+				:complete => "",
+				:url => {
+					:controller => "sections",
+					:action => "create",
+					:id => @parent_section_id
+				},
+				:loading => "loadingCreateSection();",
+				:complete => "insertSection(request);",
+				:position => "section_list"
+				)
+			%>
+			<table>
+				<tr>
+					<td>
+						<%= text_field 'section', 'name', :class => 'textInput big' %>
+					</td>
+					<td>
+						<%= submit_tag "Save New Section", :id => "save_button", :class => 'button' %>
+					</td>
+				</tr>
+			</table>
+		</form>
+	</div>
+	<!-- CREATE LOADING SCREEN -->
+
+	<h2>
+		<% if !@parent_section %>
+			Top Level Sections
+		<% else %>
+			<a href="/admin/sections/list">Top Level Sections</a> &gt; <%= @parent_section.name %>
+		<% end %>
+	</h2>
+
+	<!-- TAG TABLE LIST -->
+	<ul id="section_list" class="sortable">
+		<%= render(:partial => 'section_list_row', :collection => @sections) %>
+	</ul>
+	<div id="no_sections_row" style="display:<%= @sections.size > 0 ? 'none' : '' %>;">No sections to show...</div>
+	<%= 
+		sortable_element(
+			'section_list',
+			:url => { :action => 'update_rank' }
+		) 
+	%>
+
+</div>
+<div id="right">
+	<%= render :partial => '/admin/preferences/sidebar' %>
+
+	<h1>Help</h1>
+	<h3>Section Groups</h3>
+	<p><span class="hlt">
+		You may group sections one level deep.
+	</span></p>
+	<p>
+		To use a section as a group click on it's name. You will be taken to another view where you may create and order sections within the group.
+	</p>
+	<p>
+		Deleting a section group will delete all sections within as well.
+	</p>
+	<h3>Sorting</h3>
+	<p>
+		You can sort the items shown by dragging and dropping them.
+	</p>
+	
+</div>
+
+<div class="clear"></div>

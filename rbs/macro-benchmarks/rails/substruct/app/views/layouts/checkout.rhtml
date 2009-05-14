@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+	<title><%=
+		if @title then
+			h @title
+		else
+			h controller.controller_name
+		end
+		-%> : <%=h @store_name %></title>
+	<%= javascript_include_tag :defaults, :cache => 'default' %>
+  <%= javascript_include_tag 'substruct', 'subModal', :plugin => 'substruct', :cache => 'substruct' %>
+  <%= stylesheet_link_tag 'main', 'subModal', :plugin => 'substruct', :cache => 'substruct' %>
+	<%= yield :header %>
+</head>
+<body>
+
+<!-- Begin Container -->
+<div id="container">
+	<div id="header">
+		
+		<!-- top links -->
+		<ul class="navigation" id="toplinks">
+			<li><a href="/questions/ask">Contact Us</a></li>
+			<li><a href="/store">Continue Shopping</a></li>
+		</ul>
+				
+		<!-- logo -->
+		<div style="float:left;">
+			<a href="/"><%= image_tag('public-ui/logo.gif', :alt => 'Substruct', :plugin => 'substruct') %></a>
+		</div>
+		
+		
+		<div class="clear"></div>
+	</div>
+	<!-- End header -->
+
+	<!-- Begin content body  -->
+	<div id="contentBody">
+		
+    <%= render :partial => '/shared/flash', :locals => { :flash => flash } %>
+		
+		<%= yield %>
+	</div>
+	<!-- End content body -->
+
+
+	<div id="footer">
+		<ul class="navigation">
+			<li><a href="/">Home</a></li>
+			<li><a href="/questions/faq">FAQ</a></li>
+			<li><a href="/questions/ask">Contact Us</a></li>
+			<li><a href="/blog">Blog</a></li>
+			<li><a href="/customers/wishlist">Wishlist</a></li>
+			<li><a href="/store/show_cart" class="submodal-600-400">Cart</a></li>
+		</ul>
+	</div>
+	<div class="clear"></div>
+	<br/>
+	
+</div>
+<!-- End container -->
+
+</body>
+</html>

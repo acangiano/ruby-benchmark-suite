@@ -1,0 +1,135 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+	<title><%=
+		if @title then
+			h @title
+		else
+			h controller.controller_name
+		end
+		-%> : <%=h @store_name %></title>
+	<%= javascript_include_tag :defaults, :cache => 'default' %>
+  <%= javascript_include_tag 'substruct', 'subModal', :plugin => 'substruct', :cache => 'substruct_cache' %>
+  <%= stylesheet_link_tag 'main', 'subModal', :plugin => 'substruct', :cache => 'substruct_main' %>
+	<%= yield :header %>
+</head>
+<body>
+
+<!-- Begin Container -->
+<div id="container">
+	<div id="header">
+		
+		<!-- top links -->
+		<ul class="navigation" id="toplinks">
+			<li style="margin-right:0px;">
+				<a href="/store/show_cart" class="submodal-600-400">Cart</a>
+			</li>
+			<li><a href="/customers/wishlist">Wishlist</a></li>
+			<li><a href="/questions/ask">Contact Us</a></li>
+			<li><a href="/customers/orders">Track an Order</a></li>
+		</ul>
+		
+		<!-- logo -->
+		<div style="float:left;">
+			<a href="/"><%= image_tag('public-ui/logo.gif', :alt => 'Substruct', :plugin => 'substruct') %></a>
+		</div>
+		
+		<% if @customer && !@customer.new_record? %>
+			<div id="customer_msg">
+				<%= @customer.email_address %>
+				<br/>
+				<a href="/customers/logout">log out</a>
+			</div>
+		<% end %>
+		
+		<!-- search box -->
+		<div id="searchbox">
+			<form action="/store/search" method="post">
+				<input type="image" src="/plugin_assets/substruct/images/public-ui/buttons/search.gif" style="float:right;">
+				<input type="text" name="search_term" class="textInput big" style="float:right; margin-right: 5px;" />
+			</form>
+		</div>
+		
+		<div class="clear"></div>
+
+		<!-- big navigation bar -->
+		<div id="navigation">
+			<div id="navcap_left"></div>
+			<div id="navcap_right"></div>
+			<div id="navigation-inner">
+				<ul class="navigation">
+					<li class="<%= @cname == 'main' ? 'active' : '' %>"><a href="/">Home</a></li>
+					<li class="<%= (@cname == 'store' && @aname == 'index') ? 'active' : '' %>"><a href="/store">All Products</a></li>
+					<% 
+						@main_nav_tags.each_index do |i| 
+							tag = @main_nav_tags[i]
+					%>
+						<li
+						 	class="<%= is_main_tab_active?(tag.id) ? 'active' : '' %>"
+							style="<%= i == @main_nav_tags.size-1 ? 'margin-right: 0px !important;' : '' %>"
+						>
+							<%= 
+								link_to(
+									tag.name,
+									:controller => 'store',
+									:action => 'show_by_tags',
+									:tags => [tag.name]
+								)
+							%>
+						</li>
+					<% end %>
+				</ul>
+				<div class="clear"></div>
+			</div>
+		</div>
+		
+		<% if @show_subnav %>
+			<div id="subnavigation">
+				<ul class="navigation">
+					<% for tag in @subnav_tags do %>
+						<li class="<%= is_sub_tab_active?(tag.id) ? 'active' : '' %>">
+							<%= 
+								link_to(
+									tag.name,
+									:controller => 'store',
+									:action => 'show_by_tags',
+									:tags => [@main_tag_active.name, tag.name]
+								)
+							%>
+						</li>
+					<% end %>
+				</ul>
+			</div>
+		<% end %>
+	</div>
+	<!-- End header -->
+
+	<!-- Begin content body  -->
+	<div id="contentBody">
+		
+    <%= render :partial => '/shared/flash', :locals => { :flash => flash } %>
+		
+		<%= yield %>
+	</div>
+	<!-- End content body -->
+
+
+	<div id="footer">
+		<ul class="navigation">
+			<li><a href="/">Home</a></li>
+			<li><a href="/questions/faq">FAQ</a></li>
+			<li><a href="/questions/ask">Contact Us</a></li>
+			<li><a href="/blog">Blog</a></li>
+			<li><a href="/customers/wishlist">Wishlist</a></li>
+			<li><a href="/store/show_cart" class="submodal-600-400">Cart</a></li>
+		</ul>
+	</div>
+	<div class="clear"></div>
+	<br/>
+	
+</div>
+<!-- End container -->
+
+</body>
+</html>

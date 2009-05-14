@@ -1,0 +1,165 @@
+<div id="left">
+	<h1><%= @title %></h1>
+	<div class="padLeft">	
+		<%= form_tag :action => 'save_prefs' %>
+		
+		
+		<div class="floatHalf">
+			<!-- STORE CONFIG -->
+			<h2>Store Configuration</h2>
+			<div class="padLeft">
+				<p>
+					<%= make_label('Store Name', true) %>
+					<%= text_field_tag('prefs[store_name]', @prefs['store_name'].value, :class => 'textInput')%>
+				</p>
+				<p>
+					<%= make_label('Handling Fee', true) %>
+					<%= text_field_tag('prefs[store_handling_fee]', @prefs['store_handling_fee'].value, :class => 'textInput')%>
+					<br/>
+					<span class="info">This charge will be added to all orders, and will be combined together with shipping on checkouts.</span>
+				</p>
+				<p>
+					<%= make_label('Your Country', true) %>
+					<%= 
+						render_component(
+							:controller => "countries",
+					    :action => "complete_select_list",
+					    :params => {
+								:select_name => 'prefs[store_home_country]', 
+								:selected => @prefs['store_home_country'].value
+							}
+						) 
+					%>
+				</p>
+				<p>
+					<label>
+						<%= check_box_tag('prefs[store_show_confirmation]', 1, (@prefs['store_show_confirmation'].is_true?)) %>
+						Show order confirmation page?
+					</label>
+					<input name="prefs[store_show_confirmation]" type="hidden" value="0" />
+				</p>
+				<p>
+					<label>
+						<%= check_box_tag('prefs[store_use_inventory_control]', 1, (@prefs['store_use_inventory_control'].is_true?)) %>
+						Use inventory control?
+					</label>
+					<input name="prefs[store_use_inventory_control]" type="hidden" value="0" />
+					<span class="info">If set, items that are out of stock can't be added to your customer's cart.</span>
+				</p>
+				<p>
+					<label>
+						<%= check_box_tag('prefs[store_require_login]', 1, (@prefs['store_require_login'].is_true?)) %>
+						Require login for returning customers?
+					</label>
+					<input name="prefs[store_require_login]" type="hidden" value="0" />
+					<span class="info">
+						If set, customers who have ordered previously will be prompted for their e-mail and password or previous order number upon checkout.
+						<br/>
+						After login, their address information will be auto-filled in the checkout form.
+					</span>
+				</p>
+			</div>
+		</div>
+		
+		<div class="floatHalf">
+			<h2>Credit Card Processing</h2>
+
+			<div class="padLeft">
+			  <p>
+					<label>
+						<%= check_box_tag('prefs[store_test_transactions]', 1, (@prefs['store_test_transactions'].is_true?)) %>
+						Store is in test mode
+					</label>
+					<span class="info">When in test mode, no real orders will be processed.  They will be processed in 'test mode' by the selected CC Processor.</span>
+					<input name="prefs[store_test_transactions]" type="hidden" value="0" />
+				</p>
+				<p>
+					<%= make_label('Processor', true) %>
+					<%= select_tag('prefs[cc_processor]', options_for_select(Preference::CC_PROCESSORS, @prefs['cc_processor'].value)) %>
+				</p>
+				<p>
+					<%= make_label('Login', true) %>
+					<%= text_field_tag('prefs[cc_login]', @prefs['cc_login'].value, :class => 'textInput')%>
+					<br>
+					<span class="info">When using PayPal, this is your PayPal email address.  With authorize.net, your API Login ID.</span>
+				</p>
+				<p>
+					<%= make_label('Password') %>
+					<%= password_field_tag('prefs[cc_pass]', @prefs['cc_pass'].value, :class => 'textInput')%>
+					<br/>
+					<span class="info">With paypal your password, with authorize.net, your transaction key.</span>
+				</p>
+				<p>
+					<label>
+						<%= check_box_tag('prefs[cc_clear_after_order]', 1, (@prefs['cc_clear_after_order'].is_true?)) %>
+						Clear all but last 4 digits of CC# after processing order?
+						<br/>
+						<span class="info">If set, after a successful order all but the last 4 digits of CC# will be cleared.  Doesn't make a difference if you use paypal IPN, as no credit card numbers are entered on site.</span>
+					</label>
+					<input name="prefs[cc_clear_after_order]" type="hidden" value="0" />
+				</p>
+			</div>
+		</div>
+
+		<div class="line clear"></div>
+		
+		<h2>Mail Server</h2>
+		<div class="padLeft">
+			<div class="floatHalf">
+				<p>
+					<label>
+						<%= check_box_tag('prefs[use_smtp_tls_patch]', 1, (@prefs['use_smtp_tls_patch'].is_true?)) %>
+						Use SMTP TLS monkey patch?
+					</label>
+					<input name="prefs[use_smtp_tls_patch]" type="hidden" value="0" />
+					<span class="info">If set, a patch will be applied to Ruby's Net::SMTP class adding TLS support. <b>Necessary for Gmail servers!</b></span>
+				</p>
+				<p>
+					<%= make_label('SMTP Authentication Type', true) %>
+					<%= select_tag('prefs[mail_auth_type]', options_for_select(Preference::MAIL_AUTH, @prefs['mail_auth_type'].value)) %>
+				</p>
+				<p>
+					<%= make_label('SMTP Mail Host', true) %>
+					<%= text_field_tag('prefs[mail_host]', @prefs['mail_host'].value, :class => 'textInput')%>
+				</p>
+				<p>
+					<%= make_label('SMTP Port', true) %>
+					<%= text_field_tag('prefs[mail_port]', @prefs['mail_port'].value, :class => 'textInput')%>
+				</p>
+			</div>
+			<div class="floatHalf">
+				<p>
+					<%= make_label('SMTP Username / Send E-mails as', true) %>
+					<%= text_field_tag('prefs[mail_username]', @prefs['mail_username'].value, :class => 'textInput')%>
+				</p>
+				<p>
+					<%= make_label('SMTP Password') %>
+					<%= password_field_tag('prefs[mail_password]', @prefs['mail_password'].value, :class => 'textInput')%>
+				</p>
+				<p>
+					<%= make_label('Copy all mails to', true) %>
+					<%= text_field_tag('prefs[mail_copy_to]', @prefs['mail_copy_to'].value, :class => 'textInput', :size => 40, :maxlength => 256)%>
+					<br/>
+					<span class="info">
+						Sends a copy of all outgoing mails to this address.
+						<br/>
+						For multiple addresses, separate with commas.
+					</span>
+				</p>
+			</div>
+		</div>
+		
+		<div class="line clear"></div>
+		
+		<%= submit_tag 'Save Preferences', :class => 'button', :disable_with => 'Saving...' %>
+		
+		</form>
+	
+	</div>
+</div>
+
+<div id="right">
+	<%= render :partial => 'sidebar' %>
+</div>
+
+<div class="clear"></div>

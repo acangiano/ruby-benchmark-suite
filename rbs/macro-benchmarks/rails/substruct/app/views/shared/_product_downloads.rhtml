@@ -1,0 +1,23 @@
+<% if @order.downloads.count > 0 %>
+  <h2>Product Downloads</h2>
+  <p>
+    Your purchased items may be downloaded by clicking the following links.
+    <ul>
+      <% @order.downloads.each do |dl| %>
+        <li>
+          <%= 
+            link_to(
+              dl.product.name,
+              :controller => 'customers',
+              :action => 'download_for_order',
+              :params => {
+                :order_number => @order.order_number,
+                :download_id => dl.id
+              }
+            )
+          %>
+        </li>
+      <% end %>
+    </ul>
+  </p>
+<% end %>

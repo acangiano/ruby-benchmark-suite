@@ -1,0 +1,22 @@
+<div id="left">
+	<h1>Orders By Country</h1>
+
+	<div class="float" style="width:47%;">
+	<% @countries.each_with_index do |country, index| %>
+		<%= 
+			link_to(
+				"#{country.name} - #{number_with_delimiter(country.number_of_orders, ',')}",
+				:controller => 'orders', :action => 'for_country', :id => country.id
+			) 
+		%>
+		<br/>
+		<% if index == (@countries.size / 2) %>
+			</div>
+			<div class="float" style="width:47%;">
+		<% end %>
+	<% end %>
+	</div>
+	<div class="clear"></div>
+</div>
+
+<%= render(:partial => 'right_side') %>

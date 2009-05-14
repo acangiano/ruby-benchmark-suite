@@ -1,0 +1,19 @@
+<h1><%= @title %></h1>
+<ul class="navigation secondary">
+	<li>
+		<%= 
+			link_to_unless_current(
+				'Admin Users',
+				:action => 'index'
+			)
+		%>
+	</li>
+	<li>
+		<%= 
+			link_to_unless_current(
+				'Customers',
+				:action => 'customers'
+			)
+		%>
+	</li>
+</ul>

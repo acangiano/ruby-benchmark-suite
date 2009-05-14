@@ -1,0 +1,81 @@
+<div id="left">
+	
+	<h1><%= @title %></h1>
+	<%= form_tag :action => 'login' %>
+		<div class="form_block">
+			<input type="hidden" name="modal" value="<%= params[:modal] %>" />
+			<p>
+				<%= make_label('Your e-mail address', true) %>
+				<input type="text" class="textInput" size="40" name="login" id="email_address" value="<%= params[:login] %>" />
+			</p>
+			<script language="javascript">
+				$('email_address').focus();
+			</script>
+
+			<p>
+				<%= make_label('Any previous Order Number - OR - Password', true) %>
+				<input type="password" class="textInput" name="password" />
+				<br/>
+				<span class="info">Find this on any order email from us</span>
+			</p>
+			
+			<p>
+				<%=
+					link_to(
+						"Don't remember your password or can't find an order number?",
+						:controller => 'customers',
+						:action => 'reset_password',
+						:params => {
+							:modal => params[:modal],
+							:login => params[:login]
+						}
+					)
+				%>
+			</p>
+			<% if !@is_modal %>
+				<p>
+					<%=
+						link_to(
+							"Not a customer yet?",
+							{
+								:controller => 'customers',
+								:action => 'new'
+							},
+							:class => 'action'
+						)
+					%>
+				</p>
+			<% end %>
+		
+		  <div class="line">&nbsp;</div>
+
+	    <p>
+	      <%= submit_tag "Login", :class => 'button twohundred' %>
+	      <div class="clear">&nbsp;</div>
+	    </p>
+		
+		</div>
+	</form>
+</div>
+
+<div id="right">
+	<% if @is_modal %>
+		<h3>Welcome Back</h3>
+		<p class="hlt" style="padding:5px;">
+			Please login so that we can load your checkout information.
+		</p>
+		<p>
+			Use any order number from a past purchase.
+		</p>
+	<% else %>
+		<h2>Directions</h2>
+		<p>
+			We need you to login before you can continue.
+		</p>
+		<p>
+			Use any order number from a past purchase.
+		</p>
+	<% end %>
+</div>
+
+<div class="clear"></div>

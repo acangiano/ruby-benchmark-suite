@@ -1,0 +1,22 @@
+<div id="left">
+<%= form_tag :action=>"new" %>
+
+  <h1>Editing Role</h1>
+  <ul class="navigation secondary">
+    <li><a href="/admin/roles/list/">Back to Role List</a></li>
+  </ul>
+
+  <%= render_partial "form" %>
+
+	<!-- SAVE BUTTON -->
+	<div class="line" style="margin-top:20px;">&nbsp;</div>
+  <%= submit_tag 'Save New Role', :class => 'button hundred' %>
+
+</form>
+</div>
+
+<!-- RIGHT -->
+<div id="right">
+	<h1>Help</h1>
+</div>
+<div class="clear">&nbsp;</div>

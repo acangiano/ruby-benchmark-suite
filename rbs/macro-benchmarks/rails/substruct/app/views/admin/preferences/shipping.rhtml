@@ -1,0 +1,116 @@
+<% content_for :header do %>
+	<script language="javascript" type="text/javascript">
+		/**
+		 * There's a lot of JS in this page I should probably move
+		 * to an external file, but for now I'm just leaving it here.
+		 *
+		 * All of it is specific to the AJAX stuff on this page.
+		 */
+		
+		// Disables add button while adding...
+		function loadingCreateTag() {
+			// Show progress
+			$("add_rate_button").disabled = true;
+		}
+		// Renders new shipping partial into page
+		function insertRate(request) {
+			var content = request.responseText;
+	
+			if (content == "") {
+				// Create failed!
+				alert("Adding new rate failed. Did you fill in all of the fields?");
+			} else {
+				// Create worked, make new table row and fill it in
+				var row = new Insertion.Top($("shipping_types"), content);
+				new Effect.Highlight($('shipping_types'));
+				$('add_rate_form').reset();
+			}
+			// Reload form
+			$("add_rate_button").disabled = false;
+		}
+		// Removes shipping type
+		function removeShippingType(the_id) {
+			$('remove_shipping_type_link_'+the_id).up('.shipping_type').remove();
+			new Effect.Highlight($('shipping_types'));
+		}
+	</script>
+	
+<% end %>
+
+<div id="left">
+	<h1><%= @title %></h1>
+
+	<div align="center">
+		<%= 
+			form_remote_tag(
+				:html => {:id => 'add_rate_form'},
+				:url => {
+					:controller => "preferences",
+					:action => "add_new_rate_ajax"
+				},
+				:loading => "loadingNewRate();",
+				:complete => "insertRate(request);",
+				:position => "shipping_types"
+			)
+		%>
+			<table>
+				<tr>
+					<td>
+						<input type="text" class="textInput big" name="shipping_type[name]" size="20" value="Name" onfocus="this.select();">
+					</td>
+					<td>
+						<input type="text" class="textInput big" name="shipping_type[code]" size="6" value="Code" onfocus="this.select();">
+					</td>
+					<td>
+						<input type="text" class="textInput big numeric" name="shipping_type[price]" size="4" value="Price" onfocus="this.select();">
+					</td>
+					<td>
+						<%= submit_tag "Save New Rate", :id => "save_button", :class => 'button' %>
+					</td>
+				</tr>
+			</table>
+		</form>
+	</div>
+
+	<%= form_tag(:action => 'save_shipping') %>
+	
+	<h2>Rates</h2>
+	
+	<div id="shipping_types">
+		<%= render :partial => 'shipping_type', :collection => @shipping_types %>
+	</div>
+	
+  <%= submit_tag 'Save Shipping Rates & Variations', :class => 'button' %>
+	</form>	
+	
+</div>
+
+
+
+<div id="right">
+	<%= render :partial => 'sidebar' %>
+	
+	<h1>Help</h1>
+	<p>
+		Here you can define how you will ship, and how much you'll charge for shipping.
+	</p>
+	<p>
+		By default, each Shipping Rate you set up will use the flat price to calculate fees.
+	</p>
+	<p>
+		If you wish to calculate using weight, add a weight variation. When checking out your customers will get the correct shipping price shown for the weight of items they're purchasing.
+	</p>
+	<p class="info">
+		If a proper weight variation is not found when calculating rates the default will be used.
+	</p>
+
+	
+	<h2>Editing</h2>
+	<p>
+		<span class="hlt">
+		You must use the save button at the bottom of this page for edits to take effect.
+		</span>
+	</p>
+</div>
+
+<div class="clear"></div>

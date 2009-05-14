@@ -1,0 +1,67 @@
+<!-- 
+	IMAGES ######################################################################
+-->
+
+<h1>Images</h1>
+<div class="padLeft">
+	<% if @product.images.length > 0 then %>
+		<p>
+			Drag and drop images to set their order on the item page.
+			<br/>
+			<span class="hlt">The image listed first will be the default.</span>
+		</p>
+		<p class="info">
+			If you don't see an image it means the path is broken or doesn't exist any longer.
+		</p>
+		<div>
+			<ul onselectstart="return false;" class="sortable" id="image_list">
+			<% for @p_image in @product.images.find(:all) %>
+				<!-- product image for reordering -->
+				<li id="image_<%= @p_image.id %>">
+					<div class="float">
+            <% if @p_image.public_filename(:thumb) then %>
+              <%= image_tag @p_image.public_filename(:thumb) %>
+						<% end %>
+					</div>
+					<div class="float info">
+						<br/>
+            <a href="<%= @p_image.public_filename(:small) %>" class="submodal-400-400">View Small</a>
+						<br/>
+            <a href="<%= @p_image.public_filename %>" class="submodal-400-400">View Original</a>
+					</div>
+					<div style="float:right;margin-top:10px;">
+						<%= 
+							link_to_remote image_tag("icons/png-24/16-em-cross.png", :plugin => 'substruct', :alt => 'Delete'),
+					    	{
+									:url => { :action => "remove_image_ajax", :id => @p_image.id },
+									:loading => "$('remove_link_#{@p_image.id}').hide(); $('image_indicator_#{@p_image.id}').show();",
+					    		:complete => "$('image_#{@p_image.id}').remove();"
+								},
+								:id => "remove_link_#{@p_image.id}"
+						%>
+						<%= image_tag("/indicator.gif", :plugin => 'substruct', :style => 'display:none;', :id => "image_indicator_#{@p_image.id}") %>
+					</div>
+					<div class="clear"></div>
+				</li>
+			<% end %>
+			</ul>
+		</div>
+		<%= 
+			sortable_element(
+				'image_list',
+				:url => { :action => 'update_image_rank_ajax', :id => @product.id }
+			) 
+		%>
+	<% else %>
+		This product has no images associated with it currently.
+	<% end %>
+	
+	<h4>Upload</h4>
+	<%= 
+		render :partial => '/shared/multiple_upload',
+			:locals => {
+				:name => 'image',
+				:input_size => '30'
+			}
+	%>
+</div>
