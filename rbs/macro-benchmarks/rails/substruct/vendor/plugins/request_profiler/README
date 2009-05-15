@@ -1,0 +1,28 @@
+RequestProfiler
+===============
+
+Request profiler based on integration test scripts.
+
+Installation
+============
+  
+  script/plugin install git://github.com/rails/request_profiler.git
+  
+Example Script
+==============
+
+  # profile_script.rb
+  get '/'
+  post '/user', :user => { :login => 'rails' }
+
+Usage
+=====
+
+  script/performance/profiler profile_script.rb
+  
+Options
+=======
+  
+  script/performance/profiler --help
+  
+Copyright (c) 2009 David Heinemeier Hansson, released under the MIT license
