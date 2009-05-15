@@ -4,11 +4,10 @@ require 'rake/testtask'
 require 'rake/rdoctask'
 require 'rake/gempackagetask'
 require 'rake/contrib/rubyforgepublisher'
-require File.dirname(__FILE__) + '/lib/tasks/cia'
-require File.dirname(__FILE__) + '/lib/support/gateway_support'
+require File.join(File.dirname(__FILE__), 'lib', 'support', 'gateway_support')
 
 
-PKG_VERSION = "1.4.1"
+PKG_VERSION = "1.4.2"
 PKG_NAME = "activemerchant"
 PKG_FILE_NAME = "#{PKG_NAME}-#{PKG_VERSION}"
 
@@ -26,12 +25,14 @@ namespace :test do
   Rake::TestTask.new(:units) do |t|
     t.pattern = 'test/unit/**/*_test.rb'
     t.ruby_opts << '-rubygems'
+    t.libs << 'test'
     t.verbose = true
   end
 
   Rake::TestTask.new(:remote) do |t|
     t.pattern = 'test/remote/**/*_test.rb'
     t.ruby_opts << '-rubygems'
+    t.libs << 'test'
     t.verbose = true
   end
 
@@ -86,7 +87,7 @@ spec = Gem::Specification.new do |s|
   s.email = "tobi@leetsoft.com"
   s.homepage = "http://activemerchant.org/"
   
-  s.add_dependency('activesupport', '>= 1.4.1')
+  s.add_dependency('activesupport', '>= 2.3.2')
   s.add_dependency('builder', '>= 2.0.0')
   
   s.signing_key = ENV['GEM_PRIVATE_KEY']
@@ -97,12 +98,6 @@ Rake::GemPackageTask.new(spec) do |p|
   p.gem_spec = spec
   p.need_tar = true
   p.need_zip = true
-end
-
-desc "Continuously watch unit tests"
-task :watch do
-  system("clear")
-  system("stakeout \"rake\" `find . -name '*.rb'`")
 end
 
 desc "Release the gems and docs to RubyForge"
@@ -156,6 +151,3 @@ namespace :gateways do
     end
   end
 end
-  
-  
-  

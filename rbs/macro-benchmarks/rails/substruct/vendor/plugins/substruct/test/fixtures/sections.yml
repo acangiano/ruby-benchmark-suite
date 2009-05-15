@@ -1,0 +1,24 @@
+usefull_news:
+  name: 'Usefull News'
+  rank: 0
+  parent_id: 0
+
+junk_food_news:
+  name: 'Junk Food News'
+  rank: 1
+  parent_id: 0
+
+celebrity_pregnancies:
+  name: 'Celebrity Pregnancies'
+  rank: 0
+  parent: junk_food_news
+
+pseudoscientific_claims:
+  name: 'Pseudoscientific Claims'
+  rank: 1
+  parent: junk_food_news
+
+prophecies:
+  name: 'Prophecies'
+  rank: 2
+  parent_id: 0

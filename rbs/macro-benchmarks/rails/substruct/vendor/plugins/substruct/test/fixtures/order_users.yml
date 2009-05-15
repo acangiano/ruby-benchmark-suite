@@ -1,0 +1,20 @@
+santa:
+  username: ""
+  email_address: santa.claus@whoknowswhere.com
+  password: santa
+  first_name: ""
+  last_name: ""
+  
+mustard:
+  username: ""
+  email_address: colonel.mustard@whoknowswhere.com
+  password: mustard
+  first_name: ""
+  last_name: ""
+  
+uncle_scrooge:
+  username: ""
+  email_address: uncle.scrooge@whoknowswhere.com
+  password: scrooge
+  first_name: ""
+  last_name: ""

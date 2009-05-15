@@ -318,12 +318,28 @@ class BelongsToAssociationsTest < ActiveRecord::TestCase
   end
 
   def test_belongs_to_proxy_should_not_respond_to_private_methods
-    assert_raises(NoMethodError) { companies(:first_firm).private_method }
-    assert_raises(NoMethodError) { companies(:second_client).firm.private_method }
+    assert_raise(NoMethodError) { companies(:first_firm).private_method }
+    assert_raise(NoMethodError) { companies(:second_client).firm.private_method }
   end
 
   def test_belongs_to_proxy_should_respond_to_private_methods_via_send
     companies(:first_firm).send(:private_method)
     companies(:second_client).firm.send(:private_method)
+  end
+
+  def test_save_of_record_with_loaded_belongs_to
+    @account = companies(:first_firm).account
+
+    assert_nothing_raised do
+      Account.find(@account.id).save!
+      Account.find(@account.id, :include => :firm).save!
+    end
+
+    @account.firm.delete
+
+    assert_nothing_raised do
+      Account.find(@account.id).save!
+      Account.find(@account.id, :include => :firm).save!
+    end
   end
 end

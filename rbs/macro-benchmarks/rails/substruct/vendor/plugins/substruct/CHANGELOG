@@ -1,0 +1,344 @@
+Substruct Version Changelog and Update Notes
+===============================================================================
+
+Version 1.0 FINAL - 09/01/2008
+---------------------------------------
+Added:
+  1. Ability to sell digital goods, through the ProductDownload model.
+    * Customers can purchase a file uploaded by store owners, and a temporary
+      download link will be created which is served from the 
+      'public' directory.
+    * The 'rake substruct:maintain' task will clean up any expired download
+      links.
+  2. Easy way to change currency from USD
+     http://code.google.com/p/substruct/issues/detail?id=81
+
+Updated:
+  1. Upgrade to Rails 2.1.0
+  2. Full coverage of tests, unit and functional
+
+Upgrade steps:
+  !!! NOTES - IMPORTANT TO READ
+  The application_helper function "make_product" has gone away, so if you've
+  customized the _product.rhtml partial you'll need to take a look
+  at the one now included with the base distro. See issue here:
+  http://code.google.com/p/substruct/issues/detail?id=117
+  
+  ***
+  The 'Cart' model has completely gone away. This could affect you
+  if you've extended it in any way. Please see the following for details:
+  http://code.google.com/p/substruct/issues/detail?id=114
+  
+  ***
+  A new layout called 'checkout' has been added and now is the default
+  renderer for all checkout actions in the store. This ensures that
+  a customer can't modify their cart while ordering, thus potentially throwing
+  off their order total they see on screen.
+
+  0. Back up your database just in case.
+    * mysql example:  mysqldump -u USERNAME -p DATABASE_NAME > backup.sql
+  1. Install the ezcrypto gem. (gem install ezcrypto)
+  2. rake db:migrate:fix_engines_migrations 
+  3. script/generate plugin_migration
+  4. rake db:migrate
+     ...THIS MIGHT TAKE A LITTLE TIME FOR UPGRADES...
+     Let it do it's thing, it has to encrypt all stored CC #'s
+  5. rake rails:update
+     ...This will update your JS, boot, and environment files to Rails 2.1.0
+  6. Manually update you environment.rb file to use RAILS_GEM_VERSIOn 2.1.0
+
+
+Version 1.0a
+---------------------------------------
+*** Special thanks to Matthew Sewell for his contribution of the PayPal 
+    IPN code.
+*** HUGE thanks to Edmundo Valle Neto for all around patches and bringing
+    tests up to spec. Too many to list!
+
+Added:
+  1. PayPal IPN integration.
+  2. All CC#'s now stored encryped in the db with ezcrypto
+  
+Upgrade steps:
+  0. Back up your database just in case.
+    * mysql example:  mysqldump -u USERNAME -p DATABASE_NAME > backup.sql
+  1. Install the ezcrypto gem. (gem install ezcrypto)
+  2. script/generate plugin_migration
+  3. rake db:migrate
+     ...THIS MIGHT TAKE A LITTLE TIME FOR UPGRADES...
+     Let it do it's thing, it has to encrypt all stored CC #'s
+
+
+
+Version 0.97
+---------------------------------------
+*** Special thanks to Luke Ludwig for his contribution of this patch!
+*** Visit his blog over @ http://lukeludwig.com/blog
+
+Upgrade steps:
+  1. Make sure you have the mini_magick and mime-types gems installed.
+    a. sudo gem install mini_magick
+    b. sudo gem install mime-types
+        * Note: mime-types gem is only needed to upgrade, but is not
+          needed after the upgrade is complete.
+  2. Back up your database just in case.
+    * mysql example:  mysqldump -u USERNAME -p DATABASE_NAME > backup.sql
+  3. script/generate plugin_migration
+  4. rake db:migrate
+    * All of your uploads and images will be copied to a new location.
+      Since it is a copy it is non-destructive, leaving the originals
+      in their place.
+  5. Merge changes from the new environment.rb file in the 
+     vendor/plugins/substruct/config directory to the one inside config/.
+
+Added: 
+  1. Added nice installer rake task
+  2. Upgrade to Rails 2.0.2 / Engines v2
+  3. Images and uploads switched from using file_column and rmagick to 
+     using attachment_fu and mini_magick.
+
+
+Version 0.96
+---------------------------------------
+This is a step in the direction of making the app easier to install and config
+for your average user. Some nice UI features have been added, with the major
+one being the ability to set config params from the admin UI, and not in
+config files!
+
+Upgrade steps:
+  1. script/generate plugin_migration
+  2. rake db:migrate
+  3. Check out the new environment.rb file in the config_stubs directory.
+     Since preferences have been added there's new code that auto-sets
+     your mail server in there...diff / merge with your current 
+     environment.rb file.
+  4. !!! SET YOUR PREFS IN THE ADMIN PANEL
+
+
+Added:
+  - Admin UI now can view Customer accounts, and download a CSV 
+    file that contains email addresses. Great for exporting to newsletter
+    software, etc.
+  - Preferences now set via the admin panel. Lots of stuff has changed.
+    Lots of preferences have moved from config files to the db:
+  -- Auth.net settings
+  -- Mail server settings
+  -- Store configuration (show confirmation page, use inventory control, etc)
+
+Fixed:
+  - Billing / shipping address code refactoring effort.
+  -- Associations were a bit strange and hadn't been looked at for a while.
+  -- Removed model methods in favor of AR association code
+    
+
+
+Version 0.951
+---------------------------------------
+Tagging error with a few items on the 0.95 release...maintenance tag.
+
+
+Version 0.95
+---------------------------------------
+MAJOR UPGRADE...lots of new features. Do some thorough testing before you 
+roll this out if you're upgrading.
+
+Upgrade steps:
+  1. script/generate plugin_migration
+  2. rake db:migrate
+  3. You should diff your application.rb file with application.rb.example
+     in config_stubs. New before_filters have been added.
+  
+Added:
+  - Multiple images per product
+  -- You can also set a default product image via drag & drop
+  - Product variations
+  - Product view pages
+  - Product discontinuation & quantity checking
+  - Tag grouping for products
+  - Customer logins
+  - Order history
+  - Wishlist support
+  - Related product support
+  - Inventory control now actually works
+  -- Products with inventory <= 0 will not show on the public-facing site
+  -- Item quantities decremented after a successful order
+  - Live shipping rate calculation RIPPED out, replaced with shipping 
+    rate table and new preferences UI.
+  -- FedEx is a bitch to set up for most people, and this can achieve the same
+     damn thing.
+  
+Changed:
+  - ActiveMerchant now supported instead of Payment gem
+  - ContentNodeTypes removed in favor of SingleTableInheritance
+  -- Blog, Page, and Snippet models added
+  - Cart now uses subModal instead of lame DIV at the bottom of the page
+  - User interface / design
+  -- Admin UI larger to work better on 1024x768 screens minimum
+  -- Tweaked graphics and fonts to look better x-platform
+  -- Public UI updated
+  - OrderUser now has a requirement that email addresses be unique
+  -- Added migration to clean up dupe OrderUsers, and set proper associations
+     on OrderAccount and OrderAddress
+
+Version 0.9
+---------------------------------------
+Upgrade steps:
+  1. Update to Engines 1.2.0
+  -- This is done for you if you are using externals to load Substruct
+  
+  2. Upgrade to Rails 1.2.3
+  -- This is done for you if you are using externals to load Substruct
+  
+  3. Change all instances of engines_stylesheet to stylesheet_link_tag with :plugin => 'substruct'
+  -- <%= stylesheet_link_tag 'substruct', :plugin => 'substruct' %>
+  
+  4. Change all instances of engines_javascript to javascript_include_tag with :plugin => 'substruct'
+  -- <%= javascript_include_tag 'substruct', :plugin => 'substruct' %>
+  
+  5. If you have customized the configuration, change to use..
+  -- Substruct.my_custom_config = 'value'
+    
+  6. MERGE the /vendor/plugins/substruct/config_stubs/environment.rb with your /config/environment.rb file
+  -- Some configuration changes have been made.
+  -- Merge the two and see if you need to make any updates.
+
+Fixed:
+  - Now works with Engines 1.2
+  - Fixed all Rails 2.0 deprecation warnings
+  - Changed the way config settings work to no longer use module
+
+Version 0.81
+---------------------------------------
+Upgrade steps:
+  0. rake db:migrate:engines:substruct
+
+Added:
+  - Order confirmation page.
+  -- There are now 3 steps to order, but a more clear order summary and total
+     is shown before an order is placed.
+  - Ability to search orders by email address and notes field on the admin side.
+  - NEW ADMIN REPORT: Orders by country.
+Fixed:
+  - Managing tags for products would throw error if you had no tags.
+  - Order addresses were messed up on the admin side.
+  -- It was impossible/buggy to create a separate shipping address after
+     an order had been created. Fixed...
+  - Updating order items from the admin side didn't properly save the product
+    cost for that order. Fixed order.rb by adding a before_save method.
+
+Version 0.8
+---------------------------------------
+Fixed:
+  - Made sure questions require title.
+  -- This makes sure you can actually click on all questions from the UI (whoops!)
+  - DB setup was flawed, see migrations note.
+
+  Migrations Note
+  -----
+  Loading db from the schema.rb file was seriously fucked, causing problems with duplicate columns and other nonsense. 
+
+  I've relabeled the migrations, adding the initial DB state as 001. Every other migration has been bumped up 1 version.
+
+  Upgraders might have to change your engine_schema_info table....just an alert.
+
+Version 0.75
+---------------------------------------
+Added:
+  - Ability to download orders on admin side in XML and CSV for export
+    to other applications like QuickBooks
+  
+Upgrade steps:
+  0. gem install fastercsv
+  
+Updated:
+  - Updated to Rails 1.1.6
+  - Updated to Engines 1.1.4
+  
+
+Version 0.7
+---------------------------------------
+Added:
+  - Role Based Access Control
+
+Updated:
+  - Updated to Rails 1.1.2 - now included in the vendor directory
+  - New authority data for FedEx, be sure to reload authority data!
+  
+Fixed:
+  - Content URLs now auto-clean before validation (Ticket #22)
+  - Estimation of international FedEx packages.
+    - Including the shipping gem as a library now.
+  - Bug on new product creation where tags weren't being saved properly.
+  - Bug where it was impossible to clear all tags from a product once assigned.
+  - Adding multiple items to the cart object. Before it was only adding 1 at a time.
+
+Upgrade steps:
+  0. rake rails:update
+
+  1. rake db:migrate:engines:substruct
+  
+  2. rake load_authority_data
+     !!! WARNING !!!
+     This could overwrite your admin user! All that's needed is to 
+     update the shipping tables, so you could possibly extract those 
+     records by themselves and insert by hand.
+
+     Yes, I know it should have probably been a migration...sorry.
+
+  3. Create an application specific application.rb file. 
+     (your_rails_dir/app/controllers/application.rb)
+     It's contents should look like this:
+    
+        class ApplicationController < ActionController::Base
+          include SubstructApplicationController
+        end
+
+     This makes sure that everything is loaded properly. Newer versions of
+     Rails were causing issues with loading the application controller from
+     the engines directory.
+  
+
+
+Version 0.61
+---------------------------------------
+Updated:
+  - New routes.rb file - you need to copy this into your config directory!
+  This supports the new store show_by_tags with multiple tags.
+  - Changed store/show_by_tags to display friendly URLs
+    (Tags are now passed in by name, not ID)
+  - Changed AJAX cart to display 1 physical item for each item / quantity in the cart.
+    (no more "x2", etc)
+  - Broke out some CSS into include files for the cart.
+
+Upgrade steps:
+  0. Copy the new routes.rb to your config directory, or merge the changes.
+
+Version 0.6
+---------------------------------------
+Added:
+  - Tagging for products
+  - Maintenance of product tags
+  - Automatic image thumbnail / small size creation via RMagick
+
+Updated:
+  - Better shopping cart experience with AJAX cart
+  - Faceted navigation of product categories
+  - Fixed bug where product images would auto-delete when updating something else about a product.
+
+Upgrade steps:
+
+  0. Update the source
+
+      tar -xzvf substruct.tar.gz my_rails_app/vendor/plugins/
+
+  1. Update the DB
+
+      rake engine_migrate
+
+  2. Add blank loading html file for modal. This page gets swapped into the modal dialog (as seen when editing tags) when it's not visible.
+
+      touch public/loading.html
+
+  3. Install RMagick
+
+      This is necessary for automatic image resizing of product images

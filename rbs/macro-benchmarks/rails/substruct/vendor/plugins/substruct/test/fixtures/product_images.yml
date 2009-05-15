@@ -1,0 +1,14 @@
+lightsaber_blue_rel: 
+  product: lightsaber
+  rank: 0
+  image: lightsaber_blue_upload
+
+lightsaber_green_rel: 
+  product: lightsaber
+  rank: 1
+  image: lightsaber_green_upload
+
+lightsaber_red_rel: 
+  product: lightsaber
+  rank: 2
+  image: lightsaber_red_upload

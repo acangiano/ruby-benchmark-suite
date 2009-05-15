@@ -1,0 +1,17 @@
+upg_less_1:
+  min_weight: 0.00
+  max_weight: 1.00
+  price: 10.00
+  order_shipping_type: ups_ground
+
+upg_less_2:
+  min_weight: 1.01
+  max_weight: 2.00
+  price: 11.00
+  order_shipping_type: ups_ground
+
+upg_less_3:
+  min_weight: 2.01
+  max_weight: 3.00
+  price: 12.00
+  order_shipping_type: ups_ground

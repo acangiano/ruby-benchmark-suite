@@ -1,0 +1,71 @@
+silent_birth: 
+  name: silent_birth
+  created_on: <%= 1.month.ago.to_s(:db) %>
+  title: Silent birth
+  type: Blog
+  display_on: <%= 1.month.ago.to_s(:db) %>
+  content: "According to the creator of scientology: Stemming from his belief that birth is a trauma that may induce engrams, he stated that the delivery room should be as silent as possible and that words should be avoided because any words used during birth might be reassociated by adults with their earlier traumatic birth experience. And bla bla bla bla bla ..."
+  sections: junk_food_news, pseudoscientific_claims
+
+pigasus_awards:
+  name: pigasus_awards
+  created_on: <%= 1.year.ago.to_s(:db) %>
+  title: JREF Annual Pigasus Awards
+  type: Blog
+  display_on: <%= 1.year.ago.to_s(:db) %>
+  content: "For who don't know about it: On April 1st of each year, James Randi Educational Foundation award the coveted Pigasus awards in variable categories, for accomplishments in the previous year. The awards are announced via telepathy, winners are allowed to predict their victories, and the Flying Pig trophies are sent via psychokinesis. We send; if they don't receive, that's probably due to their lack of paranormal talent."
+  sections: junk_food_news, pseudoscientific_claims
+
+tinkerbel_pregnant:
+  name: tinkerbel_pregnant
+  created_on: <%= 1.year.ago.to_s(:db) %>
+  title: Tinkerbel Pregnant
+  type: Blog
+  display_on: <%= 1.year.ago.to_s(:db) %>
+  content: We was informed that Tinkerbel, a very known celebrity (a Chihuahua owned by another not so known person), is pregnant. Yesterday she made an ultrasonography to know if is she or he. Ohh, Tinkerbel, congratulations.
+
+order_receipt:
+  name: OrderReceipt
+  created_on: <%= 1.year.ago.to_s(:db) %>
+  title: Thank you for your order!
+  type: Snippet
+  display_on: <%= 1.year.ago.to_s(:db) %>
+  content: You will be billed via credit card.
+
+home: 
+  name: home
+  created_on: <%= 1.year.ago.to_s(:db) %>
+  title: Home
+  type: Page
+  display_on: <%= 1.year.ago.to_s(:db) %>
+  content: |
+    <div id="fullContent">
+    
+    h1. Welcome to Substruct
+    
+    <div class="padLeft">
+    If you can see this, you've probably set things up correctly.
+    
+    *Substruct is a...*
+    
+    * Content Management System, including Blog capabilities
+    * E-commerce Engine that...
+    ** Processes credit cards through Authorize.net
+    ** Allows for inventory management
+    ** Has hooks to tie into fulfillment houses
+    * Q/A system including FAQ management
+    
+    </div>
+    
+    h2. Templates
+    
+    <div class="padLeft">
+    
+    Substruct ships with a variety of default templates. You'll probably want to use these as a base for your own custom ones.
+    
+    <a href="http://dev.subimage.com/projects/substruct/wiki/Customizing">Click here to learn more about customizing Substruct</a>.
+    
+    </div>
+ 
+    </div>
+

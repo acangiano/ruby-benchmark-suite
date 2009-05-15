@@ -14,7 +14,7 @@
 # 	rakelib/bench.rake
 # 	VM              = ENV['VM'] || "ruby"
 #
-#       other environment variables: ITERATIONS (default 5), TIMEOUT (300)
+#       other useful environment variables: ITERATIONS (default 5), TIMEOUT (300)
 
 task :default => :'bench'
 

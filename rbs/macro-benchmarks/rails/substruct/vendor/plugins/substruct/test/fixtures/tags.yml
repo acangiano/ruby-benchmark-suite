@@ -1,0 +1,39 @@
+weapons:
+  name: 'Weapons'
+  rank: 2
+  parent_id: 0
+
+mass_destruction:
+  name: 'Mass Destruction'
+  rank: 0
+  parent: weapons
+
+laser_beam:
+  name: 'Laser Beam'
+  rank: 1
+  parent: weapons
+  
+medieval:
+  name: 'Medieval'
+  rank: 2
+  parent: weapons
+  
+fluffy:
+  name: 'Fluffy Things'
+  rank: 1
+  parent_id: 0
+
+weird:
+  name: 'Weird Things'
+  rank: 3
+  parent_id: 0
+
+books:
+  name: 'Books'
+  rank: 0
+  parent_id: 0
+
+on_sale:
+  name: 'On Sale'
+  rank: 4
+  parent_id: 0

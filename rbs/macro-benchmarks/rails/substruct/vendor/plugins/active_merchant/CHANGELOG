@@ -1,5 +1,38 @@
 = ActiveMerchant CHANGELOG
 
+* Add support for CVV code to Authorize.net CIM [Guy Naor]
+* Add shipping address to Authorize.net [Eric Tarn]
+* Don't setup the logger by default [cody]
+* Refactor ActiveMerchant::Connection out of the PostsData module. Add support for logging and wiredumping requests [cody]
+* Assume a valid load path when running tests [cody]
+* Use SHIPTOSTREET2 element instead of STREET2 element for Payflow Express Uk address [cody]
+* Clean up the test helper [cody]
+* Fix DataCash unit test that was making a remote call [cody]
+* Don't check Request#test? for remote PaymentExpress tests because their test environment has changed [cody]
+* Update Instapay gateway to support capture and add address, order, and invoice fields. Add support for CVV and AVS response [cody]
+* Add support for Instapay gateway [brahma]
+* Cleanup PaymentExpress reference purchases and turn on AVS [cody]
+* Add reference purchases and authorizations to PaymentExpress [mocra]
+* Add support for Merchant e-Solutions Gateway [Zac Williams, Robby Russell]
+* Fix Braintree unit test [cody]
+* Add support for checks to SmartPs gateways [jvoohris]
+* Extract SmartPs for Braintree and Transax [mmangino]
+* Ruby 1.9 compatibility [bschwartz]
+* Update Payflow Express to handle Street2 element [James MacAulay]
+* Fix typo in Protx DeliveryState field [cody]
+* Ignore Wirecard state unless it is 2 characters [Cody]
+* Update Wirecard to make country and state processing more robust [Soleone]
+* Update ProTX to use the latest v2.23 protocol [Tekin]
+
+== Version 1.4.2 (April 24, 2009)
+
+* Fix typo in Authorize.net CIM [infused]
+* Add missing ISO countries [Edward Ocampo-Gooding]
+* Add support for Guernsey to country.rb [cody]
+* Add American Express to the MonerisGateway [cody]
+* Use :words_connector instead of connector in RequiresParameters [cody]
+* Fixed CreditCard not validating start_month and start_year when set as string [Tekin]
+* Update PostsData to support get requests [cody]
 * Fix broken Quickpay remote test [cody]
 * Update Quickpay gateway to v3. Add support for offsite integration for Danish Dankort cards [Lars Pind]
 * Use default partner id when passed in :partner is blank with PayflowGateway [cody]
@@ -407,4 +440,6 @@
 * Added Moneris support
 * Credit card in memory object resembling a AR object
 * Credit card validation methods as static methods of the credit card object
+
+== PlanetArgon fork for integrating Merchant eSolutions gateway
 

@@ -1,0 +1,104 @@
+#summary How to install Substruct
+
+= Installing Substruct =
+
+== Introduction ==
+
+This software package is developed using the Engines plugin. To find out more about how to use engines in general, go to http://rails-engines.org
+
+*These directions assume you already have a working Rails hosting environment. This means...*
+ * A web server such as
+   * Webrick (included with Rails)
+   * Apache
+   * Lighttpd
+ * A rails app server
+   * Mongrel
+   * FastCGI
+ * MySQL / PGSql
+ * Ruby
+ * Rails
+ * Rubygems
+
+These directions _also_ assume you have some familiarity with developing Rails applications in general and a working knowledge of your file system.
+
+== Installation ==
+
+=== 0. Install the following gems...Substruct needs them to function properly. ===
+ * RedCloth
+ * fastercsv
+ * mime-types
+ * mini_magick
+ * ezcrypto
+
+{{{
+
+gem install RedCloth
+gem install fastercsv
+gem install mime-types
+gem install mini_magick
+gem install ezcrypto
+
+}}}
+
+!! NOTE !! Be sure openssl is also installed. For Debian linux boxes this is _not_ included in the default Ruby installer. If you are running on debian it's as easy as typing 'apt-get install libopenssl-ruby1.8'
+
+
+
+=== 1. Download & extract the latest release ===
+
+All releases are stored as tar / gzipped files here:
+http://code.google.com/p/substruct/downloads/list
+
+They are marked with version numbers. Grab the latest one and extract it.
+
+For instance, if you were working with release 0.97, you'd type the following on OS X and Linux
+
+{{{
+
+tar -xzvf substruct_rel_0-97.tar.gz
+
+}}}
+
+[GettingTheCode If you'd rather use SVN to download the latest code click here.]
+
+
+=== 2. Set up your databases and edit your database.yml file ===
+
+You'll need to have a running MySQL or PGSql instance, and create the proper databases for use.
+
+We recommend the following:
+
+ * substruct_development
+ * substruct_test
+ * substruct_production
+
+Edit your database.yml file to make sure that Rails can access your database properly.
+For more information on the database.yml file, visit this url: http://wiki.rubyonrails.org/rails/pages/database.yml
+
+=== 3. Initialize your database ===
+
+Run this command from inside the substruct directory you extracted previously
+
+{{{
+
+rake substruct:db:bootstrap
+
+}}}
+
+== Usage ==
+
+Fire up your environment!
+
+{{{
+
+ruby script/server
+
+}}}
+
+Try to login to http://localhost:3000/admin as ''admin'' / ''admin''
+
+=== Misc ===
+
+If you're going to be doing credit card transactions you need a processor account. [wiki:AuthorizeNet Check out how to get one.]
+
+Make sure you check out [MaintainingSubstruct how to maintain Substruct via cron] as well.

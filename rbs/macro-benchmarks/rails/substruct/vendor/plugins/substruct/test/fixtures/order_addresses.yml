@@ -1,0 +1,21 @@
+santa_address:
+  order_user: santa
+  first_name: Santa
+  last_name: Claus
+  telephone: 000000000
+  address: After second ice mountain at left
+  city: North Pole
+  state: Alaska
+  zip: 00000
+  country: US
+
+uncle_scrooge_address:
+  order_user: uncle_scrooge
+  first_name: Uncle
+  last_name: Scrooge
+  telephone: 000000000
+  address: Money Bin at the top of Killmotor Hill
+  city: Duckburg
+  state: Calisota
+  zip: 00000
+  country: US

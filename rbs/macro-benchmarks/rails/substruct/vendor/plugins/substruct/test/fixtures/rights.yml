@@ -1,0 +1,119 @@
+orders_all: 
+  name: Orders - Admin
+  actions: "*"
+  controller: orders
+
+users_all: 
+  name: Users - Admin
+  actions: "*"
+  controller: users
+
+rights_all: 
+  name: Rights - Admin
+  actions: "*"
+  controller: rights
+
+products_all: 
+  name: Products - Admin
+  actions: "*"
+  controller: products
+
+content_all: 
+  name: Content - Admin
+  actions: "*"
+  controller: content_nodes
+
+questions_all: 
+  name: Questions - Admin
+  actions: "*"
+  controller: questions
+
+roles_all: 
+  name: Roles - Admin
+  actions: "*"
+  controller: roles
+
+tags_all: 
+  name: Tags - Admin
+  actions: "*"
+  controller: tags
+
+orders_crud: 
+  name: Orders - CRUD
+  actions: "new,create,edit,update,destroy"
+  controller: orders
+
+orders_view: 
+  name: Orders - View
+  actions: "index,list,search,edit,show"
+  controller: orders
+
+content_crud: 
+  name: Content - CRUD
+  actions: "new,create,edit,update,destroy"
+  controller: content_nodes
+
+content_view: 
+  name: Content - View
+  actions: "index,list,search,edit,show"
+  controller: content_nodes
+
+products_crud: 
+  name: Products - CRUD
+  actions: "new,create,edit,update,destroy"
+  controller: products
+
+products_view: 
+  name: Products - View
+  actions: "index,list,search,edit,show"
+  controller: products
+
+questions_crud: 
+  name: Questions - CRUD
+  actions: "new,create,edit,update,destroy"
+  controller: questions
+
+questions_view: 
+  name: Questions - View
+  actions: "index,list,search,edit,show"
+  controller: questions
+
+tags_crud: 
+  name: Tags - CRUD
+  actions: "new,create,edit,update,destroy"
+  controller: tags
+
+tags_view: 
+  name: Tags - View
+  actions: "index,list,search,edit,show"
+  controller: tags
+
+promotions_all:
+  name: Promotions - Admin
+  actions: "*"
+  controller: promotions
+
+promotions_crud:
+  name: Promotions - CRUD
+  actions: "new,create,edit,update,destroy"
+  controller: promotions
+
+promotions_view: 
+  name: Promotions - View
+  actions: "index,list,search,edit,show"
+  controller: promotions
+
+preferences_all: 
+  name: Preferences - Admin
+  actions: "*"
+  controller: preferences
+
+sections_all: 
+  name: Sections - Admin
+  actions: "*"
+  controller: sections
+
+files_all: 
+  name: Files - Admin
+  actions: "*"
+  controller: files

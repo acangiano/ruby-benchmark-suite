@@ -1,0 +1,23 @@
+santa_account:
+  order_user: santa
+  cc_number: |
+    LzmzOb/JS+mFF72xts17cg==
+
+  routing_number: 
+  bank_name: 
+  expiration_year: 2012
+  expiration_month: 1
+  credit_ccv: 
+  account_number: 
+
+uncle_scrooge_account:
+  order_user: uncle_scrooge
+  cc_number: |
+    LzmzOb/JS+mFF72xts17cg==
+
+  routing_number: 
+  bank_name: 
+  expiration_year: 2012
+  expiration_month: 1
+  credit_ccv: 
+  account_number: 

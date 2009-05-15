@@ -1,0 +1,17 @@
+ups_xp_critical:
+  code: UPX
+  name: UPS Express Critical (USA Only)
+  is_domestic: 1
+  price: 30.00
+
+ups_ground:
+  code: UPG
+  name: UPS Ground (USA Only)
+  is_domestic: 1
+  price: 14.00
+
+ups_worldwide:
+  code: UPW
+  name: UPS Worldwide Expedited (International Only)
+  is_domestic: 0
+  price: 50.00

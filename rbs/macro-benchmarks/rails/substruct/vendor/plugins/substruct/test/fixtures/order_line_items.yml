@@ -1,0 +1,106 @@
+santa_next_christmas_order_item_1:
+  name: Chinchilla Coat - Beige
+  item: beige_coat
+  order: santa_next_christmas_order
+  quantity: 1
+  unit_price: 700.5
+
+santa_next_christmas_order_item_2:
+  name: Lightsaber - Blue
+  item: blue_lightsaber
+  order: santa_next_christmas_order
+  quantity: 3
+  unit_price: 91.5
+
+santa_next_christmas_order_item_3:
+  name: Lightsaber - Green
+  item: green_lightsaber
+  order: santa_next_christmas_order
+  quantity: 2
+  unit_price: 93.5
+
+santa_next_christmas_order_item_4:
+  name: Lightsaber - Red
+  item: red_lightsaber
+  order: santa_next_christmas_order
+  quantity: 1
+  unit_price: 89.5
+
+santa_next_christmas_order_item_5:
+  name: The Stuff - Small
+  item: small_stuff
+  order: santa_next_christmas_order
+  quantity: 20
+  unit_price: 1.25
+
+santa_next_christmas_order_item_6:
+  name: Towel
+  item: towel
+  order: santa_next_christmas_order
+  quantity: 2
+  unit_price: 9.5
+
+
+an_order_on_cart_item_1:
+  name: Chinchilla Coat - Beige
+  item: beige_coat
+  order: an_order_on_cart
+  quantity: 1
+  unit_price: 700.5
+
+
+an_order_to_charge_item_1:
+  name: Towel
+  item: towel
+  order: an_order_to_charge
+  quantity: 1
+  unit_price: 9.5
+
+
+an_order_on_hold_payment_failed_item_1:
+  name: Holy Hand Grenade of Antioch
+  item: holy_grenade
+  order: an_order_on_hold_payment_failed
+  quantity: 1
+  unit_price: 23
+
+
+an_order_on_hold_awaiting_payment_item_1:
+  name: Lightsaber - Blue
+  item: blue_lightsaber
+  order: an_order_on_hold_awaiting_payment
+  quantity: 1
+  unit_price: 91.5
+
+
+an_order_ordered_paid_shipped_item_1:
+  name: Chinchilla Coat - Beige
+  item: beige_coat
+  order: an_order_ordered_paid_shipped
+  quantity: 1
+  unit_price: 700.5
+
+
+an_order_sent_to_fulfillment_item_1:
+  name: Lightsaber - Red
+  item: red_lightsaber
+  order: an_order_sent_to_fulfillment
+  quantity: 1
+  unit_price: 89.5
+  
+
+an_order_cancelled_item_1:
+  name: Lightsaber - Green
+  item: green_lightsaber
+  order: an_order_cancelled
+  quantity: 1
+  unit_price: 93.5
+  
+
+an_order_returned_item_1:
+  name: The Stuff - Small
+  item: small_stuff
+  order: an_order_returned
+  quantity: 1
+  unit_price: 1.25
+

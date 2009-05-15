@@ -16,7 +16,7 @@ Dir.chdir 'substruct'
 require startup_path
 
 require 'config/environment'
-require 'application'
+require 'application_controller'
 
 begin
  Product.first # raising here means the DB doesn't exist

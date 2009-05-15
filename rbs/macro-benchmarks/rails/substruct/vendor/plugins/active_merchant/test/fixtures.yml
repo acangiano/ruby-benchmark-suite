@@ -59,6 +59,10 @@ ideal_ing_postbank:
   pem: |--
     PASTE YOUR PEM FILE HERE
 
+instapay:
+  login: TEST0
+  password:
+
 linkpoint:
   login: STOREID
   pem: |--
@@ -291,6 +295,10 @@ trans_first:
   login: LOGIN
   password: PASSWORD
 
+transax:
+  login: demo
+  password: password
+
 # Working credentials, no need to replace
 trust_commerce: 
   login: 'TestMerchant'
@@ -314,4 +322,9 @@ viaklix:
 wirecard:
   login: 56500
   password: TestXAPTER
+
+# replace with your Merchant eSolutions developer profile credentials
+merchant_esolutions:
+  login: "profile_id"
+  password: "profile_key"
   

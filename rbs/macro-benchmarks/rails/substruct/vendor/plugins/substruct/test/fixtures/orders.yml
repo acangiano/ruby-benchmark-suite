@@ -1,0 +1,121 @@
+santa_next_christmas_order: 
+  tax: 0.0
+  product_cost: 1295.5
+  created_on: <%= 1.year.ago.to_s(:db) %>
+  shipping_address: santa_address
+  order_user: santa
+  billing_address: santa_address
+  order_shipping_type: ups_xp_critical
+  notes: <%= "<p>Order completed.<br/><span class=\"info\">[#{1.year.ago.strftime("%m-%d-%y %I:%M %p")}]</span></p>" %>
+  shipping_cost: 30.0
+  order_number: <%= Order.generate_order_number %>
+  order_account: santa_account
+  order_status_code_id: 5
+
+an_order_on_cart: 
+  tax: 0.0
+  product_cost: 700.5
+  created_on: <%= 1.hour.ago.to_s(:db) %>
+  shipping_address: santa_address
+  order_user: santa
+  billing_address: santa_address
+  order_shipping_type_id: 1
+  shipping_cost: 0
+  order_number: <%= Order.generate_order_number %>
+  order_account: santa_account
+  order_status_code_id: 1
+
+an_order_to_charge: 
+  tax: 0.0
+  product_cost: 9.5
+  created_on: <%= 1.hour.ago.to_s(:db) %>
+  shipping_address: santa_address
+  order_user: santa
+  billing_address: santa_address
+  order_shipping_type: ups_xp_critical
+  shipping_cost: 30
+  order_number: <%= Order.generate_order_number %>
+  order_account: santa_account
+  order_status_code_id: 2
+  
+an_order_on_hold_payment_failed: 
+  tax: 0.0
+  product_cost: 23
+  created_on: <%= 1.hour.ago.to_s(:db) %>
+  shipping_address: santa_address
+  order_user: santa
+  billing_address: santa_address
+  order_shipping_type: ups_xp_critical
+  notes: <%= "<p>Order failed!<br/>(TESTMODE) The merchant login ID or password is invalid or the account is inactive<br/><span class=\"info\">[#{1.hour.ago.strftime("%m-%d-%y %I:%M %p")}]</span></p>" %>
+  shipping_cost: 30
+  order_number: <%= Order.generate_order_number %>
+  order_account: santa_account
+  order_status_code_id: 3
+  
+an_order_on_hold_awaiting_payment: 
+  tax: 0.0
+  product_cost: 91.5
+  created_on: <%= 1.hour.ago.to_s(:db) %>
+  shipping_address: santa_address
+  order_user: santa
+  billing_address: santa_address
+  order_shipping_type: ups_xp_critical
+  notes: <%= "<p>The order was processed at PayPal but not yet confirmed.<br/><span class=\"info\">[05#{1.hour.ago.strftime("%m-%d-%y %I:%M %p")}]</span></p>" %>
+  shipping_cost: 30
+  order_number: <%= Order.generate_order_number %>
+  order_account: santa_account
+  order_status_code_id: 4
+
+an_order_ordered_paid_shipped: 
+  tax: 0.0
+  product_cost: 700.5
+  created_on: <%= 1.hour.ago.to_s(:db) %>
+  shipping_address: santa_address
+  order_user: santa
+  billing_address: santa_address
+  order_shipping_type: ups_xp_critical
+  notes: <%= "<p>Order completed.<br/><span class=\"info\">[#{1.hour.ago.strftime("%m-%d-%y %I:%M %p")}]</span></p>" %>
+  shipping_cost: 0
+  order_number: <%= Order.generate_order_number %>
+  order_account: santa_account
+  order_status_code_id: 6
+
+an_order_sent_to_fulfillment: 
+  tax: 0.0
+  product_cost: 89.5
+  created_on: <%= 1.hour.ago.to_s(:db) %>
+  shipping_address: santa_address
+  order_user: santa
+  billing_address: santa_address
+  order_shipping_type: ups_xp_critical
+  shipping_cost: 30
+  order_number: <%= Order.generate_order_number %>
+  order_account: santa_account
+  order_status_code_id: 7
+
+an_order_cancelled: 
+  tax: 0.0
+  product_cost: 93.5
+  created_on: <%= 1.hour.ago.to_s(:db) %>
+  shipping_address: santa_address
+  order_user: santa
+  billing_address: santa_address
+  order_shipping_type: ups_xp_critical
+  shipping_cost: 30
+  order_number: <%= Order.generate_order_number %>
+  order_account: santa_account
+  order_status_code_id: 8
+
+an_order_returned: 
+  tax: 0.0
+  product_cost: 1.25
+  created_on: <%= 1.month.ago.to_s(:db) %>
+  shipping_address: santa_address
+  order_user: santa
+  billing_address: santa_address
+  order_shipping_type: ups_xp_critical
+  notes: <%= "<p>Order completed.<br/><span class=\"info\">[#{1.month.ago.strftime("%m-%d-%y %I:%M %p")}]</span></p>" %>
+  shipping_cost: 30.0
+  order_number: <%= Order.generate_order_number %>
+  order_account: santa_account
+  order_status_code_id: 9

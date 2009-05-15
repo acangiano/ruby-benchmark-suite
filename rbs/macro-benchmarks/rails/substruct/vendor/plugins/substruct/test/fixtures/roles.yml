@@ -1,0 +1,8 @@
+administrator_role:
+  name: 'Administrator'
+  description: 'Access everything in Substruct.'
+  rights: orders_all, users_all, rights_all, products_all, content_all, questions_all, roles_all, tags_all, promotions_all, preferences_all, sections_all, files_all
+
+owner_role:
+  name: 'Owner'
+  description: "Don't access anything in Substruct, just say to other people do it for him."

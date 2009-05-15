@@ -1,4 +1,4 @@
-require File.dirname(__FILE__) + '/../test_helper'
+require 'test_helper'
 
 class CreditCardTest < Test::Unit::TestCase
   def setup
@@ -150,6 +150,13 @@ class CreditCardTest < Test::Unit::TestCase
   def test_should_be_a_valid_future_year
     @visa.year = Time.now.year + 1
     assert_valid @visa
+  end
+
+
+  def test_should_be_valid_with_start_month_and_year_as_string
+    @solo.start_month = '2'
+    @solo.start_year = '2007'
+    assert_valid @solo
   end
 
   def test_should_identify_wrong_cardtype

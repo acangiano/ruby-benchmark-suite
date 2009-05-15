@@ -1,0 +1,9 @@
+admin:
+  login: admin
+  password: 652b1b54a914207f0cfd15de1967d8ebe26c1b94
+  roles: administrator_role
+
+c_norris:
+  login: c_norris
+  password: 652b1b54a914207f0cfd15de1967d8ebe26c1b94
+  roles: administrator_role

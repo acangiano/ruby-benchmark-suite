@@ -1,0 +1,47 @@
+lightsaber_blue_upload: 
+  created_on: 2008-02-18 22:16:38 -03:00
+  content_type: image/jpeg
+  thumbnail: 
+  size: 5374
+  type: Image
+  height: 400
+  filename: lightsaber_blue.jpg
+  attachment_file: vendor/plugins/substruct/test/fixtures/files/lightsaber_blue.jpg
+  parent_id: 
+  width: 400
+
+lightsaber_green_upload:
+  created_on: 2008-02-18 22:16:39 -03:00
+  content_type: image/jpeg
+  thumbnail: 
+  size: 6926
+  type: Image
+  height: 400
+  filename: lightsaber_green.jpg
+  attachment_file: vendor/plugins/substruct/test/fixtures/files/lightsaber_green.jpg
+  parent_id: 
+  width: 400
+
+lightsaber_red_upload:
+  created_on: 2008-02-18 22:16:39 -03:00
+  content_type: image/jpeg
+  thumbnail: 
+  size: 7111
+  type: Image
+  height: 400
+  filename: lightsaber_red.jpg
+  attachment_file: vendor/plugins/substruct/test/fixtures/files/lightsaber_red.jpg
+  parent_id: 
+  width: 400
+
+towel_upload:
+  created_on: 2008-02-18 22:16:39 -03:00
+  content_type: image/jpeg
+  thumbnail: 
+  size: 7111
+  type: Download
+  height: 400
+  filename: towel.jpg
+  attachment_file: vendor/plugins/substruct/test/fixtures/files/towel.jpg
+  parent_id: 
+  width: 400

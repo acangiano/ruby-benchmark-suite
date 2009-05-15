@@ -1,0 +1,162 @@
+Index: routes.rb
+===================================================================
+--- routes.rb	(revision 178)
++++ routes.rb	(working copy)
+@@ -1,45 +0,0 @@
+-# default
+-connect '',
+-  :controller => 'content_nodes',
+-  :action     => 'show_by_name',
+-  :name       => 'home'
+-connect '/',
+-  :controller => 'content_nodes',
+-  :action     => 'show_by_name',
+-  :name       => 'home'
+-
+-# Default administration mapping
+-connect 'admin',
+-  :controller => 'admin/orders',
+-  :action     => 'index'
+-
+-connect '/blog',
+-  :controller => 'content_nodes',
+-  :action     => 'index'
+-
+-connect '/blog/section/:section_name',
+-  :controller => 'content_nodes',
+-  :action     => 'list_by_section'
+-
+-# Static route blog content through our content_node controller
+-connect '/blog/:name',
+-  :controller => 'content_nodes',
+-  :action     => 'show_by_name'
+-
+-
+-connect '/contact',
+-  :controller => 'questions',
+-  :action     => 'ask'
+-
+-connect '/store/show_by_tags/*tags',
+-  :controller => 'store',
+-  :action     => 'show_by_tags'
+-
+-# Install the default route as the lowest priority.
+-connect ':controller/:action/:id.:format'
+-connect ':controller/:action/:id'
+-
+-# For things like /about_us, etc
+-connect ':name',
+-  :controller => 'content_nodes',
+-  :action     => 'show_by_name'
+\ No newline at end of file
+Index: config/routes.rb
+===================================================================
+--- config/routes.rb	(revision 178)
++++ config/routes.rb	(working copy)
+@@ -1,45 +1,49 @@
++ActionController::Routing::Routes.draw do |map|
+ # default
+-connect '',
++puts "I'm in here\n\n\n"
++
++map.connect '',
+   :controller => 'content_nodes',
+   :action     => 'show_by_name',
+   :name       => 'home'
+-connect '/',
++map.connect '/',
+   :controller => 'content_nodes',
+   :action     => 'show_by_name',
+   :name       => 'home'
+ 
+ # Default administration mapping
+-connect 'admin',
++map.connect 'admin',
+   :controller => 'admin/orders',
+   :action     => 'index'
+ 
+-connect '/blog',
++map.connect '/blog',
+   :controller => 'content_nodes',
+   :action     => 'index'
+ 
+-connect '/blog/section/:section_name',
++map.connect '/blog/section/:section_name',
+   :controller => 'content_nodes',
+   :action     => 'list_by_section'
+ 
+ # Static route blog content through our content_node controller
+-connect '/blog/:name',
++map.connect '/blog/:name',
+   :controller => 'content_nodes',
+   :action     => 'show_by_name'
+ 
+ 
+-connect '/contact',
++map.connect '/contact',
+   :controller => 'questions',
+   :action     => 'ask'
+ 
+-connect '/store/show_by_tags/*tags',
++map.connect '/store/show_by_tags/*tags',
+   :controller => 'store',
+   :action     => 'show_by_tags'
+ 
+ # Install the default route as the lowest priority.
+-connect ':controller/:action/:id.:format'
+-connect ':controller/:action/:id'
++map.connect ':controller/:action/:id.:format'
++map.connect ':controller/:action/:id'
+ 
+ # For things like /about_us, etc
+-connect ':name',
++map.connect ':name',
+   :controller => 'content_nodes',
+-  :action     => 'show_by_name'
+\ No newline at end of file
++  :action     => 'show_by_name'
++end
+
+Property changes on: config\routes.rb
+___________________________________________________________________
+Added: svn:mergeinfo
+
+Index: tasks/substruct.rake
+===================================================================
+--- tasks/substruct.rake	(revision 178)
++++ tasks/substruct.rake	(working copy)
+@@ -100,10 +100,10 @@
+       # Grab current schema version from the migration scripts.
+       schema_files = Dir.glob(File.join(RAILS_ROOT, 'vendor/plugins/substruct/db/migrate', '*'))
+       schema_version = File.basename(schema_files.sort.last).to_i
+-      ActiveRecord::Base.connection.execute(%Q\
+-        INSERT INTO plugin_schema_info
+-        VALUES('substruct', #{schema_version});
+-      \)
++      #ActiveRecord::Base.connection.execute(%Q\
++      #  INSERT INTO plugin_schema_info
++      #  VALUES('substruct', #{schema_version});
++      #\)
+       
+       puts '=' * 80
+       puts
+@@ -354,4 +354,4 @@
+     puts
+     raise
+   end
+-end
+\ No newline at end of file
++end
+Index: lib/substruct.rb
+===================================================================
+--- lib/substruct.rb	(revision 178)
++++ lib/substruct.rb	(working copy)
+@@ -2,7 +2,7 @@
+ require_dependency 'substruct/login_system.rb'
+ 
+ require 'patch_attachment_fu'
+-
++require 'redcloth'
+ module Substruct
+   # Should we use live rate calculation via FedEx?
+   mattr_accessor :use_live_rate_calculation

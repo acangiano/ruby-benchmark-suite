@@ -1,0 +1,160 @@
+# Strange weapons.
+uranium_portion:
+  code: URANIUM
+  name: Enriched Uranium
+  description: Perfect for making that nuke you always wanted.
+  price: 5000000.00
+  date_available: 2003-01-01 00:00
+  quantity: 1
+  size_width: 50
+  size_height: 30
+  size_depth: 20
+  weight: 200.87
+  type: Product
+  is_discontinued: 0
+  variation_quantity: 0
+  related_products: lightsaber, holy_grenade
+  tags: weapons, mass_destruction, weird
+  
+lightsaber:
+  code: LIGHTSABER
+  name: Lightsaber
+  description: For you that ever wanted to be a Jedi but didn't had a lightsaber.
+  price: 90.50
+  date_available: <%= 1.minute.ago.to_s(:db) %>
+  quantity: 22
+  size_width: 2
+  size_height: 50
+  size_depth: 2
+  weight: 1.45
+  type: Product
+  is_discontinued: 0
+  variation_quantity: 15
+  related_products: uranium_portion, holy_grenade
+  tags: weapons
+
+red_lightsaber:
+  code: RED_LIGHTSABER
+  name: Red
+  price: 89.50
+  date_available: 2000-01-01 00:00
+  quantity: 5
+  type: Variation
+  product: lightsaber
+      
+blue_lightsaber:
+  code: BLUE_LIGHTSABER
+  name: Blue
+  price: 91.50
+  date_available: 2000-01-01 00:00
+  quantity: 5
+  type: Variation
+  product: lightsaber
+
+green_lightsaber:
+  code: GREEN_LIGHTSABER
+  name: Green
+  price: 93.50
+  date_available: 2000-01-01 00:00
+  quantity: 5
+  type: Variation
+  product: lightsaber
+
+holy_grenade:
+  code: HOLY_GRENADE
+  name: Holy Hand Grenade of Antioch
+  description: The best weapon to destroy any killer rabbit that blocks your path.
+  price: 23.00
+  date_available: 2003-01-01 00:00
+  quantity: 1
+  size_width: 9
+  size_height: 9
+  size_depth: 5
+  weight: 0.87
+  type: Product
+  is_discontinued: 0
+  variation_quantity: 0
+  related_products: uranium_portion, lightsaber
+  tags: weapons
+
+
+# Very usefull items.
+chinchilla_coat:
+  code: CHINCHILLA
+  name: Chinchilla Coat
+  description: Piss those PETA people off with this wonderful fur.
+  price: 700.50
+  date_available: 2000-01-01 00:00
+  quantity: 30
+  size_width: 10
+  size_height: 14
+  size_depth: 3
+  weight: 4.45
+  type: Product
+  is_discontinued: 0
+  variation_quantity: 9
+  tags: fluffy
+
+grey_coat:
+  code: GREY_COAT
+  name: Grey
+  price: 700.50
+  date_available: 2000-01-01 00:00
+  quantity: 5
+  type: Variation
+  product: chinchilla_coat
+      
+beige_coat:
+  code: BEIGE_COAT
+  name: Beige
+  price: 700.50
+  date_available: 2000-01-01 00:00
+  quantity: 4
+  type: Variation
+  product: chinchilla_coat
+  
+towel:
+  code: TOWEL
+  name: Towel
+  description: |-
+    The most massively useful thing an interstellar hitchhiker can have.
+    
+    Purchase now and you will immediately be able to download a TOWEL PIC. Special digital download!
+  price: 9.50
+  date_available: 2000-01-01 00:00
+  quantity: 32
+  size_width: 10
+  size_height: 20
+  size_depth: 0.01
+  weight: 0.45
+  type: Product
+  is_discontinued: 0
+  variation_quantity: 0
+  tags: weapons, weird, on_sale
+
+
+# Food.
+the_stuff:
+  code: STUFF
+  name: The Stuff
+  description: Sweet white goo that erupts from the earth.
+  price: 2.99
+  date_available: 1985-01-01 00:00
+  quantity: 100
+  size_width: 8
+  size_height: 8
+  size_depth: 12
+  weight: 1.52
+  type: Product
+  product_id: 0
+  is_discontinued: 0
+  variation_quantity: 1034
+
+small_stuff:
+  code: SMALL_STUFF
+  name: Small
+  price: 1.25
+  date_available: 1985-01-01 00:00
+  quantity: 1034
+  type: Variation
+  product: the_stuff
