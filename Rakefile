@@ -12,6 +12,8 @@
 # 	variable VM to point to a ruby executable, or change this line in
 # 	rakelib/bench.rake
 # 	VM              = ENV['VM'] || "ruby"
+#
+#       other environment variables: ITERATIONS (default 5), TIMEOUT (300)
 
 task :default => :'bench'
 
