@@ -4,6 +4,7 @@
 # rake bench:dir      # Run all the RBS benchmarks in DIR
 #      ex: rake bench:dir DIR=rbs/macro-benchmarks
 # rake bench:file     # Run only the RBS benchmark specified by FILE
+#      ex: rake bench:file FILE=rbs/macro-benchmarks/rails/bm_substruct_one_tenth_startup.rb
 # rake bench:results  # Plot the RBS benchmark results (not implemented)
 # rake bench:to_csv   # Generate a CSV file of RBS results
 #

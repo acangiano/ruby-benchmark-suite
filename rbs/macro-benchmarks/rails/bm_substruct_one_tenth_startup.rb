@@ -7,6 +7,6 @@
   start = Time.now
   require 'substruct_start_and_bootstrap_if_necessary.rb'
   time_first_time_through_time = Time.now - start
-  Bench.run do
+Bench.run [0.1] do
       sleep time_first_time_through_time/10
-  end
+end

@@ -2847,3 +2847,2256 @@ Rendering template within layouts/main
 Rendering store/index
 Rendered shared/_flash (0.0ms)
 Completed in 47ms (View: 0, DB: 31) | 200 OK [http://localhost/store]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mPreference Columns (78.1ms)[0m   [0;1mSHOW FIELDS FROM `preferences`[0m
+  [4;35;1mPreference Load (0.0ms)[0m   [0mSELECT * FROM `preferences` WHERE (`preferences`.`name` = 'use_smtp_tls_patch') LIMIT 1[0m
+  [4;36;1mPreference Load (0.0ms)[0m   [0;1mSELECT * FROM `preferences` WHERE (`preferences`.`name` = 'mail_host') LIMIT 1[0m
+  [4;35;1mPreference Load (0.0ms)[0m   [0mSELECT * FROM `preferences` WHERE (`preferences`.`name` = 'mail_port') LIMIT 1[0m
+  [4;36;1mPreference Load (0.0ms)[0m   [0;1mSELECT * FROM `preferences` WHERE (`preferences`.`name` = 'mail_auth_type') LIMIT 1[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mPreference Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `preferences`[0m
+  [4;35;1mPreference Load (0.0ms)[0m   [0mSELECT * FROM `preferences` WHERE (`preferences`.`name` = 'use_smtp_tls_patch') LIMIT 1[0m
+  [4;36;1mPreference Load (0.0ms)[0m   [0;1mSELECT * FROM `preferences` WHERE (`preferences`.`name` = 'mail_host') LIMIT 1[0m
+  [4;35;1mPreference Load (0.0ms)[0m   [0mSELECT * FROM `preferences` WHERE (`preferences`.`name` = 'mail_port') LIMIT 1[0m
+  [4;36;1mPreference Load (0.0ms)[0m   [0;1mSELECT * FROM `preferences` WHERE (`preferences`.`name` = 'mail_auth_type') LIMIT 1[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mPreference Columns (78.1ms)[0m   [0;1mSHOW FIELDS FROM `preferences`[0m
+  [4;35;1mPreference Load (0.0ms)[0m   [0mSELECT * FROM `preferences` WHERE (`preferences`.`name` = 'use_smtp_tls_patch') LIMIT 1[0m
+  [4;36;1mPreference Load (0.0ms)[0m   [0;1mSELECT * FROM `preferences` WHERE (`preferences`.`name` = 'mail_host') LIMIT 1[0m
+  [4;35;1mPreference Load (0.0ms)[0m   [0mSELECT * FROM `preferences` WHERE (`preferences`.`name` = 'mail_port') LIMIT 1[0m
+  [4;36;1mPreference Load (0.0ms)[0m   [0;1mSELECT * FROM `preferences` WHERE (`preferences`.`name` = 'mail_auth_type') LIMIT 1[0m
+
+
+Processing ContentNodesController#show_by_name (for 127.0.0.1 at 2009-05-15 14:08:53) [GET]
+  Parameters: {"name"=>"home"}
+  [4;35;1mPreference Load (0.0ms)[0m   [0mSELECT * FROM `preferences` WHERE (`preferences`.`name` = 'store_name') LIMIT 1[0m
+  [4;36;1mTag Load (62.5ms)[0m   [0;1mSELECT * FROM `tags` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;35;1mOrderUser Columns (31.3ms)[0m   [0mSHOW FIELDS FROM `order_users`[0m
+  [4;36;1mOrderUser Load (0.0ms)[0m   [0;1mSELECT * FROM `order_users` WHERE (`order_users`.`id` IS NULL) LIMIT 1[0m
+  [4;35;1mSection Load (15.6ms)[0m   [0mSELECT * FROM `sections` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;36;1mContentNode Load (15.6ms)[0m   [0;1mSELECT * FROM `content_nodes` WHERE (name = 'home') LIMIT 1[0m
+  [4;35;1mContentNode Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `content_nodes`[0m
+  [4;36;1mPage Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `content_nodes`[0m
+Rendering template within layouts/main
+Rendering content_nodes/show_by_name
+  [4;35;1mTag Columns (15.6ms)[0m   [0mSHOW FIELDS FROM `tags`[0m
+Rendered shared/_flash (15.6ms)
+Completed in 1766ms (View: 172, DB: 266) | 200 OK [http://www.example.com/]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ContentNodesController#show_by_name (for 127.0.0.1 at 2009-05-15 14:08:56) [GET]
+  Parameters: {"name"=>"home"}
+  [4;36;1mPreference Load (0.0ms)[0m   [0;1mSELECT * FROM `preferences` WHERE (`preferences`.`name` = 'store_name') LIMIT 1[0m
+  [4;35;1mTag Load (0.0ms)[0m   [0mSELECT * FROM `tags` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;36;1mOrderUser Load (0.0ms)[0m   [0;1mSELECT * FROM `order_users` WHERE (`order_users`.`id` IS NULL) LIMIT 1[0m
+  [4;35;1mSection Load (0.0ms)[0m   [0mSELECT * FROM `sections` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;36;1mContentNode Load (0.0ms)[0m   [0;1mSELECT * FROM `content_nodes` WHERE (name = 'home') LIMIT 1[0m
+Rendering template within layouts/main
+Rendering content_nodes/show_by_name
+Rendered shared/_flash (0.0ms)
+Completed in 16ms (View: 0, DB: 0) | 200 OK [http://www.example.com/]
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ContentNodesController#show_by_name (for 127.0.0.1 at 2009-05-15 14:08:56) [GET]
+  Parameters: {"name"=>"home"}
+  [4;35;1mPreference Load (0.0ms)[0m   [0mSELECT * FROM `preferences` WHERE (`preferences`.`name` = 'store_name') LIMIT 1[0m
+  [4;36;1mTag Load (0.0ms)[0m   [0;1mSELECT * FROM `tags` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;35;1mOrderUser Load (0.0ms)[0m   [0mSELECT * FROM `order_users` WHERE (`order_users`.`id` IS NULL) LIMIT 1[0m
+  [4;36;1mSection Load (0.0ms)[0m   [0;1mSELECT * FROM `sections` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;35;1mContentNode Load (0.0ms)[0m   [0mSELECT * FROM `content_nodes` WHERE (name = 'home') LIMIT 1[0m
+Rendering template within layouts/main
+Rendering content_nodes/show_by_name
+Rendered shared/_flash (0.0ms)
+Completed in 16ms (View: 16, DB: 0) | 200 OK [http://www.example.com/]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ContentNodesController#show_by_name (for 127.0.0.1 at 2009-05-15 14:08:56) [GET]
+  Parameters: {"name"=>"home"}
+  [4;36;1mPreference Load (0.0ms)[0m   [0;1mSELECT * FROM `preferences` WHERE (`preferences`.`name` = 'store_name') LIMIT 1[0m
+  [4;35;1mTag Load (0.0ms)[0m   [0mSELECT * FROM `tags` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;36;1mOrderUser Load (0.0ms)[0m   [0;1mSELECT * FROM `order_users` WHERE (`order_users`.`id` IS NULL) LIMIT 1[0m
+  [4;35;1mSection Load (0.0ms)[0m   [0mSELECT * FROM `sections` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;36;1mContentNode Load (0.0ms)[0m   [0;1mSELECT * FROM `content_nodes` WHERE (name = 'home') LIMIT 1[0m
+Rendering template within layouts/main
+Rendering content_nodes/show_by_name
+Rendered shared/_flash (0.0ms)
+Completed in 16ms (View: 16, DB: 0) | 200 OK [http://www.example.com/]
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ContentNodesController#show_by_name (for 127.0.0.1 at 2009-05-15 14:08:56) [GET]
+  Parameters: {"name"=>"home"}
+  [4;35;1mPreference Load (0.0ms)[0m   [0mSELECT * FROM `preferences` WHERE (`preferences`.`name` = 'store_name') LIMIT 1[0m
+  [4;36;1mTag Load (0.0ms)[0m   [0;1mSELECT * FROM `tags` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;35;1mOrderUser Load (0.0ms)[0m   [0mSELECT * FROM `order_users` WHERE (`order_users`.`id` IS NULL) LIMIT 1[0m
+  [4;36;1mSection Load (0.0ms)[0m   [0;1mSELECT * FROM `sections` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;35;1mContentNode Load (0.0ms)[0m   [0mSELECT * FROM `content_nodes` WHERE (name = 'home') LIMIT 1[0m
+Rendering template within layouts/main
+Rendering content_nodes/show_by_name
+Rendered shared/_flash (0.0ms)
+Completed in 16ms (View: 16, DB: 0) | 200 OK [http://www.example.com/]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ContentNodesController#show_by_name (for 127.0.0.1 at 2009-05-15 14:08:56) [GET]
+  Parameters: {"name"=>"home"}
+  [4;36;1mPreference Load (0.0ms)[0m   [0;1mSELECT * FROM `preferences` WHERE (`preferences`.`name` = 'store_name') LIMIT 1[0m
+  [4;35;1mTag Load (0.0ms)[0m   [0mSELECT * FROM `tags` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;36;1mOrderUser Load (0.0ms)[0m   [0;1mSELECT * FROM `order_users` WHERE (`order_users`.`id` IS NULL) LIMIT 1[0m
+  [4;35;1mSection Load (0.0ms)[0m   [0mSELECT * FROM `sections` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;36;1mContentNode Load (0.0ms)[0m   [0;1mSELECT * FROM `content_nodes` WHERE (name = 'home') LIMIT 1[0m
+Rendering template within layouts/main
+Rendering content_nodes/show_by_name
+Rendered shared/_flash (0.0ms)
+Completed in 16ms (View: 0, DB: 0) | 200 OK [http://www.example.com/]
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ContentNodesController#show_by_name (for 127.0.0.1 at 2009-05-15 14:08:56) [GET]
+  Parameters: {"name"=>"home"}
+  [4;35;1mPreference Load (0.0ms)[0m   [0mSELECT * FROM `preferences` WHERE (`preferences`.`name` = 'store_name') LIMIT 1[0m
+  [4;36;1mTag Load (0.0ms)[0m   [0;1mSELECT * FROM `tags` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;35;1mOrderUser Load (0.0ms)[0m   [0mSELECT * FROM `order_users` WHERE (`order_users`.`id` IS NULL) LIMIT 1[0m
+  [4;36;1mSection Load (0.0ms)[0m   [0;1mSELECT * FROM `sections` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;35;1mContentNode Load (0.0ms)[0m   [0mSELECT * FROM `content_nodes` WHERE (name = 'home') LIMIT 1[0m
+Rendering template within layouts/main
+Rendering content_nodes/show_by_name
+Rendered shared/_flash (0.0ms)
+Completed in 31ms (View: 16, DB: 0) | 200 OK [http://www.example.com/]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ContentNodesController#show_by_name (for 127.0.0.1 at 2009-05-15 14:08:56) [GET]
+  Parameters: {"name"=>"home"}
+  [4;36;1mPreference Load (0.0ms)[0m   [0;1mSELECT * FROM `preferences` WHERE (`preferences`.`name` = 'store_name') LIMIT 1[0m
+  [4;35;1mTag Load (0.0ms)[0m   [0mSELECT * FROM `tags` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;36;1mOrderUser Load (0.0ms)[0m   [0;1mSELECT * FROM `order_users` WHERE (`order_users`.`id` IS NULL) LIMIT 1[0m
+  [4;35;1mSection Load (0.0ms)[0m   [0mSELECT * FROM `sections` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;36;1mContentNode Load (0.0ms)[0m   [0;1mSELECT * FROM `content_nodes` WHERE (name = 'home') LIMIT 1[0m
+Rendering template within layouts/main
+Rendering content_nodes/show_by_name
+Rendered shared/_flash (0.0ms)
+Completed in 16ms (View: 16, DB: 0) | 200 OK [http://www.example.com/]
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ContentNodesController#show_by_name (for 127.0.0.1 at 2009-05-15 14:08:56) [GET]
+  Parameters: {"name"=>"home"}
+  [4;35;1mPreference Load (0.0ms)[0m   [0mSELECT * FROM `preferences` WHERE (`preferences`.`name` = 'store_name') LIMIT 1[0m
+  [4;36;1mTag Load (0.0ms)[0m   [0;1mSELECT * FROM `tags` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;35;1mOrderUser Load (0.0ms)[0m   [0mSELECT * FROM `order_users` WHERE (`order_users`.`id` IS NULL) LIMIT 1[0m
+  [4;36;1mSection Load (0.0ms)[0m   [0;1mSELECT * FROM `sections` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;35;1mContentNode Load (0.0ms)[0m   [0mSELECT * FROM `content_nodes` WHERE (name = 'home') LIMIT 1[0m
+Rendering template within layouts/main
+Rendering content_nodes/show_by_name
+Rendered shared/_flash (0.0ms)
+Completed in 31ms (View: 16, DB: 0) | 200 OK [http://www.example.com/]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ContentNodesController#show_by_name (for 127.0.0.1 at 2009-05-15 14:08:56) [GET]
+  Parameters: {"name"=>"home"}
+  [4;36;1mPreference Load (0.0ms)[0m   [0;1mSELECT * FROM `preferences` WHERE (`preferences`.`name` = 'store_name') LIMIT 1[0m
+  [4;35;1mTag Load (0.0ms)[0m   [0mSELECT * FROM `tags` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;36;1mOrderUser Load (0.0ms)[0m   [0;1mSELECT * FROM `order_users` WHERE (`order_users`.`id` IS NULL) LIMIT 1[0m
+  [4;35;1mSection Load (0.0ms)[0m   [0mSELECT * FROM `sections` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;36;1mContentNode Load (0.0ms)[0m   [0;1mSELECT * FROM `content_nodes` WHERE (name = 'home') LIMIT 1[0m
+Rendering template within layouts/main
+Rendering content_nodes/show_by_name
+Rendered shared/_flash (0.0ms)
+Completed in 16ms (View: 16, DB: 0) | 200 OK [http://www.example.com/]
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ContentNodesController#show_by_name (for 127.0.0.1 at 2009-05-15 14:08:56) [GET]
+  Parameters: {"name"=>"home"}
+  [4;35;1mPreference Load (0.0ms)[0m   [0mSELECT * FROM `preferences` WHERE (`preferences`.`name` = 'store_name') LIMIT 1[0m
+  [4;36;1mTag Load (0.0ms)[0m   [0;1mSELECT * FROM `tags` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;35;1mOrderUser Load (0.0ms)[0m   [0mSELECT * FROM `order_users` WHERE (`order_users`.`id` IS NULL) LIMIT 1[0m
+  [4;36;1mSection Load (0.0ms)[0m   [0;1mSELECT * FROM `sections` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;35;1mContentNode Load (0.0ms)[0m   [0mSELECT * FROM `content_nodes` WHERE (name = 'home') LIMIT 1[0m
+Rendering template within layouts/main
+Rendering content_nodes/show_by_name
+Rendered shared/_flash (0.0ms)
+Completed in 16ms (View: 16, DB: 0) | 200 OK [http://www.example.com/]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ContentNodesController#show_by_name (for 127.0.0.1 at 2009-05-15 14:08:56) [GET]
+  Parameters: {"name"=>"home"}
+  [4;36;1mPreference Load (0.0ms)[0m   [0;1mSELECT * FROM `preferences` WHERE (`preferences`.`name` = 'store_name') LIMIT 1[0m
+  [4;35;1mTag Load (0.0ms)[0m   [0mSELECT * FROM `tags` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;36;1mOrderUser Load (0.0ms)[0m   [0;1mSELECT * FROM `order_users` WHERE (`order_users`.`id` IS NULL) LIMIT 1[0m
+  [4;35;1mSection Load (0.0ms)[0m   [0mSELECT * FROM `sections` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;36;1mContentNode Load (0.0ms)[0m   [0;1mSELECT * FROM `content_nodes` WHERE (name = 'home') LIMIT 1[0m
+Rendering template within layouts/main
+Rendering content_nodes/show_by_name
+Rendered shared/_flash (0.0ms)
+Completed in 16ms (View: 0, DB: 0) | 200 OK [http://www.example.com/]
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ContentNodesController#show_by_name (for 127.0.0.1 at 2009-05-15 14:08:56) [GET]
+  Parameters: {"name"=>"home"}
+  [4;35;1mPreference Load (0.0ms)[0m   [0mSELECT * FROM `preferences` WHERE (`preferences`.`name` = 'store_name') LIMIT 1[0m
+  [4;36;1mTag Load (0.0ms)[0m   [0;1mSELECT * FROM `tags` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;35;1mOrderUser Load (0.0ms)[0m   [0mSELECT * FROM `order_users` WHERE (`order_users`.`id` IS NULL) LIMIT 1[0m
+  [4;36;1mSection Load (0.0ms)[0m   [0;1mSELECT * FROM `sections` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;35;1mContentNode Load (0.0ms)[0m   [0mSELECT * FROM `content_nodes` WHERE (name = 'home') LIMIT 1[0m
+Rendering template within layouts/main
+Rendering content_nodes/show_by_name
+Rendered shared/_flash (0.0ms)
+Completed in 16ms (View: 0, DB: 0) | 200 OK [http://www.example.com/]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ContentNodesController#show_by_name (for 127.0.0.1 at 2009-05-15 14:08:56) [GET]
+  Parameters: {"name"=>"home"}
+  [4;36;1mPreference Load (0.0ms)[0m   [0;1mSELECT * FROM `preferences` WHERE (`preferences`.`name` = 'store_name') LIMIT 1[0m
+  [4;35;1mTag Load (0.0ms)[0m   [0mSELECT * FROM `tags` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;36;1mOrderUser Load (0.0ms)[0m   [0;1mSELECT * FROM `order_users` WHERE (`order_users`.`id` IS NULL) LIMIT 1[0m
+  [4;35;1mSection Load (0.0ms)[0m   [0mSELECT * FROM `sections` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;36;1mContentNode Load (0.0ms)[0m   [0;1mSELECT * FROM `content_nodes` WHERE (name = 'home') LIMIT 1[0m
+Rendering template within layouts/main
+Rendering content_nodes/show_by_name
+Rendered shared/_flash (0.0ms)
+Completed in 16ms (View: 16, DB: 0) | 200 OK [http://www.example.com/]
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ContentNodesController#show_by_name (for 127.0.0.1 at 2009-05-15 14:08:56) [GET]
+  Parameters: {"name"=>"home"}
+  [4;35;1mPreference Load (0.0ms)[0m   [0mSELECT * FROM `preferences` WHERE (`preferences`.`name` = 'store_name') LIMIT 1[0m
+  [4;36;1mTag Load (0.0ms)[0m   [0;1mSELECT * FROM `tags` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;35;1mOrderUser Load (0.0ms)[0m   [0mSELECT * FROM `order_users` WHERE (`order_users`.`id` IS NULL) LIMIT 1[0m
+  [4;36;1mSection Load (0.0ms)[0m   [0;1mSELECT * FROM `sections` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;35;1mContentNode Load (0.0ms)[0m   [0mSELECT * FROM `content_nodes` WHERE (name = 'home') LIMIT 1[0m
+Rendering template within layouts/main
+Rendering content_nodes/show_by_name
+Rendered shared/_flash (0.0ms)
+Completed in 16ms (View: 0, DB: 0) | 200 OK [http://www.example.com/]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ContentNodesController#show_by_name (for 127.0.0.1 at 2009-05-15 14:08:56) [GET]
+  Parameters: {"name"=>"home"}
+  [4;36;1mPreference Load (0.0ms)[0m   [0;1mSELECT * FROM `preferences` WHERE (`preferences`.`name` = 'store_name') LIMIT 1[0m
+  [4;35;1mTag Load (0.0ms)[0m   [0mSELECT * FROM `tags` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;36;1mOrderUser Load (0.0ms)[0m   [0;1mSELECT * FROM `order_users` WHERE (`order_users`.`id` IS NULL) LIMIT 1[0m
+  [4;35;1mSection Load (0.0ms)[0m   [0mSELECT * FROM `sections` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;36;1mContentNode Load (0.0ms)[0m   [0;1mSELECT * FROM `content_nodes` WHERE (name = 'home') LIMIT 1[0m
+Rendering template within layouts/main
+Rendering content_nodes/show_by_name
+Rendered shared/_flash (0.0ms)
+Completed in 16ms (View: 0, DB: 0) | 200 OK [http://www.example.com/]
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ContentNodesController#show_by_name (for 127.0.0.1 at 2009-05-15 14:08:56) [GET]
+  Parameters: {"name"=>"home"}
+  [4;35;1mPreference Load (0.0ms)[0m   [0mSELECT * FROM `preferences` WHERE (`preferences`.`name` = 'store_name') LIMIT 1[0m
+  [4;36;1mTag Load (0.0ms)[0m   [0;1mSELECT * FROM `tags` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;35;1mOrderUser Load (0.0ms)[0m   [0mSELECT * FROM `order_users` WHERE (`order_users`.`id` IS NULL) LIMIT 1[0m
+  [4;36;1mSection Load (0.0ms)[0m   [0;1mSELECT * FROM `sections` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;35;1mContentNode Load (0.0ms)[0m   [0mSELECT * FROM `content_nodes` WHERE (name = 'home') LIMIT 1[0m
+Rendering template within layouts/main
+Rendering content_nodes/show_by_name
+Rendered shared/_flash (0.0ms)
+Completed in 16ms (View: 0, DB: 0) | 200 OK [http://www.example.com/]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ContentNodesController#show_by_name (for 127.0.0.1 at 2009-05-15 14:08:56) [GET]
+  Parameters: {"name"=>"home"}
+  [4;36;1mPreference Load (0.0ms)[0m   [0;1mSELECT * FROM `preferences` WHERE (`preferences`.`name` = 'store_name') LIMIT 1[0m
+  [4;35;1mTag Load (0.0ms)[0m   [0mSELECT * FROM `tags` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;36;1mOrderUser Load (0.0ms)[0m   [0;1mSELECT * FROM `order_users` WHERE (`order_users`.`id` IS NULL) LIMIT 1[0m
+  [4;35;1mSection Load (0.0ms)[0m   [0mSELECT * FROM `sections` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;36;1mContentNode Load (0.0ms)[0m   [0;1mSELECT * FROM `content_nodes` WHERE (name = 'home') LIMIT 1[0m
+Rendering template within layouts/main
+Rendering content_nodes/show_by_name
+Rendered shared/_flash (0.0ms)
+Completed in 16ms (View: 16, DB: 0) | 200 OK [http://www.example.com/]
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ContentNodesController#show_by_name (for 127.0.0.1 at 2009-05-15 14:08:56) [GET]
+  Parameters: {"name"=>"home"}
+  [4;35;1mPreference Load (0.0ms)[0m   [0mSELECT * FROM `preferences` WHERE (`preferences`.`name` = 'store_name') LIMIT 1[0m
+  [4;36;1mTag Load (0.0ms)[0m   [0;1mSELECT * FROM `tags` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;35;1mOrderUser Load (0.0ms)[0m   [0mSELECT * FROM `order_users` WHERE (`order_users`.`id` IS NULL) LIMIT 1[0m
+  [4;36;1mSection Load (0.0ms)[0m   [0;1mSELECT * FROM `sections` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;35;1mContentNode Load (0.0ms)[0m   [0mSELECT * FROM `content_nodes` WHERE (name = 'home') LIMIT 1[0m
+Rendering template within layouts/main
+Rendering content_nodes/show_by_name
+Rendered shared/_flash (0.0ms)
+Completed in 16ms (View: 16, DB: 0) | 200 OK [http://www.example.com/]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ContentNodesController#show_by_name (for 127.0.0.1 at 2009-05-15 14:08:56) [GET]
+  Parameters: {"name"=>"home"}
+  [4;36;1mPreference Load (0.0ms)[0m   [0;1mSELECT * FROM `preferences` WHERE (`preferences`.`name` = 'store_name') LIMIT 1[0m
+  [4;35;1mTag Load (0.0ms)[0m   [0mSELECT * FROM `tags` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;36;1mOrderUser Load (0.0ms)[0m   [0;1mSELECT * FROM `order_users` WHERE (`order_users`.`id` IS NULL) LIMIT 1[0m
+  [4;35;1mSection Load (0.0ms)[0m   [0mSELECT * FROM `sections` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;36;1mContentNode Load (0.0ms)[0m   [0;1mSELECT * FROM `content_nodes` WHERE (name = 'home') LIMIT 1[0m
+Rendering template within layouts/main
+Rendering content_nodes/show_by_name
+Rendered shared/_flash (0.0ms)
+Completed in 16ms (View: 16, DB: 0) | 200 OK [http://www.example.com/]
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ContentNodesController#show_by_name (for 127.0.0.1 at 2009-05-15 14:08:56) [GET]
+  Parameters: {"name"=>"home"}
+  [4;35;1mPreference Load (0.0ms)[0m   [0mSELECT * FROM `preferences` WHERE (`preferences`.`name` = 'store_name') LIMIT 1[0m
+  [4;36;1mTag Load (0.0ms)[0m   [0;1mSELECT * FROM `tags` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;35;1mOrderUser Load (0.0ms)[0m   [0mSELECT * FROM `order_users` WHERE (`order_users`.`id` IS NULL) LIMIT 1[0m
+  [4;36;1mSection Load (0.0ms)[0m   [0;1mSELECT * FROM `sections` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;35;1mContentNode Load (0.0ms)[0m   [0mSELECT * FROM `content_nodes` WHERE (name = 'home') LIMIT 1[0m
+Rendering template within layouts/main
+Rendering content_nodes/show_by_name
+Rendered shared/_flash (0.0ms)
+Completed in 16ms (View: 16, DB: 0) | 200 OK [http://www.example.com/]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ContentNodesController#show_by_name (for 127.0.0.1 at 2009-05-15 14:08:56) [GET]
+  Parameters: {"name"=>"home"}
+  [4;36;1mPreference Load (0.0ms)[0m   [0;1mSELECT * FROM `preferences` WHERE (`preferences`.`name` = 'store_name') LIMIT 1[0m
+  [4;35;1mTag Load (0.0ms)[0m   [0mSELECT * FROM `tags` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;36;1mOrderUser Load (0.0ms)[0m   [0;1mSELECT * FROM `order_users` WHERE (`order_users`.`id` IS NULL) LIMIT 1[0m
+  [4;35;1mSection Load (0.0ms)[0m   [0mSELECT * FROM `sections` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;36;1mContentNode Load (0.0ms)[0m   [0;1mSELECT * FROM `content_nodes` WHERE (name = 'home') LIMIT 1[0m
+Rendering template within layouts/main
+Rendering content_nodes/show_by_name
+Rendered shared/_flash (0.0ms)
+Completed in 16ms (View: 16, DB: 0) | 200 OK [http://www.example.com/]
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ContentNodesController#show_by_name (for 127.0.0.1 at 2009-05-15 14:08:56) [GET]
+  Parameters: {"name"=>"home"}
+  [4;35;1mPreference Load (0.0ms)[0m   [0mSELECT * FROM `preferences` WHERE (`preferences`.`name` = 'store_name') LIMIT 1[0m
+  [4;36;1mTag Load (0.0ms)[0m   [0;1mSELECT * FROM `tags` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;35;1mOrderUser Load (0.0ms)[0m   [0mSELECT * FROM `order_users` WHERE (`order_users`.`id` IS NULL) LIMIT 1[0m
+  [4;36;1mSection Load (0.0ms)[0m   [0;1mSELECT * FROM `sections` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;35;1mContentNode Load (0.0ms)[0m   [0mSELECT * FROM `content_nodes` WHERE (name = 'home') LIMIT 1[0m
+Rendering template within layouts/main
+Rendering content_nodes/show_by_name
+Rendered shared/_flash (0.0ms)
+Completed in 16ms (View: 16, DB: 0) | 200 OK [http://www.example.com/]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ContentNodesController#show_by_name (for 127.0.0.1 at 2009-05-15 14:08:57) [GET]
+  Parameters: {"name"=>"home"}
+  [4;36;1mPreference Load (0.0ms)[0m   [0;1mSELECT * FROM `preferences` WHERE (`preferences`.`name` = 'store_name') LIMIT 1[0m
+  [4;35;1mTag Load (0.0ms)[0m   [0mSELECT * FROM `tags` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;36;1mOrderUser Load (0.0ms)[0m   [0;1mSELECT * FROM `order_users` WHERE (`order_users`.`id` IS NULL) LIMIT 1[0m
+  [4;35;1mSection Load (0.0ms)[0m   [0mSELECT * FROM `sections` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;36;1mContentNode Load (0.0ms)[0m   [0;1mSELECT * FROM `content_nodes` WHERE (name = 'home') LIMIT 1[0m
+Rendering template within layouts/main
+Rendering content_nodes/show_by_name
+Rendered shared/_flash (0.0ms)
+Completed in 31ms (View: 16, DB: 0) | 200 OK [http://www.example.com/]
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ContentNodesController#show_by_name (for 127.0.0.1 at 2009-05-15 14:08:57) [GET]
+  Parameters: {"name"=>"home"}
+  [4;35;1mPreference Load (0.0ms)[0m   [0mSELECT * FROM `preferences` WHERE (`preferences`.`name` = 'store_name') LIMIT 1[0m
+  [4;36;1mTag Load (0.0ms)[0m   [0;1mSELECT * FROM `tags` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;35;1mOrderUser Load (0.0ms)[0m   [0mSELECT * FROM `order_users` WHERE (`order_users`.`id` IS NULL) LIMIT 1[0m
+  [4;36;1mSection Load (0.0ms)[0m   [0;1mSELECT * FROM `sections` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;35;1mContentNode Load (0.0ms)[0m   [0mSELECT * FROM `content_nodes` WHERE (name = 'home') LIMIT 1[0m
+Rendering template within layouts/main
+Rendering content_nodes/show_by_name
+Rendered shared/_flash (0.0ms)
+Completed in 94ms (View: 78, DB: 0) | 200 OK [http://www.example.com/]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ContentNodesController#show_by_name (for 127.0.0.1 at 2009-05-15 14:08:57) [GET]
+  Parameters: {"name"=>"home"}
+  [4;36;1mPreference Load (0.0ms)[0m   [0;1mSELECT * FROM `preferences` WHERE (`preferences`.`name` = 'store_name') LIMIT 1[0m
+  [4;35;1mTag Load (0.0ms)[0m   [0mSELECT * FROM `tags` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;36;1mOrderUser Load (0.0ms)[0m   [0;1mSELECT * FROM `order_users` WHERE (`order_users`.`id` IS NULL) LIMIT 1[0m
+  [4;35;1mSection Load (0.0ms)[0m   [0mSELECT * FROM `sections` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;36;1mContentNode Load (0.0ms)[0m   [0;1mSELECT * FROM `content_nodes` WHERE (name = 'home') LIMIT 1[0m
+Rendering template within layouts/main
+Rendering content_nodes/show_by_name
+Rendered shared/_flash (0.0ms)
+Completed in 31ms (View: 16, DB: 0) | 200 OK [http://www.example.com/]
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ContentNodesController#show_by_name (for 127.0.0.1 at 2009-05-15 14:08:57) [GET]
+  Parameters: {"name"=>"home"}
+  [4;35;1mPreference Load (0.0ms)[0m   [0mSELECT * FROM `preferences` WHERE (`preferences`.`name` = 'store_name') LIMIT 1[0m
+  [4;36;1mTag Load (0.0ms)[0m   [0;1mSELECT * FROM `tags` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;35;1mOrderUser Load (0.0ms)[0m   [0mSELECT * FROM `order_users` WHERE (`order_users`.`id` IS NULL) LIMIT 1[0m
+  [4;36;1mSection Load (0.0ms)[0m   [0;1mSELECT * FROM `sections` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;35;1mContentNode Load (0.0ms)[0m   [0mSELECT * FROM `content_nodes` WHERE (name = 'home') LIMIT 1[0m
+Rendering template within layouts/main
+Rendering content_nodes/show_by_name
+Rendered shared/_flash (0.0ms)
+Completed in 16ms (View: 16, DB: 0) | 200 OK [http://www.example.com/]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ContentNodesController#show_by_name (for 127.0.0.1 at 2009-05-15 14:08:57) [GET]
+  Parameters: {"name"=>"home"}
+  [4;36;1mPreference Load (0.0ms)[0m   [0;1mSELECT * FROM `preferences` WHERE (`preferences`.`name` = 'store_name') LIMIT 1[0m
+  [4;35;1mTag Load (0.0ms)[0m   [0mSELECT * FROM `tags` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;36;1mOrderUser Load (0.0ms)[0m   [0;1mSELECT * FROM `order_users` WHERE (`order_users`.`id` IS NULL) LIMIT 1[0m
+  [4;35;1mSection Load (0.0ms)[0m   [0mSELECT * FROM `sections` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;36;1mContentNode Load (0.0ms)[0m   [0;1mSELECT * FROM `content_nodes` WHERE (name = 'home') LIMIT 1[0m
+Rendering template within layouts/main
+Rendering content_nodes/show_by_name
+Rendered shared/_flash (0.0ms)
+Completed in 16ms (View: 16, DB: 0) | 200 OK [http://www.example.com/]
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ContentNodesController#show_by_name (for 127.0.0.1 at 2009-05-15 14:08:57) [GET]
+  Parameters: {"name"=>"home"}
+  [4;35;1mPreference Load (0.0ms)[0m   [0mSELECT * FROM `preferences` WHERE (`preferences`.`name` = 'store_name') LIMIT 1[0m
+  [4;36;1mTag Load (0.0ms)[0m   [0;1mSELECT * FROM `tags` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;35;1mOrderUser Load (0.0ms)[0m   [0mSELECT * FROM `order_users` WHERE (`order_users`.`id` IS NULL) LIMIT 1[0m
+  [4;36;1mSection Load (0.0ms)[0m   [0;1mSELECT * FROM `sections` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;35;1mContentNode Load (0.0ms)[0m   [0mSELECT * FROM `content_nodes` WHERE (name = 'home') LIMIT 1[0m
+Rendering template within layouts/main
+Rendering content_nodes/show_by_name
+Rendered shared/_flash (0.0ms)
+Completed in 16ms (View: 16, DB: 0) | 200 OK [http://www.example.com/]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ContentNodesController#show_by_name (for 127.0.0.1 at 2009-05-15 14:08:57) [GET]
+  Parameters: {"name"=>"home"}
+  [4;36;1mPreference Load (0.0ms)[0m   [0;1mSELECT * FROM `preferences` WHERE (`preferences`.`name` = 'store_name') LIMIT 1[0m
+  [4;35;1mTag Load (0.0ms)[0m   [0mSELECT * FROM `tags` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;36;1mOrderUser Load (0.0ms)[0m   [0;1mSELECT * FROM `order_users` WHERE (`order_users`.`id` IS NULL) LIMIT 1[0m
+  [4;35;1mSection Load (0.0ms)[0m   [0mSELECT * FROM `sections` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;36;1mContentNode Load (0.0ms)[0m   [0;1mSELECT * FROM `content_nodes` WHERE (name = 'home') LIMIT 1[0m
+Rendering template within layouts/main
+Rendering content_nodes/show_by_name
+Rendered shared/_flash (0.0ms)
+Completed in 16ms (View: 16, DB: 0) | 200 OK [http://www.example.com/]
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ContentNodesController#show_by_name (for 127.0.0.1 at 2009-05-15 14:08:57) [GET]
+  Parameters: {"name"=>"home"}
+  [4;35;1mPreference Load (0.0ms)[0m   [0mSELECT * FROM `preferences` WHERE (`preferences`.`name` = 'store_name') LIMIT 1[0m
+  [4;36;1mTag Load (0.0ms)[0m   [0;1mSELECT * FROM `tags` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;35;1mOrderUser Load (0.0ms)[0m   [0mSELECT * FROM `order_users` WHERE (`order_users`.`id` IS NULL) LIMIT 1[0m
+  [4;36;1mSection Load (0.0ms)[0m   [0;1mSELECT * FROM `sections` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;35;1mContentNode Load (0.0ms)[0m   [0mSELECT * FROM `content_nodes` WHERE (name = 'home') LIMIT 1[0m
+Rendering template within layouts/main
+Rendering content_nodes/show_by_name
+Rendered shared/_flash (0.0ms)
+Completed in 16ms (View: 16, DB: 0) | 200 OK [http://www.example.com/]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ContentNodesController#show_by_name (for 127.0.0.1 at 2009-05-15 14:08:58) [GET]
+  Parameters: {"name"=>"home"}
+  [4;36;1mPreference Load (0.0ms)[0m   [0;1mSELECT * FROM `preferences` WHERE (`preferences`.`name` = 'store_name') LIMIT 1[0m
+  [4;35;1mTag Load (0.0ms)[0m   [0mSELECT * FROM `tags` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;36;1mOrderUser Load (0.0ms)[0m   [0;1mSELECT * FROM `order_users` WHERE (`order_users`.`id` IS NULL) LIMIT 1[0m
+  [4;35;1mSection Load (0.0ms)[0m   [0mSELECT * FROM `sections` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;36;1mContentNode Load (0.0ms)[0m   [0;1mSELECT * FROM `content_nodes` WHERE (name = 'home') LIMIT 1[0m
+Rendering template within layouts/main
+Rendering content_nodes/show_by_name
+Rendered shared/_flash (0.0ms)
+Completed in 47ms (View: 31, DB: 0) | 200 OK [http://www.example.com/]
+  [4;35;1mSQL (15.6ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ContentNodesController#show_by_name (for 127.0.0.1 at 2009-05-15 14:08:59) [GET]
+  Parameters: {"name"=>"home"}
+  [4;35;1mPreference Load (0.0ms)[0m   [0mSELECT * FROM `preferences` WHERE (`preferences`.`name` = 'store_name') LIMIT 1[0m
+  [4;36;1mTag Load (0.0ms)[0m   [0;1mSELECT * FROM `tags` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;35;1mOrderUser Load (0.0ms)[0m   [0mSELECT * FROM `order_users` WHERE (`order_users`.`id` IS NULL) LIMIT 1[0m
+  [4;36;1mSection Load (0.0ms)[0m   [0;1mSELECT * FROM `sections` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;35;1mContentNode Load (0.0ms)[0m   [0mSELECT * FROM `content_nodes` WHERE (name = 'home') LIMIT 1[0m
+Rendering template within layouts/main
+Rendering content_nodes/show_by_name
+Rendered shared/_flash (0.0ms)
+Completed in 16ms (View: 0, DB: 16) | 200 OK [http://www.example.com/]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ContentNodesController#show_by_name (for 127.0.0.1 at 2009-05-15 14:08:59) [GET]
+  Parameters: {"name"=>"home"}
+  [4;36;1mPreference Load (0.0ms)[0m   [0;1mSELECT * FROM `preferences` WHERE (`preferences`.`name` = 'store_name') LIMIT 1[0m
+  [4;35;1mTag Load (0.0ms)[0m   [0mSELECT * FROM `tags` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;36;1mOrderUser Load (0.0ms)[0m   [0;1mSELECT * FROM `order_users` WHERE (`order_users`.`id` IS NULL) LIMIT 1[0m
+  [4;35;1mSection Load (0.0ms)[0m   [0mSELECT * FROM `sections` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;36;1mContentNode Load (0.0ms)[0m   [0;1mSELECT * FROM `content_nodes` WHERE (name = 'home') LIMIT 1[0m
+Rendering template within layouts/main
+Rendering content_nodes/show_by_name
+Rendered shared/_flash (0.0ms)
+Completed in 16ms (View: 0, DB: 0) | 200 OK [http://www.example.com/]
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ContentNodesController#show_by_name (for 127.0.0.1 at 2009-05-15 14:08:59) [GET]
+  Parameters: {"name"=>"home"}
+  [4;35;1mPreference Load (0.0ms)[0m   [0mSELECT * FROM `preferences` WHERE (`preferences`.`name` = 'store_name') LIMIT 1[0m
+  [4;36;1mTag Load (0.0ms)[0m   [0;1mSELECT * FROM `tags` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;35;1mOrderUser Load (0.0ms)[0m   [0mSELECT * FROM `order_users` WHERE (`order_users`.`id` IS NULL) LIMIT 1[0m
+  [4;36;1mSection Load (0.0ms)[0m   [0;1mSELECT * FROM `sections` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;35;1mContentNode Load (0.0ms)[0m   [0mSELECT * FROM `content_nodes` WHERE (name = 'home') LIMIT 1[0m
+Rendering template within layouts/main
+Rendering content_nodes/show_by_name
+Rendered shared/_flash (0.0ms)
+Completed in 31ms (View: 16, DB: 0) | 200 OK [http://www.example.com/]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ContentNodesController#show_by_name (for 127.0.0.1 at 2009-05-15 14:08:59) [GET]
+  Parameters: {"name"=>"home"}
+  [4;36;1mPreference Load (0.0ms)[0m   [0;1mSELECT * FROM `preferences` WHERE (`preferences`.`name` = 'store_name') LIMIT 1[0m
+  [4;35;1mTag Load (0.0ms)[0m   [0mSELECT * FROM `tags` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;36;1mOrderUser Load (0.0ms)[0m   [0;1mSELECT * FROM `order_users` WHERE (`order_users`.`id` IS NULL) LIMIT 1[0m
+  [4;35;1mSection Load (0.0ms)[0m   [0mSELECT * FROM `sections` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;36;1mContentNode Load (0.0ms)[0m   [0;1mSELECT * FROM `content_nodes` WHERE (name = 'home') LIMIT 1[0m
+Rendering template within layouts/main
+Rendering content_nodes/show_by_name
+Rendered shared/_flash (0.0ms)
+Completed in 31ms (View: 16, DB: 0) | 200 OK [http://www.example.com/]
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ContentNodesController#show_by_name (for 127.0.0.1 at 2009-05-15 14:08:59) [GET]
+  Parameters: {"name"=>"home"}
+  [4;35;1mPreference Load (0.0ms)[0m   [0mSELECT * FROM `preferences` WHERE (`preferences`.`name` = 'store_name') LIMIT 1[0m
+  [4;36;1mTag Load (0.0ms)[0m   [0;1mSELECT * FROM `tags` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;35;1mOrderUser Load (0.0ms)[0m   [0mSELECT * FROM `order_users` WHERE (`order_users`.`id` IS NULL) LIMIT 1[0m
+  [4;36;1mSection Load (0.0ms)[0m   [0;1mSELECT * FROM `sections` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;35;1mContentNode Load (0.0ms)[0m   [0mSELECT * FROM `content_nodes` WHERE (name = 'home') LIMIT 1[0m
+Rendering template within layouts/main
+Rendering content_nodes/show_by_name
+Rendered shared/_flash (0.0ms)
+Completed in 16ms (View: 0, DB: 0) | 200 OK [http://www.example.com/]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ContentNodesController#show_by_name (for 127.0.0.1 at 2009-05-15 14:08:59) [GET]
+  Parameters: {"name"=>"home"}
+  [4;36;1mPreference Load (0.0ms)[0m   [0;1mSELECT * FROM `preferences` WHERE (`preferences`.`name` = 'store_name') LIMIT 1[0m
+  [4;35;1mTag Load (0.0ms)[0m   [0mSELECT * FROM `tags` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;36;1mOrderUser Load (0.0ms)[0m   [0;1mSELECT * FROM `order_users` WHERE (`order_users`.`id` IS NULL) LIMIT 1[0m
+  [4;35;1mSection Load (0.0ms)[0m   [0mSELECT * FROM `sections` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;36;1mContentNode Load (0.0ms)[0m   [0;1mSELECT * FROM `content_nodes` WHERE (name = 'home') LIMIT 1[0m
+Rendering template within layouts/main
+Rendering content_nodes/show_by_name
+Rendered shared/_flash (0.0ms)
+Completed in 16ms (View: 16, DB: 0) | 200 OK [http://www.example.com/]
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ContentNodesController#show_by_name (for 127.0.0.1 at 2009-05-15 14:08:59) [GET]
+  Parameters: {"name"=>"home"}
+  [4;35;1mPreference Load (0.0ms)[0m   [0mSELECT * FROM `preferences` WHERE (`preferences`.`name` = 'store_name') LIMIT 1[0m
+  [4;36;1mTag Load (0.0ms)[0m   [0;1mSELECT * FROM `tags` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;35;1mOrderUser Load (0.0ms)[0m   [0mSELECT * FROM `order_users` WHERE (`order_users`.`id` IS NULL) LIMIT 1[0m
+  [4;36;1mSection Load (0.0ms)[0m   [0;1mSELECT * FROM `sections` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;35;1mContentNode Load (0.0ms)[0m   [0mSELECT * FROM `content_nodes` WHERE (name = 'home') LIMIT 1[0m
+Rendering template within layouts/main
+Rendering content_nodes/show_by_name
+Rendered shared/_flash (0.0ms)
+Completed in 16ms (View: 0, DB: 0) | 200 OK [http://www.example.com/]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ContentNodesController#show_by_name (for 127.0.0.1 at 2009-05-15 14:08:59) [GET]
+  Parameters: {"name"=>"home"}
+  [4;36;1mPreference Load (0.0ms)[0m   [0;1mSELECT * FROM `preferences` WHERE (`preferences`.`name` = 'store_name') LIMIT 1[0m
+  [4;35;1mTag Load (0.0ms)[0m   [0mSELECT * FROM `tags` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;36;1mOrderUser Load (0.0ms)[0m   [0;1mSELECT * FROM `order_users` WHERE (`order_users`.`id` IS NULL) LIMIT 1[0m
+  [4;35;1mSection Load (0.0ms)[0m   [0mSELECT * FROM `sections` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;36;1mContentNode Load (0.0ms)[0m   [0;1mSELECT * FROM `content_nodes` WHERE (name = 'home') LIMIT 1[0m
+Rendering template within layouts/main
+Rendering content_nodes/show_by_name
+Rendered shared/_flash (0.0ms)
+Completed in 16ms (View: 16, DB: 0) | 200 OK [http://www.example.com/]
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ContentNodesController#show_by_name (for 127.0.0.1 at 2009-05-15 14:09:00) [GET]
+  Parameters: {"name"=>"home"}
+  [4;35;1mPreference Load (0.0ms)[0m   [0mSELECT * FROM `preferences` WHERE (`preferences`.`name` = 'store_name') LIMIT 1[0m
+  [4;36;1mTag Load (0.0ms)[0m   [0;1mSELECT * FROM `tags` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;35;1mOrderUser Load (0.0ms)[0m   [0mSELECT * FROM `order_users` WHERE (`order_users`.`id` IS NULL) LIMIT 1[0m
+  [4;36;1mSection Load (0.0ms)[0m   [0;1mSELECT * FROM `sections` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;35;1mContentNode Load (0.0ms)[0m   [0mSELECT * FROM `content_nodes` WHERE (name = 'home') LIMIT 1[0m
+Rendering template within layouts/main
+Rendering content_nodes/show_by_name
+Rendered shared/_flash (0.0ms)
+Completed in 16ms (View: 0, DB: 0) | 200 OK [http://www.example.com/]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ContentNodesController#show_by_name (for 127.0.0.1 at 2009-05-15 14:09:00) [GET]
+  Parameters: {"name"=>"home"}
+  [4;36;1mPreference Load (0.0ms)[0m   [0;1mSELECT * FROM `preferences` WHERE (`preferences`.`name` = 'store_name') LIMIT 1[0m
+  [4;35;1mTag Load (0.0ms)[0m   [0mSELECT * FROM `tags` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;36;1mOrderUser Load (0.0ms)[0m   [0;1mSELECT * FROM `order_users` WHERE (`order_users`.`id` IS NULL) LIMIT 1[0m
+  [4;35;1mSection Load (0.0ms)[0m   [0mSELECT * FROM `sections` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;36;1mContentNode Load (0.0ms)[0m   [0;1mSELECT * FROM `content_nodes` WHERE (name = 'home') LIMIT 1[0m
+Rendering template within layouts/main
+Rendering content_nodes/show_by_name
+Rendered shared/_flash (0.0ms)
+Completed in 16ms (View: 0, DB: 0) | 200 OK [http://www.example.com/]
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ContentNodesController#show_by_name (for 127.0.0.1 at 2009-05-15 14:09:00) [GET]
+  Parameters: {"name"=>"home"}
+  [4;35;1mPreference Load (0.0ms)[0m   [0mSELECT * FROM `preferences` WHERE (`preferences`.`name` = 'store_name') LIMIT 1[0m
+  [4;36;1mTag Load (0.0ms)[0m   [0;1mSELECT * FROM `tags` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;35;1mOrderUser Load (0.0ms)[0m   [0mSELECT * FROM `order_users` WHERE (`order_users`.`id` IS NULL) LIMIT 1[0m
+  [4;36;1mSection Load (0.0ms)[0m   [0;1mSELECT * FROM `sections` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;35;1mContentNode Load (0.0ms)[0m   [0mSELECT * FROM `content_nodes` WHERE (name = 'home') LIMIT 1[0m
+Rendering template within layouts/main
+Rendering content_nodes/show_by_name
+Rendered shared/_flash (0.0ms)
+Completed in 16ms (View: 16, DB: 0) | 200 OK [http://www.example.com/]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ContentNodesController#show_by_name (for 127.0.0.1 at 2009-05-15 14:09:00) [GET]
+  Parameters: {"name"=>"home"}
+  [4;36;1mPreference Load (0.0ms)[0m   [0;1mSELECT * FROM `preferences` WHERE (`preferences`.`name` = 'store_name') LIMIT 1[0m
+  [4;35;1mTag Load (0.0ms)[0m   [0mSELECT * FROM `tags` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;36;1mOrderUser Load (0.0ms)[0m   [0;1mSELECT * FROM `order_users` WHERE (`order_users`.`id` IS NULL) LIMIT 1[0m
+  [4;35;1mSection Load (0.0ms)[0m   [0mSELECT * FROM `sections` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;36;1mContentNode Load (0.0ms)[0m   [0;1mSELECT * FROM `content_nodes` WHERE (name = 'home') LIMIT 1[0m
+Rendering template within layouts/main
+Rendering content_nodes/show_by_name
+Rendered shared/_flash (0.0ms)
+Completed in 31ms (View: 16, DB: 0) | 200 OK [http://www.example.com/]
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ContentNodesController#show_by_name (for 127.0.0.1 at 2009-05-15 14:09:00) [GET]
+  Parameters: {"name"=>"home"}
+  [4;35;1mPreference Load (0.0ms)[0m   [0mSELECT * FROM `preferences` WHERE (`preferences`.`name` = 'store_name') LIMIT 1[0m
+  [4;36;1mTag Load (0.0ms)[0m   [0;1mSELECT * FROM `tags` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;35;1mOrderUser Load (0.0ms)[0m   [0mSELECT * FROM `order_users` WHERE (`order_users`.`id` IS NULL) LIMIT 1[0m
+  [4;36;1mSection Load (0.0ms)[0m   [0;1mSELECT * FROM `sections` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;35;1mContentNode Load (15.6ms)[0m   [0mSELECT * FROM `content_nodes` WHERE (name = 'home') LIMIT 1[0m
+Rendering template within layouts/main
+Rendering content_nodes/show_by_name
+Rendered shared/_flash (0.0ms)
+Completed in 31ms (View: 16, DB: 16) | 200 OK [http://www.example.com/]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ContentNodesController#show_by_name (for 127.0.0.1 at 2009-05-15 14:09:00) [GET]
+  Parameters: {"name"=>"home"}
+  [4;36;1mPreference Load (0.0ms)[0m   [0;1mSELECT * FROM `preferences` WHERE (`preferences`.`name` = 'store_name') LIMIT 1[0m
+  [4;35;1mTag Load (0.0ms)[0m   [0mSELECT * FROM `tags` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;36;1mOrderUser Load (0.0ms)[0m   [0;1mSELECT * FROM `order_users` WHERE (`order_users`.`id` IS NULL) LIMIT 1[0m
+  [4;35;1mSection Load (0.0ms)[0m   [0mSELECT * FROM `sections` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;36;1mContentNode Load (0.0ms)[0m   [0;1mSELECT * FROM `content_nodes` WHERE (name = 'home') LIMIT 1[0m
+Rendering template within layouts/main
+Rendering content_nodes/show_by_name
+Rendered shared/_flash (0.0ms)
+Completed in 31ms (View: 31, DB: 0) | 200 OK [http://www.example.com/]
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ContentNodesController#show_by_name (for 127.0.0.1 at 2009-05-15 14:09:00) [GET]
+  Parameters: {"name"=>"home"}
+  [4;35;1mPreference Load (0.0ms)[0m   [0mSELECT * FROM `preferences` WHERE (`preferences`.`name` = 'store_name') LIMIT 1[0m
+  [4;36;1mTag Load (0.0ms)[0m   [0;1mSELECT * FROM `tags` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;35;1mOrderUser Load (0.0ms)[0m   [0mSELECT * FROM `order_users` WHERE (`order_users`.`id` IS NULL) LIMIT 1[0m
+  [4;36;1mSection Load (0.0ms)[0m   [0;1mSELECT * FROM `sections` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;35;1mContentNode Load (0.0ms)[0m   [0mSELECT * FROM `content_nodes` WHERE (name = 'home') LIMIT 1[0m
+Rendering template within layouts/main
+Rendering content_nodes/show_by_name
+Rendered shared/_flash (0.0ms)
+Completed in 47ms (View: 47, DB: 0) | 200 OK [http://www.example.com/]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ContentNodesController#show_by_name (for 127.0.0.1 at 2009-05-15 14:09:01) [GET]
+  Parameters: {"name"=>"home"}
+  [4;36;1mPreference Load (0.0ms)[0m   [0;1mSELECT * FROM `preferences` WHERE (`preferences`.`name` = 'store_name') LIMIT 1[0m
+  [4;35;1mTag Load (0.0ms)[0m   [0mSELECT * FROM `tags` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;36;1mOrderUser Load (0.0ms)[0m   [0;1mSELECT * FROM `order_users` WHERE (`order_users`.`id` IS NULL) LIMIT 1[0m
+  [4;35;1mSection Load (0.0ms)[0m   [0mSELECT * FROM `sections` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;36;1mContentNode Load (0.0ms)[0m   [0;1mSELECT * FROM `content_nodes` WHERE (name = 'home') LIMIT 1[0m
+Rendering template within layouts/main
+Rendering content_nodes/show_by_name
+Rendered shared/_flash (0.0ms)
+Completed in 16ms (View: 16, DB: 0) | 200 OK [http://www.example.com/]
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ContentNodesController#show_by_name (for 127.0.0.1 at 2009-05-15 14:09:01) [GET]
+  Parameters: {"name"=>"home"}
+  [4;35;1mPreference Load (0.0ms)[0m   [0mSELECT * FROM `preferences` WHERE (`preferences`.`name` = 'store_name') LIMIT 1[0m
+  [4;36;1mTag Load (0.0ms)[0m   [0;1mSELECT * FROM `tags` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;35;1mOrderUser Load (0.0ms)[0m   [0mSELECT * FROM `order_users` WHERE (`order_users`.`id` IS NULL) LIMIT 1[0m
+  [4;36;1mSection Load (0.0ms)[0m   [0;1mSELECT * FROM `sections` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;35;1mContentNode Load (0.0ms)[0m   [0mSELECT * FROM `content_nodes` WHERE (name = 'home') LIMIT 1[0m
+Rendering template within layouts/main
+Rendering content_nodes/show_by_name
+Rendered shared/_flash (0.0ms)
+Completed in 16ms (View: 16, DB: 0) | 200 OK [http://www.example.com/]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ContentNodesController#show_by_name (for 127.0.0.1 at 2009-05-15 14:09:01) [GET]
+  Parameters: {"name"=>"home"}
+  [4;36;1mPreference Load (0.0ms)[0m   [0;1mSELECT * FROM `preferences` WHERE (`preferences`.`name` = 'store_name') LIMIT 1[0m
+  [4;35;1mTag Load (0.0ms)[0m   [0mSELECT * FROM `tags` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;36;1mOrderUser Load (0.0ms)[0m   [0;1mSELECT * FROM `order_users` WHERE (`order_users`.`id` IS NULL) LIMIT 1[0m
+  [4;35;1mSection Load (0.0ms)[0m   [0mSELECT * FROM `sections` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;36;1mContentNode Load (0.0ms)[0m   [0;1mSELECT * FROM `content_nodes` WHERE (name = 'home') LIMIT 1[0m
+Rendering template within layouts/main
+Rendering content_nodes/show_by_name
+Rendered shared/_flash (0.0ms)
+Completed in 16ms (View: 16, DB: 0) | 200 OK [http://www.example.com/]
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ContentNodesController#show_by_name (for 127.0.0.1 at 2009-05-15 14:09:01) [GET]
+  Parameters: {"name"=>"home"}
+  [4;35;1mPreference Load (0.0ms)[0m   [0mSELECT * FROM `preferences` WHERE (`preferences`.`name` = 'store_name') LIMIT 1[0m
+  [4;36;1mTag Load (0.0ms)[0m   [0;1mSELECT * FROM `tags` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;35;1mOrderUser Load (0.0ms)[0m   [0mSELECT * FROM `order_users` WHERE (`order_users`.`id` IS NULL) LIMIT 1[0m
+  [4;36;1mSection Load (0.0ms)[0m   [0;1mSELECT * FROM `sections` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;35;1mContentNode Load (0.0ms)[0m   [0mSELECT * FROM `content_nodes` WHERE (name = 'home') LIMIT 1[0m
+Rendering template within layouts/main
+Rendering content_nodes/show_by_name
+Rendered shared/_flash (0.0ms)
+Completed in 16ms (View: 16, DB: 0) | 200 OK [http://www.example.com/]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ContentNodesController#show_by_name (for 127.0.0.1 at 2009-05-15 14:09:01) [GET]
+  Parameters: {"name"=>"home"}
+  [4;36;1mPreference Load (0.0ms)[0m   [0;1mSELECT * FROM `preferences` WHERE (`preferences`.`name` = 'store_name') LIMIT 1[0m
+  [4;35;1mTag Load (0.0ms)[0m   [0mSELECT * FROM `tags` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;36;1mOrderUser Load (0.0ms)[0m   [0;1mSELECT * FROM `order_users` WHERE (`order_users`.`id` IS NULL) LIMIT 1[0m
+  [4;35;1mSection Load (0.0ms)[0m   [0mSELECT * FROM `sections` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;36;1mContentNode Load (0.0ms)[0m   [0;1mSELECT * FROM `content_nodes` WHERE (name = 'home') LIMIT 1[0m
+Rendering template within layouts/main
+Rendering content_nodes/show_by_name
+Rendered shared/_flash (0.0ms)
+Completed in 47ms (View: 31, DB: 0) | 200 OK [http://www.example.com/]
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ContentNodesController#show_by_name (for 127.0.0.1 at 2009-05-15 14:09:02) [GET]
+  Parameters: {"name"=>"home"}
+  [4;35;1mPreference Load (0.0ms)[0m   [0mSELECT * FROM `preferences` WHERE (`preferences`.`name` = 'store_name') LIMIT 1[0m
+  [4;36;1mTag Load (0.0ms)[0m   [0;1mSELECT * FROM `tags` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;35;1mOrderUser Load (0.0ms)[0m   [0mSELECT * FROM `order_users` WHERE (`order_users`.`id` IS NULL) LIMIT 1[0m
+  [4;36;1mSection Load (0.0ms)[0m   [0;1mSELECT * FROM `sections` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;35;1mContentNode Load (0.0ms)[0m   [0mSELECT * FROM `content_nodes` WHERE (name = 'home') LIMIT 1[0m
+Rendering template within layouts/main
+Rendering content_nodes/show_by_name
+Rendered shared/_flash (0.0ms)
+Completed in 16ms (View: 16, DB: 0) | 200 OK [http://www.example.com/]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ContentNodesController#show_by_name (for 127.0.0.1 at 2009-05-15 14:09:02) [GET]
+  Parameters: {"name"=>"home"}
+  [4;36;1mPreference Load (0.0ms)[0m   [0;1mSELECT * FROM `preferences` WHERE (`preferences`.`name` = 'store_name') LIMIT 1[0m
+  [4;35;1mTag Load (0.0ms)[0m   [0mSELECT * FROM `tags` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;36;1mOrderUser Load (0.0ms)[0m   [0;1mSELECT * FROM `order_users` WHERE (`order_users`.`id` IS NULL) LIMIT 1[0m
+  [4;35;1mSection Load (0.0ms)[0m   [0mSELECT * FROM `sections` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;36;1mContentNode Load (0.0ms)[0m   [0;1mSELECT * FROM `content_nodes` WHERE (name = 'home') LIMIT 1[0m
+Rendering template within layouts/main
+Rendering content_nodes/show_by_name
+Rendered shared/_flash (0.0ms)
+Completed in 16ms (View: 16, DB: 0) | 200 OK [http://www.example.com/]
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ContentNodesController#show_by_name (for 127.0.0.1 at 2009-05-15 14:09:02) [GET]
+  Parameters: {"name"=>"home"}
+  [4;35;1mPreference Load (0.0ms)[0m   [0mSELECT * FROM `preferences` WHERE (`preferences`.`name` = 'store_name') LIMIT 1[0m
+  [4;36;1mTag Load (0.0ms)[0m   [0;1mSELECT * FROM `tags` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;35;1mOrderUser Load (0.0ms)[0m   [0mSELECT * FROM `order_users` WHERE (`order_users`.`id` IS NULL) LIMIT 1[0m
+  [4;36;1mSection Load (0.0ms)[0m   [0;1mSELECT * FROM `sections` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;35;1mContentNode Load (15.6ms)[0m   [0mSELECT * FROM `content_nodes` WHERE (name = 'home') LIMIT 1[0m
+Rendering template within layouts/main
+Rendering content_nodes/show_by_name
+Rendered shared/_flash (0.0ms)
+Completed in 16ms (View: 0, DB: 16) | 200 OK [http://www.example.com/]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ContentNodesController#show_by_name (for 127.0.0.1 at 2009-05-15 14:09:02) [GET]
+  Parameters: {"name"=>"home"}
+  [4;36;1mPreference Load (0.0ms)[0m   [0;1mSELECT * FROM `preferences` WHERE (`preferences`.`name` = 'store_name') LIMIT 1[0m
+  [4;35;1mTag Load (0.0ms)[0m   [0mSELECT * FROM `tags` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;36;1mOrderUser Load (0.0ms)[0m   [0;1mSELECT * FROM `order_users` WHERE (`order_users`.`id` IS NULL) LIMIT 1[0m
+  [4;35;1mSection Load (0.0ms)[0m   [0mSELECT * FROM `sections` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;36;1mContentNode Load (0.0ms)[0m   [0;1mSELECT * FROM `content_nodes` WHERE (name = 'home') LIMIT 1[0m
+Rendering template within layouts/main
+Rendering content_nodes/show_by_name
+Rendered shared/_flash (0.0ms)
+Completed in 16ms (View: 0, DB: 0) | 200 OK [http://www.example.com/]
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ContentNodesController#show_by_name (for 127.0.0.1 at 2009-05-15 14:09:02) [GET]
+  Parameters: {"name"=>"home"}
+  [4;35;1mPreference Load (0.0ms)[0m   [0mSELECT * FROM `preferences` WHERE (`preferences`.`name` = 'store_name') LIMIT 1[0m
+  [4;36;1mTag Load (0.0ms)[0m   [0;1mSELECT * FROM `tags` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;35;1mOrderUser Load (0.0ms)[0m   [0mSELECT * FROM `order_users` WHERE (`order_users`.`id` IS NULL) LIMIT 1[0m
+  [4;36;1mSection Load (0.0ms)[0m   [0;1mSELECT * FROM `sections` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;35;1mContentNode Load (0.0ms)[0m   [0mSELECT * FROM `content_nodes` WHERE (name = 'home') LIMIT 1[0m
+Rendering template within layouts/main
+Rendering content_nodes/show_by_name
+Rendered shared/_flash (0.0ms)
+Completed in 16ms (View: 16, DB: 0) | 200 OK [http://www.example.com/]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ContentNodesController#show_by_name (for 127.0.0.1 at 2009-05-15 14:09:02) [GET]
+  Parameters: {"name"=>"home"}
+  [4;36;1mPreference Load (0.0ms)[0m   [0;1mSELECT * FROM `preferences` WHERE (`preferences`.`name` = 'store_name') LIMIT 1[0m
+  [4;35;1mTag Load (0.0ms)[0m   [0mSELECT * FROM `tags` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;36;1mOrderUser Load (0.0ms)[0m   [0;1mSELECT * FROM `order_users` WHERE (`order_users`.`id` IS NULL) LIMIT 1[0m
+  [4;35;1mSection Load (15.6ms)[0m   [0mSELECT * FROM `sections` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;36;1mContentNode Load (0.0ms)[0m   [0;1mSELECT * FROM `content_nodes` WHERE (name = 'home') LIMIT 1[0m
+Rendering template within layouts/main
+Rendering content_nodes/show_by_name
+Rendered shared/_flash (0.0ms)
+Completed in 16ms (View: 0, DB: 16) | 200 OK [http://www.example.com/]
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ContentNodesController#show_by_name (for 127.0.0.1 at 2009-05-15 14:09:02) [GET]
+  Parameters: {"name"=>"home"}
+  [4;35;1mPreference Load (0.0ms)[0m   [0mSELECT * FROM `preferences` WHERE (`preferences`.`name` = 'store_name') LIMIT 1[0m
+  [4;36;1mTag Load (0.0ms)[0m   [0;1mSELECT * FROM `tags` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;35;1mOrderUser Load (0.0ms)[0m   [0mSELECT * FROM `order_users` WHERE (`order_users`.`id` IS NULL) LIMIT 1[0m
+  [4;36;1mSection Load (0.0ms)[0m   [0;1mSELECT * FROM `sections` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;35;1mContentNode Load (0.0ms)[0m   [0mSELECT * FROM `content_nodes` WHERE (name = 'home') LIMIT 1[0m
+Rendering template within layouts/main
+Rendering content_nodes/show_by_name
+Rendered shared/_flash (0.0ms)
+Completed in 16ms (View: 16, DB: 0) | 200 OK [http://www.example.com/]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ContentNodesController#show_by_name (for 127.0.0.1 at 2009-05-15 14:09:02) [GET]
+  Parameters: {"name"=>"home"}
+  [4;36;1mPreference Load (0.0ms)[0m   [0;1mSELECT * FROM `preferences` WHERE (`preferences`.`name` = 'store_name') LIMIT 1[0m
+  [4;35;1mTag Load (0.0ms)[0m   [0mSELECT * FROM `tags` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;36;1mOrderUser Load (0.0ms)[0m   [0;1mSELECT * FROM `order_users` WHERE (`order_users`.`id` IS NULL) LIMIT 1[0m
+  [4;35;1mSection Load (0.0ms)[0m   [0mSELECT * FROM `sections` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;36;1mContentNode Load (0.0ms)[0m   [0;1mSELECT * FROM `content_nodes` WHERE (name = 'home') LIMIT 1[0m
+Rendering template within layouts/main
+Rendering content_nodes/show_by_name
+Rendered shared/_flash (0.0ms)
+Completed in 78ms (View: 0, DB: 0) | 200 OK [http://www.example.com/]
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ContentNodesController#show_by_name (for 127.0.0.1 at 2009-05-15 14:09:02) [GET]
+  Parameters: {"name"=>"home"}
+  [4;35;1mPreference Load (0.0ms)[0m   [0mSELECT * FROM `preferences` WHERE (`preferences`.`name` = 'store_name') LIMIT 1[0m
+  [4;36;1mTag Load (0.0ms)[0m   [0;1mSELECT * FROM `tags` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;35;1mOrderUser Load (0.0ms)[0m   [0mSELECT * FROM `order_users` WHERE (`order_users`.`id` IS NULL) LIMIT 1[0m
+  [4;36;1mSection Load (0.0ms)[0m   [0;1mSELECT * FROM `sections` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;35;1mContentNode Load (0.0ms)[0m   [0mSELECT * FROM `content_nodes` WHERE (name = 'home') LIMIT 1[0m
+Rendering template within layouts/main
+Rendering content_nodes/show_by_name
+Rendered shared/_flash (0.0ms)
+Completed in 16ms (View: 0, DB: 0) | 200 OK [http://www.example.com/]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ContentNodesController#show_by_name (for 127.0.0.1 at 2009-05-15 14:09:02) [GET]
+  Parameters: {"name"=>"home"}
+  [4;36;1mPreference Load (0.0ms)[0m   [0;1mSELECT * FROM `preferences` WHERE (`preferences`.`name` = 'store_name') LIMIT 1[0m
+  [4;35;1mTag Load (0.0ms)[0m   [0mSELECT * FROM `tags` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;36;1mOrderUser Load (0.0ms)[0m   [0;1mSELECT * FROM `order_users` WHERE (`order_users`.`id` IS NULL) LIMIT 1[0m
+  [4;35;1mSection Load (0.0ms)[0m   [0mSELECT * FROM `sections` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;36;1mContentNode Load (0.0ms)[0m   [0;1mSELECT * FROM `content_nodes` WHERE (name = 'home') LIMIT 1[0m
+Rendering template within layouts/main
+Rendering content_nodes/show_by_name
+Rendered shared/_flash (0.0ms)
+Completed in 16ms (View: 16, DB: 0) | 200 OK [http://www.example.com/]
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ContentNodesController#show_by_name (for 127.0.0.1 at 2009-05-15 14:09:02) [GET]
+  Parameters: {"name"=>"home"}
+  [4;35;1mPreference Load (0.0ms)[0m   [0mSELECT * FROM `preferences` WHERE (`preferences`.`name` = 'store_name') LIMIT 1[0m
+  [4;36;1mTag Load (0.0ms)[0m   [0;1mSELECT * FROM `tags` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;35;1mOrderUser Load (0.0ms)[0m   [0mSELECT * FROM `order_users` WHERE (`order_users`.`id` IS NULL) LIMIT 1[0m
+  [4;36;1mSection Load (0.0ms)[0m   [0;1mSELECT * FROM `sections` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;35;1mContentNode Load (0.0ms)[0m   [0mSELECT * FROM `content_nodes` WHERE (name = 'home') LIMIT 1[0m
+Rendering template within layouts/main
+Rendering content_nodes/show_by_name
+Rendered shared/_flash (0.0ms)
+Completed in 16ms (View: 16, DB: 0) | 200 OK [http://www.example.com/]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ContentNodesController#show_by_name (for 127.0.0.1 at 2009-05-15 14:09:02) [GET]
+  Parameters: {"name"=>"home"}
+  [4;36;1mPreference Load (0.0ms)[0m   [0;1mSELECT * FROM `preferences` WHERE (`preferences`.`name` = 'store_name') LIMIT 1[0m
+  [4;35;1mTag Load (0.0ms)[0m   [0mSELECT * FROM `tags` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;36;1mOrderUser Load (0.0ms)[0m   [0;1mSELECT * FROM `order_users` WHERE (`order_users`.`id` IS NULL) LIMIT 1[0m
+  [4;35;1mSection Load (0.0ms)[0m   [0mSELECT * FROM `sections` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;36;1mContentNode Load (0.0ms)[0m   [0;1mSELECT * FROM `content_nodes` WHERE (name = 'home') LIMIT 1[0m
+Rendering template within layouts/main
+Rendering content_nodes/show_by_name
+Rendered shared/_flash (0.0ms)
+Completed in 16ms (View: 16, DB: 0) | 200 OK [http://www.example.com/]
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ContentNodesController#show_by_name (for 127.0.0.1 at 2009-05-15 14:09:03) [GET]
+  Parameters: {"name"=>"home"}
+  [4;35;1mPreference Load (0.0ms)[0m   [0mSELECT * FROM `preferences` WHERE (`preferences`.`name` = 'store_name') LIMIT 1[0m
+  [4;36;1mTag Load (0.0ms)[0m   [0;1mSELECT * FROM `tags` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;35;1mOrderUser Load (0.0ms)[0m   [0mSELECT * FROM `order_users` WHERE (`order_users`.`id` IS NULL) LIMIT 1[0m
+  [4;36;1mSection Load (0.0ms)[0m   [0;1mSELECT * FROM `sections` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;35;1mContentNode Load (0.0ms)[0m   [0mSELECT * FROM `content_nodes` WHERE (name = 'home') LIMIT 1[0m
+Rendering template within layouts/main
+Rendering content_nodes/show_by_name
+Rendered shared/_flash (0.0ms)
+Completed in 16ms (View: 16, DB: 0) | 200 OK [http://www.example.com/]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ContentNodesController#show_by_name (for 127.0.0.1 at 2009-05-15 14:09:03) [GET]
+  Parameters: {"name"=>"home"}
+  [4;36;1mPreference Load (0.0ms)[0m   [0;1mSELECT * FROM `preferences` WHERE (`preferences`.`name` = 'store_name') LIMIT 1[0m
+  [4;35;1mTag Load (0.0ms)[0m   [0mSELECT * FROM `tags` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;36;1mOrderUser Load (0.0ms)[0m   [0;1mSELECT * FROM `order_users` WHERE (`order_users`.`id` IS NULL) LIMIT 1[0m
+  [4;35;1mSection Load (0.0ms)[0m   [0mSELECT * FROM `sections` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;36;1mContentNode Load (0.0ms)[0m   [0;1mSELECT * FROM `content_nodes` WHERE (name = 'home') LIMIT 1[0m
+Rendering template within layouts/main
+Rendering content_nodes/show_by_name
+Rendered shared/_flash (0.0ms)
+Completed in 16ms (View: 16, DB: 0) | 200 OK [http://www.example.com/]
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ContentNodesController#show_by_name (for 127.0.0.1 at 2009-05-15 14:09:03) [GET]
+  Parameters: {"name"=>"home"}
+  [4;35;1mPreference Load (0.0ms)[0m   [0mSELECT * FROM `preferences` WHERE (`preferences`.`name` = 'store_name') LIMIT 1[0m
+  [4;36;1mTag Load (0.0ms)[0m   [0;1mSELECT * FROM `tags` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;35;1mOrderUser Load (0.0ms)[0m   [0mSELECT * FROM `order_users` WHERE (`order_users`.`id` IS NULL) LIMIT 1[0m
+  [4;36;1mSection Load (0.0ms)[0m   [0;1mSELECT * FROM `sections` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;35;1mContentNode Load (0.0ms)[0m   [0mSELECT * FROM `content_nodes` WHERE (name = 'home') LIMIT 1[0m
+Rendering template within layouts/main
+Rendering content_nodes/show_by_name
+Rendered shared/_flash (0.0ms)
+Completed in 16ms (View: 16, DB: 0) | 200 OK [http://www.example.com/]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ContentNodesController#show_by_name (for 127.0.0.1 at 2009-05-15 14:09:03) [GET]
+  Parameters: {"name"=>"home"}
+  [4;36;1mPreference Load (0.0ms)[0m   [0;1mSELECT * FROM `preferences` WHERE (`preferences`.`name` = 'store_name') LIMIT 1[0m
+  [4;35;1mTag Load (0.0ms)[0m   [0mSELECT * FROM `tags` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;36;1mOrderUser Load (0.0ms)[0m   [0;1mSELECT * FROM `order_users` WHERE (`order_users`.`id` IS NULL) LIMIT 1[0m
+  [4;35;1mSection Load (0.0ms)[0m   [0mSELECT * FROM `sections` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;36;1mContentNode Load (0.0ms)[0m   [0;1mSELECT * FROM `content_nodes` WHERE (name = 'home') LIMIT 1[0m
+Rendering template within layouts/main
+Rendering content_nodes/show_by_name
+Rendered shared/_flash (0.0ms)
+Completed in 16ms (View: 0, DB: 0) | 200 OK [http://www.example.com/]
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ContentNodesController#show_by_name (for 127.0.0.1 at 2009-05-15 14:09:03) [GET]
+  Parameters: {"name"=>"home"}
+  [4;35;1mPreference Load (0.0ms)[0m   [0mSELECT * FROM `preferences` WHERE (`preferences`.`name` = 'store_name') LIMIT 1[0m
+  [4;36;1mTag Load (0.0ms)[0m   [0;1mSELECT * FROM `tags` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;35;1mOrderUser Load (0.0ms)[0m   [0mSELECT * FROM `order_users` WHERE (`order_users`.`id` IS NULL) LIMIT 1[0m
+  [4;36;1mSection Load (0.0ms)[0m   [0;1mSELECT * FROM `sections` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;35;1mContentNode Load (0.0ms)[0m   [0mSELECT * FROM `content_nodes` WHERE (name = 'home') LIMIT 1[0m
+Rendering template within layouts/main
+Rendering content_nodes/show_by_name
+Rendered shared/_flash (0.0ms)
+Completed in 16ms (View: 0, DB: 0) | 200 OK [http://www.example.com/]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ContentNodesController#show_by_name (for 127.0.0.1 at 2009-05-15 14:09:03) [GET]
+  Parameters: {"name"=>"home"}
+  [4;36;1mPreference Load (0.0ms)[0m   [0;1mSELECT * FROM `preferences` WHERE (`preferences`.`name` = 'store_name') LIMIT 1[0m
+  [4;35;1mTag Load (0.0ms)[0m   [0mSELECT * FROM `tags` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;36;1mOrderUser Load (0.0ms)[0m   [0;1mSELECT * FROM `order_users` WHERE (`order_users`.`id` IS NULL) LIMIT 1[0m
+  [4;35;1mSection Load (0.0ms)[0m   [0mSELECT * FROM `sections` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;36;1mContentNode Load (0.0ms)[0m   [0;1mSELECT * FROM `content_nodes` WHERE (name = 'home') LIMIT 1[0m
+Rendering template within layouts/main
+Rendering content_nodes/show_by_name
+Rendered shared/_flash (0.0ms)
+Completed in 31ms (View: 16, DB: 0) | 200 OK [http://www.example.com/]
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ContentNodesController#show_by_name (for 127.0.0.1 at 2009-05-15 14:09:03) [GET]
+  Parameters: {"name"=>"home"}
+  [4;35;1mPreference Load (0.0ms)[0m   [0mSELECT * FROM `preferences` WHERE (`preferences`.`name` = 'store_name') LIMIT 1[0m
+  [4;36;1mTag Load (0.0ms)[0m   [0;1mSELECT * FROM `tags` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;35;1mOrderUser Load (0.0ms)[0m   [0mSELECT * FROM `order_users` WHERE (`order_users`.`id` IS NULL) LIMIT 1[0m
+  [4;36;1mSection Load (0.0ms)[0m   [0;1mSELECT * FROM `sections` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;35;1mContentNode Load (0.0ms)[0m   [0mSELECT * FROM `content_nodes` WHERE (name = 'home') LIMIT 1[0m
+Rendering template within layouts/main
+Rendering content_nodes/show_by_name
+Rendered shared/_flash (0.0ms)
+Completed in 16ms (View: 16, DB: 0) | 200 OK [http://www.example.com/]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ContentNodesController#show_by_name (for 127.0.0.1 at 2009-05-15 14:09:03) [GET]
+  Parameters: {"name"=>"home"}
+  [4;36;1mPreference Load (0.0ms)[0m   [0;1mSELECT * FROM `preferences` WHERE (`preferences`.`name` = 'store_name') LIMIT 1[0m
+  [4;35;1mTag Load (0.0ms)[0m   [0mSELECT * FROM `tags` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;36;1mOrderUser Load (0.0ms)[0m   [0;1mSELECT * FROM `order_users` WHERE (`order_users`.`id` IS NULL) LIMIT 1[0m
+  [4;35;1mSection Load (0.0ms)[0m   [0mSELECT * FROM `sections` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;36;1mContentNode Load (0.0ms)[0m   [0;1mSELECT * FROM `content_nodes` WHERE (name = 'home') LIMIT 1[0m
+Rendering template within layouts/main
+Rendering content_nodes/show_by_name
+Rendered shared/_flash (0.0ms)
+Completed in 16ms (View: 0, DB: 0) | 200 OK [http://www.example.com/]
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ContentNodesController#show_by_name (for 127.0.0.1 at 2009-05-15 14:09:03) [GET]
+  Parameters: {"name"=>"home"}
+  [4;35;1mPreference Load (15.6ms)[0m   [0mSELECT * FROM `preferences` WHERE (`preferences`.`name` = 'store_name') LIMIT 1[0m
+  [4;36;1mTag Load (0.0ms)[0m   [0;1mSELECT * FROM `tags` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;35;1mOrderUser Load (0.0ms)[0m   [0mSELECT * FROM `order_users` WHERE (`order_users`.`id` IS NULL) LIMIT 1[0m
+  [4;36;1mSection Load (0.0ms)[0m   [0;1mSELECT * FROM `sections` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;35;1mContentNode Load (0.0ms)[0m   [0mSELECT * FROM `content_nodes` WHERE (name = 'home') LIMIT 1[0m
+Rendering template within layouts/main
+Rendering content_nodes/show_by_name
+Rendered shared/_flash (0.0ms)
+Completed in 31ms (View: 16, DB: 16) | 200 OK [http://www.example.com/]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ContentNodesController#show_by_name (for 127.0.0.1 at 2009-05-15 14:09:03) [GET]
+  Parameters: {"name"=>"home"}
+  [4;36;1mPreference Load (0.0ms)[0m   [0;1mSELECT * FROM `preferences` WHERE (`preferences`.`name` = 'store_name') LIMIT 1[0m
+  [4;35;1mTag Load (0.0ms)[0m   [0mSELECT * FROM `tags` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;36;1mOrderUser Load (0.0ms)[0m   [0;1mSELECT * FROM `order_users` WHERE (`order_users`.`id` IS NULL) LIMIT 1[0m
+  [4;35;1mSection Load (0.0ms)[0m   [0mSELECT * FROM `sections` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;36;1mContentNode Load (0.0ms)[0m   [0;1mSELECT * FROM `content_nodes` WHERE (name = 'home') LIMIT 1[0m
+Rendering template within layouts/main
+Rendering content_nodes/show_by_name
+Rendered shared/_flash (0.0ms)
+Completed in 16ms (View: 16, DB: 0) | 200 OK [http://www.example.com/]
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ContentNodesController#show_by_name (for 127.0.0.1 at 2009-05-15 14:09:03) [GET]
+  Parameters: {"name"=>"home"}
+  [4;35;1mPreference Load (0.0ms)[0m   [0mSELECT * FROM `preferences` WHERE (`preferences`.`name` = 'store_name') LIMIT 1[0m
+  [4;36;1mTag Load (0.0ms)[0m   [0;1mSELECT * FROM `tags` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;35;1mOrderUser Load (0.0ms)[0m   [0mSELECT * FROM `order_users` WHERE (`order_users`.`id` IS NULL) LIMIT 1[0m
+  [4;36;1mSection Load (0.0ms)[0m   [0;1mSELECT * FROM `sections` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;35;1mContentNode Load (0.0ms)[0m   [0mSELECT * FROM `content_nodes` WHERE (name = 'home') LIMIT 1[0m
+Rendering template within layouts/main
+Rendering content_nodes/show_by_name
+Rendered shared/_flash (0.0ms)
+Completed in 16ms (View: 16, DB: 0) | 200 OK [http://www.example.com/]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ContentNodesController#show_by_name (for 127.0.0.1 at 2009-05-15 14:09:03) [GET]
+  Parameters: {"name"=>"home"}
+  [4;36;1mPreference Load (0.0ms)[0m   [0;1mSELECT * FROM `preferences` WHERE (`preferences`.`name` = 'store_name') LIMIT 1[0m
+  [4;35;1mTag Load (0.0ms)[0m   [0mSELECT * FROM `tags` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;36;1mOrderUser Load (0.0ms)[0m   [0;1mSELECT * FROM `order_users` WHERE (`order_users`.`id` IS NULL) LIMIT 1[0m
+  [4;35;1mSection Load (0.0ms)[0m   [0mSELECT * FROM `sections` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;36;1mContentNode Load (0.0ms)[0m   [0;1mSELECT * FROM `content_nodes` WHERE (name = 'home') LIMIT 1[0m
+Rendering template within layouts/main
+Rendering content_nodes/show_by_name
+Rendered shared/_flash (0.0ms)
+Completed in 16ms (View: 16, DB: 0) | 200 OK [http://www.example.com/]
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ContentNodesController#show_by_name (for 127.0.0.1 at 2009-05-15 14:09:03) [GET]
+  Parameters: {"name"=>"home"}
+  [4;35;1mPreference Load (0.0ms)[0m   [0mSELECT * FROM `preferences` WHERE (`preferences`.`name` = 'store_name') LIMIT 1[0m
+  [4;36;1mTag Load (0.0ms)[0m   [0;1mSELECT * FROM `tags` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;35;1mOrderUser Load (0.0ms)[0m   [0mSELECT * FROM `order_users` WHERE (`order_users`.`id` IS NULL) LIMIT 1[0m
+  [4;36;1mSection Load (0.0ms)[0m   [0;1mSELECT * FROM `sections` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;35;1mContentNode Load (0.0ms)[0m   [0mSELECT * FROM `content_nodes` WHERE (name = 'home') LIMIT 1[0m
+Rendering template within layouts/main
+Rendering content_nodes/show_by_name
+Rendered shared/_flash (0.0ms)
+Completed in 16ms (View: 16, DB: 0) | 200 OK [http://www.example.com/]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ContentNodesController#show_by_name (for 127.0.0.1 at 2009-05-15 14:09:03) [GET]
+  Parameters: {"name"=>"home"}
+  [4;36;1mPreference Load (0.0ms)[0m   [0;1mSELECT * FROM `preferences` WHERE (`preferences`.`name` = 'store_name') LIMIT 1[0m
+  [4;35;1mTag Load (0.0ms)[0m   [0mSELECT * FROM `tags` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;36;1mOrderUser Load (0.0ms)[0m   [0;1mSELECT * FROM `order_users` WHERE (`order_users`.`id` IS NULL) LIMIT 1[0m
+  [4;35;1mSection Load (0.0ms)[0m   [0mSELECT * FROM `sections` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;36;1mContentNode Load (0.0ms)[0m   [0;1mSELECT * FROM `content_nodes` WHERE (name = 'home') LIMIT 1[0m
+Rendering template within layouts/main
+Rendering content_nodes/show_by_name
+Rendered shared/_flash (0.0ms)
+Completed in 16ms (View: 0, DB: 0) | 200 OK [http://www.example.com/]
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ContentNodesController#show_by_name (for 127.0.0.1 at 2009-05-15 14:09:03) [GET]
+  Parameters: {"name"=>"home"}
+  [4;35;1mPreference Load (0.0ms)[0m   [0mSELECT * FROM `preferences` WHERE (`preferences`.`name` = 'store_name') LIMIT 1[0m
+  [4;36;1mTag Load (0.0ms)[0m   [0;1mSELECT * FROM `tags` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;35;1mOrderUser Load (0.0ms)[0m   [0mSELECT * FROM `order_users` WHERE (`order_users`.`id` IS NULL) LIMIT 1[0m
+  [4;36;1mSection Load (0.0ms)[0m   [0;1mSELECT * FROM `sections` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;35;1mContentNode Load (0.0ms)[0m   [0mSELECT * FROM `content_nodes` WHERE (name = 'home') LIMIT 1[0m
+Rendering template within layouts/main
+Rendering content_nodes/show_by_name
+Rendered shared/_flash (0.0ms)
+Completed in 16ms (View: 16, DB: 0) | 200 OK [http://www.example.com/]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ContentNodesController#show_by_name (for 127.0.0.1 at 2009-05-15 14:09:03) [GET]
+  Parameters: {"name"=>"home"}
+  [4;36;1mPreference Load (0.0ms)[0m   [0;1mSELECT * FROM `preferences` WHERE (`preferences`.`name` = 'store_name') LIMIT 1[0m
+  [4;35;1mTag Load (0.0ms)[0m   [0mSELECT * FROM `tags` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;36;1mOrderUser Load (0.0ms)[0m   [0;1mSELECT * FROM `order_users` WHERE (`order_users`.`id` IS NULL) LIMIT 1[0m
+  [4;35;1mSection Load (0.0ms)[0m   [0mSELECT * FROM `sections` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;36;1mContentNode Load (0.0ms)[0m   [0;1mSELECT * FROM `content_nodes` WHERE (name = 'home') LIMIT 1[0m
+Rendering template within layouts/main
+Rendering content_nodes/show_by_name
+Rendered shared/_flash (0.0ms)
+Completed in 16ms (View: 16, DB: 0) | 200 OK [http://www.example.com/]
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ContentNodesController#show_by_name (for 127.0.0.1 at 2009-05-15 14:09:03) [GET]
+  Parameters: {"name"=>"home"}
+  [4;35;1mPreference Load (0.0ms)[0m   [0mSELECT * FROM `preferences` WHERE (`preferences`.`name` = 'store_name') LIMIT 1[0m
+  [4;36;1mTag Load (0.0ms)[0m   [0;1mSELECT * FROM `tags` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;35;1mOrderUser Load (0.0ms)[0m   [0mSELECT * FROM `order_users` WHERE (`order_users`.`id` IS NULL) LIMIT 1[0m
+  [4;36;1mSection Load (0.0ms)[0m   [0;1mSELECT * FROM `sections` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;35;1mContentNode Load (0.0ms)[0m   [0mSELECT * FROM `content_nodes` WHERE (name = 'home') LIMIT 1[0m
+Rendering template within layouts/main
+Rendering content_nodes/show_by_name
+Rendered shared/_flash (0.0ms)
+Completed in 16ms (View: 0, DB: 0) | 200 OK [http://www.example.com/]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ContentNodesController#show_by_name (for 127.0.0.1 at 2009-05-15 14:09:03) [GET]
+  Parameters: {"name"=>"home"}
+  [4;36;1mPreference Load (0.0ms)[0m   [0;1mSELECT * FROM `preferences` WHERE (`preferences`.`name` = 'store_name') LIMIT 1[0m
+  [4;35;1mTag Load (0.0ms)[0m   [0mSELECT * FROM `tags` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;36;1mOrderUser Load (0.0ms)[0m   [0;1mSELECT * FROM `order_users` WHERE (`order_users`.`id` IS NULL) LIMIT 1[0m
+  [4;35;1mSection Load (0.0ms)[0m   [0mSELECT * FROM `sections` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;36;1mContentNode Load (15.6ms)[0m   [0;1mSELECT * FROM `content_nodes` WHERE (name = 'home') LIMIT 1[0m
+Rendering template within layouts/main
+Rendering content_nodes/show_by_name
+Rendered shared/_flash (0.0ms)
+Completed in 31ms (View: 16, DB: 16) | 200 OK [http://www.example.com/]
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ContentNodesController#show_by_name (for 127.0.0.1 at 2009-05-15 14:09:04) [GET]
+  Parameters: {"name"=>"home"}
+  [4;35;1mPreference Load (0.0ms)[0m   [0mSELECT * FROM `preferences` WHERE (`preferences`.`name` = 'store_name') LIMIT 1[0m
+  [4;36;1mTag Load (0.0ms)[0m   [0;1mSELECT * FROM `tags` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;35;1mOrderUser Load (0.0ms)[0m   [0mSELECT * FROM `order_users` WHERE (`order_users`.`id` IS NULL) LIMIT 1[0m
+  [4;36;1mSection Load (0.0ms)[0m   [0;1mSELECT * FROM `sections` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;35;1mContentNode Load (0.0ms)[0m   [0mSELECT * FROM `content_nodes` WHERE (name = 'home') LIMIT 1[0m
+Rendering template within layouts/main
+Rendering content_nodes/show_by_name
+Rendered shared/_flash (0.0ms)
+Completed in 94ms (View: 78, DB: 0) | 200 OK [http://www.example.com/]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ContentNodesController#show_by_name (for 127.0.0.1 at 2009-05-15 14:09:04) [GET]
+  Parameters: {"name"=>"home"}
+  [4;36;1mPreference Load (0.0ms)[0m   [0;1mSELECT * FROM `preferences` WHERE (`preferences`.`name` = 'store_name') LIMIT 1[0m
+  [4;35;1mTag Load (0.0ms)[0m   [0mSELECT * FROM `tags` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;36;1mOrderUser Load (0.0ms)[0m   [0;1mSELECT * FROM `order_users` WHERE (`order_users`.`id` IS NULL) LIMIT 1[0m
+  [4;35;1mSection Load (0.0ms)[0m   [0mSELECT * FROM `sections` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;36;1mContentNode Load (0.0ms)[0m   [0;1mSELECT * FROM `content_nodes` WHERE (name = 'home') LIMIT 1[0m
+Rendering template within layouts/main
+Rendering content_nodes/show_by_name
+Rendered shared/_flash (0.0ms)
+Completed in 16ms (View: 0, DB: 0) | 200 OK [http://www.example.com/]
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ContentNodesController#show_by_name (for 127.0.0.1 at 2009-05-15 14:09:04) [GET]
+  Parameters: {"name"=>"home"}
+  [4;35;1mPreference Load (0.0ms)[0m   [0mSELECT * FROM `preferences` WHERE (`preferences`.`name` = 'store_name') LIMIT 1[0m
+  [4;36;1mTag Load (0.0ms)[0m   [0;1mSELECT * FROM `tags` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;35;1mOrderUser Load (0.0ms)[0m   [0mSELECT * FROM `order_users` WHERE (`order_users`.`id` IS NULL) LIMIT 1[0m
+  [4;36;1mSection Load (0.0ms)[0m   [0;1mSELECT * FROM `sections` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;35;1mContentNode Load (0.0ms)[0m   [0mSELECT * FROM `content_nodes` WHERE (name = 'home') LIMIT 1[0m
+Rendering template within layouts/main
+Rendering content_nodes/show_by_name
+Rendered shared/_flash (0.0ms)
+Completed in 16ms (View: 0, DB: 0) | 200 OK [http://www.example.com/]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ContentNodesController#show_by_name (for 127.0.0.1 at 2009-05-15 14:09:04) [GET]
+  Parameters: {"name"=>"home"}
+  [4;36;1mPreference Load (0.0ms)[0m   [0;1mSELECT * FROM `preferences` WHERE (`preferences`.`name` = 'store_name') LIMIT 1[0m
+  [4;35;1mTag Load (0.0ms)[0m   [0mSELECT * FROM `tags` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;36;1mOrderUser Load (0.0ms)[0m   [0;1mSELECT * FROM `order_users` WHERE (`order_users`.`id` IS NULL) LIMIT 1[0m
+  [4;35;1mSection Load (0.0ms)[0m   [0mSELECT * FROM `sections` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;36;1mContentNode Load (0.0ms)[0m   [0;1mSELECT * FROM `content_nodes` WHERE (name = 'home') LIMIT 1[0m
+Rendering template within layouts/main
+Rendering content_nodes/show_by_name
+Rendered shared/_flash (0.0ms)
+Completed in 16ms (View: 0, DB: 0) | 200 OK [http://www.example.com/]
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ContentNodesController#show_by_name (for 127.0.0.1 at 2009-05-15 14:09:04) [GET]
+  Parameters: {"name"=>"home"}
+  [4;35;1mPreference Load (0.0ms)[0m   [0mSELECT * FROM `preferences` WHERE (`preferences`.`name` = 'store_name') LIMIT 1[0m
+  [4;36;1mTag Load (0.0ms)[0m   [0;1mSELECT * FROM `tags` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;35;1mOrderUser Load (0.0ms)[0m   [0mSELECT * FROM `order_users` WHERE (`order_users`.`id` IS NULL) LIMIT 1[0m
+  [4;36;1mSection Load (0.0ms)[0m   [0;1mSELECT * FROM `sections` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;35;1mContentNode Load (0.0ms)[0m   [0mSELECT * FROM `content_nodes` WHERE (name = 'home') LIMIT 1[0m
+Rendering template within layouts/main
+Rendering content_nodes/show_by_name
+Rendered shared/_flash (0.0ms)
+Completed in 16ms (View: 16, DB: 0) | 200 OK [http://www.example.com/]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ContentNodesController#show_by_name (for 127.0.0.1 at 2009-05-15 14:09:04) [GET]
+  Parameters: {"name"=>"home"}
+  [4;36;1mPreference Load (0.0ms)[0m   [0;1mSELECT * FROM `preferences` WHERE (`preferences`.`name` = 'store_name') LIMIT 1[0m
+  [4;35;1mTag Load (0.0ms)[0m   [0mSELECT * FROM `tags` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;36;1mOrderUser Load (0.0ms)[0m   [0;1mSELECT * FROM `order_users` WHERE (`order_users`.`id` IS NULL) LIMIT 1[0m
+  [4;35;1mSection Load (0.0ms)[0m   [0mSELECT * FROM `sections` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;36;1mContentNode Load (0.0ms)[0m   [0;1mSELECT * FROM `content_nodes` WHERE (name = 'home') LIMIT 1[0m
+Rendering template within layouts/main
+Rendering content_nodes/show_by_name
+Rendered shared/_flash (0.0ms)
+Completed in 16ms (View: 16, DB: 0) | 200 OK [http://www.example.com/]
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ContentNodesController#show_by_name (for 127.0.0.1 at 2009-05-15 14:09:04) [GET]
+  Parameters: {"name"=>"home"}
+  [4;35;1mPreference Load (0.0ms)[0m   [0mSELECT * FROM `preferences` WHERE (`preferences`.`name` = 'store_name') LIMIT 1[0m
+  [4;36;1mTag Load (0.0ms)[0m   [0;1mSELECT * FROM `tags` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;35;1mOrderUser Load (0.0ms)[0m   [0mSELECT * FROM `order_users` WHERE (`order_users`.`id` IS NULL) LIMIT 1[0m
+  [4;36;1mSection Load (0.0ms)[0m   [0;1mSELECT * FROM `sections` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;35;1mContentNode Load (0.0ms)[0m   [0mSELECT * FROM `content_nodes` WHERE (name = 'home') LIMIT 1[0m
+Rendering template within layouts/main
+Rendering content_nodes/show_by_name
+Rendered shared/_flash (0.0ms)
+Completed in 16ms (View: 0, DB: 0) | 200 OK [http://www.example.com/]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ContentNodesController#show_by_name (for 127.0.0.1 at 2009-05-15 14:09:04) [GET]
+  Parameters: {"name"=>"home"}
+  [4;36;1mPreference Load (15.6ms)[0m   [0;1mSELECT * FROM `preferences` WHERE (`preferences`.`name` = 'store_name') LIMIT 1[0m
+  [4;35;1mTag Load (0.0ms)[0m   [0mSELECT * FROM `tags` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;36;1mOrderUser Load (0.0ms)[0m   [0;1mSELECT * FROM `order_users` WHERE (`order_users`.`id` IS NULL) LIMIT 1[0m
+  [4;35;1mSection Load (0.0ms)[0m   [0mSELECT * FROM `sections` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;36;1mContentNode Load (0.0ms)[0m   [0;1mSELECT * FROM `content_nodes` WHERE (name = 'home') LIMIT 1[0m
+Rendering template within layouts/main
+Rendering content_nodes/show_by_name
+Rendered shared/_flash (0.0ms)
+Completed in 16ms (View: 0, DB: 16) | 200 OK [http://www.example.com/]
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ContentNodesController#show_by_name (for 127.0.0.1 at 2009-05-15 14:09:04) [GET]
+  Parameters: {"name"=>"home"}
+  [4;35;1mPreference Load (0.0ms)[0m   [0mSELECT * FROM `preferences` WHERE (`preferences`.`name` = 'store_name') LIMIT 1[0m
+  [4;36;1mTag Load (0.0ms)[0m   [0;1mSELECT * FROM `tags` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;35;1mOrderUser Load (0.0ms)[0m   [0mSELECT * FROM `order_users` WHERE (`order_users`.`id` IS NULL) LIMIT 1[0m
+  [4;36;1mSection Load (0.0ms)[0m   [0;1mSELECT * FROM `sections` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;35;1mContentNode Load (0.0ms)[0m   [0mSELECT * FROM `content_nodes` WHERE (name = 'home') LIMIT 1[0m
+Rendering template within layouts/main
+Rendering content_nodes/show_by_name
+Rendered shared/_flash (0.0ms)
+Completed in 47ms (View: 16, DB: 0) | 200 OK [http://www.example.com/]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ContentNodesController#show_by_name (for 127.0.0.1 at 2009-05-15 14:09:04) [GET]
+  Parameters: {"name"=>"home"}
+  [4;36;1mPreference Load (0.0ms)[0m   [0;1mSELECT * FROM `preferences` WHERE (`preferences`.`name` = 'store_name') LIMIT 1[0m
+  [4;35;1mTag Load (0.0ms)[0m   [0mSELECT * FROM `tags` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;36;1mOrderUser Load (0.0ms)[0m   [0;1mSELECT * FROM `order_users` WHERE (`order_users`.`id` IS NULL) LIMIT 1[0m
+  [4;35;1mSection Load (0.0ms)[0m   [0mSELECT * FROM `sections` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;36;1mContentNode Load (0.0ms)[0m   [0;1mSELECT * FROM `content_nodes` WHERE (name = 'home') LIMIT 1[0m
+Rendering template within layouts/main
+Rendering content_nodes/show_by_name
+Rendered shared/_flash (0.0ms)
+Completed in 16ms (View: 0, DB: 0) | 200 OK [http://www.example.com/]
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ContentNodesController#show_by_name (for 127.0.0.1 at 2009-05-15 14:09:04) [GET]
+  Parameters: {"name"=>"home"}
+  [4;35;1mPreference Load (0.0ms)[0m   [0mSELECT * FROM `preferences` WHERE (`preferences`.`name` = 'store_name') LIMIT 1[0m
+  [4;36;1mTag Load (0.0ms)[0m   [0;1mSELECT * FROM `tags` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;35;1mOrderUser Load (0.0ms)[0m   [0mSELECT * FROM `order_users` WHERE (`order_users`.`id` IS NULL) LIMIT 1[0m
+  [4;36;1mSection Load (0.0ms)[0m   [0;1mSELECT * FROM `sections` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;35;1mContentNode Load (0.0ms)[0m   [0mSELECT * FROM `content_nodes` WHERE (name = 'home') LIMIT 1[0m
+Rendering template within layouts/main
+Rendering content_nodes/show_by_name
+Rendered shared/_flash (0.0ms)
+Completed in 16ms (View: 0, DB: 0) | 200 OK [http://www.example.com/]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ContentNodesController#show_by_name (for 127.0.0.1 at 2009-05-15 14:09:04) [GET]
+  Parameters: {"name"=>"home"}
+  [4;36;1mPreference Load (0.0ms)[0m   [0;1mSELECT * FROM `preferences` WHERE (`preferences`.`name` = 'store_name') LIMIT 1[0m
+  [4;35;1mTag Load (0.0ms)[0m   [0mSELECT * FROM `tags` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;36;1mOrderUser Load (0.0ms)[0m   [0;1mSELECT * FROM `order_users` WHERE (`order_users`.`id` IS NULL) LIMIT 1[0m
+  [4;35;1mSection Load (0.0ms)[0m   [0mSELECT * FROM `sections` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;36;1mContentNode Load (0.0ms)[0m   [0;1mSELECT * FROM `content_nodes` WHERE (name = 'home') LIMIT 1[0m
+Rendering template within layouts/main
+Rendering content_nodes/show_by_name
+Rendered shared/_flash (0.0ms)
+Completed in 16ms (View: 16, DB: 0) | 200 OK [http://www.example.com/]
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ContentNodesController#show_by_name (for 127.0.0.1 at 2009-05-15 14:09:04) [GET]
+  Parameters: {"name"=>"home"}
+  [4;35;1mPreference Load (0.0ms)[0m   [0mSELECT * FROM `preferences` WHERE (`preferences`.`name` = 'store_name') LIMIT 1[0m
+  [4;36;1mTag Load (0.0ms)[0m   [0;1mSELECT * FROM `tags` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;35;1mOrderUser Load (0.0ms)[0m   [0mSELECT * FROM `order_users` WHERE (`order_users`.`id` IS NULL) LIMIT 1[0m
+  [4;36;1mSection Load (0.0ms)[0m   [0;1mSELECT * FROM `sections` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;35;1mContentNode Load (0.0ms)[0m   [0mSELECT * FROM `content_nodes` WHERE (name = 'home') LIMIT 1[0m
+Rendering template within layouts/main
+Rendering content_nodes/show_by_name
+Rendered shared/_flash (0.0ms)
+Completed in 16ms (View: 16, DB: 0) | 200 OK [http://www.example.com/]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ContentNodesController#show_by_name (for 127.0.0.1 at 2009-05-15 14:09:04) [GET]
+  Parameters: {"name"=>"home"}
+  [4;36;1mPreference Load (0.0ms)[0m   [0;1mSELECT * FROM `preferences` WHERE (`preferences`.`name` = 'store_name') LIMIT 1[0m
+  [4;35;1mTag Load (0.0ms)[0m   [0mSELECT * FROM `tags` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;36;1mOrderUser Load (0.0ms)[0m   [0;1mSELECT * FROM `order_users` WHERE (`order_users`.`id` IS NULL) LIMIT 1[0m
+  [4;35;1mSection Load (0.0ms)[0m   [0mSELECT * FROM `sections` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;36;1mContentNode Load (15.6ms)[0m   [0;1mSELECT * FROM `content_nodes` WHERE (name = 'home') LIMIT 1[0m
+Rendering template within layouts/main
+Rendering content_nodes/show_by_name
+Rendered shared/_flash (0.0ms)
+Completed in 16ms (View: 0, DB: 16) | 200 OK [http://www.example.com/]
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ContentNodesController#show_by_name (for 127.0.0.1 at 2009-05-15 14:09:05) [GET]
+  Parameters: {"name"=>"home"}
+  [4;35;1mPreference Load (0.0ms)[0m   [0mSELECT * FROM `preferences` WHERE (`preferences`.`name` = 'store_name') LIMIT 1[0m
+  [4;36;1mTag Load (0.0ms)[0m   [0;1mSELECT * FROM `tags` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;35;1mOrderUser Load (0.0ms)[0m   [0mSELECT * FROM `order_users` WHERE (`order_users`.`id` IS NULL) LIMIT 1[0m
+  [4;36;1mSection Load (0.0ms)[0m   [0;1mSELECT * FROM `sections` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;35;1mContentNode Load (0.0ms)[0m   [0mSELECT * FROM `content_nodes` WHERE (name = 'home') LIMIT 1[0m
+Rendering template within layouts/main
+Rendering content_nodes/show_by_name
+Rendered shared/_flash (0.0ms)
+Completed in 16ms (View: 16, DB: 0) | 200 OK [http://www.example.com/]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ContentNodesController#show_by_name (for 127.0.0.1 at 2009-05-15 14:09:05) [GET]
+  Parameters: {"name"=>"home"}
+  [4;36;1mPreference Load (0.0ms)[0m   [0;1mSELECT * FROM `preferences` WHERE (`preferences`.`name` = 'store_name') LIMIT 1[0m
+  [4;35;1mTag Load (0.0ms)[0m   [0mSELECT * FROM `tags` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;36;1mOrderUser Load (0.0ms)[0m   [0;1mSELECT * FROM `order_users` WHERE (`order_users`.`id` IS NULL) LIMIT 1[0m
+  [4;35;1mSection Load (0.0ms)[0m   [0mSELECT * FROM `sections` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;36;1mContentNode Load (0.0ms)[0m   [0;1mSELECT * FROM `content_nodes` WHERE (name = 'home') LIMIT 1[0m
+Rendering template within layouts/main
+Rendering content_nodes/show_by_name
+Rendered shared/_flash (0.0ms)
+Completed in 16ms (View: 16, DB: 0) | 200 OK [http://www.example.com/]
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ContentNodesController#show_by_name (for 127.0.0.1 at 2009-05-15 14:09:05) [GET]
+  Parameters: {"name"=>"home"}
+  [4;35;1mPreference Load (0.0ms)[0m   [0mSELECT * FROM `preferences` WHERE (`preferences`.`name` = 'store_name') LIMIT 1[0m
+  [4;36;1mTag Load (0.0ms)[0m   [0;1mSELECT * FROM `tags` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;35;1mOrderUser Load (0.0ms)[0m   [0mSELECT * FROM `order_users` WHERE (`order_users`.`id` IS NULL) LIMIT 1[0m
+  [4;36;1mSection Load (0.0ms)[0m   [0;1mSELECT * FROM `sections` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;35;1mContentNode Load (0.0ms)[0m   [0mSELECT * FROM `content_nodes` WHERE (name = 'home') LIMIT 1[0m
+Rendering template within layouts/main
+Rendering content_nodes/show_by_name
+Rendered shared/_flash (0.0ms)
+Completed in 16ms (View: 16, DB: 0) | 200 OK [http://www.example.com/]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ContentNodesController#show_by_name (for 127.0.0.1 at 2009-05-15 14:09:05) [GET]
+  Parameters: {"name"=>"home"}
+  [4;36;1mPreference Load (0.0ms)[0m   [0;1mSELECT * FROM `preferences` WHERE (`preferences`.`name` = 'store_name') LIMIT 1[0m
+  [4;35;1mTag Load (0.0ms)[0m   [0mSELECT * FROM `tags` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;36;1mOrderUser Load (0.0ms)[0m   [0;1mSELECT * FROM `order_users` WHERE (`order_users`.`id` IS NULL) LIMIT 1[0m
+  [4;35;1mSection Load (0.0ms)[0m   [0mSELECT * FROM `sections` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;36;1mContentNode Load (0.0ms)[0m   [0;1mSELECT * FROM `content_nodes` WHERE (name = 'home') LIMIT 1[0m
+Rendering template within layouts/main
+Rendering content_nodes/show_by_name
+Rendered shared/_flash (0.0ms)
+Completed in 16ms (View: 16, DB: 0) | 200 OK [http://www.example.com/]
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ContentNodesController#show_by_name (for 127.0.0.1 at 2009-05-15 14:09:05) [GET]
+  Parameters: {"name"=>"home"}
+  [4;35;1mPreference Load (0.0ms)[0m   [0mSELECT * FROM `preferences` WHERE (`preferences`.`name` = 'store_name') LIMIT 1[0m
+  [4;36;1mTag Load (0.0ms)[0m   [0;1mSELECT * FROM `tags` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;35;1mOrderUser Load (0.0ms)[0m   [0mSELECT * FROM `order_users` WHERE (`order_users`.`id` IS NULL) LIMIT 1[0m
+  [4;36;1mSection Load (0.0ms)[0m   [0;1mSELECT * FROM `sections` WHERE (parent_id IS NULL OR parent_id = 0) ORDER BY -rank DESC[0m
+  [4;35;1mContentNode Load (0.0ms)[0m   [0mSELECT * FROM `content_nodes` WHERE (name = 'home') LIMIT 1[0m
+Rendering template within layouts/main
+Rendering content_nodes/show_by_name
+Rendered shared/_flash (0.0ms)
+Completed in 16ms (View: 16, DB: 0) | 200 OK [http://www.example.com/]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSection Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `sections`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (15.6ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (15.6ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (15.6ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (15.6ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (15.6ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (15.6ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (15.6ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (15.6ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (15.6ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (15.6ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (15.6ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (15.6ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (15.6ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (15.6ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (15.6ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (15.6ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (15.6ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (15.6ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (15.6ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (15.6ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
