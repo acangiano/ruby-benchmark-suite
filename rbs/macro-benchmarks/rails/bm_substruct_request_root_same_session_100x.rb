@@ -6,5 +6,5 @@ require 'action_controller/request_profiler'
 ActionController::RequestProfiler.run(%w[-b -n1 request_root]) # warmup
 
 Bench.run [100] do
-    ActionController::RequestProfiler.run(%w[-b -n1 request_root_100x])
+    ActionController::RequestProfiler.run(%w[-b -n1 request_root_50x]) # runs it twice x 50
 end

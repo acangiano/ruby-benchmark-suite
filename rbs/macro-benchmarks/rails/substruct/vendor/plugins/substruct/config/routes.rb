@@ -1,6 +1,5 @@
 ActionController::Routing::Routes.draw do |map|
 # default
-puts "I'm in here\n\n\n"
 
 map.connect '',
   :controller => 'content_nodes',
@@ -46,4 +45,5 @@ map.connect ':controller/:action/:id'
 map.connect ':name',
   :controller => 'content_nodes',
   :action     => 'show_by_name'
+
 end
