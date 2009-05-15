@@ -2,6 +2,7 @@
 #
 # rake bench          # Run all the RBS benchmarks
 # rake bench:dir      # Run all the RBS benchmarks in DIR
+#      ex: rake bench:dir DIR=rbs/macro-benchmarks
 # rake bench:file     # Run only the RBS benchmark specified by FILE
 # rake bench:results  # Plot the RBS benchmark results (not implemented)
 # rake bench:to_csv   # Generate a CSV file of RBS results
