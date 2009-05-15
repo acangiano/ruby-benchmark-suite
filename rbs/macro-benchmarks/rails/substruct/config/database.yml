@@ -17,10 +17,9 @@
 development:
   adapter: mysql
   encoding: utf8
-  database: substruct_development
+  database: substruct_rbs_development
   username: root
   password:
-  socket: /tmp/mysql.sock
 
 # Warning: The database defined as 'test' will be erased and
 # re-generated from your development database when you run 'rake'.
@@ -28,15 +27,13 @@ development:
 test:
   adapter: mysql
   encoding: utf8
-  database: substruct_test
+  database: substruct_rbs_test
   username: root
   password:
-  socket: /tmp/mysql.sock
 
 production:
   adapter: mysql
   encoding: utf8
-  database: substruct_production
+  database: substruct_rbs_production
   username: root
   password: 
-  socket: /tmp/mysql.sock

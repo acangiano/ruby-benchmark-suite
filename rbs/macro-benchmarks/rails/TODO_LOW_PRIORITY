@@ -1,15 +1,15 @@
-one using ab and multiple concurrency :)
+test with 1.9/jruby to see if it works?
+
+odd test using ab and multiple concurrency :)
 
 could also do more views than just the root [like an index with lots of products {"at least x"}, and many navigation tags]
 
-test with 1.9/jruby to see if it works?
-
-could use a rails test with rails 2.2 or beyond 
-
-one with very complex logic or a very large page would be a good test
+rails test with very complex logic or a very large page would be a good test
 
 some requests with 'extra' RAM using garbage before the test
 
-add 'read a file 1000x' test.
+add 'read a file 1000x' test. (and write)
 
 There's a few more tests listed on the mailing list that could be included
+
+some simple threaded socket tests
