@@ -89,7 +89,7 @@ class Bench
       rescue Exception
       end
 
-      f.puts "ruby ver: " + version_string
+      f.puts "ruby_ver: " + version_string
     end
   end
 
