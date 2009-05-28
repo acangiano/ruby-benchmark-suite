@@ -26,7 +26,7 @@ end
 # Cache the name so it is only generated once during an invocation.
 # Eliminates having to save the name and pass it around.
 def report
-  # os = `uname`.chomp
+  # os = `uname`.chomp # doesn't work on doze
   # host = `uname -n`.chomp
   vm = File.basename VM.split.first
   # @report ||= "#{RBS_RESULTS_DIR}/RBS-#{vm}-#{os}-#{host}-#{Time.now.strftime "%y%m%d.%H%M%S"}.yaml"
@@ -110,6 +110,23 @@ namespace :bench do
     puts "  Writing report to #{report_name}"
 
     Dir[RBS_DIR + "/**/bm_*.rb"].sort.each do |name|
+      Dir.chdir File.dirname(name) do
+        puts "  Running #{File.basename name}"
+        system "#{command name}"
+      end
+    end
+
+    puts "Done"
+  end
+
+  desc "Run all the RBS benchmarks that match PATTERN ex: PATTERN=rbs/micro-benchmarks/bm_gc*"
+  task :pattern => :setup do
+    dir = ENV['PATTERN'] || raise("bench:pattern needs PATTERN set")
+
+    puts "Running all benchmarks matching #{dir}"
+    puts "  Writing report to #{report_name}"
+
+    Dir[dir].sort.each do |name|
       Dir.chdir File.dirname(name) do
         puts "  Running #{File.basename name}"
         system "#{command name}"
