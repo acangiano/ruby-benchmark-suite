@@ -18,6 +18,9 @@ Examples:
 
 The :to_csv task creates a .csv spreadsheet of the results. Quite handy for comparing your results over time.
 
+  rake VM=/bin/ruby_special ITERATIONS=3 TIMEOUT=5
+  This examples uses 'ruby_special' as the VM, 3 iterations instead of the default (5)5, 5 second timeout (per script) instead of the default 300s
+  
 DIRECTORY STRUCTURE
 ===================
   deprecated_rbs - contains the old, deprecated version of the suite
