@@ -8,9 +8,9 @@
 #     # do something interesting
 #   end
 #
-#   Bench.run { quirks 100 }
+#   Bench.run [100] { |n| quirks n }
 #
-# Bench.run will time the running of the block for the requested
+# Bench.run will run the blocktime the running of the block for the requested
 # number of iterations and then compute some statistics and append
 # a YAML-formatted report to the specified file.
 
@@ -80,6 +80,16 @@ class Bench
       inputs.each do |input|
         f.puts "- #{input}"
       end
+
+      begin
+        version_string = ""
+        version_string = "#{RUBY_VERSION} #{RUBY_RELEASE_DATE} #{RUBY_PATCHLEVEL} #{RUBY_PLATFORM}"
+        require 'rbconfig'
+        version_string += ';' + Config::CONFIG['CFLAGS'] + ';' + Config::CONFIG["configure_args"] 
+      rescue Exception
+      end
+
+      f.puts "ruby ver: " + version_string
     end
   end
 
