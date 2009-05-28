@@ -12,8 +12,8 @@ Benchmarks are run using rake. Type "rake -T bench" to see options.
 
 Examples:
   rake bench
-  rake bench:file FILE=rbs/core-features/bm_app_tak.rb
-  rake bench:dir DIR=rbs/core-features
+  rake bench:file FILE=rbs/micro-benchmarks/bm_app_tak.rb
+  rake bench:dir DIR=rbs/micro-benchmarks
   rake bench:to_csv
 
 The :to_csv task creates a .csv spreadsheet of the results. Quite handy for comparing your results over time.
