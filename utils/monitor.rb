@@ -4,14 +4,16 @@
 
 timeout = File.dirname(__FILE__) + "/timeout"
 
+null = "/dev/null"
 if RUBY_PLATFORM =~ /mingw|mswin/
   timeout = "ruby " + File.dirname(__FILE__) + "/timeout2.rb"
+  null = "NUL"
 end
 
 limit, vm, runner, name, iterations, report = ARGV
 
 start = Time.now
-cmd = "#{timeout} -t #{limit} #{vm} #{runner} #{name} #{iterations} #{report} > /dev/null"
+cmd = "#{timeout} -t #{limit} #{vm} #{runner} #{name} #{iterations} #{report} > #{null}"
 system cmd
 finish = Time.now
 
