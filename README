@@ -12,12 +12,17 @@ Benchmarks are run using rake. Type "rake -T bench" to see options.
 
 Examples:
   rake bench
-  rake bench:file FILE=/rbs/core-features/bm_app_tak.rb
-  rake bench:dir DIR=/rbs/core-features
+  rake bench:file FILE=rbs/micro-benchmarks/bm_app_tak.rb
+  rake bench:dir DIR=rbs/micro-benchmarks
   rake bench:to_csv
+  rake bench:pattern PATTERN=rbs/micro-benchmarks/bm_gc*
+  rake VM=/bin/ruby_special ITERATIONS=3 TIMEOUT=5
 
 The :to_csv task creates a .csv spreadsheet of the results. Quite handy for comparing your results over time.
 
+The VM example runs '/bin/ruby_special' as the VM, 3 iterations instead of the default (5)5, 5 second timeout (per script) instead of the default 300s
+
+  
 DIRECTORY STRUCTURE
 ===================
   deprecated_rbs - contains the old, deprecated version of the suite
@@ -35,4 +40,6 @@ You'll probably want to copy rakelib/bench.rake and modify some filenames and lo
 If you want to run a different implementation set the environment variable VM to point to a ruby executable or change this line in rakelib/bench.rake:
   VM = ENV['VM'] || "ruby"
 
-The current version relies on a bash script and as such it requires Cygwin to work on Windows. We are working to eliminate this requirement. 
+GROUP
+=====
+There is a mailing list at http://groups.google.com/group/ruby-benchmark-suite
