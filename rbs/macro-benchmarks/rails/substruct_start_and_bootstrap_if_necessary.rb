@@ -1,5 +1,6 @@
 # currently we need a lotta gems
 # require them up front just in case they're not installed
+$:.unshift '19_compat' if RUBY_VERSION >= '1.9'
 require 'rubygems'
 
 for gem in ["RedCloth", "fastercsv", "mime/types", "mini_magick", "ezcrypto"] do

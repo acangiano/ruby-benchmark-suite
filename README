@@ -15,12 +15,10 @@ Examples:
   rake bench:file FILE=rbs/micro-benchmarks/bm_app_tak.rb
   rake bench:dir DIR=rbs/micro-benchmarks
   rake bench:to_csv
-  rake bench:pattern PATTERN=rbs/micro-benchmarks/bm_gc*
-  rake VM=/bin/ruby_special ITERATIONS=3 TIMEOUT=5
-
 The :to_csv task creates a .csv spreadsheet of the results. Quite handy for comparing your results over time.
-
-The VM example runs '/bin/ruby_special' as the VM, 3 iterations instead of the default (5)5, 5 second timeout (per script) instead of the default 300s
+  rake bench:pattern PATTERN=rbs/micro-benchmarks/bm_gc*
+  rake VM=/bin/ruby_special ITERATIONS=3 TIMEOUT=5 VERBOSE=1
+This example runs '/bin/ruby_special' as the VM, 3 iterations instead of the default (5), 5 second timeout (per script) instead of the default 300s, and outputs all messages instead of swallowing them (the default).
 
   
 DIRECTORY STRUCTURE
