@@ -10,7 +10,7 @@
 BASEDIR         = File.expand_path(File.dirname(__FILE__) + "/..")
 MONITOR         = BASEDIR + "/utils/monitor.rb"
 RUNNER          = BASEDIR + "/utils/bench.rb"
-RBS_DIR         = BASEDIR + "/rbs"
+RBS_DIR         = BASEDIR + "/benchmarks"
 RESULTS_DIR     = BASEDIR + "/results"
 RBS_RESULTS_DIR = RESULTS_DIR + "/rbs"
 WEB_DIR         = RESULTS_DIR + "/web"

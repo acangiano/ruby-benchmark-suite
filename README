@@ -33,8 +33,6 @@ Additional output formatters are welcome. For example, a :to_wiki would be very 
 
 NOTES
 =====
-You'll probably want to copy rakelib/bench.rake and modify some filenames and locations to suit your needs.
-
 If you want to run a different implementation set the environment variable VM to point to a ruby executable or change this line in rakelib/bench.rake:
   VM = ENV['VM'] || "ruby"
 
