@@ -1,4 +1,4 @@
-The Ruby Benchmark Suite is a benchmark suite for measuring the performance of Ruby implementations, including micro-benchmarks that focus on core Ruby functionalities, as well as macro-benchmarks that represent a variety of real, common workloads. The project is aimed at providing a useful suite for comparing the performance of the available Ruby implementations and, as a positive side effect, to give VM implementers an additional tool to measure and identity performance related issues.
+The Ruby Benchmark Suite is a suite for measuring the performance of Ruby implementations, including micro-benchmarks that focus on core Ruby functionalities, as well as macro-benchmarks that represent a variety of real, common workloads. The project is aimed at providing a useful suite for comparing the performance of the available Ruby implementations and, as a positive side effect, to give VM implementers an additional tool to measure and identity performance related issues.
 
 GETTING THE SUITE
 =================
@@ -11,31 +11,34 @@ RUNNING THE SUITE
 Benchmarks are run using rake. Type "rake -T bench" to see options.
 
 Examples:
+
   rake bench
   rake bench:file FILE=rbs/micro-benchmarks/bm_app_tak.rb
   rake bench:dir DIR=rbs/micro-benchmarks
   rake bench:to_csv
-The :to_csv task creates a .csv spreadsheet of the results. Quite handy for comparing your results over time.
-  rake bench:pattern PATTERN=rbs/micro-benchmarks/bm_gc*
-  rake VM=/bin/ruby_special ITERATIONS=3 TIMEOUT=5 VERBOSE=1
-This example runs '/bin/ruby_special' as the VM, 3 iterations instead of the default (5), 5 second timeout (per script) instead of the default 300s, and outputs all messages instead of swallowing them (the default).
 
-  
+The results are generated within the results/ folder (automatically created for you). Running rake bench:to_csv creates a CSV spreadsheet out of them. This is quite handy for comparing your results over time.
+
+The following example runs '/bin/ruby_special' as the VM, 3 iterations instead of the default (i.e., 5), 5 second timeout (per script) instead of the default 300s, and outputs all messages instead of swallowing them (the default):
+
+  rake VM=/bin/ruby_special ITERATIONS=3 TIMEOUT=5 VERBOSE=1
+
 DIRECTORY STRUCTURE
 ===================
-  deprecated_rbs - contains the old, deprecated version of the suite
-  rbs            - contains the benchmarks themselves
+  deprecated     - contains the old, deprecated version of the suite and recently deprecated tests
+  benchmarks     - contains the benchmarks themselves
   utils          - contains the infrastructure necessary to run the benchmarks
 
-See utils/README for more detail.
+See utils/README for more details.
     
-Additional output formatters are welcome. For example, a :to_wiki would be very convenient to place the results directly in Confluence or a similar Wiki software.
+Additional output formatters are welcome. For example, a :to_wiki would be very convenient to place the results directly in Confluence or similar Wiki software.
 
 NOTES
 =====
 If you want to run a different implementation set the environment variable VM to point to a ruby executable or change this line in rakelib/bench.rake:
+
   VM = ENV['VM'] || "ruby"
 
-GROUP
+HELP
 =====
 There is a mailing list at http://groups.google.com/group/ruby-benchmark-suite
