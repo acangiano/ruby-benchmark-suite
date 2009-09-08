@@ -50,12 +50,12 @@ inside out.
 
         rake bench  # Runs all the RBS benchmarks
 
-        rake bench:file FILE=rbs/core-features/bm_app_fib.rb
+        rake bench:file FILE=benchmarks/core-features/bm_app_fib.rb
 
-        rake bench:dir DIR=rbs/micro-benchmarks
+        rake bench:dir DIR=benchmarks/micro-benchmarks
 
     The rake tasks format the reporting filename with date and time. The files
-    are currently stored in results/rbs as the rbs/**/bm_*.rb files
+    are currently stored in results/rbs as the rbs benchmarks (bm_*.rb files)
     are the only ones using this system. However, the reporting can be
     generalized to the other benchmark directories when/if those benchmarks
     are converted.

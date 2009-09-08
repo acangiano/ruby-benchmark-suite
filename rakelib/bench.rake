@@ -120,7 +120,7 @@ namespace :bench do
     puts "Done"
   end
 
-  desc "Run all the RBS benchmarks that match PATTERN ex: PATTERN=rbs/micro-benchmarks/bm_gc*"
+  desc "Run all the RBS benchmarks that match PATTERN ex: PATTERN=benchmarks/micro-benchmarks/bm_gc*"
   task :pattern => :setup do
     dir = ENV['PATTERN'] || raise("bench:pattern needs PATTERN set")
 
