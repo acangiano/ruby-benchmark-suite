@@ -1,5 +1,7 @@
 #!/usr/bin/env ruby
 #
+# currently not used by rbs
+#
 # adapted from http://www.shelldorado.com/scripts/cmds/timeout
 # Converted to Ruby by Monty Williams, April 2009
 #
