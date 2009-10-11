@@ -1,5 +1,5 @@
 # Submitted by M. Edward (Ed) Borasky
-require 'hilbert' # also brings in mathn, matrix, rational and complex
+require './hilbert' # also brings in mathn, matrix, rational and complex
 
 def run_hilbert(dimension)
   m = hilbert(dimension)
