@@ -5,7 +5,7 @@ Bench.run [100] do |n|
     count = 0
 
     File.open(fname, "w") do |file|
-      10000.times {
+      1000.times {
        file.write a
       }
     end

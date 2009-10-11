@@ -1,4 +1,5 @@
-#from http://www.bagley.org/~doug/shootout/bench/lists/lists.ruby
+# from http://www.bagley.org/~doug/shootout/bench/lists/lists.ruby
+# creates and does manipulation to arrays
 
 def test_lists(size)
   # create a list of integers (Li1) from 1 to SIZE
