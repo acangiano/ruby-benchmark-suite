@@ -24,9 +24,6 @@ class Bench
     @n      = n.to_i
     @report = report
     @meter_memory = meter_memory == 'yes' # default is yes
-
-    print 'meter memory is', meter_memory, @meter_memory
-
     reset
     self.class.register self
   end
