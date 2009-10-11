@@ -13,16 +13,19 @@
 # Bench.run will run the blocktime the running of the block for the requested
 # number of iterations and then compute some statistics and append
 # a YAML-formatted report to the specified file.
-
 class Bench
   attr_accessor :parameter
-  attr_reader   :times, :sorted, :file, :name, :n, :report
+  attr_reader   :times, :memory_readings, :sorted, :file, :name, :n, :report, :meter_memory
 
-  def initialize(name, n, report)
+  def initialize(name, n, report, meter_memory)
+   
     @name   = name
     @file   = File.basename name
     @n      = n.to_i
     @report = report
+    @meter_memory = meter_memory == 'yes' # default is yes
+
+    print 'meter memory is', meter_memory, @meter_memory
 
     reset
     self.class.register self
@@ -42,6 +45,7 @@ class Bench
 
   def reset
     @times = []
+    @memory_readings = []
     @mean  = nil
   end
 
@@ -54,6 +58,24 @@ class Bench
 
         finish = Time.now
         times << finish - start
+        if @meter_memory
+          begin
+          if RUBY_PLATFORM =~ /mingw|mswin/
+             # windows
+             require 'rubygems'
+             require 'ruby-wmi' # of course, this will tweak memory readings a little
+             # but at least it will be constant across comparisons on windows
+             memory_used =  WMI::Win32_Process.find(:first, :conditions => {:ProcessId => Process.pid}).WorkingSetSize
+          else
+            kb = `ps -o rss= -p #{Process.pid}`.to_i # in kilobytes 
+            memory_used = kb*1024
+          end
+          memory_readings << memory_used
+          rescue Exception => e
+            memory_readings << e
+          end
+        end
+        
       end
     end
   end
@@ -67,7 +89,7 @@ class Bench
 
       yield input
 
-      @sorted = times.sort
+      @sorted = times.sort # sorted is used internally for collecting stats
       write_report
     end
   end
@@ -106,9 +128,15 @@ class Bench
       f.puts "standard_deviation: #{standard_deviation}"
       f.puts "times:"
       times.each { |t| f.puts "- #{t}" }
+      if @meter_memory
+         print 'doing memory readings', memory_readings.inspect
+         f.puts "memory_readings:"
+         memory_readings.each{|m| f.puts "- #{m}" }
+      end
     end
   end
 
+  # written after the report, meaning none of the tests resulted in an Exception, and all of them finished
   def write_success
     File.open report, "a" do |f|
       f.puts "---"
@@ -159,7 +187,7 @@ begin
   bench = Bench.new(*ARGV)
   load bench.file
   bench.write_success
-  rescue Object => exc
+rescue Object => exc
   bench.write_error exc if bench
   exit 1
 end

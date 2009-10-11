@@ -10,10 +10,10 @@ if RUBY_PLATFORM =~ /mingw|mswin/
   null = "NUL"
 end
 
-limit, vm, runner, name, iterations, report = ARGV
+limit, vm, runner, name, iterations, report, meter_memory = ARGV
 
 start = Time.now
-cmd = "#{timeout} -t #{limit} #{vm} #{runner} #{name} #{iterations} #{report}"
+cmd = "#{timeout} -t #{limit} #{vm} #{runner} #{name} #{iterations} #{report} #{meter_memory}"
 cmd += " >#{null}" unless ENV['VERBOSE']
 system cmd
 finish = Time.now

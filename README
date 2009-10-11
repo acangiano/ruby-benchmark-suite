@@ -19,9 +19,9 @@ Examples:
 
 The results are generated within the results/ folder (automatically created for you). Running rake bench:to_csv creates a CSV spreadsheet out of them. This is quite handy for comparing your results over time.
 
-The following example runs '/bin/ruby_special' as the VM, 3 iterations instead of the default (i.e., 5), 5 second timeout (per script) instead of the default 300s, and outputs all messages instead of swallowing them (the default):
+The following example runs demonstrates all possible options -- '/bin/ruby_special' as the VM, 3 iterations instead of the default (i.e., 5), 5 second timeout (per script) instead of the default 300s, and outputs all messages instead of swallowing them (the default).  METER_MEMORY defaults to yes, change it to anything else to disable it (it requires slightly extra processing).
 
-  rake VM=/bin/ruby_special ITERATIONS=3 TIMEOUT=5 VERBOSE=1
+  rake VM=/bin/ruby_special ITERATIONS=3 TIMEOUT=5 VERBOSE=1 METER_MEMORY=yes
 
 DIRECTORY STRUCTURE
 ===================
