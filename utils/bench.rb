@@ -18,7 +18,7 @@ class Bench
   attr_reader   :times, :memory_readings, :sorted, :file, :name, :n, :report, :meter_memory
 
   def initialize(name, n, report, meter_memory)
-   
+
     @name   = name
     @file   = File.basename name
     @n      = n.to_i
@@ -60,22 +60,24 @@ class Bench
         times << finish - start
         if @meter_memory
           begin
-          if RUBY_PLATFORM =~ /mingw|mswin/
-             # windows
-             require 'rubygems'
-             require 'ruby-wmi' # of course, this will tweak memory readings a little
-             # but at least it will be constant across comparisons on windows
-             memory_used =  WMI::Win32_Process.find(:first, :conditions => {:ProcessId => Process.pid}).WorkingSetSize
-          else
-            kb = `ps -o rss= -p #{Process.pid}`.to_i # in kilobytes 
-            memory_used = kb*1024
-          end
-          memory_readings << memory_used
+            # attempt to do this in a jruby friendly way
+            require 'rbconfig'
+            if RbConfig::CONFIG['host_os'] =~ /mingw|mswin/
+              # windows
+              require 'rubygems'
+              require 'ruby-wmi' # of course, this will tweak memory readings a little
+              # but at least it will be constant across comparisons on windows
+              memory_used =  WMI::Win32_Process.find(:first, :conditions => {:ProcessId => Process.pid}).WorkingSetSize
+            else
+              kb = `ps -o rss= -p #{Process.pid}`.to_i # in kilobytes
+              memory_used = kb*1024
+            end
+            memory_readings << memory_used
           rescue Exception => e
             memory_readings << e
           end
         end
-        
+
       end
     end
   end
@@ -107,7 +109,7 @@ class Bench
         version_string = ""
         version_string = "#{RUBY_VERSION} #{RUBY_RELEASE_DATE} #{RUBY_PATCHLEVEL} #{RUBY_PLATFORM}"
         require 'rbconfig'
-        version_string += ';' + Config::CONFIG['CFLAGS'] + ';' + Config::CONFIG["configure_args"] 
+        version_string += ';' + Config::CONFIG['CFLAGS'] + ';' + Config::CONFIG["configure_args"]
       rescue Exception
       end
 
@@ -129,9 +131,9 @@ class Bench
       f.puts "times:"
       times.each { |t| f.puts "- #{t}" }
       if @meter_memory
-         print 'doing memory readings', memory_readings.inspect
-         f.puts "memory_readings:"
-         memory_readings.each{|m| f.puts "- #{m}" }
+        print 'doing memory readings', memory_readings.inspect
+        f.puts "memory_readings:"
+        memory_readings.each{|m| f.puts "- #{m}" }
       end
     end
   end
