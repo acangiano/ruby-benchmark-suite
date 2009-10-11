@@ -129,7 +129,7 @@ class Bench
       f.puts "times:"
       times.each { |t| f.puts "- #{t}" }
       if @meter_memory
-        f.puts "memory_readings:"
+        f.puts "memory_usages:"
         memory_readings.each{|m| f.puts "- #{m}" }
       end
     end
