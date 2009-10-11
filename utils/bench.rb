@@ -64,10 +64,11 @@ class Bench
             require 'rbconfig'
             if RbConfig::CONFIG['host_os'] =~ /mingw|mswin/
               # windows
-              require 'rubygems'
-              require 'ruby-wmi' # of course, this will tweak memory readings a little
-              # but at least it will be constant across comparisons on windows
-              memory_used =  WMI::Win32_Process.find(:first, :conditions => {:ProcessId => Process.pid}).WorkingSetSize
+              require 'win32ole'
+              wmi = WIN32OLE.connect("winmgmts://")
+              processes = wmi.ExecQuery("select * from win32_process where ProcessId = #{Process.pid}")
+              memory_used = nil
+              for process in processes; memory_used = process.WorkingSetSize; end
             else
               kb = `ps -o rss= -p #{Process.pid}`.to_i # in kilobytes
               memory_used = kb*1024
