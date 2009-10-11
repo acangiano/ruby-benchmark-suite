@@ -1,4 +1,4 @@
-require 'substruct_start_and_bootstrap_if_necessary.rb'
+require './substruct_start_and_bootstrap_if_necessary.rb'
 ActiveRecord::Base.connection.execute("delete from items where type = 'Variation'")
 
 if Product.count == 0
