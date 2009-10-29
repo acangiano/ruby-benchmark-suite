@@ -5,16 +5,18 @@
 timeout = File.dirname(__FILE__) + "/timeout"
 
 null = "/dev/null"
-if RUBY_PLATFORM =~ /mingw|mswin/
+
+require 'rbconfig'
+if RbConfig::CONFIG['host_os'] =~ /mswin|mingw/ # jruby compat.
   timeout = "ruby " + File.dirname(__FILE__) + "/timeout2.rb"
   null = "NUL"
 end
 
 limit, vm, runner, name, iterations, report, meter_memory = ARGV
 
-start = Time.now
 cmd = "#{timeout} -t #{limit} #{vm} #{runner} #{name} #{iterations} #{report} #{meter_memory}"
 cmd += " >#{null}" unless ENV['VERBOSE']
+start = Time.now
 system cmd
 finish = Time.now
 
@@ -28,7 +30,12 @@ unless $?.success?
     if timed_out
       f.puts "status: Timeout"
     else
-      if $?.signaled?
+      begin
+        signaled =  $?.signaled?
+      rescue Exception
+        # $? doesn't respond to $? in jruby, so we'll end up here
+      end
+      if signaled
         f.puts "status: Terminated SIG#{Signal.list.invert[$?.termsig]}"
       else
         f.puts "status: Terminated for unknown reason"
