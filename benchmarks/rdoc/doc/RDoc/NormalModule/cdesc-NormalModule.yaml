@@ -1,0 +1,20 @@
+--- !ruby/object:RDoc::RI::ClassDescription 
+attributes: []
+
+class_methods: []
+
+comment: 
+- !ruby/struct:RDoc::Markup::Flow::P 
+  :body: A normal module, like NormalClass
+constants: []
+
+full_name: RDoc::NormalModule
+includes: []
+
+instance_methods: 
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: comment=
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: module?
+name: NormalModule
+superclass: RDoc::ClassModule

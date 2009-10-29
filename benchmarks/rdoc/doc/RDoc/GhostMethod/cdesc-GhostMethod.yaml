@@ -1,0 +1,17 @@
+--- !ruby/object:RDoc::RI::ClassDescription 
+attributes: []
+
+class_methods: []
+
+comment: 
+- !ruby/struct:RDoc::Markup::Flow::P 
+  :body: GhostMethod represents a method referenced only by a comment
+constants: []
+
+full_name: RDoc::GhostMethod
+includes: []
+
+instance_methods: []
+
+name: GhostMethod
+superclass: RDoc::AnyMethod

@@ -1,0 +1,15 @@
+--- !ruby/object:RDoc::RI::ClassDescription 
+attributes: []
+
+class_methods: []
+
+comment: 
+constants: []
+
+full_name: RDoc::RubyToken::TkError
+includes: []
+
+instance_methods: []
+
+name: TkError
+superclass: Token

@@ -1,0 +1,24 @@
+--- !ruby/object:RDoc::RI::ClassDescription 
+attributes: []
+
+class_methods: []
+
+comment: 
+- !ruby/struct:RDoc::Markup::Flow::P 
+  :body: A List is a fragment with some kind of label
+- !ruby/struct:RDoc::Markup::Flow::RULE 
+  :width: 
+- !ruby/struct:RDoc::Markup::Flow::P 
+  :body: A List is a fragment with some kind of label
+constants: 
+- !ruby/object:RDoc::RI::Constant 
+  comment: 
+  name: LIST_TYPES
+  value: "[       :BULLET,       :NUMBER,       :UPPERALPHA,       :LOWERALPHA,       :LABELED,       :NOTE,     ]"
+full_name: RDoc::Markup::ListBase
+includes: []
+
+instance_methods: []
+
+name: ListBase
+superclass: Paragraph

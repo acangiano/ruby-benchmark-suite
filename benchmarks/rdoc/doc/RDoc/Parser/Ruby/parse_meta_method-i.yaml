@@ -1,0 +1,12 @@
+--- !ruby/object:RDoc::RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:RDoc::Markup::Flow::P 
+  :body: Parses a meta-programmed method
+full_name: RDoc::Parser::Ruby#parse_meta_method
+is_singleton: false
+name: parse_meta_method
+params: (container, single, tk, comment)
+visibility: public

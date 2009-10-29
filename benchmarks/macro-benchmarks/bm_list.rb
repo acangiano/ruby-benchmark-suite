@@ -67,7 +67,7 @@ class Point
 end
 
 # global variable name starts with `$'.
-Bench.run [10, 100, 1000, 10000] do |n|
+Bench.run [1000, 10000] do |n|
 
   list1 = MyList.new
   list2 = nil

@@ -1,0 +1,25 @@
+--- !ruby/object:RDoc::RI::ClassDescription 
+attributes: []
+
+class_methods: 
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: for
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: new
+comment: 
+constants: []
+
+full_name: RDoc::Generator::RI
+includes: []
+
+instance_methods: 
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: generate
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: generate_class_info
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: generate_method_info
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: process_class
+name: RI
+superclass: Object

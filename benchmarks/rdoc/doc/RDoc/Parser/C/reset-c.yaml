@@ -1,0 +1,12 @@
+--- !ruby/object:RDoc::RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:RDoc::Markup::Flow::P 
+  :body: Resets cross-file state. Call when parsing different projects that need separate documentation.
+full_name: RDoc::Parser::C::reset
+is_singleton: true
+name: reset
+params: ()
+visibility: public

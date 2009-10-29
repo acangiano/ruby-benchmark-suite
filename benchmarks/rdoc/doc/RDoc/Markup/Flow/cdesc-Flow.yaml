@@ -1,0 +1,43 @@
+--- !ruby/object:RDoc::RI::ModuleDescription 
+attributes: []
+
+class_methods: []
+
+comment: 
+constants: 
+- !ruby/object:RDoc::RI::Constant 
+  comment: 
+  - !ruby/struct:RDoc::Markup::Flow::P 
+    :body: Paragraph
+  name: P
+  value: Struct.new(:body)
+- !ruby/object:RDoc::RI::Constant 
+  comment: 
+  - !ruby/struct:RDoc::Markup::Flow::P 
+    :body: Verbatim
+  name: VERB
+  value: Struct.new(:body)
+- !ruby/object:RDoc::RI::Constant 
+  comment: 
+  - !ruby/struct:RDoc::Markup::Flow::P 
+    :body: Horizontal rule
+  name: RULE
+  value: Struct.new(:width)
+- !ruby/object:RDoc::RI::Constant 
+  comment: 
+  - !ruby/struct:RDoc::Markup::Flow::P 
+    :body: List item
+  name: LI
+  value: Struct.new(:label, :body)
+- !ruby/object:RDoc::RI::Constant 
+  comment: 
+  - !ruby/struct:RDoc::Markup::Flow::P 
+    :body: Heading
+  name: H
+  value: Struct.new(:level, :text)
+full_name: RDoc::Markup::Flow
+includes: []
+
+instance_methods: []
+
+name: Flow

@@ -1,0 +1,12 @@
+--- !ruby/object:RDoc::RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:RDoc::Markup::Flow::P 
+  :body: Add a new set of LaTeX tags for an attribute. We allow separate start and end tags for flexibility
+full_name: RDoc::Markup::ToLaTeX#add_tag
+is_singleton: false
+name: add_tag
+params: (name, start, stop)
+visibility: public

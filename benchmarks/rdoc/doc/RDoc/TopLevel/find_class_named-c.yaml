@@ -1,0 +1,12 @@
+--- !ruby/object:RDoc::RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:RDoc::Markup::Flow::P 
+  :body: Finds the class with <tt>name</tt> in all discovered classes
+full_name: RDoc::TopLevel::find_class_named
+is_singleton: true
+name: find_class_named
+params: (name)
+visibility: public

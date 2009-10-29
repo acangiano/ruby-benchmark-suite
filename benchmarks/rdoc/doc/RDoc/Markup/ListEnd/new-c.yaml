@@ -1,0 +1,12 @@
+--- !ruby/object:RDoc::RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:RDoc::Markup::Flow::P 
+  :body: Creates a ListEnd with nesting <tt>level</tt>
+full_name: RDoc::Markup::ListEnd::new
+is_singleton: true
+name: new
+params: (level, type)
+visibility: public

@@ -1,0 +1,12 @@
+--- !ruby/object:RDoc::RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:RDoc::Markup::Flow::P 
+  :body: Add to the sequences used to add formatting to an individual word (such as <b>bold</b>). Matching entries will generate attributes that the output formatters can recognize by their <tt>name</tt>.
+full_name: RDoc::Markup#add_word_pair
+is_singleton: false
+name: add_word_pair
+params: (start, stop, name)
+visibility: public

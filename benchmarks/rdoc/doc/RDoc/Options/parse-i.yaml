@@ -1,0 +1,12 @@
+--- !ruby/object:RDoc::RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:RDoc::Markup::Flow::P 
+  :body: Parse command line options.
+full_name: RDoc::Options#parse
+is_singleton: false
+name: parse
+params: (argv)
+visibility: public

@@ -1,0 +1,12 @@
+--- !ruby/object:RDoc::RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:RDoc::Markup::Flow::P 
+  :body: The name of this file
+full_name: RDoc::TopLevel#full_name
+is_singleton: false
+name: full_name
+params: ()
+visibility: public

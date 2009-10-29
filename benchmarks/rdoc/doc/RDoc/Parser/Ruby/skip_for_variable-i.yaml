@@ -1,0 +1,12 @@
+--- !ruby/object:RDoc::RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:RDoc::Markup::Flow::P 
+  :body: skip the var [in] part of a 'for' statement
+full_name: RDoc::Parser::Ruby#skip_for_variable
+is_singleton: false
+name: skip_for_variable
+params: ()
+visibility: public

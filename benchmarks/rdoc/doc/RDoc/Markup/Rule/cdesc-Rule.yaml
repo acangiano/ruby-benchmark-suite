@@ -1,0 +1,21 @@
+--- !ruby/object:RDoc::RI::ClassDescription 
+attributes: []
+
+class_methods: []
+
+comment: 
+- !ruby/struct:RDoc::Markup::Flow::P 
+  :body: A horizontal rule
+- !ruby/struct:RDoc::Markup::Flow::RULE 
+  :width: 
+- !ruby/struct:RDoc::Markup::Flow::P 
+  :body: A horizontal rule
+constants: []
+
+full_name: RDoc::Markup::Rule
+includes: []
+
+instance_methods: []
+
+name: Rule
+superclass: Fragment

@@ -1,0 +1,22 @@
+--- !ruby/object:RDoc::RI::ClassDescription 
+attributes: []
+
+class_methods: 
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: new
+comment: 
+- !ruby/struct:RDoc::Markup::Flow::P 
+  :body: Start of a list
+- !ruby/struct:RDoc::Markup::Flow::RULE 
+  :width: 
+- !ruby/struct:RDoc::Markup::Flow::P 
+  :body: Start of a list
+constants: []
+
+full_name: RDoc::Markup::ListStart
+includes: []
+
+instance_methods: []
+
+name: ListStart
+superclass: ListBase

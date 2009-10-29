@@ -1,0 +1,40 @@
+--- !ruby/object:RDoc::RI::ClassDescription 
+attributes: []
+
+class_methods: []
+
+comment: 
+- !ruby/struct:RDoc::Markup::Flow::P 
+  :body: This Markup outputter is used for testing purposes.
+- !ruby/struct:RDoc::Markup::Flow::RULE 
+  :width: 
+- !ruby/struct:RDoc::Markup::Flow::P 
+  :body: This Markup outputter is used for testing purposes.
+constants: []
+
+full_name: RDoc::Markup::ToTest
+includes: []
+
+instance_methods: 
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: accept_blank_line
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: accept_heading
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: accept_list_end
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: accept_list_item
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: accept_list_start
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: accept_paragraph
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: accept_rule
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: accept_verbatim
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: end_accepting
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: start_accepting
+name: ToTest
+superclass: RDoc::Markup::Formatter

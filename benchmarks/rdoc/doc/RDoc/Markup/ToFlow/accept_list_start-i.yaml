@@ -1,0 +1,10 @@
+--- !ruby/object:RDoc::RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: RDoc::Markup::ToFlow#accept_list_start
+is_singleton: false
+name: accept_list_start
+params: (am, fragment)
+visibility: public

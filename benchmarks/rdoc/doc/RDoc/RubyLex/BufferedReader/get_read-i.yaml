@@ -1,0 +1,10 @@
+--- !ruby/object:RDoc::RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: RDoc::RubyLex::BufferedReader#get_read
+is_singleton: false
+name: get_read
+params: ()
+visibility: public

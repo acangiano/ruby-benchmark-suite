@@ -1,0 +1,14 @@
+--- !ruby/object:RDoc::RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:RDoc::Markup::Flow::P 
+  :body: "Look for includes of the form:"
+- !ruby/struct:RDoc::Markup::Flow::VERB 
+  :body: "  rb_include_module(rb_cArray, rb_mEnumerable);\n"
+full_name: RDoc::Parser::C#do_includes
+is_singleton: false
+name: do_includes
+params: ()
+visibility: public

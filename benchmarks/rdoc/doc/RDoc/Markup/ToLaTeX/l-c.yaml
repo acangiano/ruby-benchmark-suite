@@ -1,0 +1,10 @@
+--- !ruby/object:RDoc::RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: RDoc::Markup::ToLaTeX::l
+is_singleton: true
+name: l
+params: (str)
+visibility: public

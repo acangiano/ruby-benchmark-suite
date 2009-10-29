@@ -1,0 +1,12 @@
+--- !ruby/object:RDoc::RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:RDoc::Markup::Flow::P 
+  :body: Finds the file with <tt>name</tt> in all discovered files
+full_name: RDoc::TopLevel::find_file_named
+is_singleton: true
+name: find_file_named
+params: (name)
+visibility: public

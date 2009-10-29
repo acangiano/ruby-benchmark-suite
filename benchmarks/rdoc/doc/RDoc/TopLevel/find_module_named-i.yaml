@@ -1,0 +1,12 @@
+--- !ruby/object:RDoc::RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:RDoc::Markup::Flow::P 
+  :body: Finds a module or class with <tt>name</tt>
+full_name: RDoc::TopLevel#find_module_named
+is_singleton: false
+name: find_module_named
+params: (name)
+visibility: public

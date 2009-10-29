@@ -1,0 +1,49 @@
+--- !ruby/object:RDoc::RI::ClassDescription 
+attributes: 
+- !ruby/object:RDoc::RI::Attribute 
+  comment: 
+  name: level
+  rw: R
+- !ruby/object:RDoc::RI::Attribute 
+  comment: 
+  name: param
+  rw: R
+- !ruby/object:RDoc::RI::Attribute 
+  comment: 
+  name: txt
+  rw: R
+- !ruby/object:RDoc::RI::Attribute 
+  comment: 
+  name: type
+  rw: RW
+class_methods: 
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: for
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: new
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: type_name
+comment: 
+- !ruby/struct:RDoc::Markup::Flow::P 
+  :body: A Fragment is a chunk of text, subclassed as a paragraph, a list entry, or verbatim text.
+- !ruby/struct:RDoc::Markup::Flow::RULE 
+  :width: 
+- !ruby/struct:RDoc::Markup::Flow::P 
+  :body: A Fragment is a chunk of text, subclassed as a paragraph, a list entry, or verbatim text.
+constants: 
+- !ruby/object:RDoc::RI::Constant 
+  comment: 
+  - !ruby/struct:RDoc::Markup::Flow::P 
+    :body: This is a simple factory system that lets us associate fragement types (a string) with a subclass of fragment
+  name: TYPE_MAP
+  value: "{}"
+full_name: RDoc::Markup::Fragment
+includes: []
+
+instance_methods: 
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: add_text
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: to_s
+name: Fragment
+superclass: Object

@@ -1,0 +1,12 @@
+--- !ruby/object:RDoc::RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:RDoc::Markup::Flow::P 
+  :body: Creates a new AttrSpan for <tt>length</tt> characters
+full_name: RDoc::Markup::AttrSpan::new
+is_singleton: true
+name: new
+params: (length)
+visibility: public

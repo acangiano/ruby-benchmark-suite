@@ -1,0 +1,10 @@
+--- !ruby/object:RDoc::RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: RDoc::Markup::AttributeManager#split_into_flow
+is_singleton: false
+name: split_into_flow
+params: ()
+visibility: public

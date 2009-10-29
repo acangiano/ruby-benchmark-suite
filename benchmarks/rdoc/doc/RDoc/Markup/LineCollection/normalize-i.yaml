@@ -1,0 +1,12 @@
+--- !ruby/object:RDoc::RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:RDoc::Markup::Flow::P 
+  :body: Tidy up at the end
+full_name: RDoc::Markup::LineCollection#normalize
+is_singleton: false
+name: normalize
+params: ()
+visibility: public

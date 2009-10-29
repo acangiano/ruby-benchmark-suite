@@ -1,0 +1,12 @@
+--- !ruby/object:RDoc::RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:RDoc::Markup::Flow::P 
+  :body: Escape a LaTeX string
+full_name: RDoc::Markup::ToLaTeX#escape
+is_singleton: false
+name: escape
+params: (str)
+visibility: public

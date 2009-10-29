@@ -1,0 +1,17 @@
+--- !ruby/object:RDoc::RI::ClassDescription 
+attributes: []
+
+class_methods: []
+
+comment: 
+- !ruby/struct:RDoc::Markup::Flow::P 
+  :body: MetaMethod represents a meta-programmed method
+constants: []
+
+full_name: RDoc::MetaMethod
+includes: []
+
+instance_methods: []
+
+name: MetaMethod
+superclass: RDoc::AnyMethod

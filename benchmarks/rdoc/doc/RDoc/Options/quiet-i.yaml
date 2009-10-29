@@ -1,0 +1,12 @@
+--- !ruby/object:RDoc::RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:RDoc::Markup::Flow::P 
+  :body: Don't display progress as we process the files
+full_name: RDoc::Options#quiet
+is_singleton: false
+name: quiet
+params: ()
+visibility: public

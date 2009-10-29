@@ -1,0 +1,10 @@
+--- !ruby/object:RDoc::RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: RDoc::Markup::ToLaTeX#accept_heading
+is_singleton: false
+name: accept_heading
+params: (am, fragment)
+visibility: public

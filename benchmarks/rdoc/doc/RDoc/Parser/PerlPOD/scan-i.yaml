@@ -1,0 +1,14 @@
+--- !ruby/object:RDoc::RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:RDoc::Markup::Flow::P 
+  :body: Extract the Pod(-like) comments from the code. At its most basic there will ne no need to distinguish between the different types of header, etc.
+- !ruby/struct:RDoc::Markup::Flow::P 
+  :body: This uses a simple finite state machine, in a very procedural pattern. I could &quot;replace case with polymorphism&quot; but I think it would obscure the intent, scatter the code all over tha place. This machine is necessary because POD requires that directives be preceded by blank lines, so reading line by line is necessary, and preserving state about what is seen is necesary.
+full_name: RDoc::Parser::PerlPOD#scan
+is_singleton: false
+name: scan
+params: ()
+visibility: public

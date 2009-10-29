@@ -1,0 +1,12 @@
+--- !ruby/object:RDoc::RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:RDoc::Markup::Flow::P 
+  :body: Peek at the next token, but don't remove it from the stream
+full_name: RDoc::Parser::Ruby#peek_tk
+is_singleton: false
+name: peek_tk
+params: ()
+visibility: public

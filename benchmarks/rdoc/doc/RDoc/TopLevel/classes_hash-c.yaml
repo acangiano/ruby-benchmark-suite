@@ -1,0 +1,12 @@
+--- !ruby/object:RDoc::RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:RDoc::Markup::Flow::P 
+  :body: Hash of all classes known to RDoc
+full_name: RDoc::TopLevel::classes_hash
+is_singleton: true
+name: classes_hash
+params: ()
+visibility: public

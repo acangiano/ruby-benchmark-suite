@@ -1,0 +1,16 @@
+--- !ruby/object:RDoc::RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:RDoc::Markup::Flow::P 
+  :body: "Adds constant comments. By providing some_value: at the start ofthe comment you can override the C value of the comment to give a friendly definition."
+- !ruby/struct:RDoc::Markup::Flow::VERB 
+  :body: "  /* 300: The perfect score in bowling */\n  rb_define_const(cFoo, &quot;PERFECT&quot;, INT2FIX(300);\n"
+- !ruby/struct:RDoc::Markup::Flow::P 
+  :body: Will override +INT2FIX(300)+ with the value <tt>300</tt> in the output RDoc. Values may include quotes and escaped colons (\:).
+full_name: RDoc::Parser::C#handle_constants
+is_singleton: false
+name: handle_constants
+params: (type, var_name, const_name, definition)
+visibility: public

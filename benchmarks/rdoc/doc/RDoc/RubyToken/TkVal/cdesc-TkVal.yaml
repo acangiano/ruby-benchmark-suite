@@ -1,0 +1,16 @@
+--- !ruby/object:RDoc::RI::ClassDescription 
+attributes: []
+
+class_methods: 
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: new
+comment: 
+constants: []
+
+full_name: RDoc::RubyToken::TkVal
+includes: []
+
+instance_methods: []
+
+name: TkVal
+superclass: Token

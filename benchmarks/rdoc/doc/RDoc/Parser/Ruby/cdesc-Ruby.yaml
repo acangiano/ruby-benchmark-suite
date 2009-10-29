@@ -1,0 +1,220 @@
+--- !ruby/object:RDoc::RI::ClassDescription 
+attributes: []
+
+class_methods: 
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: new
+comment: 
+- !ruby/struct:RDoc::Markup::Flow::P 
+  :body: Extracts code elements from a source file returning a TopLevel object containing the constituent file elements.
+- !ruby/struct:RDoc::Markup::Flow::P 
+  :body: This file is based on rtags
+- !ruby/struct:RDoc::Markup::Flow::P 
+  :body: "RubyParser understands how to document:"
+- !ruby/object:RDoc::Markup::Flow::LIST 
+  contents: 
+  - !ruby/struct:RDoc::Markup::Flow::LI 
+    :label: "*"
+    :body: classes
+  - !ruby/struct:RDoc::Markup::Flow::LI 
+    :label: "*"
+    :body: modules
+  - !ruby/struct:RDoc::Markup::Flow::LI 
+    :label: "*"
+    :body: methods
+  - !ruby/struct:RDoc::Markup::Flow::LI 
+    :label: "*"
+    :body: constants
+  - !ruby/struct:RDoc::Markup::Flow::LI 
+    :label: "*"
+    :body: aliases
+  - !ruby/struct:RDoc::Markup::Flow::LI 
+    :label: "*"
+    :body: private, public, protected
+  - !ruby/struct:RDoc::Markup::Flow::LI 
+    :label: "*"
+    :body: private_class_function, public_class_function
+  - !ruby/struct:RDoc::Markup::Flow::LI 
+    :label: "*"
+    :body: module_function
+  - !ruby/struct:RDoc::Markup::Flow::LI 
+    :label: "*"
+    :body: attr, attr_reader, attr_writer, attr_accessor
+  - !ruby/struct:RDoc::Markup::Flow::LI 
+    :label: "*"
+    :body: extra accessors given on the command line
+  - !ruby/struct:RDoc::Markup::Flow::LI 
+    :label: "*"
+    :body: metaprogrammed methods
+  - !ruby/struct:RDoc::Markup::Flow::LI 
+    :label: "*"
+    :body: require
+  - !ruby/struct:RDoc::Markup::Flow::LI 
+    :label: "*"
+    :body: include
+  type: :BULLET
+- !ruby/struct:RDoc::Markup::Flow::H 
+  :level: 2
+  :text: Method Arguments
+- !ruby/struct:RDoc::Markup::Flow::P 
+  :body: "The parser extracts the arguments from the method definition. You can override this with a custom argument definition using the :call-seq: directive:"
+- !ruby/struct:RDoc::Markup::Flow::VERB 
+  :body: "  ##\n  # This method can be called with a range or an offset and length\n  #\n  # :call-seq:\n  #   my_method(Range)\n  #   my_method(offset, length)\n\n  def my_method(*args)\n  end\n"
+- !ruby/struct:RDoc::Markup::Flow::P 
+  :body: "The parser extracts <tt>yield</tt> expressions from method bodies to gather the yielded argument names. If your method manually calls a block instead of yielding or you want to override the discovered argument names use the :yields: directive:"
+- !ruby/struct:RDoc::Markup::Flow::VERB 
+  :body: "  ##\n  # My method is awesome\n\n  def my_method(&amp;block) # :yields: happy, times\n    block.call 1, 2\n  end\n"
+- !ruby/struct:RDoc::Markup::Flow::H 
+  :level: 2
+  :text: Metaprogrammed Methods
+- !ruby/struct:RDoc::Markup::Flow::P 
+  :body: "To pick up a metaprogrammed method, the parser looks for a comment starting with '##' before an identifier:"
+- !ruby/struct:RDoc::Markup::Flow::VERB 
+  :body: "  ##\n  # This is a meta-programmed method!\n\n  add_my_method :meta_method, :arg1, :arg2\n"
+- !ruby/struct:RDoc::Markup::Flow::P 
+  :body: The parser looks at the token after the identifier to determine the name, in this example, :meta_method. If a name cannot be found, a warning is printed and 'unknown is used.
+- !ruby/struct:RDoc::Markup::Flow::P 
+  :body: "You can force the name of a method using the :method: directive:"
+- !ruby/struct:RDoc::Markup::Flow::VERB 
+  :body: "  ##\n  # :method: woo_hoo!\n"
+- !ruby/struct:RDoc::Markup::Flow::P 
+  :body: "By default, meta-methods are instance methods. To indicate that a method is a singleton method instead use the :singleton-method: directive:"
+- !ruby/struct:RDoc::Markup::Flow::VERB 
+  :body: "  ##\n  # :singleton-method:\n"
+- !ruby/struct:RDoc::Markup::Flow::P 
+  :body: "You can also use the :singleton-method: directive with a name:"
+- !ruby/struct:RDoc::Markup::Flow::VERB 
+  :body: "  ##\n  # :singleton-method: woo_hoo!\n"
+- !ruby/struct:RDoc::Markup::Flow::P 
+  :body: "Additionally you can mark a method as an attribute by using :attr:, :attr_reader:, :attr_writer: or :attr_accessor:. Just like for :method:, the name is optional."
+- !ruby/struct:RDoc::Markup::Flow::VERB 
+  :body: "  ##\n  # :attr_reader: my_attr_name\n"
+- !ruby/struct:RDoc::Markup::Flow::H 
+  :level: 2
+  :text: Hidden methods and attributes
+- !ruby/struct:RDoc::Markup::Flow::P 
+  :body: "You can provide documentation for methods that don't appear using the :method:, :singleton-method: and :attr: directives:"
+- !ruby/struct:RDoc::Markup::Flow::VERB 
+  :body: "  ##\n  # :attr_writer: ghost_writer\n  # There is an attribute here, but you can't see it!\n\n  ##\n  # :method: ghost_method\n  # There is a method here, but you can't see it!\n\n  ##\n  # this is a comment for a regular method\n\n  def regular_method() end\n"
+- !ruby/struct:RDoc::Markup::Flow::P 
+  :body: "Note that by default, the :method: directive will be ignored if there is a standard rdocable item following it."
+constants: 
+- !ruby/object:RDoc::RI::Constant 
+  comment: 
+  name: NORMAL
+  value: "\"::\""
+- !ruby/object:RDoc::RI::Constant 
+  comment: 
+  name: SINGLE
+  value: "\"<<\""
+full_name: RDoc::Parser::Ruby
+includes: 
+- !ruby/object:RDoc::RI::IncludedModule 
+  name: RDoc::RubyToken
+- !ruby/object:RDoc::RI::IncludedModule 
+  name: RDoc::TokenStream
+instance_methods: 
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: add_token_listener
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: collect_first_comment
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: error
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: extract_call_seq
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: get_bool
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: get_class_or_module
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: get_class_specification
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: get_constant
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: get_constant_with_optional_parens
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: get_symbol_or_name
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: get_tk
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: get_tkread
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: look_for_directives_in
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: make_message
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: parse_alias
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: parse_attr
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: parse_attr_accessor
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: parse_call_parameters
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: parse_class
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: parse_comment
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: parse_constant
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: parse_include
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: parse_meta_attr
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: parse_meta_method
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: parse_method
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: parse_method_or_yield_parameters
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: parse_method_parameters
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: parse_module
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: parse_require
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: parse_statements
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: parse_symbol_arg
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: parse_symbol_in_arg
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: parse_top_level_statements
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: parse_visibility
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: parse_yield
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: parse_yield_parameters
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: peek_read
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: peek_tk
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: read_directive
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: read_documentation_modifiers
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: remove_private_comments
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: remove_token_listener
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: reset
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: scan
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: skip_for_variable
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: skip_method
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: skip_optional_do_after_expression
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: skip_tkspace
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: skip_tkspace_comment
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: unget_tk
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: warn
+name: Ruby
+superclass: RDoc::Parser

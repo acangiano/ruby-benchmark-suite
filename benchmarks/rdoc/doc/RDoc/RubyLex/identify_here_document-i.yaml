@@ -1,0 +1,10 @@
+--- !ruby/object:RDoc::RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: RDoc::RubyLex#identify_here_document
+is_singleton: false
+name: identify_here_document
+params: ()
+visibility: public

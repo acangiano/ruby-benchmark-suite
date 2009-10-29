@@ -1,0 +1,25 @@
+--- !ruby/object:RDoc::RI::ClassDescription 
+attributes: []
+
+class_methods: 
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: new
+comment: 
+- !ruby/struct:RDoc::Markup::Flow::P 
+  :body: Parse a non-source file. We basically take the whole thing as one big comment. If the first character in the file is '#', we strip leading pound signs.
+- !ruby/struct:RDoc::Markup::Flow::RULE 
+  :width: 
+- !ruby/struct:RDoc::Markup::Flow::P 
+  :body: Parse a non-source file. We basically take the whole thing as one big comment. If the first character in the file is '#', we strip leading pound signs.
+constants: []
+
+full_name: RDoc::Parser::Simple
+includes: []
+
+instance_methods: 
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: remove_private_comments
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: scan
+name: Simple
+superclass: RDoc::Parser

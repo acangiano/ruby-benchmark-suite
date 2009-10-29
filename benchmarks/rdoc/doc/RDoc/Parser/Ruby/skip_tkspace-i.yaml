@@ -1,0 +1,12 @@
+--- !ruby/object:RDoc::RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:RDoc::Markup::Flow::P 
+  :body: Skip spaces
+full_name: RDoc::Parser::Ruby#skip_tkspace
+is_singleton: false
+name: skip_tkspace
+params: (skip_nl = true)
+visibility: public

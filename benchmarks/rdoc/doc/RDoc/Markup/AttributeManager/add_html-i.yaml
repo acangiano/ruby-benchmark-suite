@@ -1,0 +1,14 @@
+--- !ruby/object:RDoc::RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:RDoc::Markup::Flow::P 
+  :body: "Adds a markup class with <tt>name</tt> for words surrounded by HTML tag <tt>tag</tt>. To process emphasis tags:"
+- !ruby/struct:RDoc::Markup::Flow::VERB 
+  :body: "  am.add_html 'em', :EM\n"
+full_name: RDoc::Markup::AttributeManager#add_html
+is_singleton: false
+name: add_html
+params: (tag, name)
+visibility: public

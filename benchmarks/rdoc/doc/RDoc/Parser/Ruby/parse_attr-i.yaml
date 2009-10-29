@@ -1,0 +1,12 @@
+--- !ruby/object:RDoc::RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:RDoc::Markup::Flow::P 
+  :body: Creates an RDoc::Attr for the name following <tt>tk</tt>, setting the comment to <tt>comment</tt>.
+full_name: RDoc::Parser::Ruby#parse_attr
+is_singleton: false
+name: parse_attr
+params: (context, single, tk, comment)
+visibility: public

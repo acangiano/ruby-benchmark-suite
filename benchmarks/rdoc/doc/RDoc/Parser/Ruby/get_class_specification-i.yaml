@@ -1,0 +1,12 @@
+--- !ruby/object:RDoc::RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:RDoc::Markup::Flow::P 
+  :body: Return a superclass, which can be either a constant of an expression
+full_name: RDoc::Parser::Ruby#get_class_specification
+is_singleton: false
+name: get_class_specification
+params: ()
+visibility: public

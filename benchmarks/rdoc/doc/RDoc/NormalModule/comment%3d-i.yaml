@@ -1,0 +1,12 @@
+--- !ruby/object:RDoc::RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:RDoc::Markup::Flow::P 
+  :body: Appends <tt>comment</tt> to the current comment, but separated by a rule
+full_name: RDoc::NormalModule#comment=
+is_singleton: false
+name: comment=
+params: (comment)
+visibility: public

@@ -1,0 +1,12 @@
+--- !ruby/object:RDoc::RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:RDoc::Markup::Flow::P 
+  :body: Converts a target url to one that is relative to a given path
+full_name: RDoc::Markup::ToHtml::gen_relative_url
+is_singleton: true
+name: gen_relative_url
+params: (path, target)
+visibility: public

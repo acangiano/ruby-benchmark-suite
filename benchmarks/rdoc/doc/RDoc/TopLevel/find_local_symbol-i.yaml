@@ -1,0 +1,12 @@
+--- !ruby/object:RDoc::RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:RDoc::Markup::Flow::P 
+  :body: Finds a class or module named <tt>symbol</tt>
+full_name: RDoc::TopLevel#find_local_symbol
+is_singleton: false
+name: find_local_symbol
+params: (symbol)
+visibility: public

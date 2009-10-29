@@ -1,0 +1,48 @@
+--- !ruby/object:RDoc::RI::ClassDescription 
+attributes: []
+
+class_methods: 
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: new
+comment: 
+constants: 
+- !ruby/object:RDoc::RI::Constant 
+  comment: 
+  name: InlineTag
+  value: Struct.new(:bit, :on, :off)
+- !ruby/object:RDoc::RI::Constant 
+  comment: 
+  name: LIST_TYPE_TO_HTML
+  value: "{       :BULLET     =>  [ \"<ul>\", \"</ul>\" ],       :NUMBER     =>  [ \"<ol>\", \"</ol>\" ],       :UPPERALPHA =>  [ \"<ol>\", \"</ol>\" ],       :LOWERALPHA =>  [ \"<ol>\", \"</ol>\" ],       :LABELED    =>  [ \"<dl>\", \"</dl>\" ],       :NOTE       =>  [ \"<table>\", \"</table>\" ],     }"
+full_name: RDoc::Markup::ToFlow
+includes: []
+
+instance_methods: 
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: accept_blank_line
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: accept_heading
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: accept_list_end
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: accept_list_item
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: accept_list_start
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: accept_paragraph
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: accept_rule
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: accept_verbatim
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: add_tag
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: annotate
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: end_accepting
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: init_tags
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: start_accepting
+name: ToFlow
+superclass: RDoc::Markup::Formatter

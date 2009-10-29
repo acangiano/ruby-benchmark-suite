@@ -1,0 +1,10 @@
+--- !ruby/object:RDoc::RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: RDoc::Markup::Lines#unget
+is_singleton: false
+name: unget
+params: ()
+visibility: public

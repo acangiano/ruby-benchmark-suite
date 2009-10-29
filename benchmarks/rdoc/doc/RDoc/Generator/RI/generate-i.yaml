@@ -1,0 +1,12 @@
+--- !ruby/object:RDoc::RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:RDoc::Markup::Flow::P 
+  :body: Build the initial indices and output objects based on an array of TopLevel objects containing the extracted information.
+full_name: RDoc::Generator::RI#generate
+is_singleton: false
+name: generate
+params: (top_levels)
+visibility: public

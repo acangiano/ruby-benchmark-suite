@@ -1,0 +1,17 @@
+--- !ruby/object:RDoc::RI::ClassDescription 
+attributes: []
+
+class_methods: []
+
+comment: 
+- !ruby/struct:RDoc::Markup::Flow::P 
+  :body: A normal class, neither singleton nor anonymous
+constants: []
+
+full_name: RDoc::NormalClass
+includes: []
+
+instance_methods: []
+
+name: NormalClass
+superclass: RDoc::ClassModule

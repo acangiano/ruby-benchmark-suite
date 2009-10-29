@@ -1,0 +1,12 @@
+--- !ruby/object:RDoc::RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:RDoc::Markup::Flow::P 
+  :body: Removes lines that are commented out that might otherwise get picked up when scanning for classes and methods
+full_name: RDoc::Parser::C#remove_commented_out_lines
+is_singleton: false
+name: remove_commented_out_lines
+params: ()
+visibility: public

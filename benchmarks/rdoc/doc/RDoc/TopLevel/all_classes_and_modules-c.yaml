@@ -1,0 +1,12 @@
+--- !ruby/object:RDoc::RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:RDoc::Markup::Flow::P 
+  :body: Returns all classes and modules discovered by RDoc
+full_name: RDoc::TopLevel::all_classes_and_modules
+is_singleton: true
+name: all_classes_and_modules
+params: ()
+visibility: public

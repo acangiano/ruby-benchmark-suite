@@ -1,0 +1,33 @@
+--- !ruby/object:RDoc::RI::ClassDescription 
+attributes: []
+
+class_methods: 
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: new
+comment: 
+- !ruby/struct:RDoc::Markup::Flow::P 
+  :body: This is an attamept to write a basic parser for Perl's POD (Plain old Documentation) format. Ruby code must co-exist with Perl, and some tasks are easier in Perl than Ruby because of existing libraries.
+- !ruby/struct:RDoc::Markup::Flow::P 
+  :body: One difficult is that Perl POD has no means of identifying the classes (packages) and methods (subs) with which it is associated, it is more like literate programming in so far as it just happens to be in the same place as the code, but need not be.
+- !ruby/struct:RDoc::Markup::Flow::P 
+  :body: "We would like to support all the markup the POD provides so that it will convert happily to HTML. At the moment I don't think I can do that: time constraints."
+- !ruby/struct:RDoc::Markup::Flow::RULE 
+  :width: 
+- !ruby/struct:RDoc::Markup::Flow::P 
+  :body: This is an attamept to write a basic parser for Perl's POD (Plain old Documentation) format. Ruby code must co-exist with Perl, and some tasks are easier in Perl than Ruby because of existing libraries.
+- !ruby/struct:RDoc::Markup::Flow::P 
+  :body: One difficult is that Perl POD has no means of identifying the classes (packages) and methods (subs) with which it is associated, it is more like literate programming in so far as it just happens to be in the same place as the code, but need not be.
+- !ruby/struct:RDoc::Markup::Flow::P 
+  :body: "We would like to support all the markup the POD provides so that it will convert happily to HTML. At the moment I don't think I can do that: time constraints."
+constants: []
+
+full_name: RDoc::Parser::PerlPOD
+includes: []
+
+instance_methods: 
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: filter
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: scan
+name: PerlPOD
+superclass: RDoc::Parser

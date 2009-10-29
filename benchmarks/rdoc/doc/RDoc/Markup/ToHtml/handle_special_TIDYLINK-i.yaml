@@ -1,0 +1,14 @@
+--- !ruby/object:RDoc::RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:RDoc::Markup::Flow::P 
+  :body: Here's a hypedlink where the label is different to the URL
+- !ruby/struct:RDoc::Markup::Flow::VERB 
+  :body: " &lt;label&gt;[url] or {long label}[url]\n"
+full_name: RDoc::Markup::ToHtml#handle_special_TIDYLINK
+is_singleton: false
+name: handle_special_TIDYLINK
+params: (special)
+visibility: public
