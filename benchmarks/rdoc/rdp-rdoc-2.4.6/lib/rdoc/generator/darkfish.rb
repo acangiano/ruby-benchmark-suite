@@ -2,7 +2,7 @@
 # vim: noet ts=2 sts=8 sw=2
 
 require 'rubygems'
-gem 'rdoc', '>= 2.4' unless ENV['RDOC_TEST'] or defined?($rdoc_rakefile)
+#gem 'rdoc', '>= 2.4' unless ENV['RDOC_TEST'] or defined?($rdoc_rakefile)
 
 require 'pp'
 require 'pathname'
