@@ -6,7 +6,7 @@ end
 require 'timeout'
 begin
   Timeout::timeout(ARGV[1].to_i) {
-	system(ARGV[2..-1].join(' '))
+    system(ARGV[2..-1].join(' '))
   }
 rescue Timeout::Error
   puts 'timed out'
