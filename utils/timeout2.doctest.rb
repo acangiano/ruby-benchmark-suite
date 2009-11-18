@@ -10,7 +10,8 @@ doctest: should timeout a longer running command
 >> system("ruby timeout2.rb -t 3 ruby -e 'sleep 10'")
 >> puts (Time.now - start_time) # around 3
 >> (Time.now - start_time) < 5
-
 => true
 
 =end
+
+# ideally, we should assert that the thing is killed, too...
