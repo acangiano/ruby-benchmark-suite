@@ -21,7 +21,7 @@ METER_MEMORY    = ENV['METER_MEMORY'] || 'yes'
 VM              = ENV['VM'] || "ruby"
 
 def command(name)
-  "ruby #{MONITOR} #{TIMEOUT} '#{VM}' #{RUNNER} #{name} #{ITERATIONS} #{report} #{METER_MEMORY}"
+  "#{VM} #{MONITOR} #{TIMEOUT} '#{VM}' #{RUNNER} #{name} #{ITERATIONS} #{report} #{METER_MEMORY}"
 end
 
 # Cache the name so it is only generated once during an invocation.
