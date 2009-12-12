@@ -21,7 +21,10 @@ METER_MEMORY    = ENV['METER_MEMORY'] || 'yes'
 VM              = ENV['VM'] || "ruby"
 
 def command(name)
-  "#{VM} #{MONITOR} #{TIMEOUT} '#{VM}' #{RUNNER} #{name} #{ITERATIONS} #{report} #{METER_MEMORY}"
+  # note that we use ruby here
+  # so that we'll be using a "stable" ruby for driving the monitor
+  # thus the test candidate ruby will only be running the test.
+  "ruby #{MONITOR} #{TIMEOUT} '#{VM}' #{RUNNER} #{name} #{ITERATIONS} #{report} #{METER_MEMORY}"
 end
 
 # Cache the name so it is only generated once during an invocation.
@@ -118,7 +121,7 @@ namespace :bench do
       end
     end
 
-    puts "Done"
+    puts "Done wrote report to #{report_name}"
   end
 
   desc "Run all the RBS benchmarks that match PATTERN ex: PATTERN=benchmarks/micro-benchmarks/bm_gc*"
@@ -135,7 +138,7 @@ namespace :bench do
       end
     end
 
-    puts "Done"
+    puts "Done wrote report to #{report_name}"
   end
 
   desc "Run all the RBS benchmarks in DIR"
@@ -152,7 +155,7 @@ namespace :bench do
       end
     end
 
-    puts "Done"
+    puts "Done wrote report to #{report_name}"
   end
 
   desc "Run only the RBS benchmark specified by FILE"
@@ -166,5 +169,7 @@ namespace :bench do
       puts "  Running #{File.basename name}"
       system "#{command name}"
     end
+
+    puts "Done wrote report to #{report_name}"
   end
 end
