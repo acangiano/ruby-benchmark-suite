@@ -8,12 +8,12 @@ end
 require 'timeout'
 out = nil
 begin
-  Timeout::timeout(ARGV[1].to_i) {
+  Timeout::timeout(ARGV[1].to_f) {
     out = IO.popen ARGV[2..-1].join(' ')
-    # hope it doesn't fill its input buffer...
+    puts out.read
     Process.wait out.pid
   }
 rescue Timeout::Error
   puts 'timed out'
-  Process.kill "KILL", out.pid
+  Process.kill "KILL", out.pid # if this fails it may have died right then
 end
