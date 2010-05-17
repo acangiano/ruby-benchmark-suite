@@ -1,10 +1,12 @@
 # currently we need a lotta gems
 # require them up front just in case they're not installed
+if(!defined?($loaded_substruct))
+$loaded_substruct = true
 $:.unshift '19_compat' if RUBY_VERSION >= '1.9'
 require 'rubygems'
 
 for gem in ["RedCloth", "fastercsv", "mime/types", "mini_magick", "ezcrypto"] do
- require gem
+# require gem
 end
 
 startup_path = File.join(Dir.pwd, 'substruct', 'config', 'boot') # avoid a weird
@@ -34,3 +36,4 @@ end
 Product.destroy_all
 Variation.destroy_all
 
+end

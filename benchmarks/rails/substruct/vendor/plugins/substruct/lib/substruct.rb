@@ -2,7 +2,7 @@
 require_dependency 'substruct/login_system.rb'
 
 require 'patch_attachment_fu'
-require 'redcloth'
+#require 'redcloth'
 module Substruct
   # Should we use live rate calculation via FedEx?
   mattr_accessor :use_live_rate_calculation
@@ -214,12 +214,13 @@ LOOKING INTO OTHER OPTIONS!!!
 
   # Returns markdown formatted content
   def get_markdown(content)
-    new_content = RedCloth.new(content).to_html
+    content
+# stubbed out    new_content = RedCloth.new(content).to_html
   end
 
   # Gets a markdown formatted snippet of content, truncated.
   def get_markdown_snippet(content, length=100)
-    rc = RedCloth.new(content).to_html
+    rc = content # stubbed out RedCloth.new(content).to_html
     cut_content = truncate_words(rc, length)
     new_content = sanitize_html(cut_content)
   end

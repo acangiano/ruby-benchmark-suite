@@ -51,7 +51,7 @@ namespace :substruct do
       # Check requirements
       require 'rubygems' unless Object.const_defined?(:Gem)
       %w(RedCloth fastercsv mime-types mini_magick ezcrypto).each do |gem_name|
-        check_installed_gem(gem_name)
+#        check_installed_gem(gem_name)
       end
       
       mkdir_p File.join(RAILS_ROOT, 'log')
