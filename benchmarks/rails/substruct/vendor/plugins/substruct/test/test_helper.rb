@@ -8,8 +8,8 @@ require File.expand_path(File.dirname(__FILE__) + '/../../../../test/test_helper
 # Set up the fixtures location manually, we don't want to move them to a
 # temporary path using Engines::Testing.set_fixture_path.
 # This works with unit and functional tests.
-Test::Unit::TestCase.fixture_path = File.dirname(__FILE__) + "/fixtures/"
-$LOAD_PATH.unshift(Test::Unit::TestCase.fixture_path)
+ActiveSupport::TestCase.fixture_path = File.dirname(__FILE__) + "/fixtures/"
+$LOAD_PATH.unshift(ActiveSupport::TestCase.fixture_path)
 # This is needed for integration tests.
 ActionController::IntegrationTest.fixture_path = File.dirname(__FILE__) + "/fixtures/"
 $LOAD_PATH.unshift(ActionController::IntegrationTest.fixture_path)
@@ -17,20 +17,21 @@ $LOAD_PATH.unshift(ActionController::IntegrationTest.fixture_path)
 # The only drawback to using transactional fixtures is when you actually 
 # need to test transactions.  Since your test is bracketed by a transaction,
 # any transactions started in your code will be automatically rolled back.
-Test::Unit::TestCase.use_transactional_fixtures = false
+ActiveSupport::TestCase.use_transactional_fixtures = false
 
 # Instantiated fixtures are slow, but give you @david where otherwise you
 # would need people(:david).  If you don't want to migrate your existing
 # test cases which use the @david style and don't mind the speed hit (each
 # instantiated fixtures translates to a database query per test method),
 # then set this back to true.
-Test::Unit::TestCase.use_instantiated_fixtures  = false
+ActiveSupport::TestCase.use_instantiated_fixtures = false
 
 # We don't want our tests with images messing with "public/system" used in
 # development and production, and creating images with ids that only exists in
 # the test database or overwriting things.
 Image.attachment_options[:path_prefix] = "public/test/"
 
+$: << RAILS_ROOT + '/lib/mocha-0.9.8/lib' # unpacked mocha gem
 
 # Require mocha.
 require 'mocha'

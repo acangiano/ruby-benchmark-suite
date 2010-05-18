@@ -78,6 +78,7 @@ class OrderAccount < ActiveRecord::Base
 
   # INSTANCE METHODS ==========================================================
 
+public
   # Obfuscates personal information about this account
   # - CC number
   def clear_personal_information

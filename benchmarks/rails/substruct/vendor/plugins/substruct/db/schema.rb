@@ -69,6 +69,7 @@ ActiveRecord::Schema.define(:version => 0) do
 
   create_table "order_accounts", :force => true do |t|
     t.integer "order_user_id",         :limit => 11, :default => 0, :null => false
+    t.string "order_user"
     t.integer "order_account_type_id", :limit => 11, :default => 1, :null => false
     t.string  "cc_number"
     t.string  "account_number"
@@ -270,6 +271,7 @@ ActiveRecord::Schema.define(:version => 0) do
 
   create_table "user_uploads", :force => true do |t|
     t.string   "filename"
+    t.string "attachment_file"
     t.integer  "width",        :limit => 11, :default => 0, :null => false
     t.integer  "height",       :limit => 11, :default => 0, :null => false
     t.string   "type"

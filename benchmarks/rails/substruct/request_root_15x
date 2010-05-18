@@ -1,4 +1,4 @@
-50.times {
+15.times {
   get '/'
 }
 say "GET / "
