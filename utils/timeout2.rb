@@ -11,7 +11,7 @@ begin
   Timeout::timeout(ARGV[1].to_f) {
     out = IO.popen ARGV[2..-1].join(' ')
     while !out.eof?
-      puts out.read 1024
+      print out.read 1024
     end      
     Process.wait out.pid
   }
