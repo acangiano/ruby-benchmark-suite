@@ -145,10 +145,12 @@ namespace :bench do
   task :dir => :setup do
     dir = ENV['DIR'] || raise("bench:dir needs DIR to be a directory")
 
-    puts "Running all benchmarks in #{dir}"
+    puts "Running all benchmarks in #{dir} and subdirectories"
     puts "  Writing report to #{report_name}"
+    list = Dir[dir + "/**/bm_*.rb"].sort
+    raise 'unable to find any from ' + dir unless list.length > 0
 
-    Dir[dir + "/**/bm_*.rb"].sort.each do |name|
+    list.each do |name|
       Dir.chdir File.dirname(name) do
         puts "  Running #{File.basename name}"
         system "#{command name}"
