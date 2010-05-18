@@ -11,6 +11,10 @@ if OS.windows? && !OS.iron_ruby?
   $: << RAILS_ROOT + '/lib/sqlite3-ruby-1.2.5-x86-mingw32/lib' # sqlite3-ruby for MRI doze
 end
 
+if OS.iron_ruby?
+ $: << RAILS_ROOT + "/lib/sqlite3-ironruby-0.1.1/lib"
+end
+
 if OS.java?
   $: << RAILS_ROOT + '/lib/activerecord-jdbcsqlite3-adapter-0.9.2/lib'
   $: << RAILS_ROOT + "/lib/activerecord-jdbc-adapter-0.9.2/lib"
