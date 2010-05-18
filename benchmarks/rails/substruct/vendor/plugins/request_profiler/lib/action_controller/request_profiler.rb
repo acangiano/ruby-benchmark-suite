@@ -109,6 +109,7 @@ module ActionController
       sandbox.request_count = 0
       elapsed = sandbox.benchmark(options[:n], profiling)
       count = sandbox.request_count.to_i
+      elapsed = 0.01 if elapsed == 0 # avoid divide by zero
       puts '%.0f ms, %d requests, %d req/sec' % [elapsed, count, 1000 * count / elapsed]
     end
 

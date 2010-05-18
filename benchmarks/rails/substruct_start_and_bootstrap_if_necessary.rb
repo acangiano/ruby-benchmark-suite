@@ -35,3 +35,4 @@ rescue Exception
 end
 Product.destroy_all
 Variation.destroy_all
+Session.destroy_all

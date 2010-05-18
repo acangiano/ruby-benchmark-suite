@@ -3,6 +3,13 @@
 
 RAILS_ROOT = "#{File.dirname(__FILE__)}/.." unless defined?(RAILS_ROOT)
 
+require RAILS_ROOT + '/lib/os-0.7.2/lib/os'
+
+if OS.windows? && !OS.iron_ruby?
+  ENV['PATH'] += ";bin"
+  $: << RAILS_ROOT + '/lib/sqlite3-ruby-1.2.5-x86-mingw32/lib' # sqlite3-ruby for MRI doze
+end
+
 module Rails
   class << self
     def boot!
