@@ -123,7 +123,8 @@ namespace :bench do
 
   desc "Run all the RBS benchmarks that match PATTERN ex: PATTERN=benchmarks/micro-benchmarks/bm_gc*"
   task :pattern => :setup do
-    dir = ENV['PATTERN'] || raise("bench:pattern needs PATTERN set")
+    dir = ENV['PATTERN']
+    raise("bench:pattern needs PATTERN set") if dir.nil? or dir.strip == ''
 
     puts "Running all benchmarks matching #{dir}"
     puts "  Writing report to #{report_name}"
