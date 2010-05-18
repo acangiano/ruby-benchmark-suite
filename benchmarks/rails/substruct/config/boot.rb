@@ -6,8 +6,15 @@ RAILS_ROOT = "#{File.dirname(__FILE__)}/.." unless defined?(RAILS_ROOT)
 require RAILS_ROOT + '/lib/os-0.7.2/lib/os'
 
 if OS.windows? && !OS.iron_ruby?
+    # mri
   ENV['PATH'] += ";bin"
   $: << RAILS_ROOT + '/lib/sqlite3-ruby-1.2.5-x86-mingw32/lib' # sqlite3-ruby for MRI doze
+end
+
+if OS.java?
+  $: << RAILS_ROOT + '/lib/activerecord-jdbcsqlite3-adapter-0.9.2/lib'
+  $: << RAILS_ROOT + "/lib/activerecord-jdbc-adapter-0.9.2/lib"
+  $: << RAILS_ROOT + "/lib/jdbc-sqlite3-3.6.3.054/lib"
 end
 
 module Rails

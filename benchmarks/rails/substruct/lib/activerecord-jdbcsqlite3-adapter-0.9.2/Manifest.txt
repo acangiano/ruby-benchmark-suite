@@ -1,0 +1,7 @@
+Manifest.txt
+Rakefile
+README.txt
+LICENSE.txt
+lib/active_record
+lib/active_record/connection_adapters
+lib/active_record/connection_adapters/jdbcsqlite3_adapter.rb
