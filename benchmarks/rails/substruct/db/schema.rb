@@ -45,13 +45,13 @@ ActiveRecord::Schema.define(:version => 0) do
     t.string   "code",               :limit => 20,  :default => "",    :null => false
     t.string   "name",               :limit => 100, :default => "",    :null => false
     t.text     "description"
-    t.float    "price",                             :default => 0.0,   :null => false
+    t.decimal  "price",                             :default => 0.0,   :null => false
     t.datetime "date_available",                                       :null => false
     t.integer  "quantity",           :limit => 11,  :default => 0,     :null => false
-    t.float    "size_width",                        :default => 0.0,   :null => false
-    t.float    "size_height",                       :default => 0.0,   :null => false
-    t.float    "size_depth",                        :default => 0.0,   :null => false
-    t.float    "weight",                            :default => 0.0,   :null => false
+    t.decimal  "size_width",                        :default => 0.0,   :null => false
+    t.decimal  "size_height",                       :default => 0.0,   :null => false
+    t.decimal  "size_depth",                        :default => 0.0,   :null => false
+    t.decimal  "weight",                            :default => 0.0,   :null => false
     t.string   "type",               :limit => 40
     t.integer  "product_id",         :limit => 11,  :default => 0,     :null => false
     t.boolean  "is_discontinued",                   :default => false, :null => false
@@ -101,7 +101,7 @@ ActiveRecord::Schema.define(:version => 0) do
     t.integer "item_id",    :limit => 11
     t.integer "order_id",   :limit => 11, :default => 0,   :null => false
     t.integer "quantity",   :limit => 11, :default => 0,   :null => false
-    t.float   "unit_price",               :default => 0.0, :null => false
+    t.decimal "unit_price",               :default => 0.0, :null => false
     t.string  "name",                     :default => ""
   end
 
@@ -109,14 +109,14 @@ ActiveRecord::Schema.define(:version => 0) do
     t.string  "name",        :limit => 100, :default => "",   :null => false
     t.string  "code",        :limit => 50
     t.boolean "is_domestic",                :default => true, :null => false
-    t.float   "price",                      :default => 0.0,  :null => false
+    t.decimal "price",                      :default => 0.0,  :null => false
   end
 
   create_table "order_shipping_weights", :force => true do |t|
     t.integer "order_shipping_type_id", :limit => 11, :default => 0,   :null => false
-    t.float   "min_weight",                           :default => 0.0, :null => false
-    t.float   "max_weight",                           :default => 0.0, :null => false
-    t.float   "price",                                :default => 0.0, :null => false
+    t.decimal "min_weight",                           :default => 0.0, :null => false
+    t.decimal "max_weight",                           :default => 0.0, :null => false
+    t.decimal "price",                                :default => 0.0, :null => false
   end
 
   create_table "order_status_codes", :force => true do |t|
@@ -145,9 +145,9 @@ ActiveRecord::Schema.define(:version => 0) do
     t.text     "notes"
     t.string   "referer"
     t.integer  "order_shipping_type_id", :limit => 11, :default => 1,   :null => false
-    t.float    "product_cost",                         :default => 0.0
-    t.float    "shipping_cost",                        :default => 0.0
-    t.float    "tax",                                  :default => 0.0, :null => false
+    t.decimal  "product_cost",                         :default => 0.0
+    t.decimal  "shipping_cost",                        :default => 0.0
+    t.decimal  "tax",                                  :default => 0.0, :null => false
     t.string   "auth_transaction_id"
     t.integer  "promotion_id",           :limit => 11, :default => 0,   :null => false
     t.integer  "shipping_address_id",    :limit => 11, :default => 0,   :null => false
@@ -198,11 +198,11 @@ ActiveRecord::Schema.define(:version => 0) do
   create_table "promotions", :force => true do |t|
     t.string   "code",               :limit => 15, :default => "",  :null => false
     t.integer  "discount_type",      :limit => 11, :default => 0,   :null => false
-    t.float    "discount_amount",                  :default => 0.0, :null => false
+    t.decimal  "discount_amount",                  :default => 0.0, :null => false
     t.integer  "item_id",            :limit => 11
     t.datetime "start",                                             :null => false
     t.datetime "end",                                               :null => false
-    t.float    "minimum_cart_value"
+    t.decimal  "minimum_cart_value"
     t.string   "description",                      :default => "",  :null => false
   end
 
