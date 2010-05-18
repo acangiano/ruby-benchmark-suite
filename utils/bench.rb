@@ -61,11 +61,17 @@ class Bench
             require 'rbconfig'
             if RbConfig::CONFIG['host_os'] =~ /mingw|mswin/
               # windows
-              require 'win32ole'
-              wmi = WIN32OLE.connect("winmgmts://")
-              processes = wmi.ExecQuery("select * from win32_process where ProcessId = #{Process.pid}")
-              memory_used = nil
-              for process in processes; memory_used = process.WorkingSetSize; end
+              if RUBY_PLATFORM =~ /java/
+               require 'java'
+               mem_bean = java.lang.management.ManagementFactory.memory_mxbean
+               memory_used = mem_bean.heap_memory_usage.used + mem_bean.non_heap_memory_usage.used
+              else
+                require 'win32ole'
+                wmi = WIN32OLE.connect("winmgmts://")
+                processes = wmi.ExecQuery("select * from win32_process where ProcessId = #{Process.pid}")
+                memory_used = nil
+                for process in processes; memory_used = process.WorkingSetSize; end
+              end
             else
               kb = `ps -o rss= -p #{Process.pid}`.to_i # in kilobytes
               memory_used = kb*1024

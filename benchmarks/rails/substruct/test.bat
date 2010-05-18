@@ -1,0 +1,1 @@
+rake test:plugins:all PLUGIN=substruct
