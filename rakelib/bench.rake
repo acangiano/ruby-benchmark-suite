@@ -21,6 +21,9 @@ METER_MEMORY    = ENV['METER_MEMORY'] || 'yes'
 VM              = ENV['VM'] || "ruby"
 
 def command(name)
+  # note that we use ruby here
+  # so that we'll be using a "stable" ruby for driving the monitor
+  # thus the test candidate ruby will only be running the test.
   "ruby #{MONITOR} #{TIMEOUT} '#{VM}' #{RUNNER} #{name} #{ITERATIONS} #{report} #{METER_MEMORY}"
 end
 
@@ -118,7 +121,7 @@ namespace :bench do
       end
     end
 
-    puts "Done"
+    done
   end
 
   desc "Run all the RBS benchmarks that match PATTERN ex: PATTERN=benchmarks/micro-benchmarks/bm_gc*"
@@ -136,24 +139,26 @@ namespace :bench do
       end
     end
 
-    puts "Done"
+   done
   end
 
   desc "Run all the RBS benchmarks in DIR"
   task :dir => :setup do
     dir = ENV['DIR'] || raise("bench:dir needs DIR to be a directory")
 
-    puts "Running all benchmarks in #{dir}"
+    puts "Running all benchmarks in #{dir} and subdirectories"
     puts "  Writing report to #{report_name}"
+    list = Dir[dir + "/**/bm_*.rb"].sort
+    raise 'unable to find any from ' + dir unless list.length > 0
 
-    Dir[dir + "/**/bm_*.rb"].sort.each do |name|
+    list.each do |name|
       Dir.chdir File.dirname(name) do
         puts "  Running #{File.basename name}"
         system "#{command name}"
       end
     end
 
-    puts "Done"
+    done
   end
 
   desc "Run only the RBS benchmark specified by FILE"
@@ -167,5 +172,15 @@ namespace :bench do
       puts "  Running #{File.basename name}"
       system "#{command name}"
     end
+
+    done
   end
+  
+  def done
+    if ENV['VERBOSE']
+      puts File.read report_name
+    end
+    puts "Done wrote report to #{report_name}"
+  end
+  
 end

@@ -15,7 +15,13 @@ end
 limit, vm, runner, name, iterations, report, meter_memory = ARGV
 
 cmd = "#{timeout} -t #{limit} #{vm} #{runner} #{name} #{iterations} #{report} #{meter_memory}"
-cmd += " >#{null}" unless ENV['VERBOSE']
+
+if ENV['VERBOSE']
+  puts cmd
+else
+  cmd += " >#{null}"
+end
+
 start = Time.now
 system cmd
 finish = Time.now

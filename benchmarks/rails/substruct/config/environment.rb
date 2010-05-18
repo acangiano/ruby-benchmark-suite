@@ -59,8 +59,8 @@ end
 
 # Include your application configuration below
 require 'rubygems'
-gem 'RedCloth'
-gem 'fastercsv'
+#gem 'RedCloth'
+#gem 'fastercsv'
 
 begin
   Preference.init_mail_settings()

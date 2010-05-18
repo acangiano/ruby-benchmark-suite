@@ -1,9 +1,3 @@
 test with jruby
 
 add test using ab and multiple concurrency :)
-
-could also do more views than just the root [like an index with lots of products {"at least x"}, and many navigation tags]
-
-some requests with 'extra' RAM using garbage before the rails test
-
-some simple threaded socket tests

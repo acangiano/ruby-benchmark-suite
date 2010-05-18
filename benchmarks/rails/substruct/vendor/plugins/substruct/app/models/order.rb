@@ -717,7 +717,7 @@ class Order < ActiveRecord::Base
     self.order_status_code = new_order_code if new_order_code
     self.new_notes="Order completed."
     if Preference.find_by_name('cc_clear_after_order').is_true?
-      self.account.clear_personal_information
+      #self.account.clear_personal_information # fails--TODO why?
     end
     self.save
 	end

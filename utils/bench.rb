@@ -149,7 +149,7 @@ class Bench
       f.puts "---"
       f.puts "name: #{name}"
       f.puts "parameter: #{parameter}"
-      status = "#{exc.class} #{exc.message}"
+      status = "#{exc.class} #{exc.message} #{exc.backtrace[0]}"
       f.puts "status: #{status.inspect}"
     end
   end

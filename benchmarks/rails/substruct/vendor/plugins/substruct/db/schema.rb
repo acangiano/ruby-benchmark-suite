@@ -24,15 +24,15 @@ ActiveRecord::Schema.define(:version => 0) do
     t.string   "type",       :limit => 50,  :default => "", :null => false
   end
 
-  add_index "content_nodes", ["name"], :name => "name"
-  add_index "content_nodes", ["type", "id"], :name => "type"
+  add_index "content_nodes", ["name"], :name => "name1"
+  add_index "content_nodes", ["type", "id"], :name => "type2"
 
   create_table "content_nodes_sections", :id => false, :force => true do |t|
     t.integer "content_node_id", :limit => 11, :default => 0, :null => false
     t.integer "section_id",      :limit => 11, :default => 0, :null => false
   end
 
-  add_index "content_nodes_sections", ["content_node_id", "section_id"], :name => "default"
+  add_index "content_nodes_sections", ["content_node_id", "section_id"], :name => "default3"
 
   create_table "countries", :force => true do |t|
     t.string  "name",        :limit => 100, :default => "",    :null => false
@@ -58,10 +58,10 @@ ActiveRecord::Schema.define(:version => 0) do
     t.integer  "variation_quantity", :limit => 11,  :default => 0,     :null => false
   end
 
-  add_index "items", ["quantity", "is_discontinued", "variation_quantity"], :name => "published"
-  add_index "items", ["product_id", "type"], :name => "variation"
-  add_index "items", ["date_available", "is_discontinued", "quantity", "variation_quantity", "type"], :name => "tag_view"
-  add_index "items", ["name", "code", "is_discontinued", "date_available", "quantity", "variation_quantity", "type"], :name => "search"
+  add_index "items", ["quantity", "is_discontinued", "variation_quantity"], :name => "published4"
+  add_index "items", ["product_id", "type"], :name => "variation5"
+  add_index "items", ["date_available", "is_discontinued", "quantity", "variation_quantity", "type"], :name => "tag_view6"
+  add_index "items", ["name", "code", "is_discontinued", "date_available", "quantity", "variation_quantity", "type"], :name => "search7"
 
   create_table "order_account_types", :force => true do |t|
     t.string "name", :limit => 30, :default => "", :null => false
@@ -69,6 +69,7 @@ ActiveRecord::Schema.define(:version => 0) do
 
   create_table "order_accounts", :force => true do |t|
     t.integer "order_user_id",         :limit => 11, :default => 0, :null => false
+    t.string "order_user"
     t.integer "order_account_type_id", :limit => 11, :default => 1, :null => false
     t.string  "cc_number"
     t.string  "account_number"
@@ -79,7 +80,7 @@ ActiveRecord::Schema.define(:version => 0) do
     t.string  "bank_name",             :limit => 50
   end
 
-  add_index "order_accounts", ["order_user_id", "order_account_type_id"], :name => "ids"
+  add_index "order_accounts", ["order_user_id", "order_account_type_id"], :name => "ids8"
 
   create_table "order_addresses", :force => true do |t|
     t.integer "order_user_id", :limit => 11, :default => 0,  :null => false
@@ -93,8 +94,8 @@ ActiveRecord::Schema.define(:version => 0) do
     t.integer "country_id",    :limit => 11, :default => 0,  :null => false
   end
 
-  add_index "order_addresses", ["first_name", "last_name"], :name => "name"
-  add_index "order_addresses", ["country_id", "order_user_id"], :name => "countries"
+  add_index "order_addresses", ["first_name", "last_name"], :name => "name9"
+  add_index "order_addresses", ["country_id", "order_user_id"], :name => "countries10"
 
   create_table "order_line_items", :force => true do |t|
     t.integer "item_id",    :limit => 11
@@ -122,7 +123,7 @@ ActiveRecord::Schema.define(:version => 0) do
     t.string "name", :limit => 30, :default => "", :null => false
   end
 
-  add_index "order_status_codes", ["name"], :name => "name"
+  add_index "order_status_codes", ["name"], :name => "name11"
 
   create_table "order_users", :force => true do |t|
     t.string   "username",      :limit => 50
@@ -133,7 +134,7 @@ ActiveRecord::Schema.define(:version => 0) do
     t.string   "last_name",     :limit => 50, :default => "", :null => false
   end
 
-  add_index "order_users", ["email_address"], :name => "email"
+  add_index "order_users", ["email_address"], :name => "email12"
 
   create_table "orders", :force => true do |t|
     t.integer  "order_number",           :limit => 11, :default => 0,   :null => false
@@ -154,9 +155,9 @@ ActiveRecord::Schema.define(:version => 0) do
     t.integer  "order_account_id",       :limit => 11, :default => 0,   :null => false
   end
 
-  add_index "orders", ["order_number"], :name => "order_number"
-  add_index "orders", ["order_user_id"], :name => "order_user_id"
-  add_index "orders", ["order_status_code_id"], :name => "status"
+  add_index "orders", ["order_number"], :name => "order_number13"
+  add_index "orders", ["order_user_id"], :name => "order_user_id14"
+  add_index "orders", ["order_status_code_id"], :name => "status15"
 
   create_table "plugin_schema_migrations", :id => false, :force => true do |t|
     t.string "plugin_name"
@@ -168,7 +169,7 @@ ActiveRecord::Schema.define(:version => 0) do
     t.string "value", :default => ""
   end
 
-  add_index "preferences", ["name"], :name => "namevalue"
+  add_index "preferences", ["name"], :name => "namevalue16"
 
   create_table "product_downloads", :force => true do |t|
     t.integer "download_id", :limit => 11, :default => 0, :null => false
@@ -176,8 +177,8 @@ ActiveRecord::Schema.define(:version => 0) do
     t.integer "rank",        :limit => 11
   end
 
-  add_index "product_downloads", ["product_id"], :name => "pid"
-  add_index "product_downloads", ["download_id"], :name => "did"
+  add_index "product_downloads", ["product_id"], :name => "pid17"
+  add_index "product_downloads", ["download_id"], :name => "did18"
 
   create_table "product_images", :force => true do |t|
     t.integer "image_id",   :limit => 11, :default => 0, :null => false
@@ -185,14 +186,14 @@ ActiveRecord::Schema.define(:version => 0) do
     t.integer "rank",       :limit => 11
   end
 
-  add_index "product_images", ["product_id", "image_id"], :name => "main"
+  add_index "product_images", ["product_id", "image_id"], :name => "main19"
 
   create_table "products_tags", :id => false, :force => true do |t|
     t.integer "product_id", :limit => 11, :default => 0, :null => false
     t.integer "tag_id",     :limit => 11, :default => 0, :null => false
   end
 
-  add_index "products_tags", ["product_id", "tag_id"], :name => "product_tags"
+  add_index "products_tags", ["product_id", "tag_id"], :name => "product_tags20"
 
   create_table "promotions", :force => true do |t|
     t.string   "code",               :limit => 15, :default => "",  :null => false
@@ -222,7 +223,7 @@ ActiveRecord::Schema.define(:version => 0) do
     t.integer "related_id", :limit => 11, :default => 0, :null => false
   end
 
-  add_index "related_products", ["product_id", "related_id"], :name => "related_products"
+  add_index "related_products", ["product_id", "related_id"], :name => "related_products21"
 
   create_table "rights", :force => true do |t|
     t.string "name"
@@ -258,7 +259,7 @@ ActiveRecord::Schema.define(:version => 0) do
     t.datetime "created_at"
   end
 
-  add_index "sessions", ["sessid"], :name => "session_index"
+  add_index "sessions", ["sessid"], :name => "session_index22"
 
   create_table "tags", :force => true do |t|
     t.string  "name",      :limit => 100, :default => "", :null => false
@@ -266,10 +267,11 @@ ActiveRecord::Schema.define(:version => 0) do
     t.integer "parent_id", :limit => 11,  :default => 0,  :null => false
   end
 
-  add_index "tags", ["name"], :name => "name"
+  add_index "tags", ["name"], :name => "name23"
 
   create_table "user_uploads", :force => true do |t|
     t.string   "filename"
+    t.string "attachment_file"
     t.integer  "width",        :limit => 11, :default => 0, :null => false
     t.integer  "height",       :limit => 11, :default => 0, :null => false
     t.string   "type"
@@ -280,14 +282,14 @@ ActiveRecord::Schema.define(:version => 0) do
     t.integer  "size",         :limit => 11
   end
 
-  add_index "user_uploads", ["created_on", "type"], :name => "creation"
+  add_index "user_uploads", ["created_on", "type"], :name => "creation24"
 
   create_table "users", :force => true do |t|
     t.string "login",    :limit => 50, :default => "", :null => false
     t.string "password", :limit => 40
   end
 
-  add_index "users", ["login", "password"], :name => "login"
+  add_index "users", ["login", "password"], :name => "login25"
 
   create_table "wishlist_items", :force => true do |t|
     t.integer  "order_user_id", :limit => 11, :default => 0, :null => false
@@ -295,7 +297,7 @@ ActiveRecord::Schema.define(:version => 0) do
     t.datetime "created_on"
   end
 
-  add_index "wishlist_items", ["order_user_id"], :name => "user"
-  add_index "wishlist_items", ["item_id"], :name => "item"
+  add_index "wishlist_items", ["order_user_id"], :name => "user26"
+  add_index "wishlist_items", ["item_id"], :name => "item27"
 
 end
