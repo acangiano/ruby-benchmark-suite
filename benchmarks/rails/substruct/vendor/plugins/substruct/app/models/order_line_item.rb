@@ -17,7 +17,7 @@ class OrderLineItem < ActiveRecord::Base
   end
 
   def total
-    self.quantity * self.unit_price
+    self.quantity * self.unit_price.to_i
   end
   
   # We still have view code referencing product_id
