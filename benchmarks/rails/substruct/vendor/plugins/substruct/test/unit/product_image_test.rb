@@ -1,3 +1,4 @@
+$: << '.'
 require File.dirname(__FILE__) + '/../test_helper'
 
 class ProductImageTest < ActiveSupport::TestCase

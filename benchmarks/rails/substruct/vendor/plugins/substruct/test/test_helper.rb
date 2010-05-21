@@ -1,4 +1,5 @@
 # Load the normal Rails helper. This ensures the environment is loaded.
+$: << '.' # 1.9.2 compat.
 require File.expand_path(File.dirname(__FILE__) + '/../../../../test/test_helper')
 
 # Load the schema - if migrations have been performed, this will be up to date.
