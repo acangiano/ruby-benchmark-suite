@@ -1,6 +1,7 @@
 # currently we need a lotta gems
 # require them up front just in case they're not installed
-$:.unshift '19_compat' if RUBY_VERSION >= '1.9'
+$:.unshift '19_compat' if RUBY_VERSION >= '1.9.0'
+$: << '.' if RUBY_VERSION >= '1.9.2'
 require 'rubygems'
 
 for gem in ["RedCloth", "fastercsv", "mime/types", "mini_magick", "ezcrypto"] do
@@ -29,6 +30,10 @@ rescue Exception
      require 'rake/testtask'
      require 'rake/rdoctask'
      require 'tasks/rails'
+     require 'fileutils'
+     Dir.mkdir 'db' unless File.directory? 'db'
+     FileUtils.cp "vendor/plugins/substruct/db/schema.rb", "db"
+     Rake::Task['db:drop'].invoke if defined?(DROP_DB_EACH_TIME)
      Rake::Task['db:create'].invoke
      Rake::Task['substruct:db:bootstrap'].invoke
      Rake::Task['db:migrate'].invoke

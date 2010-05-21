@@ -2,7 +2,7 @@ ENV['PLUGIN'] = 'substruct' # must be set early
 ENV['RAILS_ENV'] = 'test' # use this database
 
 DROP_DB_EACH_TIME = true
-require 'substruct_start_and_bootstrap_if_necessary.rb'
+require './substruct_start_and_bootstrap_if_necessary.rb'
 
 start = Time.now
 begin

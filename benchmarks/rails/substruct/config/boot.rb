@@ -2,7 +2,7 @@
 # Configure your app in config/environment.rb and config/environments/*.rb
 
 RAILS_ROOT = "#{File.dirname(__FILE__)}/.." unless defined?(RAILS_ROOT)
-
+$: << '.'
 require RAILS_ROOT + '/lib/os-0.7.2/lib/os'
 
 if OS.windows? && !OS.iron_ruby?
