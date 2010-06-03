@@ -12,8 +12,7 @@ MRI 1.8/1.9 on windows:
 IronRuby on windows:
  none required
 
-Note that you might also need to install rake (gem), and the builder gem, though it seems VM dependent somehow, and 
-typically they're installed by default on each VM.
+Note that you also need to install rake (as a gem), though it's typically they're installed by default on the various VM's.
 
 To check if they're working, do a verbose run, like
 $ rake bench:file FILE=benchmarks/rails/bm_substruct_test_all.rb ITERATIONS=1 VERBOSE=1  
