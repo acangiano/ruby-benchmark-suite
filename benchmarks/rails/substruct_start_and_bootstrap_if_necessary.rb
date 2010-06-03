@@ -29,6 +29,7 @@ rescue Exception
      require 'rake/testtask'
      require 'rake/rdoctask'
      require 'tasks/rails'
+     Rake::Task['db:drop'].invoke if defined?(DROP_DB_EACH_TIME)
      Rake::Task['db:create'].invoke
      Rake::Task['substruct:db:bootstrap'].invoke
      Rake::Task['db:migrate'].invoke
