@@ -57,9 +57,14 @@ module ActionView #:nodoc:
     end
 
     class EagerPath < Path
+      def initialize(path)
+        super
+        @loaded = false
+      end
+
       def load!
         return if @loaded
-        
+
         @paths = {}
         templates_in_path do |template|
           template.load!
@@ -103,13 +108,13 @@ module ActionView #:nodoc:
       @@exempt_from_layout.merge(regexps)
     end
 
-    attr_accessor :template_path, :filename, :load_path, :base_path
+    attr_accessor :template_path, :load_path, :base_path
     attr_accessor :locale, :name, :format, :extension
+    attr_writer :filename
     delegate :to_s, :to => :path
 
-    def initialize(template_path, load_path)
-      @template_path = template_path.dup
-      @load_path, @filename = load_path, File.join(load_path, template_path)
+    def initialize(template_path, load_path = nil)
+      @template_path, @load_path = template_path.dup, load_path
       @base_path, @name, @locale, @format, @extension = split(template_path)
       @base_path.to_s.gsub!(/\/$/, '') # Push to split method
 
@@ -180,6 +185,12 @@ module ActionView #:nodoc:
       @@exempt_from_layout.any? { |exempted| path =~ exempted }
     end
 
+    def filename
+      # no load_path means this is an "absolute pathed" template
+      load_path ? File.join(load_path, template_path) : template_path
+    end
+    memoize :filename
+
     def source
       File.read(filename)
     end
@@ -212,46 +223,30 @@ module ActionView #:nodoc:
       end
 
       def valid_locale?(locale)
-        I18n.available_locales.include?(locale.to_sym)
+        locale && I18n.available_locales.include?(locale.to_sym)
       end
 
       # Returns file split into an array
       #   [base_path, name, locale, format, extension]
       def split(file)
         if m = file.to_s.match(/^(.*\/)?([^\.]+)\.(.*)$/)
-          base_path = m[1]
-          name = m[2]
-          extensions = m[3]
-        else
-          return
+          [m[1], m[2], *parse_extensions(m[3])]
+        end
+      end
+
+      # returns parsed extensions as an array
+      #   [locale, format, extension]
+      def parse_extensions(extensions)
+        exts = extensions.split(".")
+
+        if extension = valid_extension?(exts.last) && exts.pop || nil
+          locale = valid_locale?(exts.first) && exts.shift || nil
+          format = exts.join('.') if exts.any? # join('.') is needed for multipart templates
+        else # no extension, just format
+          format = exts.last
         end
 
-        locale = nil
-        format = nil
-        extension = nil
-
-        if m = extensions.split(".")
-          if valid_locale?(m[0]) && m[1] && valid_extension?(m[2]) # All three
-            locale = m[0]
-            format = m[1]
-            extension = m[2]
-          elsif m[0] && m[1] && valid_extension?(m[2]) # Multipart formats
-            format = "#{m[0]}.#{m[1]}"
-            extension = m[2]
-          elsif valid_locale?(m[0]) && valid_extension?(m[1]) # locale and extension
-            locale = m[0]
-            extension = m[1]
-          elsif valid_extension?(m[1]) # format and extension
-            format = m[0]
-            extension = m[1]
-          elsif valid_extension?(m[0]) # Just extension
-            extension = m[0]
-          else # No extension
-            format = m[0]
-          end
-        end
-
-        [base_path, name, locale, format, extension]
+        [locale, format, extension]
       end
   end
 end

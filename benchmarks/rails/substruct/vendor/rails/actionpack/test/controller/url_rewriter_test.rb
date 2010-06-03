@@ -46,14 +46,30 @@ class UrlRewriterTests < ActionController::TestCase
     )
   end
 
+  def test_anchor_should_call_to_param
+    assert_equal(
+      'http://test.host/c/a/i#anchor',
+      @rewriter.rewrite(:controller => 'c', :action => 'a', :id => 'i', :anchor => Struct.new(:to_param).new('anchor'))
+    )
+  end
+
+  def test_anchor_should_be_cgi_escaped
+    assert_equal(
+      'http://test.host/c/a/i#anc%2Fhor',
+      @rewriter.rewrite(:controller => 'c', :action => 'a', :id => 'i', :anchor => Struct.new(:to_param).new('anc/hor'))
+    )
+  end
+
   def test_overwrite_params
     @params[:controller] = 'hi'
     @params[:action] = 'bye'
     @params[:id] = '2'
 
-    assert_equal '/hi/hi/2', @rewriter.rewrite(:only_path => true, :overwrite_params => {:action => 'hi'})
-    u = @rewriter.rewrite(:only_path => false, :overwrite_params => {:action => 'hi'})
-    assert_match %r(/hi/hi/2$), u
+    assert_deprecated /overwrite_params/ do
+      assert_equal '/hi/hi/2', @rewriter.rewrite(:only_path => true, :overwrite_params => {:action => 'hi'})
+      u = @rewriter.rewrite(:only_path => false, :overwrite_params => {:action => 'hi'})
+      assert_match %r(/hi/hi/2$), u
+    end
   end
 
   def test_overwrite_removes_original
@@ -61,9 +77,11 @@ class UrlRewriterTests < ActionController::TestCase
     @params[:action] = 'list'
     @params[:list_page] = 1
 
-    assert_equal '/search/list?list_page=2', @rewriter.rewrite(:only_path => true, :overwrite_params => {"list_page" => 2})
-    u = @rewriter.rewrite(:only_path => false, :overwrite_params => {:list_page => 2})
-    assert_equal 'http://test.host/search/list?list_page=2', u
+    assert_deprecated /overwrite_params/ do
+      assert_equal '/search/list?list_page=2', @rewriter.rewrite(:only_path => true, :overwrite_params => {"list_page" => 2})
+      u = @rewriter.rewrite(:only_path => false, :overwrite_params => {:list_page => 2})
+      assert_equal 'http://test.host/search/list?list_page=2', u
+    end
   end
 
   def test_to_str
@@ -107,6 +125,18 @@ class UrlWriterTests < ActionController::TestCase
   def test_anchor
     assert_equal('/c/a#anchor',
       W.new.url_for(:only_path => true, :controller => 'c', :action => 'a', :anchor => 'anchor')
+    )
+  end
+
+  def test_anchor_should_call_to_param
+    assert_equal('/c/a#anchor',
+      W.new.url_for(:only_path => true, :controller => 'c', :action => 'a', :anchor => Struct.new(:to_param).new('anchor'))
+    )
+  end
+
+  def test_anchor_should_be_cgi_escaped
+    assert_equal('/c/a#anc%2Fhor',
+      W.new.url_for(:only_path => true, :controller => 'c', :action => 'a', :anchor => Struct.new(:to_param).new('anc/hor'))
     )
   end
 
@@ -304,7 +334,7 @@ class UrlWriterTests < ActionController::TestCase
   def test_named_routes_with_nil_keys
     ActionController::Routing::Routes.clear!
     ActionController::Routing::Routes.draw do |map|
-      map.main '', :controller => 'posts'
+      map.main '', :controller => 'posts', :format => nil
       map.resources :posts
       map.connect ':controller/:action/:id'
     end
@@ -314,9 +344,9 @@ class UrlWriterTests < ActionController::TestCase
 
     controller = kls.new
     params = {:action => :index, :controller => :posts, :format => :xml}
-    assert_equal("http://www.basecamphq.com/posts.xml", controller.send(:url_for, params))    
+    assert_equal("http://www.basecamphq.com/posts.xml", controller.send(:url_for, params))
     params[:format] = nil
-    assert_equal("http://www.basecamphq.com/", controller.send(:url_for, params))    
+    assert_equal("http://www.basecamphq.com/", controller.send(:url_for, params))
   ensure
     ActionController::Routing::Routes.load!
   end

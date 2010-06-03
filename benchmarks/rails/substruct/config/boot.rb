@@ -5,10 +5,14 @@ RAILS_ROOT = "#{File.dirname(__FILE__)}/.." unless defined?(RAILS_ROOT)
 $: << '.'
 require RAILS_ROOT + '/lib/os-0.7.2/lib/os'
 
+# vendored rack
+$:.unshift RAILS_ROOT + '/lib/rack-1.1.0/lib'
+require 'rack'
+
 if OS.windows? && !OS.iron_ruby?
-    # mri
-  ENV['PATH'] += ";bin"
-  $: << RAILS_ROOT + '/lib/sqlite3-ruby-1.2.5-x86-mingw32/lib' # sqlite3-ruby for MRI doze
+  # mri
+  ENV['PATH'] += ";bin" # sqlite3.dll
+  $: << RAILS_ROOT + '/lib/sqlite3-ruby-1.2.5-x86-mingw32/lib' # sqlite3-ruby for doze
 end
 
 if OS.iron_ruby?

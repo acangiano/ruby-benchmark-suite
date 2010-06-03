@@ -159,6 +159,9 @@ module ActionController
     end
 
     def rewrite(options = {})
+      if options.include?(:overwrite_params)
+        ActiveSupport::Deprecation.warn 'The :overwrite_params option is deprecated. Specify all the necessary parameters instead', caller
+      end
       rewrite_url(options)
     end
 
@@ -184,7 +187,7 @@ module ActionController
         path = rewrite_path(options)
         rewritten_url << ActionController::Base.relative_url_root.to_s unless options[:skip_relative_url_root]
         rewritten_url << (options[:trailing_slash] ? path.sub(/\?|\z/) { "/" + $& } : path)
-        rewritten_url << "##{options[:anchor]}" if options[:anchor]
+        rewritten_url << "##{CGI.escape(options[:anchor].to_param.to_s)}" if options[:anchor]
 
         rewritten_url
       end
@@ -194,7 +197,7 @@ module ActionController
         options = options.symbolize_keys
         options.update(options[:params].symbolize_keys) if options[:params]
 
-        if (overwrite = options.delete(:overwrite_params))
+        if overwrite = options.delete(:overwrite_params)
           options.update(@parameters.symbolize_keys)
           options.update(overwrite.symbolize_keys)
         end

@@ -55,7 +55,7 @@ namespace :db do
       case config['adapter']
       when 'mysql'
         @charset   = ENV['CHARSET']   || 'utf8'
-        @collation = ENV['COLLATION'] || 'utf8_general_ci'
+        @collation = ENV['COLLATION'] || 'utf8_unicode_ci'
         begin
           ActiveRecord::Base.establish_connection(config.merge('database' => nil))
           ActiveRecord::Base.connection.create_database(config['database'], :charset => (config['charset'] || @charset), :collation => (config['collation'] || @collation))
@@ -94,11 +94,7 @@ namespace :db do
   desc 'Drops the database for the current RAILS_ENV'
   task :drop => :load_config do
     config = ActiveRecord::Base.configurations[RAILS_ENV || 'development']
-    begin
-      drop_database(config)
-    rescue Exception => e
-      puts "Couldn't drop #{config['database']} : #{e.inspect}"
-    end
+    drop_database(config)
   end
 
   def local_database?(config, &block)
@@ -156,8 +152,8 @@ namespace :db do
     Rake::Task["db:schema:dump"].invoke if ActiveRecord::Base.schema_format == :ruby
   end
 
-  desc 'Drops and recreates the database from db/schema.rb for the current environment.'
-  task :reset => ['db:drop', 'db:create', 'db:schema:load']
+  desc 'Drops and recreates the database from db/schema.rb for the current environment and loads the seeds.'
+  task :reset => [ 'db:drop', 'db:setup' ]
 
   desc "Retrieves the charset for the current environment's database"
   task :charset => :environment do
@@ -204,6 +200,15 @@ namespace :db do
         abort %{Run "rake db:migrate" to update your database then try again.}
       end
     end
+  end
+
+  desc 'Create the database, load the schema, and initialize with the seed data'
+  task :setup => [ 'db:create', 'db:schema:load', 'db:seed' ]
+
+  desc 'Load the seed data from db/seeds.rb'
+  task :seed => :environment do
+    seed_file = File.join(Rails.root, 'db', 'seeds.rb')
+    load(seed_file) if File.exist?(seed_file)
   end
 
   namespace :fixtures do
@@ -256,7 +261,11 @@ namespace :db do
     desc "Load a schema.rb file into the database"
     task :load => :environment do
       file = ENV['SCHEMA'] || "#{RAILS_ROOT}/db/schema.rb"
-      load(file)
+      if File.exists?(file)
+        load(file)
+      else
+        abort %{#{file} doesn't exist yet. Run "rake db:migrate" to create it then try again. If you do not intend to use a database, you should instead alter #{RAILS_ROOT}/config/environment.rb to prevent active_record from loading: config.frameworks -= [ :active_record ]}
+      end
     end
   end
 
@@ -397,15 +406,19 @@ namespace :db do
 end
 
 def drop_database(config)
-  case config['adapter']
-  when 'mysql'
-    ActiveRecord::Base.establish_connection(config)
-    ActiveRecord::Base.connection.drop_database config['database']
-  when /^sqlite/
-    FileUtils.rm(File.join(RAILS_ROOT, config['database']))
-  when 'postgresql'
-    ActiveRecord::Base.establish_connection(config.merge('database' => 'postgres', 'schema_search_path' => 'public'))
-    ActiveRecord::Base.connection.drop_database config['database']
+  begin
+    case config['adapter']
+    when 'mysql'
+      ActiveRecord::Base.establish_connection(config)
+      ActiveRecord::Base.connection.drop_database config['database']
+    when /^sqlite/
+      FileUtils.rm(File.join(RAILS_ROOT, config['database']))
+    when 'postgresql'
+      ActiveRecord::Base.establish_connection(config.merge('database' => 'postgres', 'schema_search_path' => 'public'))
+      ActiveRecord::Base.connection.drop_database config['database']
+    end
+  rescue Exception => e
+    puts "Couldn't drop #{config['database']} : #{e.inspect}"
   end
 end
 

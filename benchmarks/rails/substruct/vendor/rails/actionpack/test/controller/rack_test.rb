@@ -1,6 +1,6 @@
 require 'abstract_unit'
 
-class BaseRackTest < Test::Unit::TestCase
+class BaseRackTest < ActiveSupport::TestCase
   def setup
     @env = {
       "HTTP_MAX_FORWARDS" => "10",
@@ -219,7 +219,6 @@ class RackResponseTest < BaseRackTest
       "Content-Type" => "text/html; charset=utf-8",
       "Cache-Control" => "private, max-age=0, must-revalidate",
       "ETag" => '"65a8e27d8879283831b664bd8b7f0ad4"',
-      "Set-Cookie" => "",
       "Content-Length" => "13"
     }, headers)
 
@@ -238,7 +237,6 @@ class RackResponseTest < BaseRackTest
       "Content-Type" => "text/html; charset=utf-8",
       "Cache-Control" => "private, max-age=0, must-revalidate",
       "ETag" => '"ebb5e89e8a94e9dd22abf5d915d112b2"',
-      "Set-Cookie" => "",
       "Content-Length" => "8"
     }, headers)
   end
@@ -253,13 +251,29 @@ class RackResponseTest < BaseRackTest
     assert_equal 200, status
     assert_equal({
       "Content-Type" => "text/html; charset=utf-8",
-      "Cache-Control" => "no-cache",
-      "Set-Cookie" => ""
+      "Cache-Control" => "no-cache"
     }, headers)
 
     parts = []
     body.each { |part| parts << part }
     assert_equal ["0", "1", "2", "3", "4"], parts
+  end
+
+  def test_streaming_block_with_flush_is_deprecated
+    @response.body = Proc.new do |response, output|
+      5.times do |n|
+        output.write(n)
+        output.flush
+      end
+    end
+
+    assert_deprecated(/output.flush is no longer needed/) do
+      @response.prepare!
+      status, headers, body = @response.to_a
+
+      parts = []
+      body.each { |part| parts << part }
+    end
   end
 end
 

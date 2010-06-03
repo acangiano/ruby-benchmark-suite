@@ -23,6 +23,7 @@ ActiveRecord::Schema.define do
   # unless the ordering matters.  In which case, define them below
   create_table :accounts, :force => true do |t|
     t.integer :firm_id
+    t.string  :firm_name
     t.integer :credit_limit
   end
 
@@ -57,6 +58,7 @@ ActiveRecord::Schema.define do
 
   create_table :birds, :force => true do |t|
     t.string :name
+    t.string :color
     t.integer :pirate_id
   end
 
@@ -66,6 +68,10 @@ ActiveRecord::Schema.define do
 
   create_table :booleantests, :force => true do |t|
     t.boolean :value
+  end
+
+  create_table "CamelCase", :force => true do |t|
+    t.string :name
   end
 
   create_table :categories, :force => true do |t|
@@ -114,11 +120,17 @@ ActiveRecord::Schema.define do
     t.integer :rating, :default => 1
   end
 
+  add_index :companies, [:firm_id, :type, :rating, :ruby_type], :name => "company_index"
+
   create_table :computers, :force => true do |t|
     t.integer :developer, :null => false
     t.integer :extendedWarranty, :null => false
   end
 
+  create_table :contracts, :force => true do |t|
+    t.integer :developer_id
+    t.integer :company_id
+  end
 
   create_table :customers, :force => true do |t|
     t.string  :name
@@ -155,8 +167,20 @@ ActiveRecord::Schema.define do
     t.integer :course_id, :null => false
   end
 
+  create_table :essays, :force => true do |t|
+    t.string :name
+    t.string :writer_id
+    t.string :writer_type
+  end
+
   create_table :events, :force => true do |t|
     t.string :title, :limit => 5
+    t.datetime :ends_on
+  end
+
+  create_table :event_authors, :force => true do |t|
+    t.integer :event_id
+    t.integer :author_id
   end
 
   create_table :funny_jokes, :force => true do |t|
@@ -166,6 +190,11 @@ ActiveRecord::Schema.define do
   create_table :goofy_string_id, :force => true, :id => false do |t|
     t.string :id, :null => false
     t.string :info
+  end
+
+  create_table :invoices, :force => true do |t|
+    t.integer :balance
+    t.datetime :updated_at
   end
 
   create_table :items, :force => true do |t|
@@ -191,6 +220,11 @@ ActiveRecord::Schema.define do
   create_table :legacy_things, :force => true do |t|
     t.integer :tps_report_number
     t.integer :version, :null => false, :default => 0
+  end
+
+  create_table :line_items, :force => true do |t|
+    t.integer :invoice_id
+    t.integer :amount
   end
 
   create_table :lock_without_defaults, :force => true do |t|
@@ -281,6 +315,8 @@ ActiveRecord::Schema.define do
 
   create_table :owners, :primary_key => :owner_id ,:force => true do |t|
     t.string :name
+    t.column :updated_at, :datetime
+    t.column :happy_at,   :datetime
   end
 
 
@@ -410,6 +446,7 @@ ActiveRecord::Schema.define do
     t.boolean  :approved, :default => true
     t.integer  :replies_count, :default => 0
     t.integer  :parent_id
+    t.string   :parent_title
     t.string   :type
   end
 
@@ -457,6 +494,30 @@ ActiveRecord::Schema.define do
     (1..8).each do |i|
       t.integer :"c_int_#{i}", :limit => i
     end
+  end
+
+  # NOTE - the following 4 tables are used by models that have :inverse_of options on the associations
+  create_table :men, :force => true do |t|
+    t.string  :name
+  end
+
+  create_table :faces, :force => true do |t|
+    t.string  :description
+    t.integer :man_id
+    t.integer :polymorphic_man_id
+    t.string :polymorphic_man_type
+  end
+
+  create_table :interests, :force => true do |t|
+    t.string :topic
+    t.integer :man_id
+    t.integer :polymorphic_man_id
+    t.string :polymorphic_man_type
+    t.integer :zine_id
+  end
+
+  create_table :zines, :force => true do |t|
+    t.string :title
   end
 
   except 'SQLite' do

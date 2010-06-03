@@ -185,7 +185,7 @@ class FixturesTest < ActiveRecord::TestCase
 
   def test_binary_in_fixtures
     assert_equal 1, @binaries.size
-    data = File.read(ASSETS_ROOT + "/flowers.jpg")
+    data = File.open(ASSETS_ROOT + "/flowers.jpg", 'rb') { |f| f.read }
     data.force_encoding('ASCII-8BIT') if data.respond_to?(:force_encoding)
     data.freeze
     assert_equal data, @flowers.data
@@ -252,6 +252,11 @@ class FixturesWithoutInstantiationTest < ActiveRecord::TestCase
 
   def test_fixtures_from_root_yml_without_instantiation
     assert_nil @unknown
+  end
+
+  def test_visibility_of_accessor_method
+    assert_equal false, respond_to?(:topics, false), "should be private method"
+    assert_equal true, respond_to?(:topics, true), "confirm to respond surely"
   end
 
   def test_accessor_methods
@@ -516,6 +521,11 @@ class FoxyFixturesTest < ActiveRecord::TestCase
 
   def test_identifies_symbols
     assert_equal(Fixtures.identify(:foo), Fixtures.identify(:foo))
+  end
+
+  def test_identifies_consistently
+    assert_equal 207281424, Fixtures.identify(:ruby)
+    assert_equal 1066363776, Fixtures.identify(:sapphire_2)
   end
 
   TIMESTAMP_COLUMNS = %w(created_at created_on updated_at updated_on)

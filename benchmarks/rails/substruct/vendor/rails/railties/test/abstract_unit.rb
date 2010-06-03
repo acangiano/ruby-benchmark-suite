@@ -1,16 +1,13 @@
-$:.unshift File.dirname(__FILE__) + "/../../activesupport/lib"
-$:.unshift File.dirname(__FILE__) + "/../../activerecord/lib"
-$:.unshift File.dirname(__FILE__) + "/../../actionpack/lib"
-$:.unshift File.dirname(__FILE__) + "/../../actionmailer/lib"
-$:.unshift File.dirname(__FILE__) + "/../lib"
-$:.unshift File.dirname(__FILE__) + "/../builtin/rails_info"
+$:.unshift File.expand_path('../../../activesupport/lib', __FILE__)
+$:.unshift File.expand_path('../../../activerecord/lib', __FILE__)
+$:.unshift File.expand_path('../../../actionpack/lib', __FILE__)
+$:.unshift File.expand_path('../../../actionmailer/lib', __FILE__)
+$:.unshift File.expand_path('../../lib', __FILE__)
+$:.unshift File.expand_path('../../builtin/rails_info', __FILE__)
 
 require 'stringio'
 require 'rubygems'
 require 'test/unit'
-
-gem 'mocha', '>= 0.9.5'
-require 'mocha'
 
 require 'active_support'
 require 'active_support/test_case'

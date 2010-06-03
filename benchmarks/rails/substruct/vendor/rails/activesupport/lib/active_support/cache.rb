@@ -91,9 +91,21 @@ module ActiveSupport
     class Store
       cattr_accessor :logger
 
+      attr_reader :silence, :logger_off
+
       def silence!
         @silence = true
         self
+      end
+
+      alias silence? silence
+      alias logger_off? logger_off
+
+      def mute
+        previous_silence, @silence = defined?(@silence) && @silence, true
+        yield
+      ensure
+        @silence = previous_silence
       end
 
       # Fetches data from the cache, using the given key. If there is data in
@@ -220,8 +232,16 @@ module ActiveSupport
       end
 
       private
+        def expires_in(options)
+          expires_in = options && options[:expires_in]
+
+          raise ":expires_in must be a number" if expires_in && !expires_in.is_a?(Numeric)
+
+          expires_in || 0
+        end
+
         def log(operation, key, options)
-          logger.debug("Cache #{operation}: #{key}#{options ? " (#{options.inspect})" : ""}") if logger && !@silence && !@logger_off
+          logger.debug("Cache #{operation}: #{key}#{options ? " (#{options.inspect})" : ""}") if logger && !silence? && !logger_off?
         end
     end
   end

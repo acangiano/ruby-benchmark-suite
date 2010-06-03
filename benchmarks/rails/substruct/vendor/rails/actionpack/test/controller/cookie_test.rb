@@ -2,8 +2,14 @@ require 'abstract_unit'
 
 class CookieTest < ActionController::TestCase
   class TestController < ActionController::Base
+    self.cookie_verifier_secret = "thisISverySECRET123"
+    
     def authenticate
       cookies["user_name"] = "david"
+    end
+
+    def set_with_with_escapable_characters
+      cookies["that & guy"] = "foo & bar => baz"
     end
 
     def authenticate_for_fourteen_days
@@ -35,6 +41,18 @@ class CookieTest < ActionController::TestCase
     def authenticate_with_http_only
       cookies["user_name"] = { :value => "david", :httponly => true }
     end
+    
+    def set_permanent_cookie
+      cookies.permanent[:user_name] = "Jamie"
+    end
+
+    def set_signed_cookie
+      cookies.signed[:user_id] = 45
+    end
+    
+    def set_permanent_signed_cookie
+      cookies.permanent.signed[:remember_me] = 100
+    end
 
     def rescue_action(e)
       raise unless ActionView::MissingTemplate # No templates here, and we don't care about the output
@@ -51,6 +69,12 @@ class CookieTest < ActionController::TestCase
     get :authenticate
     assert_equal ["user_name=david; path=/"], @response.headers["Set-Cookie"]
     assert_equal({"user_name" => "david"}, @response.cookies)
+  end
+
+  def test_setting_with_escapable_characters
+    get :set_with_with_escapable_characters
+    assert_equal ["that+%26+guy=foo+%26+bar+%3D%3E+baz; path=/"], @response.headers["Set-Cookie"]
+    assert_equal({"that & guy" => "foo & bar => baz"}, @response.cookies)
   end
 
   def test_setting_cookie_for_fourteen_days
@@ -104,8 +128,43 @@ class CookieTest < ActionController::TestCase
     assert_equal %w{1 2 3}, jar["pages"]
   end
 
+  def test_cookiejar_delete_removes_item_and_returns_its_value
+    @request.cookies["user_name"] = "david"
+    @controller.response = @response
+    jar = ActionController::CookieJar.new(@controller)
+    assert_equal "david", jar.delete("user_name")
+  end
+
   def test_delete_cookie_with_path
     get :delete_cookie_with_path
     assert_equal ["user_name=; path=/beaten; expires=Thu, 01-Jan-1970 00:00:00 GMT"], @response.headers["Set-Cookie"]
+  end
+
+  def test_cookies_persist_throughout_request
+    get :authenticate
+    cookies = @controller.send(:cookies)
+    assert_equal 'david', cookies['user_name']
+  end
+  
+  def test_permanent_cookie
+    get :set_permanent_cookie
+    assert_match /Jamie/, @response.headers["Set-Cookie"].first
+    assert_match %r(#{20.years.from_now.year}), @response.headers["Set-Cookie"].first
+  end
+  
+  def test_signed_cookie
+    get :set_signed_cookie
+    assert_equal 45, @controller.send(:cookies).signed[:user_id]
+  end
+  
+  def test_accessing_nonexistant_signed_cookie_should_not_raise_an_invalid_signature
+    get :set_signed_cookie
+    assert_nil @controller.send(:cookies).signed[:non_existant_attribute]
+  end
+  
+  def test_permanent_signed_cookie
+    get :set_permanent_signed_cookie
+    assert_match %r(#{20.years.from_now.year}), @response.headers["Set-Cookie"].first
+    assert_equal 100, @controller.send(:cookies).signed[:remember_me]
   end
 end

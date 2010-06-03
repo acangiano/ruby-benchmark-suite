@@ -11,6 +11,9 @@ class ActionPackAssertionsController < ActionController::Base
 
   # a standard template
   def hello_xml_world() render :template => "test/hello_xml_world"; end
+  
+  # a standard partial
+  def partial() render :partial => 'test/partial'; end
 
   # a redirect to an internal location
   def redirect_internal() redirect_to "/nothing"; end
@@ -332,6 +335,30 @@ class ActionPackAssertionsControllerTest < ActionController::TestCase
     assert @response.rendered[:template]
     assert 'hello_world', @response.rendered[:template].to_s
   end
+  
+  def test_assert_template_with_partial
+    get :partial
+    assert_template :partial => '_partial'
+  end
+  
+  def test_assert_template_with_nil
+    get :nothing
+    assert_template nil
+  end
+  
+  def test_assert_template_with_string
+    get :hello_world
+    assert_template 'hello_world'    
+  end
+  
+  def test_assert_template_with_symbol
+    get :hello_world
+    assert_template :hello_world
+  end
+  
+  def test_assert_template_with_bad_argument
+    assert_raise(ArgumentError) { assert_template 1 }    
+  end
 
   # check the redirection location
   def test_redirection_location
@@ -431,7 +458,9 @@ class ActionPackAssertionsControllerTest < ActionController::TestCase
 
   def test_redirected_to_url_no_leadling_slash
     process :redirect_to_path
-    assert_redirected_to 'some/path'
+    assert_deprecated /leading/ do
+      assert_redirected_to 'some/path'
+    end
   end
 
   def test_redirected_to_url_full_url

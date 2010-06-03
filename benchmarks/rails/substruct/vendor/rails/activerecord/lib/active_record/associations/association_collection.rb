@@ -143,6 +143,8 @@ module ActiveRecord
       end
 
       # Remove all records from this association
+      #
+      # See delete for more info.
       def delete_all
         load_target
         delete(@target)
@@ -200,12 +202,13 @@ module ActiveRecord
         end
       end
 
-      # Destroy +records+ and remove from this association calling +before_remove+
-      # and +after_remove+ callbacks.
+      # Destroy +records+ and remove them from this association calling
+      # +before_remove+ and +after_remove+ callbacks.
       #
-      # Note this method will always remove records from database ignoring the
-      # +:dependent+ option.
+      # Note that this method will _always_ remove records from the database
+      # ignoring the +:dependent+ option.
       def destroy(*records)
+        records = find(records) if records.any? {|record| record.kind_of?(Fixnum) || record.kind_of?(String)}
         remove_records(records) do |records, old_records|
           old_records.each { |record| record.destroy }
         end
@@ -226,7 +229,9 @@ module ActiveRecord
         self
       end
 
-      # Destory all the records from this association
+      # Destory all the records from this association.
+      #
+      # See destroy for more info.
       def destroy_all
         load_target
         destroy(@target)
@@ -395,11 +400,24 @@ module ActiveRecord
               find(:all)
             end
 
-          @reflection.options[:uniq] ? uniq(records) : records
+          records = @reflection.options[:uniq] ? uniq(records) : records
+          records.each do |record|
+            set_inverse_instance(record, @owner)
+          end
+          records
+        end
+
+        def add_record_to_target_with_callbacks(record)
+          callback(:before_add, record)
+          yield(record) if block_given?
+          @target ||= [] unless loaded?
+          @target << record unless @reflection.options[:uniq] && @target.include?(record)
+          callback(:after_add, record)
+          set_inverse_instance(record, @owner)
+          record
         end
 
       private
-
         def create_record(attrs)
           attrs.update(@reflection.options[:conditions]) if @reflection.options[:conditions].is_a?(Hash)
           ensure_owner_is_not_new
@@ -421,15 +439,6 @@ module ActiveRecord
           else
             add_record_to_target_with_callbacks(record)
           end
-        end
-
-        def add_record_to_target_with_callbacks(record)
-          callback(:before_add, record)
-          yield(record) if block_given?
-          @target ||= [] unless loaded?
-          @target << record unless @reflection.options[:uniq] && @target.include?(record)
-          callback(:after_add, record)
-          record
         end
 
         def remove_records(*records)

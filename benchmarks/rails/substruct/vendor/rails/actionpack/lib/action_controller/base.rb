@@ -491,9 +491,18 @@ module ActionController #:nodoc:
               filtered_parameters[key] = '[FILTERED]'
             elsif value.is_a?(Hash)
               filtered_parameters[key] = filter_parameters(value)
+            elsif value.is_a?(Array)
+              filtered_parameters[key] = value.collect do |item|
+                case item
+                when Hash, Array
+                  filter_parameters(item)
+                else
+                  item
+                end
+              end
             elsif block_given?
               key = key.dup
-              value = value.dup if value
+              value = value.dup if value.duplicable?
               yield key, value
               filtered_parameters[key] = value
             else
@@ -607,15 +616,6 @@ module ActionController #:nodoc:
       # displayed on:
       #
       #   url_for :controller => 'posts', :action => nil
-      #
-      # If you explicitly want to create a URL that's almost the same as the current URL, you can do so using the
-      # <tt>:overwrite_params</tt> options. Say for your posts you have different views for showing and printing them.
-      # Then, in the show view, you get the URL for the print view like this
-      #
-      #   url_for :overwrite_params => { :action => 'print' }
-      #
-      # This takes the current URL as is and only exchanges the action. In contrast, <tt>url_for :action => 'print'</tt>
-      # would have slashed-off the path components after the changed action.
       def url_for(options = {})
         options ||= {}
         case options
@@ -810,7 +810,6 @@ module ActionController #:nodoc:
       #   render :text => proc { |response, output|
       #     10_000_000.times do |i|
       #       output.write("This is line #{i}\n")
-      #       output.flush
       #     end
       #   }
       #
@@ -950,8 +949,9 @@ module ActionController #:nodoc:
             response.content_type ||= Mime::JS
             render_for_text(js, options[:status])
 
-          elsif json = options[:json]
-            json = json.to_json unless json.is_a?(String)
+          elsif options.include?(:json)
+            json = options[:json]
+            json = ActiveSupport::JSON.encode(json) unless json.is_a?(String)
             json = "#{options[:callback]}(#{json})" unless options[:callback].blank?
             response.content_type ||= Mime::JSON
             render_for_text(json, options[:status])
@@ -1083,10 +1083,19 @@ module ActionController #:nodoc:
       # The redirection happens as a "302 Moved" header unless otherwise specified.
       #
       # Examples:
-      #   redirect_to post_url(@post), :status=>:found
-      #   redirect_to :action=>'atom', :status=>:moved_permanently
-      #   redirect_to post_url(@post), :status=>301
-      #   redirect_to :action=>'atom', :status=>302
+      #   redirect_to post_url(@post), :status => :found
+      #   redirect_to :action=>'atom', :status => :moved_permanently
+      #   redirect_to post_url(@post), :status => 301
+      #   redirect_to :action=>'atom', :status => 302
+      #
+      # It is also possible to assign a flash message as part of the redirection. There are two special accessors for commonly used the flash names
+      # +alert+ and +notice+ as well as a general purpose +flash+ bucket.
+      #
+      # Examples:
+      #   redirect_to post_url(@post), :alert => "Watch it, mister!"
+      #   redirect_to post_url(@post), :status=> :found, :notice => "Pay attention to the road"
+      #   redirect_to post_url(@post), :status => 301, :flash => { :updated_post_id => @post.id }
+      #   redirect_to { :action=>'atom' }, :alert => "Something serious happened"
       #
       # When using <tt>redirect_to :back</tt>, if there is no referrer,
       # RedirectBackError will be raised. You may specify some fallback
@@ -1403,7 +1412,7 @@ module ActionController #:nodoc:
   end
 
   Base.class_eval do
-    [ Filters, Layout, Benchmarking, Rescue, Flash, MimeResponds, Helpers,
+    [ Filters, Layout, Benchmarking, Rescue, MimeResponds, Helpers, Flash,
       Cookies, Caching, Verification, Streaming, SessionManagement,
       HttpAuthentication::Basic::ControllerMethods, HttpAuthentication::Digest::ControllerMethods,
       RecordIdentifier, RequestForgeryProtection, Translation

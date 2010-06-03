@@ -125,6 +125,7 @@ class AppGenerator < Rails::Generator::Base
       create_database_configuration_file(m)
       create_routes_file(m)
       create_locale_file(m)
+      create_seeds_file(m)
       create_initializer_files(m)
       create_environment_files(m)
     end
@@ -176,6 +177,10 @@ class AppGenerator < Rails::Generator::Base
       m.file "configs/routes.rb", "config/routes.rb"
     end
 
+    def create_seeds_file(m)
+      m.file "configs/seeds.rb", "db/seeds.rb"
+    end
+
     def create_initializer_files(m)
       %w( 
         backtrace_silencers 
@@ -188,6 +193,9 @@ class AppGenerator < Rails::Generator::Base
 
       m.template "configs/initializers/session_store.rb", "config/initializers/session_store.rb", 
         :assigns => { :app_name => @app_name, :app_secret => ActiveSupport::SecureRandom.hex(64) }
+
+      m.template "configs/initializers/cookie_verification_secret.rb", "config/initializers/cookie_verification_secret.rb", 
+        :assigns => { :app_secret => ActiveSupport::SecureRandom.hex(64) }
     end
 
     def create_locale_file(m)

@@ -55,12 +55,12 @@ class TimeWithZoneTest < Test::Unit::TestCase
   end
 
   def test_to_json
-    assert_equal "\"1999/12/31 19:00:00 -0500\"", @twz.to_json
+    assert_equal "\"1999/12/31 19:00:00 -0500\"", ActiveSupport::JSON.encode(@twz)
   end
 
   def test_to_json_with_use_standard_json_time_format_config_set_to_true
     old, ActiveSupport.use_standard_json_time_format = ActiveSupport.use_standard_json_time_format, true
-    assert_equal "\"1999-12-31T19:00:00-05:00\"", @twz.to_json
+    assert_equal "\"1999-12-31T19:00:00-05:00\"", ActiveSupport::JSON.encode(@twz)
   ensure
     ActiveSupport.use_standard_json_time_format = old
   end
@@ -90,7 +90,7 @@ class TimeWithZoneTest < Test::Unit::TestCase
   end
 
   def test_xmlschema_with_fractional_seconds
-    @twz += 0.123456 # advance the time by a fraction of a second
+    @twz += 0.1234560001 # advance the time by a fraction of a second
     assert_equal "1999-12-31T19:00:00.123-05:00", @twz.xmlschema(3)
     assert_equal "1999-12-31T19:00:00.123456-05:00", @twz.xmlschema(6)
     assert_equal "1999-12-31T19:00:00.123456-05:00", @twz.xmlschema(12)
@@ -281,6 +281,12 @@ class TimeWithZoneTest < Test::Unit::TestCase
     result = ActiveSupport::TimeWithZone.new( Time.utc(2000, 1, 1), ActiveSupport::TimeZone['Hawaii'] ).to_i
     assert_equal 946684800, result
     assert result.is_a?(Integer)
+  end
+
+  def test_to_i_with_wrapped_datetime
+    datetime = DateTime.civil(2000, 1, 1, 0)
+    twz = ActiveSupport::TimeWithZone.new(datetime, @time_zone)
+    assert_equal 946684800, twz.to_i
   end
 
   def test_to_time

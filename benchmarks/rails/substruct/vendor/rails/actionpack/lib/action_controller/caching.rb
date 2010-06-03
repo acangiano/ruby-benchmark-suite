@@ -22,12 +22,13 @@ module ActionController #:nodoc:
   #   ActionController::Base.cache_store = :file_store, "/path/to/cache/directory"
   #   ActionController::Base.cache_store = :drb_store, "druby://localhost:9192"
   #   ActionController::Base.cache_store = :mem_cache_store, "localhost"
+  #   ActionController::Base.cache_store = :mem_cache_store, Memcached::Rails.new("localhost:11211")
   #   ActionController::Base.cache_store = MyOwnStore.new("parameter")
   module Caching
     autoload :Actions, 'action_controller/caching/actions'
     autoload :Fragments, 'action_controller/caching/fragments'
     autoload :Pages, 'action_controller/caching/pages'
-    autoload :Sweeper, 'action_controller/caching/sweeping'
+    autoload :Sweeper, 'action_controller/caching/sweeper'
     autoload :Sweeping, 'action_controller/caching/sweeping'
 
     def self.included(base) #:nodoc:

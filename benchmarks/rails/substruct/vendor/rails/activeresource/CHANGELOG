@@ -1,3 +1,43 @@
+*2.3.8 (May 24, 2010)*
+
+* Version bump.
+
+
+*2.3.7 (May 24, 2010)*
+
+* Version bump.
+
+
+*2.3.6 (May 23, 2010)*
+
+* No changes, just a version bump.
+
+
+*2.3.5 (November 25, 2009)*
+
+* Minor Bug Fixes and deprecation warnings
+
+* More flexible content type handling when parsing responses.
+  
+  Ensures that ARes will handle responses like test/xml, or content types
+  with charsets included.
+
+*2.3.4 (September 4, 2009)*
+
+* Add support for errors in JSON format.  #1956 [Fabien Jakimowicz]
+
+* Recognizes 410 as Resource Gone. #2316 [Jordan Brough, Jatinder Singh]
+
+* More thorough SSL support.  #2370 [Roy Nicholson]
+
+* HTTP proxy support.  #2133 [Marshall Huss, Sébastien Dabet]
+
+
+*2.3.3 (July 12, 2009)*
+
+* No changes, just a version bump.
+
+
 *2.3.2 [Final] (March 15, 2009)*
 
 * Nothing new, just included in 2.3.2

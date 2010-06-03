@@ -1,11 +1,6 @@
 module ActiveRecord
   module Associations
     class HasManyThroughAssociation < HasManyAssociation #:nodoc:
-      def initialize(owner, reflection)
-        reflection.check_validity!
-        super
-      end
-
       alias_method :new, :build
 
       def create!(attrs = nil)
@@ -17,7 +12,17 @@ module ActiveRecord
 
       def create(attrs = nil)
         transaction do
-          self << (object = attrs ? @reflection.klass.send(:with_scope, :create => attrs) { @reflection.create_association } : @reflection.create_association)
+          object = if attrs
+            @reflection.klass.send(:with_scope, :create => attrs) {
+              @reflection.create_association
+            }
+          else
+            @reflection.create_association
+          end
+          raise_on_type_mismatch(object)
+          add_record_to_target_with_callbacks(object) do |r|
+            insert_record(object, false)
+          end
           object
         end
       end
@@ -44,7 +49,7 @@ module ActiveRecord
           options[:select]  = construct_select(options[:select])
           options[:from]  ||= construct_from
           options[:joins]   = construct_joins(options[:joins])
-          options[:include] = @reflection.source_reflection.options[:include] if options[:include].nil?
+          options[:include] = @reflection.source_reflection.options[:include] if options[:include].nil? && @reflection.source_reflection.options[:include]
         end
         
         def insert_record(record, force = true, validate = true)
@@ -96,7 +101,7 @@ module ActiveRecord
         # Construct attributes for :through pointing to owner and associate.
         def construct_join_attributes(associate)
           # TODO: revist this to allow it for deletion, supposing dependent option is supported
-          raise ActiveRecord::HasManyThroughCantAssociateThroughHasManyReflection.new(@owner, @reflection) if @reflection.source_reflection.macro == :has_many
+          raise ActiveRecord::HasManyThroughCantAssociateThroughHasOneOrManyReflection.new(@owner, @reflection) if [:has_one, :has_many].include?(@reflection.source_reflection.macro)
           join_attributes = construct_owner_attributes(@reflection.through_reflection).merge(@reflection.source_reflection.primary_key_name => associate.id)
           if @reflection.options[:source_type]
             join_attributes.merge!(@reflection.source_reflection.options[:foreign_type] => associate.class.base_class.name.to_s)
@@ -250,6 +255,11 @@ module ActiveRecord
 
         def cached_counter_attribute_name
           "#{@reflection.name}_count"
+        end
+
+        # NOTE - not sure that we can actually cope with inverses here
+        def we_can_set_the_inverse_on_this?(record)
+          false
         end
     end
   end

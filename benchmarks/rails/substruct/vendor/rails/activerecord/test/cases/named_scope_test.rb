@@ -265,7 +265,7 @@ class NamedScopeTest < ActiveRecord::TestCase
   end
 
   def test_rand_should_select_a_random_object_from_proxy
-    assert Topic.approved.rand.is_a?(Topic)
+    assert Topic.approved.random_element.is_a?(Topic)
   end
 
   def test_should_use_where_in_query_for_named_scope
@@ -319,10 +319,6 @@ class NamedScopeTest < ActiveRecord::TestCase
     assert_equal [posts(:sti_comments)], Post.with_special_comments.with_post(4).all.uniq
   end
 
-  def test_methods_invoked_within_scopes_should_respect_scope
-    assert_equal [], Topic.approved.by_rejected_ids.proxy_options[:conditions][:id]
-  end
-
   def test_named_scopes_batch_finders
     assert_equal 3, Topic.approved.count
 
@@ -334,6 +330,12 @@ class NamedScopeTest < ActiveRecord::TestCase
       Topic.approved.find_in_batches(:batch_size => 2) do |group|
         group.each {|t| assert t.approved? }
       end
+    end
+  end
+
+  def test_table_names_for_chaining_scopes_with_and_without_table_name_included
+    assert_nothing_raised do
+      Comment.for_first_post.for_first_author.all
     end
   end
 end

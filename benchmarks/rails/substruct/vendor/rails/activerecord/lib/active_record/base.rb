@@ -461,6 +461,9 @@ module ActiveRecord #:nodoc:
     # Accessor for the name of the prefix string to prepend to every table name. So if set to "basecamp_", all
     # table names will be named like "basecamp_projects", "basecamp_people", etc. This is a convenient way of creating a namespace
     # for tables in a shared database. By default, the prefix is the empty string.
+    #
+    # If you are organising your models within modules you can add a prefix to the models within a namespace by defining
+    # a singleton method in the parent module called table_name_prefix which returns your chosen prefix.
     cattr_accessor :table_name_prefix, :instance_writer => false
     @@table_name_prefix = ""
 
@@ -687,14 +690,9 @@ module ActiveRecord #:nodoc:
       #   Person.exists?(['name LIKE ?', "%#{query}%"])
       #   Person.exists?
       def exists?(id_or_conditions = {})
-        connection.select_all(
-          construct_finder_sql(
-            :select     => "#{quoted_table_name}.#{primary_key}",
-            :conditions => expand_id_conditions(id_or_conditions),
-            :limit      => 1
-          ),
-          "#{name} Exists"
-        ).size > 0
+        find_initial(
+          :select => "#{quoted_table_name}.#{primary_key}",
+          :conditions => expand_id_conditions(id_or_conditions)) ? true : false
       end
 
       # Creates an object (or multiple objects) and saves it to the database, if validations pass.
@@ -736,12 +734,12 @@ module ActiveRecord #:nodoc:
       # ==== Parameters
       #
       # * +id+ - This should be the id or an array of ids to be updated.
-      # * +attributes+ - This should be a Hash of attributes to be set on the object, or an array of Hashes.
+      # * +attributes+ - This should be a hash of attributes to be set on the object, or an array of hashes.
       #
       # ==== Examples
       #
       #   # Updating one record:
-      #   Person.update(15, { :user_name => 'Samuel', :group => 'expert' })
+      #   Person.update(15, :user_name => 'Samuel', :group => 'expert')
       #
       #   # Updating multiple records:
       #   people = { 1 => { "first_name" => "David" }, 2 => { "first_name" => "Jeremy" } }
@@ -919,6 +917,29 @@ module ActiveRecord #:nodoc:
       def count_by_sql(sql)
         sql = sanitize_conditions(sql)
         connection.select_value(sql, "#{name} Count").to_i
+      end
+
+      # Resets one or more counter caches to their correct value using an SQL
+      # count query.  This is useful when adding new counter caches, or if the
+      # counter has been corrupted or modified directly by SQL.
+      #
+      # ==== Parameters
+      #
+      # * +id+ - The id of the object you wish to reset a counter on.
+      # * +counters+ - One or more counter names to reset
+      #
+      # ==== Examples
+      #
+      #   # For Post with id #1 records reset the comments_count
+      #   Post.reset_counters(1, :comments)
+      def reset_counters(id, *counters)
+        object = find(id)
+        counters.each do |association|
+          child_class = reflect_on_association(association).klass
+          counter_name = child_class.reflect_on_association(self.name.downcase.to_sym).counter_cache_column
+
+          connection.update("UPDATE #{quoted_table_name} SET #{connection.quote_column_name(counter_name)} = #{object.send(association).count} WHERE #{connection.quote_column_name(primary_key)} = #{quote_value(object.id)}", "#{name} UPDATE")
+        end
       end
 
       # A generic "counter updater" implementation, intended primarily to be
@@ -1153,7 +1174,7 @@ module ActiveRecord #:nodoc:
               contained = contained.singularize if parent.pluralize_table_names
               contained << '_'
             end
-            name = "#{table_name_prefix}#{contained}#{undecorated_table_name(base.name)}#{table_name_suffix}"
+            name = "#{full_table_name_prefix}#{contained}#{undecorated_table_name(base.name)}#{table_name_suffix}"
           end
 
         set_table_name(name)
@@ -1181,6 +1202,10 @@ module ActiveRecord #:nodoc:
             key = base_name.to_s.foreign_key
         end
         key
+      end
+
+      def full_table_name_prefix #:nodoc:
+        (parents.detect{ |p| p.respond_to?(:table_name_prefix) } || self).table_name_prefix
       end
 
       # Defines the column name for use with single table inheritance
@@ -1369,7 +1394,7 @@ module ActiveRecord #:nodoc:
         end
         defaults << options[:default] if options[:default]
         defaults.flatten!
-        defaults << attribute_key_name.humanize
+        defaults << attribute_key_name.to_s.humanize
         options[:count] ||= 1
         I18n.translate(defaults.shift, options.merge(:default => defaults, :scope => [:activerecord, :attributes]))
       end
@@ -1866,7 +1891,7 @@ module ActiveRecord #:nodoc:
               #     find(:first, options.merge(finder_options))
               #   end
               # end
-              self.class_eval %{
+              self.class_eval <<-EOS, __FILE__, __LINE__ + 1
                 def self.#{method_id}(*args)
                   options = args.extract_options!
                   attributes = construct_attributes_from_arguments(
@@ -1886,7 +1911,7 @@ module ActiveRecord #:nodoc:
                   end
                   #{'result || raise(RecordNotFound, "Couldn\'t find #{name} with #{attributes.to_a.collect {|pair| "#{pair.first} = #{pair.second}"}.join(\', \')}")' if bang}
                 end
-              }, __FILE__, __LINE__
+              EOS
               send(method_id, *arguments)
             elsif match.instantiator?
               instantiator = match.instantiator
@@ -1915,17 +1940,19 @@ module ActiveRecord #:nodoc:
               #     record
               #   end
               # end
-              self.class_eval %{
+              self.class_eval <<-EOS, __FILE__, __LINE__ + 1
                 def self.#{method_id}(*args)
-                  guard_protected_attributes = false
-
-                  if args[0].is_a?(Hash)
-                    guard_protected_attributes = true
-                    attributes = args[0].with_indifferent_access
-                    find_attributes = attributes.slice(*[:#{attribute_names.join(',:')}])
-                  else
-                    find_attributes = attributes = construct_attributes_from_arguments([:#{attribute_names.join(',:')}], args)
+                  attributes = [:#{attribute_names.join(',:')}]
+                  protected_attributes_for_create, unprotected_attributes_for_create = {}, {}
+                  args.each_with_index do |arg, i|
+                    if arg.is_a?(Hash)
+                      protected_attributes_for_create = args[i].with_indifferent_access
+                    else
+                      unprotected_attributes_for_create[attributes[i]] = args[i]
+                    end
                   end
+
+                  find_attributes = (protected_attributes_for_create.merge(unprotected_attributes_for_create)).slice(*attributes)
 
                   options = { :conditions => find_attributes }
                   set_readonly_option!(options)
@@ -1933,7 +1960,10 @@ module ActiveRecord #:nodoc:
                   record = find(:first, options)
 
                   if record.nil?
-                    record = self.new { |r| r.send(:attributes=, attributes, guard_protected_attributes) }
+                    record = self.new do |r|
+                      r.send(:attributes=, protected_attributes_for_create, true) unless protected_attributes_for_create.empty?
+                      r.send(:attributes=, unprotected_attributes_for_create, false) unless unprotected_attributes_for_create.empty?
+                    end
                     #{'yield(record) if block_given?'}
                     #{'record.save' if instantiator == :create}
                     record
@@ -1941,14 +1971,14 @@ module ActiveRecord #:nodoc:
                     record
                   end
                 end
-              }, __FILE__, __LINE__
+              EOS
               send(method_id, *arguments, &block)
             end
           elsif match = DynamicScopeMatch.match(method_id)
             attribute_names = match.attribute_names
             super unless all_attributes_exists?(attribute_names)
             if match.scope?
-              self.class_eval %{
+              self.class_eval <<-EOS, __FILE__, __LINE__ + 1
                 def self.#{method_id}(*args)                        # def self.scoped_by_user_name_and_password(*args)
                   options = args.extract_options!                   #   options = args.extract_options!
                   attributes = construct_attributes_from_arguments( #   attributes = construct_attributes_from_arguments(
@@ -1957,7 +1987,7 @@ module ActiveRecord #:nodoc:
                                                                     # 
                   scoped(:conditions => attributes)                 #   scoped(:conditions => attributes)
                 end                                                 # end
-              }, __FILE__, __LINE__
+              EOS
               send(method_id, *arguments)
             end
           else
@@ -2168,7 +2198,7 @@ module ActiveRecord #:nodoc:
         #     default_scope :order => 'last_name, first_name'
         #   end
         def default_scope(options = {})
-          self.default_scoping << { :find => options, :create => (options.is_a?(Hash) && options.has_key?(:conditions)) ? options[:conditions] : {} }
+          self.default_scoping << { :find => options, :create => options[:conditions].is_a?(Hash) ? options[:conditions] : {} }
         end
 
         # Test whether the given method and optional key are scoped.
@@ -2199,9 +2229,9 @@ module ActiveRecord #:nodoc:
           modularized_name = type_name_with_module(type_name)
           silence_warnings do
             begin
-              class_eval(modularized_name, __FILE__, __LINE__)
+              class_eval(modularized_name, __FILE__)
             rescue NameError
-              class_eval(type_name, __FILE__, __LINE__)
+              class_eval(type_name, __FILE__)
             end
           end
         end
@@ -2228,12 +2258,12 @@ module ActiveRecord #:nodoc:
         #   ["name='%s' and group_id='%s'", "foo'bar", 4]  returns  "name='foo''bar' and group_id='4'"
         #   { :name => "foo'bar", :group_id => 4 }  returns "name='foo''bar' and group_id='4'"
         #   "name='foo''bar' and group_id='4'" returns "name='foo''bar' and group_id='4'"
-        def sanitize_sql_for_conditions(condition)
+        def sanitize_sql_for_conditions(condition, table_name = quoted_table_name)
           return nil if condition.blank?
 
           case condition
             when Array; sanitize_sql_array(condition)
-            when Hash;  sanitize_sql_hash_for_conditions(condition)
+            when Hash;  sanitize_sql_hash_for_conditions(condition, table_name)
             else        condition
           end
         end
@@ -2299,20 +2329,24 @@ module ActiveRecord #:nodoc:
         # And for value objects on a composed_of relationship:
         #   { :address => Address.new("123 abc st.", "chicago") }
         #     # => "address_street='123 abc st.' and address_city='chicago'"
-        def sanitize_sql_hash_for_conditions(attrs, table_name = quoted_table_name)
+        def sanitize_sql_hash_for_conditions(attrs, default_table_name = quoted_table_name)
           attrs = expand_hash_conditions_for_aggregates(attrs)
 
           conditions = attrs.map do |attr, value|
+            table_name = default_table_name
+
             unless value.is_a?(Hash)
               attr = attr.to_s
 
               # Extract table name from qualified attribute names.
               if attr.include?('.')
-                table_name, attr = attr.split('.', 2)
-                table_name = connection.quote_table_name(table_name)
+                attr_table_name, attr = attr.split('.', 2)
+                attr_table_name = connection.quote_table_name(attr_table_name)
+              else
+                attr_table_name = table_name
               end
 
-              attribute_condition("#{table_name}.#{connection.quote_column_name(attr)}", value)
+              attribute_condition("#{attr_table_name}.#{connection.quote_column_name(attr)}", value)
             else
               sanitize_sql_hash_for_conditions(value, connection.quote_table_name(attr.to_s))
             end
@@ -2437,7 +2471,7 @@ module ActiveRecord #:nodoc:
         @new_record = true
         ensure_proper_type
         self.attributes = attributes unless attributes.nil?
-        self.class.send(:scope, :create).each { |att,value| self.send("#{att}=", value) } if self.class.send(:scoped?, :create)
+        assign_attributes(self.class.send(:scope, :create)) if self.class.send(:scoped?, :create)
         result = yield self if block_given?
         callback(:after_initialize) if respond_to_without_attributes?(:after_initialize)
         result
@@ -2568,6 +2602,7 @@ module ActiveRecord #:nodoc:
       # options, use <tt>#destroy</tt>.
       def delete
         self.class.delete(id) unless new_record?
+        @destroyed = true
         freeze
       end
 
@@ -2582,6 +2617,7 @@ module ActiveRecord #:nodoc:
           )
         end
 
+        @destroyed = true
         freeze
       end
 
@@ -2692,7 +2728,7 @@ module ActiveRecord #:nodoc:
       def reload(options = nil)
         clear_aggregation_cache
         clear_association_cache
-        @attributes.update(self.class.find(self.id, options).instance_variable_get('@attributes'))
+        @attributes.update(self.class.send(:with_exclusive_scope) { self.class.find(self.id, options) }.instance_variable_get('@attributes'))
         @attributes_cache = {}
         self
       end
@@ -2735,26 +2771,15 @@ module ActiveRecord #:nodoc:
         attributes = new_attributes.dup
         attributes.stringify_keys!
 
-        multi_parameter_attributes = []
         attributes = remove_attributes_protected_from_mass_assignment(attributes) if guard_protected_attributes
-
-        attributes.each do |k, v|
-          if k.include?("(")
-            multi_parameter_attributes << [ k, v ]
-          else
-            respond_to?(:"#{k}=") ? send(:"#{k}=", v) : raise(UnknownAttributeError, "unknown attribute: #{k}")
-          end
-        end
-
-        assign_multiparameter_attributes(multi_parameter_attributes)
+        assign_attributes(attributes) if attributes and attributes.any?
       end
 
       # Returns a hash of all the attributes with their names as keys and the values of the attributes as values.
       def attributes
-        self.attribute_names.inject({}) do |attrs, name|
-          attrs[name] = read_attribute(name)
-          attrs
-        end
+        attrs = {}
+        attribute_names.each { |name| attrs[name] = read_attribute(name) }
+        attrs
       end
 
       # Returns a hash of attributes before typecasting and deserialization.
@@ -2841,6 +2866,11 @@ module ActiveRecord #:nodoc:
         @attributes.frozen?
       end
 
+      # Returns +true+ if the record has been destroyed.
+      def destroyed?
+        @destroyed
+      end
+
       # Returns +true+ if the record is read only. Records loaded through joins with piggy-back
       # attributes will be marked as read only since they cannot be saved.
       def readonly?
@@ -2863,6 +2893,23 @@ module ActiveRecord #:nodoc:
       end
 
     private
+      # Assigns attributes, dealing nicely with both multi and single paramater attributes
+      # Assumes attributes is a hash
+
+      def assign_attributes(attributes={})
+        multiparameter_attributes = []
+        
+        attributes.each do |k, v|
+          if k.to_s.include?("(")
+            multiparameter_attributes << [ k, v ]
+          else
+            respond_to?(:"#{k}=") ? send(:"#{k}=", v) : raise(UnknownAttributeError, "unknown attribute: #{k}")
+          end
+        end
+
+        assign_multiparameter_attributes(multiparameter_attributes) unless  multiparameter_attributes.empty?        
+      end
+    
       def create_or_update
         raise ReadOnlyRecord if readonly?
         result = new_record? ? create : update
@@ -3033,16 +3080,22 @@ module ActiveRecord #:nodoc:
 
       def execute_callstack_for_multiparameter_attributes(callstack)
         errors = []
-        callstack.each do |name, values|
-          klass = (self.class.reflect_on_aggregation(name.to_sym) || column_for_attribute(name)).klass
-          if values.empty?
-            send(name + "=", nil)
-          else
-            begin
+        callstack.each do |name, values_with_empty_parameters|
+          begin
+            klass = (self.class.reflect_on_aggregation(name.to_sym) || column_for_attribute(name)).klass
+            # in order to allow a date to be set without a year, we must keep the empty values.
+            # Otherwise, we wouldn't be able to distinguish it from a date with an empty day.
+            values = values_with_empty_parameters.reject(&:nil?)
+
+            if values.empty?
+              send(name + "=", nil)
+            else
+
               value = if Time == klass
                 instantiate_time_object(name, values)
               elsif Date == klass
                 begin
+                  values = values_with_empty_parameters.collect do |v| v.nil? ? 1 : v end
                   Date.new(*values)
                 rescue ArgumentError => ex # if Date.new raises an exception on an invalid date
                   instantiate_time_object(name, values).to_date # we instantiate Time object and convert it back to a date thus using Time's logic in handling invalid dates
@@ -3052,9 +3105,9 @@ module ActiveRecord #:nodoc:
               end
 
               send(name + "=", value)
-            rescue => ex
-              errors << AttributeAssignmentError.new("error on assignment #{values.inspect} to #{name}", ex, name)
             end
+          rescue => ex
+            errors << AttributeAssignmentError.new("error on assignment #{values.inspect} to #{name}", ex, name)
           end
         end
         unless errors.empty?
@@ -3070,17 +3123,15 @@ module ActiveRecord #:nodoc:
           attribute_name = multiparameter_name.split("(").first
           attributes[attribute_name] = [] unless attributes.include?(attribute_name)
 
-          unless value.empty?
-            attributes[attribute_name] <<
-              [ find_parameter_position(multiparameter_name), type_cast_attribute_value(multiparameter_name, value) ]
-          end
+          parameter_value = value.empty? ? nil : type_cast_attribute_value(multiparameter_name, value)
+          attributes[attribute_name] << [ find_parameter_position(multiparameter_name), parameter_value ]
         end
 
         attributes.each { |name, values| attributes[name] = values.sort_by{ |v| v.first }.collect { |v| v.last } }
       end
 
       def type_cast_attribute_value(multiparameter_name, value)
-        multiparameter_name =~ /\([0-9]*([a-z])\)/ ? value.send("to_" + $1) : value
+        multiparameter_name =~ /\([0-9]*([if])\)/ ? value.send("to_" + $1) : value
       end
 
       def find_parameter_position(multiparameter_name)
@@ -3089,7 +3140,7 @@ module ActiveRecord #:nodoc:
 
       # Returns a comma-separated pair list, like "key1 = val1, key2 = val2".
       def comma_pair_list(hash)
-        hash.inject([]) { |list, pair| list << "#{pair.first} = #{pair.last}" }.join(", ")
+        hash.map { |k,v| "#{k} = #{v}" }.join(", ")
       end
 
       def quoted_column_names(attributes = attributes_with_quotes)

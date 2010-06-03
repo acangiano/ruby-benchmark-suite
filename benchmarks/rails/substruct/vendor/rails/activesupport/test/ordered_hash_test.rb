@@ -51,6 +51,10 @@ class OrderedHashTest < Test::Unit::TestCase
     assert_same @ordered_hash, @ordered_hash.to_hash
   end
 
+  def test_to_a
+    assert_equal @keys.zip(@values), @ordered_hash.to_a
+  end
+
   def test_has_key
     assert_equal true, @ordered_hash.has_key?('blue')
     assert_equal true, @ordered_hash.key?('blue')
@@ -157,5 +161,65 @@ class OrderedHashTest < Test::Unit::TestCase
 
   def test_inspect
     assert @ordered_hash.inspect.include?(@hash.inspect)
+  end
+
+  def test_alternate_initialization_with_splat
+    alternate = ActiveSupport::OrderedHash[1,2,3,4]
+    assert_kind_of ActiveSupport::OrderedHash, alternate
+    assert_equal [1, 3], alternate.keys
+  end
+
+  def test_alternate_initialization_with_array
+    alternate = ActiveSupport::OrderedHash[ [
+      [1, 2],
+      [3, 4],
+      "bad key value pair",
+      [ 'missing value' ]
+    ]]
+
+    assert_kind_of ActiveSupport::OrderedHash, alternate
+    assert_equal [1, 3, 'missing value'], alternate.keys
+    assert_equal [2, 4, nil ], alternate.values
+  end
+
+  def test_alternate_initialization_raises_exception_on_odd_length_args
+    begin
+      alternate = ActiveSupport::OrderedHash[1,2,3,4,5]
+      flunk "Hash::[] should have raised an exception on initialization " +
+          "with an odd number of parameters"
+    rescue
+      assert_equal "odd number of arguments for Hash", $!.message
+    end
+  end
+
+  def test_replace_updates_keys
+    @other_ordered_hash = ActiveSupport::OrderedHash[:black, '000000', :white, '000000']
+    original = @ordered_hash.replace(@other_ordered_hash)
+    assert_same original, @ordered_hash
+    assert_equal @other_ordered_hash.keys, @ordered_hash.keys
+  end
+
+  def test_each_after_yaml_serialization
+    values = []
+    @deserialized_ordered_hash = YAML::load(YAML::dump(@ordered_hash))
+
+    @deserialized_ordered_hash.each {|key, value| values << value}
+    assert_equal @values, values
+  end
+
+  def test_order_after_yaml_serialization
+    @deserialized_ordered_hash = YAML::load(YAML::dump(@ordered_hash))
+
+    assert_equal @keys,   @deserialized_ordered_hash.keys
+    assert_equal @values, @deserialized_ordered_hash.values
+  end
+
+  def test_order_after_yaml_serialization_with_nested_arrays
+    @ordered_hash[:array] = %w(a b c)
+
+    @deserialized_ordered_hash = YAML::load(YAML::dump(@ordered_hash))
+
+    assert_equal @ordered_hash.keys,   @deserialized_ordered_hash.keys
+    assert_equal @ordered_hash.values, @deserialized_ordered_hash.values
   end
 end

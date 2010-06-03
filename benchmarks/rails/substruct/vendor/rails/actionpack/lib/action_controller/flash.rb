@@ -29,8 +29,13 @@ module ActionController #:nodoc:
     def self.included(base)
       base.class_eval do
         include InstanceMethods
+
         alias_method_chain :perform_action, :flash
         alias_method_chain :reset_session,  :flash
+        alias_method_chain :redirect_to,    :flash
+
+        helper_method :alert
+        helper_method :notice
       end
     end
 
@@ -120,6 +125,11 @@ module ActionController #:nodoc:
         (@used.keys - keys).each{ |k| @used.delete(k) }
       end
 
+      def store(session, key = "flash")
+        return if self.empty?
+        session[key] = self
+      end
+
       private
         # Used internally by the <tt>keep</tt> and <tt>discard</tt> methods
         #     use()               # marks the entire flash as used
@@ -139,7 +149,10 @@ module ActionController #:nodoc:
       protected
         def perform_action_with_flash
           perform_action_without_flash
-          remove_instance_variable(:@_flash) if defined? @_flash
+          if defined? @_flash
+            @_flash.store(session)
+            remove_instance_variable(:@_flash)
+          end
         end
 
         def reset_session_with_flash
@@ -147,16 +160,53 @@ module ActionController #:nodoc:
           remove_instance_variable(:@_flash) if defined? @_flash
         end
 
+        def redirect_to_with_flash(options = {}, response_status_and_flash = {}) #:doc:
+          if alert = response_status_and_flash.delete(:alert)
+            flash[:alert] = alert
+          end
+
+          if notice = response_status_and_flash.delete(:notice)
+            flash[:notice] = notice
+          end
+          
+          if other_flashes = response_status_and_flash.delete(:flash)
+            flash.update(other_flashes)
+          end
+          
+          redirect_to_without_flash(options, response_status_and_flash)
+        end
+
         # Access the contents of the flash. Use <tt>flash["notice"]</tt> to
         # read a notice you put there or <tt>flash["notice"] = "hello"</tt>
         # to put a new one.
         def flash #:doc:
-          unless defined? @_flash
-            @_flash = session["flash"] ||= FlashHash.new
+          if !defined?(@_flash)
+            @_flash = session["flash"] || FlashHash.new
             @_flash.sweep
           end
 
           @_flash
+        end
+
+        
+        # Convenience accessor for flash[:alert]
+        def alert
+          flash[:alert]
+        end
+        
+        # Convenience accessor for flash[:alert]=
+        def alert=(message)
+          flash[:alert] = message
+        end
+
+        # Convenience accessor for flash[:notice]
+        def notice
+          flash[:notice]
+        end
+        
+        # Convenience accessor for flash[:notice]=
+        def notice=(message)
+          flash[:notice] = message
         end
     end
   end

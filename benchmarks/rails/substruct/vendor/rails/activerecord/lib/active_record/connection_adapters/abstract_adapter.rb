@@ -11,6 +11,7 @@ require 'active_record/connection_adapters/abstract/quoting'
 require 'active_record/connection_adapters/abstract/connection_pool'
 require 'active_record/connection_adapters/abstract/connection_specification'
 require 'active_record/connection_adapters/abstract/query_cache'
+require 'active_record/connection_adapters/abstract/database_limits'
 
 module ActiveRecord
   module ConnectionAdapters # :nodoc:
@@ -29,6 +30,7 @@ module ActiveRecord
     # notably, the instance methods provided by SchemaStatement are very useful.
     class AbstractAdapter
       include Quoting, DatabaseStatements, SchemaStatements
+      include DatabaseLimits
       include QueryCache
       include ActiveSupport::Callbacks
       define_callbacks :checkout, :checkin
@@ -51,6 +53,13 @@ module ActiveRecord
       # Does this adapter support migrations?  Backend specific, as the
       # abstract adapter always returns +false+.
       def supports_migrations?
+        false
+      end
+
+      # Can this adapter determine the primary key for tables not attached
+      # to an ActiveRecord class, such as join tables?  Backend specific, as
+      # the abstract adapter always returns +false+.
+      def supports_primary_key?
         false
       end
 

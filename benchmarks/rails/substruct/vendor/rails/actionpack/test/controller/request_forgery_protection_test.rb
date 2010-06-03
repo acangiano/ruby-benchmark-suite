@@ -22,7 +22,7 @@ module RequestForgeryProtectionActions
   def unsafe
     render :text => 'pwn'
   end
-  
+
   def rescue_action(e) raise e end
 end
 
@@ -43,6 +43,13 @@ class FreeCookieController < RequestForgeryProtectionController
     render :inline => "<%= button_to('New', '/') {} %>"
   end
 end
+
+class CustomAuthenticityParamController < RequestForgeryProtectionController
+  def form_authenticity_param
+    'foobar'
+  end
+end
+
 
 # common test methods
 
@@ -151,13 +158,9 @@ module RequestForgeryProtectionTests
       delete :index, :format => 'xml'
     end
   end
-
+  
   def test_should_allow_xhr_post_without_token
     assert_nothing_raised { xhr :post, :index }
-  end
-  def test_should_not_allow_xhr_post_with_html_without_token
-    @request.env['CONTENT_TYPE'] = Mime::URL_ENCODED_FORM.to_s
-    assert_raise(ActionController::InvalidAuthenticityToken) { xhr :post, :index }
   end
   
   def test_should_allow_xhr_put_without_token
@@ -166,6 +169,11 @@ module RequestForgeryProtectionTests
   
   def test_should_allow_xhr_delete_without_token
     assert_nothing_raised { xhr :delete, :index }
+  end
+  
+  def test_should_allow_xhr_post_with_encoded_form_content_type_without_token
+    @request.env['CONTENT_TYPE'] = Mime::URL_ENCODED_FORM.to_s
+    assert_nothing_raised { xhr :post, :index }
   end
   
   def test_should_allow_post_with_token
@@ -242,5 +250,16 @@ class FreeCookieControllerTest < ActionController::TestCase
     [:post, :put, :delete].each do |method|
       assert_nothing_raised { send(method, :index)}
     end
+  end
+end
+
+class CustomAuthenticityParamControllerTest < ActionController::TestCase
+  def setup
+    ActionController::Base.request_forgery_protection_token = :authenticity_token
+  end
+
+  def test_should_allow_custom_token
+    post :index, :authenticity_token => 'foobar'
+    assert_response :ok
   end
 end

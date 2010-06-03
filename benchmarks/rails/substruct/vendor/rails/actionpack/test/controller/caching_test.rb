@@ -1,11 +1,16 @@
 require 'fileutils'
 require 'abstract_unit'
+require 'active_record_unit'
 
 CACHE_DIR = 'test_cache'
 # Don't change '/../temp/' cavalierly or you might hose something you don't want hosed
 FILE_STORE_PATH = File.join(File.dirname(__FILE__), '/../temp/', CACHE_DIR)
 ActionController::Base.page_cache_directory = FILE_STORE_PATH
 ActionController::Base.cache_store = :file_store, FILE_STORE_PATH
+
+# Force sweeper classes to load
+ActionController::Caching::Sweeper
+ActionController::Caching::Sweeping
 
 class PageCachingTestController < ActionController::Base
   caches_page :ok, :no_content, :if => Proc.new { |c| !c.request.format.json? }
@@ -47,7 +52,7 @@ class PageCachingTest < ActionController::TestCase
     ActionController::Base.perform_caching = true
 
     ActionController::Routing::Routes.draw do |map|
-      map.main '', :controller => 'posts'
+      map.main '', :controller => 'posts', :format => nil
       map.formatted_posts 'posts.:format', :controller => 'posts'
       map.resources :posts
       map.connect ':controller/:action/:id'
@@ -152,6 +157,7 @@ class ActionCachingTestController < ActionController::Base
   caches_action :edit, :cache_path => Proc.new { |c| c.params[:id] ? "http://test.host/#{c.params[:id]};edit" : "http://test.host/edit" }
   caches_action :with_layout
   caches_action :layout_false, :layout => false
+  caches_action :record_not_found, :four_oh_four, :simple_runtime_error
 
   layout 'talk_from_action.erb'
 
@@ -172,6 +178,18 @@ class ActionCachingTestController < ActionController::Base
   def with_layout
     @cache_this = MockTime.now.to_f.to_s
     render :text => @cache_this, :layout => true
+  end
+
+  def record_not_found
+    raise ActiveRecord::RecordNotFound, "oops!"
+  end
+
+  def four_oh_four
+    render :text => "404'd!", :status => 404
+  end
+
+  def simple_runtime_error
+    raise "oops!"
   end
 
   alias_method :show, :index
@@ -456,6 +474,27 @@ class ActionCacheTest < ActionController::TestCase
     assert_response :success
   end
 
+  def test_record_not_found_returns_404_for_multiple_requests
+    get :record_not_found
+    assert_response 404
+    get :record_not_found
+    assert_response 404
+  end
+
+  def test_four_oh_four_returns_404_for_multiple_requests
+    get :four_oh_four
+    assert_response 404
+    get :four_oh_four
+    assert_response 404
+  end
+
+  def test_simple_runtime_error_returns_500_for_multiple_requests
+    get :simple_runtime_error
+    assert_response 500
+    get :simple_runtime_error
+    assert_response 500
+  end
+
   private
     def content_to_cache
       assigns(:cache_this)
@@ -565,7 +604,7 @@ class FragmentCachingTest < ActionController::TestCase
     @store.write('views/expensive', 'fragment content')
     fragment_computed = false
 
-    buffer = 'generated till now -> '
+    buffer = 'generated till now -> '.html_safe
     @controller.fragment_for(buffer, 'expensive') { fragment_computed = true }
 
     assert fragment_computed
@@ -576,11 +615,25 @@ class FragmentCachingTest < ActionController::TestCase
     @store.write('views/expensive', 'fragment content')
     fragment_computed = false
 
-    buffer = 'generated till now -> '
+    buffer = 'generated till now -> '.html_safe
     @controller.fragment_for(buffer, 'expensive') { fragment_computed = true }
 
     assert !fragment_computed
     assert_equal 'generated till now -> fragment content', buffer
+  end
+
+  def test_html_safety
+    assert_nil @store.read('views/name')
+    content = 'value'.html_safe
+    assert_equal content, @controller.write_fragment('name', content)
+
+    cached = @store.read('views/name')
+    assert_equal content, cached
+    assert_equal String, cached.class
+
+    html_safe = @controller.read_fragment('name')
+    assert_equal content, html_safe
+    assert html_safe.html_safe?
   end
 end
 

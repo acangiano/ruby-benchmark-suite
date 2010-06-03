@@ -63,7 +63,12 @@ module ActionController
 
           # Support partial arguments for hash redirections
           if options.is_a?(Hash) && @response.redirected_to.is_a?(Hash)
-            return true if options.all? {|(key, value)| @response.redirected_to[key] == value}
+            if options.all? {|(key, value)| @response.redirected_to[key] == value}
+              callstack = caller.dup
+              callstack.slice!(0, 2)
+              ::ActiveSupport::Deprecation.warn("Using assert_redirected_to with partial hash arguments is deprecated. Specify the full set arguments instead", callstack)
+              return true
+            end
           end
 
           redirected_to_after_normalisation = normalize_argument_to_redirection(@response.redirected_to)
@@ -82,6 +87,9 @@ module ActionController
       #   # assert that the "new" view template was rendered
       #   assert_template "new"
       #
+      #   # assert that the "new" view template was rendered with Symbol
+      #   assert_template :new
+      #
       #   # assert that the "_customer" partial was rendered twice
       #   assert_template :partial => '_customer', :count => 2
       #
@@ -91,7 +99,7 @@ module ActionController
       def assert_template(options = {}, message = nil)
         clean_backtrace do
           case options
-           when NilClass, String
+           when NilClass, String, Symbol
             rendered = @response.rendered[:template].to_s
             msg = build_message(message,
                     "expecting <?> but rendering with <?>",
@@ -100,7 +108,7 @@ module ActionController
               if options.nil?
                 @response.rendered[:template].blank?
               else
-                rendered.to_s.match(options)
+                rendered.to_s.match(options.to_s)
               end
             end
           when Hash
@@ -123,6 +131,8 @@ module ActionController
               assert @response.rendered[:partials].empty?,
                 "Expected no partials to be rendered"
             end
+          else
+            raise ArgumentError  
           end
         end
       end
@@ -134,16 +144,25 @@ module ActionController
         end
 
         def normalize_argument_to_redirection(fragment)
-          after_routing = @controller.url_for(fragment)
-          if after_routing =~ %r{^\w+://.*}
-            after_routing
-          else
-            # FIXME - this should probably get removed.
-            if after_routing.first != '/'
-              after_routing = '/' + after_routing
+          case fragment
+          when %r{^\w[\w\d+.-]*:.*}
+            fragment
+          when String
+            if fragment =~ %r{^\w[\w\d+.-]*:.*}
+              fragment
+            else
+              if fragment !~ /^\//
+                ActiveSupport::Deprecation.warn "Omitting the leading slash on a path with assert_redirected_to is deprecated. Use '/#{fragment}' instead.", caller(2)
+                fragment = "/#{fragment}"
+              end
+              @request.protocol + @request.host_with_port + fragment
             end
-            @request.protocol + @request.host_with_port + after_routing
-          end
+          when :back
+            raise RedirectBackError unless refer = @request.headers["Referer"]
+            refer
+          else
+            @controller.url_for(fragment)
+          end.gsub(/[\r\n]/, '')
         end
     end
   end
