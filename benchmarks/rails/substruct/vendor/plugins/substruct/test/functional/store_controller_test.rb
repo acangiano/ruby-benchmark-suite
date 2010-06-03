@@ -1,3 +1,4 @@
+$: << '.'
 require File.dirname(__FILE__) + '/../test_helper'
 
 class StoreControllerTest < ActionController::TestCase

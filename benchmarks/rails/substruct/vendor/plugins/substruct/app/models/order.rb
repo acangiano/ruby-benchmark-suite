@@ -453,13 +453,13 @@ class Order < ActiveRecord::Base
     logger.info "LINE ITEMS TOTAL: #{self.line_items_total}"
     logger.info "SHIPPING COST: #{self.shipping_cost}"
     logger.info "TAX COST: #{self.tax_cost}"
-    self.line_items_total + self.shipping_cost + self.tax_cost
+    self.line_items_total + self.shipping_cost.to_f + self.tax_cost.to_f
   end
   
   # The tax of items if applied.
   #
   def tax_cost
-    (self.line_items_total) * (self.tax/100)
+    (self.line_items_total) * (self.tax.to_f/100)
   end
 
   def name
