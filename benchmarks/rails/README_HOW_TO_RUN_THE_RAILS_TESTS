@@ -1,17 +1,27 @@
-To run these, you'll need:
+To run these, you might need to install a gem:
 
-Linux MRI, rubinius:
+Linux MRI/rubinius:
  sqlite3-ruby gem install
 
-jruby:
+jruby any platform:
  none required
 
-mingw MRI on windows:
+MRI 1.8/1.9 on windows:
  none required
 
-Note that you might have to install rake, and the builder gem, though it seems VM dependent somehow, and typically they're installed by default for your VM.
+IronRuby on windows:
+ none required
+
+Note that you might also need to install rake (gem), and the builder gem, though it seems VM dependent somehow, and 
+typically they're installed by default on each VM.
 
 To check if they're working, do a verbose run, like
 $ rake bench:file FILE=benchmarks/rails/bm_substruct_test_all.rb ITERATIONS=1 VERBOSE=1  
 
-To make sure they're working well.
+To make sure it's working well.
+
+Note that this message:
+
+Problems loading MiniMagickProcessor: no such file to load -- mini_magick
+
+is expected (and a few rails unit tests fail).
