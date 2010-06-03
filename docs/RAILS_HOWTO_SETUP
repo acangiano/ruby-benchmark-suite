@@ -1,6 +1,0 @@
-How to get rails benchmarks to work:
-
-need these gems (MRI):
-gem install RedCloth fastercsv mime-types mini_magick ezcrypto mysql
-and a mysql db that allows root (no password).
-Either that or edit rails/substruct/config/database.yml (production db) to match your mysql settings
