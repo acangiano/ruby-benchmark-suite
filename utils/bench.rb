@@ -111,7 +111,13 @@ class Bench
 
       begin
         version_string = ""
-        version_string = "#{RUBY_VERSION} #{RUBY_RELEASE_DATE} #{RUBY_PATCHLEVEL} #{RUBY_PLATFORM}"
+        if defined?(RUBY_DESCRIPTION) 
+          version_string = RUBY_DESCRIPTION
+        else
+          # IronRuby
+          version_string = "#{RUBY_VERSION} #{RUBY_RELEASE_DATE} #{RUBY_PATCHLEVEL} #{RUBY_PLATFORM}"
+        end
+        
         require 'rbconfig'
         version_string += ';' + Config::CONFIG['CFLAGS'] + ';' + Config::CONFIG["configure_args"] + ';' + Config::CONFIG["bindir"]
       rescue Exception
