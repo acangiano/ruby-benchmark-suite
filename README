@@ -43,6 +43,11 @@ or pass in environment variable on the command line
 
   rake VM=/path/to/ruby bench
 
+RAILS TESTS
+===========
+
+There are a few rails 2.3.x tests located in the benchmarks/rails folder.  You may need to install a binary dependency to run them, see benchmarks/rails/HOW_TO_RUN_RAILS_TESTS file for instructions for your VM.
+
 HELP
 =====
 There is a mailing list at http://groups.google.com/group/ruby-benchmark-suite
