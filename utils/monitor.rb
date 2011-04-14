@@ -19,7 +19,7 @@ cmd = "#{timeout} -t #{limit} #{vm} #{runner} #{name} #{iterations} #{report} #{
 if ENV['VERBOSE']
   puts cmd
 else
-  cmd += " >#{null}"
+  cmd += " >#{null} 2>#{null}"
 end
 
 start = Time.now
