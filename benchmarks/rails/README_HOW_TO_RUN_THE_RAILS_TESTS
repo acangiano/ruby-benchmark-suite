@@ -1,7 +1,7 @@
 To run these, you might need to install a gem:
 
 Linux MRI/rubinius:
- sqlite3-ruby gem install
+ sqlite3-ruby (via gem install)
 
 jruby any platform:
  none required

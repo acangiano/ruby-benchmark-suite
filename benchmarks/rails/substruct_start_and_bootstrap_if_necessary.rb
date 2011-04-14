@@ -1,10 +1,12 @@
 # currently we need a lotta gems
 # require them up front just in case they're not installed
+require 'thread'
 $:.unshift '19_compat' if RUBY_VERSION >= '1.9.0'
 $: << '.' if RUBY_VERSION >= '1.9.2'
 require 'rubygems'
 
 for gem in ["RedCloth", "fastercsv", "mime/types", "mini_magick", "ezcrypto"] do
+# not necessary anymore
 # require gem
 end
 
@@ -25,6 +27,8 @@ begin
  Product.first # raising here means the DB doesn't exist
  puts 'database appears initialized'
 rescue Exception
+     # bundled rake version
+     $:.unshift(File.expand_path(File.dirname(__FILE__) + "/lib/rake-0.8.7/lib"))
      puts 'recreating database'
      require 'rake'
      require 'rake/testtask'
