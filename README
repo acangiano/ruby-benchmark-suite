@@ -39,6 +39,10 @@ If you want to run a different implementation set the environment variable VM to
 
   VM = ENV['VM'] || "ruby"
 
+or pass in environment variable on the command line
+
+  rake VM=/path/to/ruby bench
+
 HELP
 =====
 There is a mailing list at http://groups.google.com/group/ruby-benchmark-suite
