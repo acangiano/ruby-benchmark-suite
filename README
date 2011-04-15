@@ -8,7 +8,9 @@ To obtain the suite, simply run:
 
 RUNNING THE SUITE
 =================
-Benchmarks are run using rake. Type "rake -T bench" to see options.
+Benchmarks are run using rake (a copy for convenience is located at benchmarks/rails/dependencies/rake-0.8.7.gem). 
+
+Type "rake -T bench" to see options.
 
 Examples:
 
