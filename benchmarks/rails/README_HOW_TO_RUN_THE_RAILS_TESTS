@@ -1,9 +1,12 @@
-To run these, you need to install rubygems, and might need to install a gem:
+To run these, you need to install rubygems (a copy is in dependencies/rubygems-1.7.2.tgs), and you might need to also install a gem 
+(which may require you to also install the sqlite3-devel headers on your platform):
 
 Linux MRI/rubinius:
- sqlite3 
- (via $gem install sqlite3
-  or you can cd into sqlite3-1.3.3.install_from_here_from_src_via_setup and run ruby setup.rb to install it via non-gem, locally)
+ sqlite3 gem
+  via 
+  $ gem install dependencies/sqlite-1.3.3.gem  # bundled sqlite3-1.3.3 gem
+  or just 
+  $ gem install sqlite3
 
 jruby any platform:
  none required
@@ -14,9 +17,9 @@ MRI 1.8/1.9 on windows:
 IronRuby on windows:
  none required
 
-Note that you also need to install rake (as a gem), though it's typically they're installed by default on the various VM's.
+Note that you also need to install rake (as a gem--a copy is in dependencies/rake-0.8.7.gem), though it's typically installed by default on some VM's.
 
-To check if they're working, do a verbose run, like
+To check if rails tests are functional, do a verbose run, like
 
 $ rake bench:file FILE=benchmarks/rails/bm_substruct_test_all.rb ITERATIONS=1 VERBOSE=1  
 
