@@ -1,4 +1,4 @@
-To run these, you might need to install a gem:
+To run these, you need to install rubygems, and might need to install a gem:
 
 Linux MRI/rubinius:
  sqlite3 
@@ -17,9 +17,10 @@ IronRuby on windows:
 Note that you also need to install rake (as a gem), though it's typically they're installed by default on the various VM's.
 
 To check if they're working, do a verbose run, like
+
 $ rake bench:file FILE=benchmarks/rails/bm_substruct_test_all.rb ITERATIONS=1 VERBOSE=1  
 
-To make sure it's working well.
+To make sure it's working.
 
 Note that this message:
 

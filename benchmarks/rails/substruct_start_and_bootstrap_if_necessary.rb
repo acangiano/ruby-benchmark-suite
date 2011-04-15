@@ -3,7 +3,11 @@
 require 'thread'
 $:.unshift '19_compat' if RUBY_VERSION >= '1.9.0'
 $: << '.' if RUBY_VERSION >= '1.9.2'
-require 'rubygems'
+begin
+  require 'rubygems'
+rescue LoadError => e
+ raise 'you must install rubygems in order to be able to run rails at all' + e.to_s
+end
 
 for gem in ["RedCloth", "fastercsv", "mime/types", "mini_magick", "ezcrypto"] do
 # not necessary anymore
