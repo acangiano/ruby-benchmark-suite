@@ -1,7 +1,9 @@
 To run these, you might need to install a gem:
 
 Linux MRI/rubinius:
- sqlite3-ruby (via gem install)
+ sqlite3 
+ (via $gem install sqlite3
+  or you can cd into sqlite3-1.3.3.install_from_here_from_src_via_setup and run ruby setup.rb to install it via non-gem, locally)
 
 jruby any platform:
  none required
