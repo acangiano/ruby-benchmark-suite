@@ -25,6 +25,10 @@ The following example runs demonstrates all possible options -- '/bin/ruby_speci
 
   rake VM=/bin/ruby_special ITERATIONS=3 TIMEOUT=5 VERBOSE=1 METER_MEMORY=yes
 
+if you get "SystemStackError stack level too deep" error as results of some benchmarks, try to increase a stack size:
+
+  ulimit -s 16384
+
 DIRECTORY STRUCTURE
 ===================
   deprecated     - contains the old, deprecated version of the suite and recently deprecated tests
@@ -48,7 +52,7 @@ or pass in environment variable on the command line
 RAILS TESTS
 ===========
 
-There are a few rails 2.3.x tests located in the benchmarks/rails folder.  You may need to install a binary dependency to run them, see benchmarks/rails/HOW_TO_RUN_RAILS_TESTS file for instructions for your VM.
+There are a few rails 2.3.x tests located in the benchmarks/rails folder. You may need to install a binary dependency to run them, see benchmarks/rails/README_HOW_TO_RUN_THE_RAILS_TESTS file for instructions for your VM.
 
 HELP
 =====
