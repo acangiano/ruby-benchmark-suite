@@ -1,10 +1,9 @@
 require 'socket'
 
 def write_meg(block_size)
-  a = TCPServer.new ''
-  port = a.addr[1]
-  client = TCPSocket.new nil, port
-  server = a.accept
+  server_socket = TCPServer.new '127.0.0.1', 0
+  client = TCPSocket.new server_socket.addr[3], server_socket.addr[1]
+  server = server_socket.accept
   receiver = Thread.new {
     loop { 
       got = server.recv 10 
