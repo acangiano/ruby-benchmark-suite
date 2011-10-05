@@ -10,7 +10,7 @@ def sieve(m)
   pmax = m - 1
   p = 2
   while p <= pmax
-    unless flags[p].zero?
+    unless flags[p] == 0
       count += 1
       mult = p
       while mult <= pmax
@@ -24,13 +24,12 @@ def sieve(m)
 end
 
 m = 9
-Flags = "\x1" * ( 2 ** m * 10_000)
+Flags = Array.new((1 << m) * 10_000, "\x1")
 
 Bench.run [m] do |n|
   n.downto(n-2) do |exponent|
     break if exponent < 0
     m = (1 << exponent) * 10_000
-    # m = (2 ** exponent) * 10_000
     count = sieve(m)
     printf "Primes up to %8d %8d\n", m, count
   end
