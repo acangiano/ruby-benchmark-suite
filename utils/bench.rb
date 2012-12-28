@@ -196,6 +196,7 @@ end
 # Run the benchmark
 begin
   bench = Bench.new(*ARGV)
+  $LOAD_PATH << File.dirname(bench.name)
   load bench.file
   bench.write_success
 rescue Object => exc
