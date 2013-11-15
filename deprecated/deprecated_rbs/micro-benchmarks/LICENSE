@@ -13,7 +13,7 @@ bm_nsieve_bits.rb
 bm_partial_sums.rb
 bm_recursive.rb
 bm_regex_dna.rb 
-bm_reverse_compliment.rb
+bm_reverse_complement.rb
 bm_spectral_norm.rb
 bm_sum_file.rb 
 bm_thread_ring.rb
